@@ -10,8 +10,14 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:aire_velo_bearings/application/auth_status/auth_status_bloc.dart'
     as _i394;
+import 'package:aire_velo_bearings/application/change_password_bloc/change_password_bloc.dart'
+    as _i481;
+import 'package:aire_velo_bearings/application/edit_profile_bloc/edit_profile_bloc.dart'
+    as _i877;
 import 'package:aire_velo_bearings/application/forgot_password_bloc/forgot_password_bloc.dart'
     as _i203;
+import 'package:aire_velo_bearings/application/main/home_bloc/home_bloc.dart'
+    as _i841;
 import 'package:aire_velo_bearings/application/main/main_tab/main_tab_bloc.dart'
     as _i155;
 import 'package:aire_velo_bearings/application/product_detail_bloc/product_detail_bloc.dart'
@@ -44,16 +50,20 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i608.SignUpBloc>(() => _i608.SignUpBloc());
     gh.factory<_i65.SignInBloc>(() => _i65.SignInBloc());
     gh.factory<_i53.SearchBloc>(() => _i53.SearchBloc());
+    gh.factory<_i481.ChangePasswordBloc>(() => _i481.ChangePasswordBloc());
+    gh.factory<_i877.EditProfileBloc>(() => _i877.EditProfileBloc());
     gh.factory<_i170.ProductDetailBloc>(() => _i170.ProductDetailBloc());
     gh.factory<_i203.ForgotPasswordBloc>(() => _i203.ForgotPasswordBloc());
     gh.lazySingleton<_i14.ApiService>(() => _i14.ApiService());
-    gh.lazySingleton<_i6.IMainFacade>(() => _i554.MainFacade());
     gh.lazySingleton<_i575.IAuthFacade>(
         () => _i45.AuthFacade(gh<_i14.ApiService>()));
     gh.factory<_i394.AuthStatusBloc>(
         () => _i394.AuthStatusBloc(gh<_i575.IAuthFacade>()));
+    gh.lazySingleton<_i6.IMainFacade>(
+        () => _i554.MainFacade(apiService: gh<_i14.ApiService>()));
     gh.factory<_i155.MainTabBloc>(
         () => _i155.MainTabBloc(gh<_i575.IAuthFacade>()));
+    gh.factory<_i841.HomeBloc>(() => _i841.HomeBloc(gh<_i6.IMainFacade>()));
     return this;
   }
 }

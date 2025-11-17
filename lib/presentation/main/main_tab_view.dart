@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:aire_velo_bearings/application/main/home_bloc/home_bloc.dart';
 import 'package:aire_velo_bearings/core/constants/string_constant.dart';
 import 'package:aire_velo_bearings/presentation/main/tabs/favourites/favourites.dart';
-import 'package:aire_velo_bearings/presentation/main/tabs/news_offers/news_offers.dart';
-import 'package:aire_velo_bearings/presentation/main/tabs/profile/my_account.dart';
+import 'package:aire_velo_bearings/presentation/main/tabs/my_account/my_account.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:aire_velo_bearings/application/main/main_tab/main_tab_bloc.dart';
 import 'package:aire_velo_bearings/injection.dart';
@@ -26,6 +26,10 @@ class MainTabView extends StatelessWidget {
         BlocProvider(
           create: (context) =>
               getIt<MainTabBloc>()..add(MainTabEvent.initDynamicLink(context)),
+        ),
+        BlocProvider(
+          create: (context) =>
+              getIt<HomeBloc>()..add(HomeEvent.getProductList()),
         ),
       ],
       child: BlocBuilder<MainTabBloc, MainTabState>(
@@ -77,8 +81,6 @@ getAppbar(MainTabState state, BuildContext context) {
         showBackBtn: false,
       );
     case 2:
-      return CustomAppBar(title: StringConstant.newsOffers, showBackBtn: false);
-    case 3:
       return CustomAppBar(title: StringConstant.myAccount, showBackBtn: false);
     default:
   }
@@ -92,8 +94,6 @@ Route? onGenerateRoute(RouteSettings settings, String tabItem) {
         return HomeView();
       } else if (tabItem == autoroute.FavouritesView.name) {
         return FavouritesView();
-      } else if (tabItem == autoroute.NewsOffersView.name) {
-        return NewsOffersView();
       } else if (tabItem == autoroute.MyAccountView.name) {
         return MyAccountView();
       }

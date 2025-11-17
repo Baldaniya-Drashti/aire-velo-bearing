@@ -6,16 +6,14 @@ class MainTabState with _$MainTabState {
     required int selectedTab,
     required int pageIndex,
     required String homePage,
-    required String profilePage,
+    required String myAccountPage,
     required String favouritesPage,
-    required String newsOffersPage,
   }) = _MainTabState;
   factory MainTabState.initial() => MainTabState(
     selectedTab: 0,
     pageIndex: 0,
     homePage: HomeView.name,
-    profilePage: MyAccountView.name,
+    myAccountPage: MyAccountView.name,
     favouritesPage: FavouritesView.name,
-    newsOffersPage: NewsOffersView.name,
   );
 }

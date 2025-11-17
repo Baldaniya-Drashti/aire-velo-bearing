@@ -18,11 +18,12 @@ class AppRouter extends RootStackRouter {
         AutoRoute(page: HomeView.page),
         AutoRoute(page: MyAccountView.page),
         AutoRoute(page: FavouritesView.page),
-        AutoRoute(page: NewsOffersView.page),
       ],
     ),
     AutoRoute(page: SubCategoryList.page),
     AutoRoute(page: SearchScreen.page),
     AutoRoute(page: ProductDetail.page),
+    AutoRoute(page: EditProfile.page),
+    AutoRoute(page: ChangePassword.page),
   ];
 }

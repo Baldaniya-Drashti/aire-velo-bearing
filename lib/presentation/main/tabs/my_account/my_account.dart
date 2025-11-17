@@ -2,7 +2,9 @@
 
 import 'package:aire_velo_bearings/core/constants/font_constants.dart';
 import 'package:aire_velo_bearings/core/constants/string_constant.dart';
+import 'package:aire_velo_bearings/core/router/app_router.gr.dart';
 import 'package:aire_velo_bearings/core/utils/math_utils.dart';
+import 'package:aire_velo_bearings/presentation/main/tabs/my_account/widget/logout_dialog.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:aire_velo_bearings/application/auth_status/auth_status_bloc.dart';
 import 'package:aire_velo_bearings/presentation/common/widgets/base_text.dart';
@@ -36,10 +38,16 @@ class MyAccountView extends StatelessWidget {
           customTile(
             icon: Icons.person_outline,
             title: StringConstant.editProfile,
+            onTap: () {
+              context.router.push(PageRouteInfo(EditProfile.name));
+            },
           ),
           customTile(
             icon: Icons.lock_outline,
             title: StringConstant.changePassword,
+            onTap: () {
+              context.router.push(PageRouteInfo(ChangePassword.name));
+            },
           ),
           Padding(
             padding: EdgeInsets.symmetric(vertical: getSize(10)),
@@ -59,6 +67,9 @@ class MyAccountView extends StatelessWidget {
             icon: Icons.logout_rounded,
             title: StringConstant.logout,
             isLogout: true,
+            onTap: () {
+              LogOutDialog().logoutDialog(context);
+            },
           ),
         ],
       ),
@@ -69,32 +80,36 @@ class MyAccountView extends StatelessWidget {
     required String title,
     required IconData icon,
     bool isLogout = false,
+    VoidCallback? onTap,
   }) {
-    return Container(
-      margin: EdgeInsets.symmetric(vertical: getSize(10)),
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(10),
-        boxShadow: [BoxShadow(color: AppColors.lightGrey, blurRadius: 10)],
-      ),
-      child: ListTile(
-        leading: Icon(
-          icon,
-          color: (isLogout) ? AppColors.red : AppColors.black,
-          size: getSize(25),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        margin: EdgeInsets.symmetric(vertical: getSize(10)),
+        decoration: BoxDecoration(
+          color: AppColors.white,
+          borderRadius: BorderRadius.circular(10),
+          boxShadow: [BoxShadow(color: AppColors.lightGrey, blurRadius: 10)],
         ),
-        title: BaseText(
-          text: title,
-          fontWeight: FontWeight.w600,
-          textColor: (isLogout) ? AppColors.red : null,
+        child: ListTile(
+          leading: Icon(
+            icon,
+            color: (isLogout) ? AppColors.red : AppColors.black,
+            size: getSize(25),
+          ),
+          title: BaseText(
+            text: title,
+            fontWeight: FontWeight.w600,
+            textColor: (isLogout) ? AppColors.red : null,
+          ),
+          trailing: (isLogout)
+              ? null
+              : Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  color: AppColors.grey,
+                  size: getSize(20),
+                ),
         ),
-        trailing: (isLogout)
-            ? null
-            : Icon(
-                Icons.arrow_forward_ios_rounded,
-                color: AppColors.grey,
-                size: getSize(20),
-              ),
       ),
     );
   }

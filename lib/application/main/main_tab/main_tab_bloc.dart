@@ -36,21 +36,13 @@ class MainTabBloc extends Bloc<MainTabEvent, MainTabState> {
               );
               break;
             case 2:
-              if (!pageList.contains(state.newsOffersPage)) {
-                pageList.add(state.newsOffersPage);
+              if (!pageList.contains(state.myAccountPage)) {
+                pageList.add(state.myAccountPage);
               }
               emit(
                 state.copyWith(
-                  pageIndex: pageList.indexOf(state.newsOffersPage),
+                  pageIndex: pageList.indexOf(state.myAccountPage),
                 ),
-              );
-              break;
-            case 3:
-              if (!pageList.contains(state.profilePage)) {
-                pageList.add(state.profilePage);
-              }
-              emit(
-                state.copyWith(pageIndex: pageList.indexOf(state.profilePage)),
               );
               break;
           }

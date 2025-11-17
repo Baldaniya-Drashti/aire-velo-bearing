@@ -54,11 +54,6 @@ class CustomBottomNavigationWidget extends StatelessWidget {
                 activeIcon: icon(SvgImageConstant.heart),
               ),
               BottomNavigationBarItem(
-                icon: icon(SvgImageConstant.email),
-                label: StringConstant.newsOffers,
-                activeIcon: icon(SvgImageConstant.email),
-              ),
-              BottomNavigationBarItem(
                 icon: icon(SvgImageConstant.person),
                 label: StringConstant.myAccount,
                 activeIcon: icon(SvgImageConstant.person),

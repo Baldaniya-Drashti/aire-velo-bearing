@@ -54,6 +54,17 @@ class StringConstant {
   static const String changePassword = 'Change Password';
   static const String preferences = 'Preferences';
   static const String legalAndPolicies = 'Legal and Policies';
+  static const String saveChanges = 'Save Changes';
+  static const String clearFilters = 'Clear Filters';
+  static const String filterByChamferAngles = 'Filter by Chamfer Angles';
+  static const String filterByDepth = 'Filter by Depth';
+  static const String filterByOuterDiameter = 'Filter by Outer Diameter';
+  static const String filterByInnerDiameter = 'Filter by Inner Diameter';
+  static const String filterByDimensions = 'Filter by Dimensions';
+  static const String filterByBrand = 'Filter by Brand';
+  static const String price = 'Price';
+  static const String filterByPrice = 'Filter by Price';
+  static const String filter = 'Filter';
 
   ///
   static const String theUKsLargestStockistOfHeadsetBearings =

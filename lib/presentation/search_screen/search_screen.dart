@@ -8,21 +8,13 @@ import 'package:aire_velo_bearings/presentation/common/widgets/center_loading_in
 import 'package:aire_velo_bearings/presentation/core/widgets/inputs/custom_app_bar.dart';
 import 'package:aire_velo_bearings/presentation/search_field/search_field.dart';
 import 'package:aire_velo_bearings/presentation/search_screen/widgets/search_records.dart';
+import 'package:aire_velo_bearings/presentation/search_screen/widgets/show_filter_bottom_sheet.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
-@RoutePage(name: 'SearchScreen') /* 
-class SearchScreen extends StatelessWidget {
-  const SearchScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold();
-  }
-}
- */
+@RoutePage(name: 'SearchScreen')
 class SearchScreen extends StatefulWidget {
   final String? searchText;
   const SearchScreen({super.key, this.searchText});
@@ -70,36 +62,40 @@ class _SearchScreenState extends State<SearchScreen> {
                           SearchEvent.getSearchText(val: query),
                         );
                       },
+                      onFilter: () {
+                        ShowFilterBottomSheet.bottomSheet(context);
+                      },
                     ),
                     Gap(getSize(20)),
                     Expanded(
-                      child: (state.isLoading && widget.searchText != null)
-                          ? CenterLoadingIndicator()
-                          : GridView.builder(
-                              itemCount: 10,
-                              itemBuilder: (con, index) {
-                                return GestureDetector(
-                                  onTap: () {
-                                    context.router.push(
-                                      PageRouteInfo(
-                                        ProductDetail.name,
-                                        args: ProductDetailArgs(title: ""),
-                                      ),
-                                    );
-                                  },
-                                  child: SearchRecords(),
-                                );
-                              },
-                              padding: EdgeInsets.only(bottom: getSize(50)),
-                              shrinkWrap: true,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 2,
-                                    crossAxisSpacing: getSize(10),
-                                    mainAxisSpacing: getSize(10),
-                                    childAspectRatio: 0.53,
-                                  ),
-                            ),
+                      child: LayoutBuilder(
+                        builder: (context, constraints) {
+                          // Calculate how many items fit per row
+                          int crossAxisCount = 2;
+                          if (constraints.maxWidth > 1200) {
+                            crossAxisCount = 5;
+                          } else if (constraints.maxWidth > 900) {
+                            crossAxisCount = 4;
+                          } else if (constraints.maxWidth > 600) {
+                            crossAxisCount = 3;
+                          }
+                          return GridView.builder(
+                            padding: EdgeInsets.all(getSize(10)),
+                            itemCount: 10,
+                            shrinkWrap: true,
+                            // physics: BouncingScrollPhysics(),
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: crossAxisCount,
+                                  mainAxisSpacing: 12,
+                                  crossAxisSpacing: 12,
+                                  // childAspectRatio: 0.5,
+                                ),
+                            itemBuilder: (context, index) =>
+                                const SearchRecords(),
+                          );
+                        },
+                      ),
                     ),
                   ],
                 ),

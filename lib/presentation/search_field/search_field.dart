@@ -45,6 +45,7 @@ class SearchField extends StatefulWidget {
     this.isShowLabel = true,
     this.focusNode,
     this.initialValue,
+    this.onFilter,
   });
   final String? initialValue;
   final Duration delay;
@@ -53,6 +54,7 @@ class SearchField extends StatefulWidget {
   final TextStyle? labelStyle;
   final String? labelText;
   final bool isShowLabel;
+  final VoidCallback? onFilter;
   final FocusNode? focusNode;
 
   @override
@@ -78,7 +80,10 @@ class _SearchFieldState extends State<SearchField> {
       prefixIcon: Icon(Icons.search, color: AppColors.grey),
       onChanged: _onSearchChanged,
       hintText: widget.hintText ?? StringConstant.search,
-      suffixIcon: Icon(Icons.filter_alt, color: AppColors.grey),
+      suffixIcon: GestureDetector(
+        onTap: widget.onFilter,
+        child: Icon(Icons.filter_alt, color: AppColors.grey),
+      ),
       focusNode: widget.focusNode,
     );
   }

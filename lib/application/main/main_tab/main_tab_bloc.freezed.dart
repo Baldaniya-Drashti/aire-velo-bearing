@@ -19,9 +19,8 @@ mixin _$MainTabState {
   int get selectedTab => throw _privateConstructorUsedError;
   int get pageIndex => throw _privateConstructorUsedError;
   String get homePage => throw _privateConstructorUsedError;
-  String get profilePage => throw _privateConstructorUsedError;
+  String get myAccountPage => throw _privateConstructorUsedError;
   String get favouritesPage => throw _privateConstructorUsedError;
-  String get newsOffersPage => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $MainTabStateCopyWith<MainTabState> get copyWith =>
@@ -38,9 +37,8 @@ abstract class $MainTabStateCopyWith<$Res> {
       {int selectedTab,
       int pageIndex,
       String homePage,
-      String profilePage,
-      String favouritesPage,
-      String newsOffersPage});
+      String myAccountPage,
+      String favouritesPage});
 }
 
 /// @nodoc
@@ -59,9 +57,8 @@ class _$MainTabStateCopyWithImpl<$Res, $Val extends MainTabState>
     Object? selectedTab = null,
     Object? pageIndex = null,
     Object? homePage = null,
-    Object? profilePage = null,
+    Object? myAccountPage = null,
     Object? favouritesPage = null,
-    Object? newsOffersPage = null,
   }) {
     return _then(_value.copyWith(
       selectedTab: null == selectedTab
@@ -76,17 +73,13 @@ class _$MainTabStateCopyWithImpl<$Res, $Val extends MainTabState>
           ? _value.homePage
           : homePage // ignore: cast_nullable_to_non_nullable
               as String,
-      profilePage: null == profilePage
-          ? _value.profilePage
-          : profilePage // ignore: cast_nullable_to_non_nullable
+      myAccountPage: null == myAccountPage
+          ? _value.myAccountPage
+          : myAccountPage // ignore: cast_nullable_to_non_nullable
               as String,
       favouritesPage: null == favouritesPage
           ? _value.favouritesPage
           : favouritesPage // ignore: cast_nullable_to_non_nullable
-              as String,
-      newsOffersPage: null == newsOffersPage
-          ? _value.newsOffersPage
-          : newsOffersPage // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -104,9 +97,8 @@ abstract class _$$MainTabStateImplCopyWith<$Res>
       {int selectedTab,
       int pageIndex,
       String homePage,
-      String profilePage,
-      String favouritesPage,
-      String newsOffersPage});
+      String myAccountPage,
+      String favouritesPage});
 }
 
 /// @nodoc
@@ -123,9 +115,8 @@ class __$$MainTabStateImplCopyWithImpl<$Res>
     Object? selectedTab = null,
     Object? pageIndex = null,
     Object? homePage = null,
-    Object? profilePage = null,
+    Object? myAccountPage = null,
     Object? favouritesPage = null,
-    Object? newsOffersPage = null,
   }) {
     return _then(_$MainTabStateImpl(
       selectedTab: null == selectedTab
@@ -140,17 +131,13 @@ class __$$MainTabStateImplCopyWithImpl<$Res>
           ? _value.homePage
           : homePage // ignore: cast_nullable_to_non_nullable
               as String,
-      profilePage: null == profilePage
-          ? _value.profilePage
-          : profilePage // ignore: cast_nullable_to_non_nullable
+      myAccountPage: null == myAccountPage
+          ? _value.myAccountPage
+          : myAccountPage // ignore: cast_nullable_to_non_nullable
               as String,
       favouritesPage: null == favouritesPage
           ? _value.favouritesPage
           : favouritesPage // ignore: cast_nullable_to_non_nullable
-              as String,
-      newsOffersPage: null == newsOffersPage
-          ? _value.newsOffersPage
-          : newsOffersPage // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -163,9 +150,8 @@ class _$MainTabStateImpl implements _MainTabState {
       {required this.selectedTab,
       required this.pageIndex,
       required this.homePage,
-      required this.profilePage,
-      required this.favouritesPage,
-      required this.newsOffersPage});
+      required this.myAccountPage,
+      required this.favouritesPage});
 
   @override
   final int selectedTab;
@@ -174,15 +160,13 @@ class _$MainTabStateImpl implements _MainTabState {
   @override
   final String homePage;
   @override
-  final String profilePage;
+  final String myAccountPage;
   @override
   final String favouritesPage;
-  @override
-  final String newsOffersPage;
 
   @override
   String toString() {
-    return 'MainTabState(selectedTab: $selectedTab, pageIndex: $pageIndex, homePage: $homePage, profilePage: $profilePage, favouritesPage: $favouritesPage, newsOffersPage: $newsOffersPage)';
+    return 'MainTabState(selectedTab: $selectedTab, pageIndex: $pageIndex, homePage: $homePage, myAccountPage: $myAccountPage, favouritesPage: $favouritesPage)';
   }
 
   @override
@@ -196,17 +180,15 @@ class _$MainTabStateImpl implements _MainTabState {
                 other.pageIndex == pageIndex) &&
             (identical(other.homePage, homePage) ||
                 other.homePage == homePage) &&
-            (identical(other.profilePage, profilePage) ||
-                other.profilePage == profilePage) &&
+            (identical(other.myAccountPage, myAccountPage) ||
+                other.myAccountPage == myAccountPage) &&
             (identical(other.favouritesPage, favouritesPage) ||
-                other.favouritesPage == favouritesPage) &&
-            (identical(other.newsOffersPage, newsOffersPage) ||
-                other.newsOffersPage == newsOffersPage));
+                other.favouritesPage == favouritesPage));
   }
 
   @override
   int get hashCode => Object.hash(runtimeType, selectedTab, pageIndex, homePage,
-      profilePage, favouritesPage, newsOffersPage);
+      myAccountPage, favouritesPage);
 
   @JsonKey(ignore: true)
   @override
@@ -220,9 +202,8 @@ abstract class _MainTabState implements MainTabState {
       {required final int selectedTab,
       required final int pageIndex,
       required final String homePage,
-      required final String profilePage,
-      required final String favouritesPage,
-      required final String newsOffersPage}) = _$MainTabStateImpl;
+      required final String myAccountPage,
+      required final String favouritesPage}) = _$MainTabStateImpl;
 
   @override
   int get selectedTab;
@@ -231,11 +212,9 @@ abstract class _MainTabState implements MainTabState {
   @override
   String get homePage;
   @override
-  String get profilePage;
+  String get myAccountPage;
   @override
   String get favouritesPage;
-  @override
-  String get newsOffersPage;
   @override
   @JsonKey(ignore: true)
   _$$MainTabStateImplCopyWith<_$MainTabStateImpl> get copyWith =>

@@ -18,6 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$SignInEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() getLoginCredential,
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
     required TResult Function() obscureChanged,
@@ -27,6 +28,7 @@ mixin _$SignInEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getLoginCredential,
     TResult? Function(String email)? emailChanged,
     TResult? Function(String password)? passwordChanged,
     TResult? Function()? obscureChanged,
@@ -36,6 +38,7 @@ mixin _$SignInEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getLoginCredential,
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
     TResult Function()? obscureChanged,
@@ -46,6 +49,7 @@ mixin _$SignInEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(GetLoginCredential value) getLoginCredential,
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(PasswordChanged value) passwordChanged,
     required TResult Function(ObscureChanged value) obscureChanged,
@@ -55,6 +59,7 @@ mixin _$SignInEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetLoginCredential value)? getLoginCredential,
     TResult? Function(EmailChanged value)? emailChanged,
     TResult? Function(PasswordChanged value)? passwordChanged,
     TResult? Function(ObscureChanged value)? obscureChanged,
@@ -64,6 +69,7 @@ mixin _$SignInEvent {
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetLoginCredential value)? getLoginCredential,
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
     TResult Function(ObscureChanged value)? obscureChanged,
@@ -90,6 +96,132 @@ class _$SignInEventCopyWithImpl<$Res, $Val extends SignInEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$GetLoginCredentialImplCopyWith<$Res> {
+  factory _$$GetLoginCredentialImplCopyWith(_$GetLoginCredentialImpl value,
+          $Res Function(_$GetLoginCredentialImpl) then) =
+      __$$GetLoginCredentialImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$GetLoginCredentialImplCopyWithImpl<$Res>
+    extends _$SignInEventCopyWithImpl<$Res, _$GetLoginCredentialImpl>
+    implements _$$GetLoginCredentialImplCopyWith<$Res> {
+  __$$GetLoginCredentialImplCopyWithImpl(_$GetLoginCredentialImpl _value,
+      $Res Function(_$GetLoginCredentialImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$GetLoginCredentialImpl implements GetLoginCredential {
+  const _$GetLoginCredentialImpl();
+
+  @override
+  String toString() {
+    return 'SignInEvent.getLoginCredential()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$GetLoginCredentialImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() getLoginCredential,
+    required TResult Function(String email) emailChanged,
+    required TResult Function(String password) passwordChanged,
+    required TResult Function() obscureChanged,
+    required TResult Function() rememberMeEvent,
+    required TResult Function() loginPressed,
+  }) {
+    return getLoginCredential();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getLoginCredential,
+    TResult? Function(String email)? emailChanged,
+    TResult? Function(String password)? passwordChanged,
+    TResult? Function()? obscureChanged,
+    TResult? Function()? rememberMeEvent,
+    TResult? Function()? loginPressed,
+  }) {
+    return getLoginCredential?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getLoginCredential,
+    TResult Function(String email)? emailChanged,
+    TResult Function(String password)? passwordChanged,
+    TResult Function()? obscureChanged,
+    TResult Function()? rememberMeEvent,
+    TResult Function()? loginPressed,
+    required TResult orElse(),
+  }) {
+    if (getLoginCredential != null) {
+      return getLoginCredential();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(GetLoginCredential value) getLoginCredential,
+    required TResult Function(EmailChanged value) emailChanged,
+    required TResult Function(PasswordChanged value) passwordChanged,
+    required TResult Function(ObscureChanged value) obscureChanged,
+    required TResult Function(RememberMeEvent value) rememberMeEvent,
+    required TResult Function(LoginPressed value) loginPressed,
+  }) {
+    return getLoginCredential(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetLoginCredential value)? getLoginCredential,
+    TResult? Function(EmailChanged value)? emailChanged,
+    TResult? Function(PasswordChanged value)? passwordChanged,
+    TResult? Function(ObscureChanged value)? obscureChanged,
+    TResult? Function(RememberMeEvent value)? rememberMeEvent,
+    TResult? Function(LoginPressed value)? loginPressed,
+  }) {
+    return getLoginCredential?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetLoginCredential value)? getLoginCredential,
+    TResult Function(EmailChanged value)? emailChanged,
+    TResult Function(PasswordChanged value)? passwordChanged,
+    TResult Function(ObscureChanged value)? obscureChanged,
+    TResult Function(RememberMeEvent value)? rememberMeEvent,
+    TResult Function(LoginPressed value)? loginPressed,
+    required TResult orElse(),
+  }) {
+    if (getLoginCredential != null) {
+      return getLoginCredential(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetLoginCredential implements SignInEvent {
+  const factory GetLoginCredential() = _$GetLoginCredentialImpl;
 }
 
 /// @nodoc
@@ -156,6 +288,7 @@ class _$EmailChangedImpl implements EmailChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() getLoginCredential,
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
     required TResult Function() obscureChanged,
@@ -168,6 +301,7 @@ class _$EmailChangedImpl implements EmailChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getLoginCredential,
     TResult? Function(String email)? emailChanged,
     TResult? Function(String password)? passwordChanged,
     TResult? Function()? obscureChanged,
@@ -180,6 +314,7 @@ class _$EmailChangedImpl implements EmailChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getLoginCredential,
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
     TResult Function()? obscureChanged,
@@ -196,6 +331,7 @@ class _$EmailChangedImpl implements EmailChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(GetLoginCredential value) getLoginCredential,
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(PasswordChanged value) passwordChanged,
     required TResult Function(ObscureChanged value) obscureChanged,
@@ -208,6 +344,7 @@ class _$EmailChangedImpl implements EmailChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetLoginCredential value)? getLoginCredential,
     TResult? Function(EmailChanged value)? emailChanged,
     TResult? Function(PasswordChanged value)? passwordChanged,
     TResult? Function(ObscureChanged value)? obscureChanged,
@@ -220,6 +357,7 @@ class _$EmailChangedImpl implements EmailChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetLoginCredential value)? getLoginCredential,
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
     TResult Function(ObscureChanged value)? obscureChanged,
@@ -309,6 +447,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() getLoginCredential,
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
     required TResult Function() obscureChanged,
@@ -321,6 +460,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getLoginCredential,
     TResult? Function(String email)? emailChanged,
     TResult? Function(String password)? passwordChanged,
     TResult? Function()? obscureChanged,
@@ -333,6 +473,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getLoginCredential,
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
     TResult Function()? obscureChanged,
@@ -349,6 +490,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(GetLoginCredential value) getLoginCredential,
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(PasswordChanged value) passwordChanged,
     required TResult Function(ObscureChanged value) obscureChanged,
@@ -361,6 +503,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetLoginCredential value)? getLoginCredential,
     TResult? Function(EmailChanged value)? emailChanged,
     TResult? Function(PasswordChanged value)? passwordChanged,
     TResult? Function(ObscureChanged value)? obscureChanged,
@@ -373,6 +516,7 @@ class _$PasswordChangedImpl implements PasswordChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetLoginCredential value)? getLoginCredential,
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
     TResult Function(ObscureChanged value)? obscureChanged,
@@ -434,6 +578,7 @@ class _$ObscureChangedImpl implements ObscureChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() getLoginCredential,
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
     required TResult Function() obscureChanged,
@@ -446,6 +591,7 @@ class _$ObscureChangedImpl implements ObscureChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getLoginCredential,
     TResult? Function(String email)? emailChanged,
     TResult? Function(String password)? passwordChanged,
     TResult? Function()? obscureChanged,
@@ -458,6 +604,7 @@ class _$ObscureChangedImpl implements ObscureChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getLoginCredential,
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
     TResult Function()? obscureChanged,
@@ -474,6 +621,7 @@ class _$ObscureChangedImpl implements ObscureChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(GetLoginCredential value) getLoginCredential,
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(PasswordChanged value) passwordChanged,
     required TResult Function(ObscureChanged value) obscureChanged,
@@ -486,6 +634,7 @@ class _$ObscureChangedImpl implements ObscureChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetLoginCredential value)? getLoginCredential,
     TResult? Function(EmailChanged value)? emailChanged,
     TResult? Function(PasswordChanged value)? passwordChanged,
     TResult? Function(ObscureChanged value)? obscureChanged,
@@ -498,6 +647,7 @@ class _$ObscureChangedImpl implements ObscureChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetLoginCredential value)? getLoginCredential,
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
     TResult Function(ObscureChanged value)? obscureChanged,
@@ -554,6 +704,7 @@ class _$RememberMeEventImpl implements RememberMeEvent {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() getLoginCredential,
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
     required TResult Function() obscureChanged,
@@ -566,6 +717,7 @@ class _$RememberMeEventImpl implements RememberMeEvent {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getLoginCredential,
     TResult? Function(String email)? emailChanged,
     TResult? Function(String password)? passwordChanged,
     TResult? Function()? obscureChanged,
@@ -578,6 +730,7 @@ class _$RememberMeEventImpl implements RememberMeEvent {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getLoginCredential,
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
     TResult Function()? obscureChanged,
@@ -594,6 +747,7 @@ class _$RememberMeEventImpl implements RememberMeEvent {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(GetLoginCredential value) getLoginCredential,
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(PasswordChanged value) passwordChanged,
     required TResult Function(ObscureChanged value) obscureChanged,
@@ -606,6 +760,7 @@ class _$RememberMeEventImpl implements RememberMeEvent {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetLoginCredential value)? getLoginCredential,
     TResult? Function(EmailChanged value)? emailChanged,
     TResult? Function(PasswordChanged value)? passwordChanged,
     TResult? Function(ObscureChanged value)? obscureChanged,
@@ -618,6 +773,7 @@ class _$RememberMeEventImpl implements RememberMeEvent {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetLoginCredential value)? getLoginCredential,
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
     TResult Function(ObscureChanged value)? obscureChanged,
@@ -674,6 +830,7 @@ class _$LoginPressedImpl implements LoginPressed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() getLoginCredential,
     required TResult Function(String email) emailChanged,
     required TResult Function(String password) passwordChanged,
     required TResult Function() obscureChanged,
@@ -686,6 +843,7 @@ class _$LoginPressedImpl implements LoginPressed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? getLoginCredential,
     TResult? Function(String email)? emailChanged,
     TResult? Function(String password)? passwordChanged,
     TResult? Function()? obscureChanged,
@@ -698,6 +856,7 @@ class _$LoginPressedImpl implements LoginPressed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? getLoginCredential,
     TResult Function(String email)? emailChanged,
     TResult Function(String password)? passwordChanged,
     TResult Function()? obscureChanged,
@@ -714,6 +873,7 @@ class _$LoginPressedImpl implements LoginPressed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(GetLoginCredential value) getLoginCredential,
     required TResult Function(EmailChanged value) emailChanged,
     required TResult Function(PasswordChanged value) passwordChanged,
     required TResult Function(ObscureChanged value) obscureChanged,
@@ -726,6 +886,7 @@ class _$LoginPressedImpl implements LoginPressed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(GetLoginCredential value)? getLoginCredential,
     TResult? Function(EmailChanged value)? emailChanged,
     TResult? Function(PasswordChanged value)? passwordChanged,
     TResult? Function(ObscureChanged value)? obscureChanged,
@@ -738,6 +899,7 @@ class _$LoginPressedImpl implements LoginPressed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(GetLoginCredential value)? getLoginCredential,
     TResult Function(EmailChanged value)? emailChanged,
     TResult Function(PasswordChanged value)? passwordChanged,
     TResult Function(ObscureChanged value)? obscureChanged,
@@ -762,6 +924,7 @@ mixin _$SignInState {
   Password get password => throw _privateConstructorUsedError;
   bool get isObscure => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
   bool get rememberMe => throw _privateConstructorUsedError;
   bool get showError => throw _privateConstructorUsedError;
 
@@ -781,6 +944,7 @@ abstract class $SignInStateCopyWith<$Res> {
       Password password,
       bool isObscure,
       bool isSubmitting,
+      bool isLoading,
       bool rememberMe,
       bool showError});
 }
@@ -802,6 +966,7 @@ class _$SignInStateCopyWithImpl<$Res, $Val extends SignInState>
     Object? password = null,
     Object? isObscure = null,
     Object? isSubmitting = null,
+    Object? isLoading = null,
     Object? rememberMe = null,
     Object? showError = null,
   }) {
@@ -821,6 +986,10 @@ class _$SignInStateCopyWithImpl<$Res, $Val extends SignInState>
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
       rememberMe: null == rememberMe
           ? _value.rememberMe
@@ -847,6 +1016,7 @@ abstract class _$$SignInStateImplCopyWith<$Res>
       Password password,
       bool isObscure,
       bool isSubmitting,
+      bool isLoading,
       bool rememberMe,
       bool showError});
 }
@@ -866,6 +1036,7 @@ class __$$SignInStateImplCopyWithImpl<$Res>
     Object? password = null,
     Object? isObscure = null,
     Object? isSubmitting = null,
+    Object? isLoading = null,
     Object? rememberMe = null,
     Object? showError = null,
   }) {
@@ -885,6 +1056,10 @@ class __$$SignInStateImplCopyWithImpl<$Res>
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
               as bool,
       rememberMe: null == rememberMe
           ? _value.rememberMe
@@ -906,6 +1081,7 @@ class _$SignInStateImpl implements _SignInState {
       required this.password,
       required this.isObscure,
       required this.isSubmitting,
+      required this.isLoading,
       required this.rememberMe,
       required this.showError});
 
@@ -918,13 +1094,15 @@ class _$SignInStateImpl implements _SignInState {
   @override
   final bool isSubmitting;
   @override
+  final bool isLoading;
+  @override
   final bool rememberMe;
   @override
   final bool showError;
 
   @override
   String toString() {
-    return 'SignInState(email: $email, password: $password, isObscure: $isObscure, isSubmitting: $isSubmitting, rememberMe: $rememberMe, showError: $showError)';
+    return 'SignInState(email: $email, password: $password, isObscure: $isObscure, isSubmitting: $isSubmitting, isLoading: $isLoading, rememberMe: $rememberMe, showError: $showError)';
   }
 
   @override
@@ -939,6 +1117,8 @@ class _$SignInStateImpl implements _SignInState {
                 other.isObscure == isObscure) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
             (identical(other.rememberMe, rememberMe) ||
                 other.rememberMe == rememberMe) &&
             (identical(other.showError, showError) ||
@@ -947,7 +1127,7 @@ class _$SignInStateImpl implements _SignInState {
 
   @override
   int get hashCode => Object.hash(runtimeType, email, password, isObscure,
-      isSubmitting, rememberMe, showError);
+      isSubmitting, isLoading, rememberMe, showError);
 
   @JsonKey(ignore: true)
   @override
@@ -962,6 +1142,7 @@ abstract class _SignInState implements SignInState {
       required final Password password,
       required final bool isObscure,
       required final bool isSubmitting,
+      required final bool isLoading,
       required final bool rememberMe,
       required final bool showError}) = _$SignInStateImpl;
 
@@ -973,6 +1154,8 @@ abstract class _SignInState implements SignInState {
   bool get isObscure;
   @override
   bool get isSubmitting;
+  @override
+  bool get isLoading;
   @override
   bool get rememberMe;
   @override

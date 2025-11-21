@@ -2,5 +2,5 @@ part of 'home_bloc.dart';
 
 @freezed
 class HomeEvent with _$HomeEvent {
-  const factory HomeEvent.getProductList() = GetProductList;
+  const factory HomeEvent.getProductList(bool isRefresh) = GetProductList;
 }

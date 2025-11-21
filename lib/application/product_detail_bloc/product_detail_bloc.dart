@@ -1,3 +1,10 @@
+import 'package:aire_velo_bearings/core/router/app_router.dart';
+import 'package:aire_velo_bearings/domain/main/i_main_facade.dart';
+import 'package:aire_velo_bearings/domain/main/main_failure.dart';
+import 'package:aire_velo_bearings/infrastructure/product_detail_dto/product_detail_dto.dart';
+import 'package:aire_velo_bearings/injection.dart';
+import 'package:aire_velo_bearings/presentation/common/utils/flushbar_creator.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -8,9 +15,45 @@ part 'product_detail_bloc.freezed.dart';
 
 @injectable
 class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
-  ProductDetailBloc() : super(ProductDetailState.initial()) {
-    on<ProductDetailEvent>((event, emit) {
-      event.map(
+  final IMainFacade mainFacade;
+  final currentContext = getIt<AppRouter>().navigatorKey.currentContext!;
+
+  ProductDetailBloc(this.mainFacade) : super(ProductDetailState.initial()) {
+    on<ProductDetailEvent>((event, emit) async {
+      await event.map(
+        getProductDetail: (e) async {
+          Either<MainFailure, ProductDetailDTO>? failureOrSuccess;
+          emit(state.copyWith(isLoading: true));
+          failureOrSuccess = await mainFacade.getProductDetail(postId: e.id);
+          failureOrSuccess.fold(
+            (l) {
+              showError(
+                message: l.maybeMap(
+                  showAPIResponseMessage: (value) => value.message,
+                  networkError: (value) =>
+                      'Please check your internet connectivity',
+                  orElse: () => "Server Error. Try again later.",
+                ),
+              ).show(currentContext);
+              emit(
+                state.copyWith(
+                  isLoading: false,
+                  isErrorInAPI: true,
+                  product: null,
+                ),
+              );
+            },
+            (r) {
+              emit(
+                state.copyWith(
+                  isLoading: false,
+                  isErrorInAPI: false,
+                  product: r,
+                ),
+              );
+            },
+          );
+        },
         imageIndexChanged: (e) {
           emit(state.copyWith(currentImageIndex: e.index));
         },

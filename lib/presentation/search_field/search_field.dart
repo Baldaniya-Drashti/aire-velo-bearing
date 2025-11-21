@@ -1,4 +1,5 @@
 import 'package:aire_velo_bearings/core/constants/string_constant.dart';
+import 'package:aire_velo_bearings/core/utils/math_utils.dart';
 import 'package:aire_velo_bearings/presentation/core/styles/app_colors.dart';
 import 'package:aire_velo_bearings/presentation/core/widgets/inputs/custom_text_field.dart';
 import 'package:flutter/material.dart';
@@ -82,7 +83,10 @@ class _SearchFieldState extends State<SearchField> {
       hintText: widget.hintText ?? StringConstant.search,
       suffixIcon: GestureDetector(
         onTap: widget.onFilter,
-        child: Icon(Icons.filter_alt, color: AppColors.grey),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: getSize(10)),
+          child: Icon(Icons.filter_alt, color: AppColors.grey),
+        ),
       ),
       focusNode: widget.focusNode,
     );

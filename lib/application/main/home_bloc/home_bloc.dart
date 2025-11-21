@@ -1,7 +1,7 @@
+import 'package:aire_velo_bearings/core/utils/math_utils.dart';
 import 'package:aire_velo_bearings/domain/main/i_main_facade.dart';
-import 'package:aire_velo_bearings/domain/main/main_failure.dart';
 import 'package:aire_velo_bearings/infrastructure/home_dto/home_dto.dart';
-import 'package:dartz/dartz.dart';
+import 'package:aire_velo_bearings/presentation/common/utils/flushbar_creator.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -21,8 +21,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomeEvent>((event, emit) async {
       await event.map(
         getProductList: (e) async {
-          Either<MainFailure, List<HomeDTO>>? failureOrSuccess;
-          emit(state.copyWith(isLoading: true));
+          /* emit(state.copyWith(isLoading: true));
           failureOrSuccess = await mainFacade.homeListAPI(page: page);
 
           failureOrSuccess.fold((l) => emit(state.copyWith(isLoading: false)), (
@@ -30,7 +29,66 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           ) {
             print("Home List API success---> $r");
             emit(state.copyWith(isLoading: false, productList: r));
-          });
+          }); */
+
+          try {
+            if (e.isRefresh) {
+              page = 1;
+              emit(state.copyWith(productList: [], isLoading: e.isRefresh));
+              refreshController.resetNoData();
+            } else {
+              if (page > lastPage) {
+                refreshController.loadNoData();
+                return;
+              }
+            }
+            var res = await mainFacade.homeListAPI(page: page);
+            page++;
+            res.fold(
+              (l) {
+                showError(
+                  message: l.maybeMap(
+                    showAPIResponseMessage: (value) => value.message,
+                    networkError: (value) =>
+                        'Please check your internet connectivity',
+                    orElse: () => "Server Error. Try again later.",
+                  ),
+                ).show(currentContext);
+                emit(
+                  state.copyWith(
+                    isLoading: false,
+                    isErrorInAPI: true,
+                    productList: [],
+                  ),
+                );
+              },
+              (r) {
+                lastPage = r.meta?.lastPage ?? 1;
+
+                if (e.isRefresh) {
+                  List.from(state.productList).clear();
+                }
+                return emit(
+                  state.copyWith(
+                    isLoading: false,
+                    isErrorInAPI: false,
+                    isNoDataFound: (r.data as List<dynamic>)
+                        .map((e) => HomeDTO.fromJson(e))
+                        .toList()
+                        .isEmpty,
+                    productList: List.from(state.productList)
+                      ..addAll(
+                        (r.data as List<dynamic>)
+                            .map((e) => HomeDTO.fromJson(e))
+                            .toList(),
+                      ),
+                  ),
+                );
+              },
+            );
+          } catch (err) {
+            print("CATCH Listing issue---> $err");
+          }
         },
       );
     });

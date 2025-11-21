@@ -64,7 +64,9 @@ class StringConstant {
   static const String filterByBrand = 'Filter by Brand';
   static const String price = 'Price';
   static const String filterByPrice = 'Filter by Price';
+  static const String filterByCategory = 'Filter by Category';
   static const String filter = 'Filter';
+  static const String getInTouch = 'Get in Touch';
 
   ///
   static const String theUKsLargestStockistOfHeadsetBearings =
@@ -79,8 +81,14 @@ class StringConstant {
   static const String iAlreadyHaveAnAccount = 'I already have an account';
   static const String email = 'Email';
   static const String password = 'Password';
+  static const String newPassword = 'New Password';
   static const String confirmPassword = 'Confirm Password';
   static const String iForgotMyPassword = 'I forgot my password';
+  static const String firstName = 'First Name';
+  static const String lastName = 'Last Name';
+  static const String displayName = 'Display Name';
+  static const String somethingWentWrong = 'Something Went Wrong!';
+  static const String noDataFound = 'No Data Found';
 
   ///
   ///
@@ -92,6 +100,7 @@ class StringConstant {
   static const String pleaseEnterEmail = 'Please enter email';
   static const String pleaseEnterValidEmail = 'Please enter valid email';
   static const String pleaseEnterPassword = 'Please enter password';
+  static const String pleaseEnterNewPassword = 'Please enter new password';
   static const String pleaseEnterConfirmPassword =
       'Please enter confirm password';
   static const String someDetailAreInvalidPleaseCheck =
@@ -103,4 +112,9 @@ class StringConstant {
       'Password should be minimum 6 digit';
   static const String invalidPasswordErrorText =
       "Password must contain at least one uppercase letter, one lowercase letter, one digit and one special symbol";
+  static const String pleaseEnterFirstName = 'Please enter first name';
+
+  static const String pleaseEnterLastName = 'Please enter last name';
+
+  static const String pleaseEnterDisplayName = 'Please enter display name';
 }

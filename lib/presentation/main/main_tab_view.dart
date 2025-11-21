@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:aire_velo_bearings/application/account_bloc/account_bloc.dart';
+import 'package:aire_velo_bearings/application/main/favorites_bloc/favorites_bloc.dart';
 import 'package:aire_velo_bearings/application/main/home_bloc/home_bloc.dart';
 import 'package:aire_velo_bearings/core/constants/string_constant.dart';
 import 'package:aire_velo_bearings/presentation/main/tabs/favourites/favourites.dart';
@@ -29,7 +31,16 @@ class MainTabView extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) =>
-              getIt<HomeBloc>()..add(HomeEvent.getProductList()),
+              getIt<AccountBloc>()..add(AccountEvent.getAccountDetailEvent()),
+        ),
+        BlocProvider(
+          create: (context) =>
+              getIt<HomeBloc>()..add(HomeEvent.getProductList(true)),
+        ),
+        BlocProvider(
+          create: (context) =>
+              getIt<FavoritesBloc>()
+                ..add(FavoritesEvent.getFavoritesList(true)),
         ),
       ],
       child: BlocBuilder<MainTabBloc, MainTabState>(

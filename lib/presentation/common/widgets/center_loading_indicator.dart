@@ -3,23 +3,25 @@ import 'package:aire_velo_bearings/presentation/core/styles/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class CenterLoadingIndicator extends StatelessWidget {
-  const CenterLoadingIndicator({super.key});
+  final bool isOnlyLoader;
+  const CenterLoadingIndicator({super.key, this.isOnlyLoader = false});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: AppColors.black.withValues(alpha: 0.05),
-      alignment: Alignment.center,
-      child: Container(
-        height: getSize(80),
-        width: getSize(80),
-        decoration: BoxDecoration(
-          color: AppColors.white,
-          borderRadius: BorderRadius.circular(getSize(10)),
+    return Material(
+      color: AppColors.black.withValues(alpha: (isOnlyLoader) ? 0 : 0.15),
+      child: Center(
+        child: Container(
+          height: getSize(80),
+          width: getSize(80),
+          decoration: BoxDecoration(
+            color: AppColors.white,
+            borderRadius: BorderRadius.circular(getSize(10)),
+          ),
+          padding: EdgeInsets.all(getSize(10)),
+          alignment: Alignment.center,
+          child: CircularProgressIndicator(color: AppColors.primary),
         ),
-        padding: EdgeInsets.all(getSize(10)),
-        alignment: Alignment.center,
-        child: CircularProgressIndicator(color: AppColors.primary),
       ),
     );
   }

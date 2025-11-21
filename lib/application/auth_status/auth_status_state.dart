@@ -6,5 +6,4 @@ class AuthStatusState with _$AuthStatusState {
   const factory AuthStatusState.authenticated() = Authenticated;
   const factory AuthStatusState.unAuthenticated(String successMessage) =
       UnAuthenticated;
-  const factory AuthStatusState.introScreenVisibilty() = IntroScreenVisibilty;
 }

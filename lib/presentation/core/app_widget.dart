@@ -15,10 +15,14 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) =>
-          getIt<AuthStatusBloc>()
-            ..add(const AuthStatusEvent.authCheckRequested()),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) =>
+              getIt<AuthStatusBloc>()
+                ..add(const AuthStatusEvent.authCheckRequested()),
+        ),
+      ],
       child: _App(),
     );
   }

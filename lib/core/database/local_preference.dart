@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:aire_velo_bearings/infrastructure/current_user/current_user_response.dart';
+import 'package:aire_velo_bearings/infrastructure/remember_dto/remember_dto.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'dart:convert';
 import 'package:aire_velo_bearings/core/constants/storage_constants.dart';
@@ -36,16 +37,48 @@ Future<String> getRememberToken() async {
   return prefs.getString(StorageConstants.rememberToken) ?? '';
 }
 
-Future<void> setUserData(CurrentUserResponse userData) async {
+Future<void> setUserData(CurrentUserDTO userData) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
   prefs.setString(StorageConstants.userData, jsonEncode(userData.toJson()));
 }
 
-Future<CurrentUserResponse> getUserData() async {
+Future<CurrentUserDTO> getUserData() async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  return CurrentUserResponse.fromJson(
+  return CurrentUserDTO.fromJson(
     jsonDecode(prefs.getString(StorageConstants.userData) ?? '{}'),
   );
+}
+
+Future<void> setRememberLogin({required RememberDTO cred}) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setString(StorageConstants.remeberLogin, jsonEncode(cred.toJson()));
+}
+
+Future<RememberDTO> getRememberLogin() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  return RememberDTO.fromJson(
+    jsonDecode(prefs.getString(StorageConstants.remeberLogin) ?? '{}'),
+  );
+}
+
+Future<void> setFavoriteIds(int productId) async {
+  final prefs = await SharedPreferences.getInstance();
+  List<String> ids = prefs.getStringList(StorageConstants.favoriteIds) ?? [];
+  if (ids.contains(productId.toString())) {
+    ids.remove(productId.toString());
+  } else {
+    ids.add(productId.toString());
+  }
+  prefs.setStringList(StorageConstants.favoriteIds, ids);
+}
+
+Future<List<int>> getFavouriteIds() async {
+  final prefs = await SharedPreferences.getInstance();
+  return prefs
+          .getStringList(StorageConstants.favoriteIds)
+          ?.map((e) => int.tryParse(e) ?? 0)
+          .toList() ??
+      [];
 }
 
 Future<void> clearLocalStorage() async {

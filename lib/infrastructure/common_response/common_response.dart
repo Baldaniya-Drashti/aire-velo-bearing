@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 class CommonResponse<T> {
   bool? status;
   String? dioMessage;
@@ -15,43 +17,35 @@ class CommonResponse<T> {
     this.meta,
   });
 
-  factory CommonResponse.fromJson(
-    Map<String, dynamic> json, {
-    T Function(dynamic)? fromData,
-    T Function(dynamic)? fromListItem,
-  }) {
-    return CommonResponse<T>(
-      status: json['success'] as bool?,
-      dioMessage: json['message'] as String?,
-      data:
-          fromData != null && json['data'] != null
-              ? fromData(json['data'])
-              : null,
-      listData:
-          fromListItem != null && json['data'] is List
-              ? (json['data'] as List)
-                  .map((item) => fromListItem(item))
-                  .toList()
-              : null,
-      errors: json['errors'] != null ? Errors.fromJson(json['errors']) : null,
-      meta: json['meta'] != null ? Meta.fromJson(json['meta']) : null,
-    );
+  CommonResponse.fromJson(Map<String, dynamic> json) {
+    status = json['success'];
+    dioMessage = json['message'];
+    data = json['data'];
+    errors = json['errors'] != null ? Errors.fromJson(json['errors']) : null;
+    if (json.containsKey("meta") && json["meta"] != null) {
+      meta = Meta.fromJson(json['meta']);
+    }
   }
 
-  Map<String, dynamic> toJson({
-    dynamic Function(T)? toData,
-    dynamic Function(T)? toListItem,
-  }) {
-    return {
-      'success': status,
-      'message': dioMessage,
-      'data':
-          toData != null && data != null
-              ? toData(data as T)
-              : data, // basic fallback
-      'errors': errors?.toJson(),
-      'meta': meta?.toJson(),
-    };
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['success'] = status;
+    data['message'] = dioMessage;
+    data['data'] = data;
+    data['errors'] = errors;
+    try {
+      if (errors != null) {
+        data['errors'] = errors?.toJson();
+      }
+    } catch (e) {
+      if (kDebugMode) {
+        print(e);
+      }
+    }
+    if (meta != null) {
+      data['meta'] = meta?.toJson();
+    }
+    return data;
   }
 }
 
@@ -112,8 +106,9 @@ class ErrorResponse {
 
   ErrorResponse.fromJson(Map<String, dynamic> json) {
     status = json['status'];
-    message =
-        json['message'] != null ? Message.fromJson(json['message']) : null;
+    message = json['message'] != null
+        ? Message.fromJson(json['message'])
+        : null;
   }
 
   Map<String, dynamic> toJson() {
@@ -207,25 +202,37 @@ class Meta {
     this.to,
   });
 
-  factory Meta.fromJson(Map<String, dynamic> json) {
-    return Meta(
-      total: json['total'],
-      lastPage: json['last_page'],
-      perPage: json['perPage'],
-      currentPage: json['currentPage'],
-      from: json['from'],
-      to: json['to'],
-    );
+  Meta.fromJson(Map<String, dynamic> json) {
+    total = json['total'];
+    lastPage = json['last_page'];
+    perPage = json['perPage'];
+    currentPage = json['currentPage'];
+    from = json['from'];
+    to = json['to'];
   }
 
   Map<String, dynamic> toJson() {
-    return {
-      'total': total,
-      'last_page': lastPage,
-      'perPage': perPage,
-      'currentPage': currentPage,
-      'from': from,
-      'to': to,
-    };
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['total'] = total;
+    data['lastPage'] = lastPage;
+    data['perPage'] = perPage;
+    data['currentPage'] = currentPage;
+    data['from'] = from;
+    data['to'] = to;
+    return data;
+  }
+}
+
+class AdditionalData {
+  final bool isCardAdded;
+
+  const AdditionalData({this.isCardAdded = false});
+
+  Map<String, dynamic> toMap() {
+    return {'isCardAdded': isCardAdded};
+  }
+
+  factory AdditionalData.fromMap(Map<String, dynamic> map) {
+    return AdditionalData(isCardAdded: map['is_card_added'] as bool);
   }
 }

@@ -1,5 +1,13 @@
 import 'package:aire_velo_bearings/core/constants/string_constant.dart';
+import 'package:aire_velo_bearings/core/router/app_router.dart';
+import 'package:aire_velo_bearings/domain/auth/auth_failure.dart';
+import 'package:aire_velo_bearings/domain/auth/i_auth_facade.dart';
 import 'package:aire_velo_bearings/domain/validators/validators.dart';
+import 'package:aire_velo_bearings/injection.dart';
+import 'package:aire_velo_bearings/presentation/common/utils/app_focus.dart';
+import 'package:aire_velo_bearings/presentation/common/utils/flushbar_creator.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -11,24 +19,32 @@ part 'change_password_bloc.freezed.dart';
 @injectable
 class ChangePasswordBloc
     extends Bloc<ChangePasswordEvent, ChangePasswordState> {
-  ChangePasswordBloc() : super(ChangePasswordState.initial()) {
-    on<ChangePasswordEvent>((event, emit) {
-      event.map(
-        passwordChanged: (e) {
-          emit(state.copyWith(password: Password(e.password)));
+  final IAuthFacade _authFacade;
+
+  ChangePasswordBloc(this._authFacade) : super(ChangePasswordState.initial()) {
+    on<ChangePasswordEvent>((event, emit) async {
+      await event.map(
+        newObscureChanged: (e) {
+          emit(state.copyWith(isNewObscure: !state.isNewObscure));
+        },
+        currentPassChanged: (e) {
+          emit(state.copyWith(currentPass: Password(e.password)));
+        },
+        newPassChanged: (e) {
+          emit(state.copyWith(newPass: Password(e.newPass)));
           add(
-            ChangePasswordEvent.confirmPasswordChanged(
-              state.confirmPassword.getValue(),
-              e.password,
+            ChangePasswordEvent.confirmPassChanged(
+              state.confirmPass.getValue(),
+              e.newPass,
             ),
           );
         },
-        confirmPasswordChanged: (e) {
+        confirmPassChanged: (e) {
           emit(
             state.copyWith(
-              confirmPassword: ConfirmPassword(
-                e.confirmPassword,
-                state.password.getValue(),
+              confirmPass: ConfirmPassword(
+                e.confirmPass,
+                state.newPass.getValue(),
               ),
             ),
           );
@@ -36,12 +52,43 @@ class ChangePasswordBloc
         obscureChanged: (e) {
           emit(state.copyWith(isObscure: !state.isObscure));
         },
-        submitPressed: (e) {
-          final isPasswordValid = state.password.isValid();
-          final isConfirmPassValid = state.confirmPassword.isValid();
+        submitPressed: (e) async {
+          Either<AuthFailure, String>? failureOrSuccess;
 
-          if (isPasswordValid && isConfirmPassValid) {
-            print("All Details Are Valid!");
+          final isCurrentPasswordValid = state.currentPass.isValid();
+          final isNewPasswordValid = state.newPass.isValid();
+          final isConfirmPassValid = state.confirmPass.isValid();
+
+          if (isCurrentPasswordValid &&
+              isNewPasswordValid &&
+              isConfirmPassValid) {
+            emit(state.copyWith(isSubmitting: true));
+
+            failureOrSuccess = await _authFacade.changePasswordAPI(
+              currentPass: state.currentPass.getValue(),
+              newPass: state.newPass.getValue(),
+              confirmPass: state.confirmPass.getValue(),
+            );
+
+            final currentContext =
+                getIt<AppRouter>().navigatorKey.currentContext!;
+            failureOrSuccess.fold(
+              (l) {
+                AppFocus.unfocus(currentContext);
+                showError(
+                  message: l.maybeMap(
+                    showAPIResponseMessage: (value) => value.message,
+                    networkError: (value) =>
+                        'Please check your internet connectivity',
+                    orElse: () => "Server Error. Try again later.",
+                  ),
+                ).show(currentContext);
+              },
+              (r) {
+                AppFocus.unfocus(currentContext);
+                currentContext.maybePop();
+              },
+            );
           } else {
             print(StringConstant.someDetailAreInvalidPleaseCheck);
           }

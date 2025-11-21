@@ -20,14 +20,13 @@ class SplashPage extends StatelessWidget {
         await NetworkListener().navigateWhenOnline(() async {
           await Future.delayed(const Duration(seconds: 1));
           await state.map(
-            introScreenVisibilty: (_) {},
             initial: (_) {},
             authenticated: (value) async {
               await context.router.replace(PageRouteInfo(MainTabView.name));
             },
             unAuthenticated: (value) async {
-              await context.router.replace(PageRouteInfo(MainTabView.name));
-              // await context.router.replace(PageRouteInfo(Onboarding.name));
+              // await context.router.replace(PageRouteInfo(MainTabView.name));
+              await context.router.replace(PageRouteInfo(Onboarding.name));
             },
           );
         });

@@ -18,54 +18,63 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$ChangePasswordEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String password) passwordChanged,
-    required TResult Function(String confirmPassword, String password)
-        confirmPasswordChanged,
+    required TResult Function(String password) currentPassChanged,
+    required TResult Function(String newPass) newPassChanged,
+    required TResult Function(String confirmPass, String newPass)
+        confirmPassChanged,
     required TResult Function() obscureChanged,
+    required TResult Function() newObscureChanged,
     required TResult Function() submitPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String password)? passwordChanged,
-    TResult? Function(String confirmPassword, String password)?
-        confirmPasswordChanged,
+    TResult? Function(String password)? currentPassChanged,
+    TResult? Function(String newPass)? newPassChanged,
+    TResult? Function(String confirmPass, String newPass)? confirmPassChanged,
     TResult? Function()? obscureChanged,
+    TResult? Function()? newObscureChanged,
     TResult? Function()? submitPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String password)? passwordChanged,
-    TResult Function(String confirmPassword, String password)?
-        confirmPasswordChanged,
+    TResult Function(String password)? currentPassChanged,
+    TResult Function(String newPass)? newPassChanged,
+    TResult Function(String confirmPass, String newPass)? confirmPassChanged,
     TResult Function()? obscureChanged,
+    TResult Function()? newObscureChanged,
     TResult Function()? submitPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PasswordChanged value) passwordChanged,
-    required TResult Function(ConfirmPasswordChanged value)
-        confirmPasswordChanged,
+    required TResult Function(CurrenPassChanged value) currentPassChanged,
+    required TResult Function(NewPassChanged value) newPassChanged,
+    required TResult Function(ConfirmPasswordChanged value) confirmPassChanged,
     required TResult Function(ObscureChanged value) obscureChanged,
+    required TResult Function(NewObscureChanged value) newObscureChanged,
     required TResult Function(SubmitPressed value) submitPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PasswordChanged value)? passwordChanged,
-    TResult? Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
+    TResult? Function(CurrenPassChanged value)? currentPassChanged,
+    TResult? Function(NewPassChanged value)? newPassChanged,
+    TResult? Function(ConfirmPasswordChanged value)? confirmPassChanged,
     TResult? Function(ObscureChanged value)? obscureChanged,
+    TResult? Function(NewObscureChanged value)? newObscureChanged,
     TResult? Function(SubmitPressed value)? submitPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PasswordChanged value)? passwordChanged,
-    TResult Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
+    TResult Function(CurrenPassChanged value)? currentPassChanged,
+    TResult Function(NewPassChanged value)? newPassChanged,
+    TResult Function(ConfirmPasswordChanged value)? confirmPassChanged,
     TResult Function(ObscureChanged value)? obscureChanged,
+    TResult Function(NewObscureChanged value)? newObscureChanged,
     TResult Function(SubmitPressed value)? submitPressed,
     required TResult orElse(),
   }) =>
@@ -91,20 +100,20 @@ class _$ChangePasswordEventCopyWithImpl<$Res, $Val extends ChangePasswordEvent>
 }
 
 /// @nodoc
-abstract class _$$PasswordChangedImplCopyWith<$Res> {
-  factory _$$PasswordChangedImplCopyWith(_$PasswordChangedImpl value,
-          $Res Function(_$PasswordChangedImpl) then) =
-      __$$PasswordChangedImplCopyWithImpl<$Res>;
+abstract class _$$CurrenPassChangedImplCopyWith<$Res> {
+  factory _$$CurrenPassChangedImplCopyWith(_$CurrenPassChangedImpl value,
+          $Res Function(_$CurrenPassChangedImpl) then) =
+      __$$CurrenPassChangedImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String password});
 }
 
 /// @nodoc
-class __$$PasswordChangedImplCopyWithImpl<$Res>
-    extends _$ChangePasswordEventCopyWithImpl<$Res, _$PasswordChangedImpl>
-    implements _$$PasswordChangedImplCopyWith<$Res> {
-  __$$PasswordChangedImplCopyWithImpl(
-      _$PasswordChangedImpl _value, $Res Function(_$PasswordChangedImpl) _then)
+class __$$CurrenPassChangedImplCopyWithImpl<$Res>
+    extends _$ChangePasswordEventCopyWithImpl<$Res, _$CurrenPassChangedImpl>
+    implements _$$CurrenPassChangedImplCopyWith<$Res> {
+  __$$CurrenPassChangedImplCopyWithImpl(_$CurrenPassChangedImpl _value,
+      $Res Function(_$CurrenPassChangedImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -112,7 +121,7 @@ class __$$PasswordChangedImplCopyWithImpl<$Res>
   $Res call({
     Object? password = null,
   }) {
-    return _then(_$PasswordChangedImpl(
+    return _then(_$CurrenPassChangedImpl(
       null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
@@ -123,22 +132,22 @@ class __$$PasswordChangedImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$PasswordChangedImpl implements PasswordChanged {
-  const _$PasswordChangedImpl(this.password);
+class _$CurrenPassChangedImpl implements CurrenPassChanged {
+  const _$CurrenPassChangedImpl(this.password);
 
   @override
   final String password;
 
   @override
   String toString() {
-    return 'ChangePasswordEvent.passwordChanged(password: $password)';
+    return 'ChangePasswordEvent.currentPassChanged(password: $password)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$PasswordChangedImpl &&
+            other is _$CurrenPassChangedImpl &&
             (identical(other.password, password) ||
                 other.password == password));
   }
@@ -149,46 +158,50 @@ class _$PasswordChangedImpl implements PasswordChanged {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PasswordChangedImplCopyWith<_$PasswordChangedImpl> get copyWith =>
-      __$$PasswordChangedImplCopyWithImpl<_$PasswordChangedImpl>(
+  _$$CurrenPassChangedImplCopyWith<_$CurrenPassChangedImpl> get copyWith =>
+      __$$CurrenPassChangedImplCopyWithImpl<_$CurrenPassChangedImpl>(
           this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String password) passwordChanged,
-    required TResult Function(String confirmPassword, String password)
-        confirmPasswordChanged,
+    required TResult Function(String password) currentPassChanged,
+    required TResult Function(String newPass) newPassChanged,
+    required TResult Function(String confirmPass, String newPass)
+        confirmPassChanged,
     required TResult Function() obscureChanged,
+    required TResult Function() newObscureChanged,
     required TResult Function() submitPressed,
   }) {
-    return passwordChanged(password);
+    return currentPassChanged(password);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String password)? passwordChanged,
-    TResult? Function(String confirmPassword, String password)?
-        confirmPasswordChanged,
+    TResult? Function(String password)? currentPassChanged,
+    TResult? Function(String newPass)? newPassChanged,
+    TResult? Function(String confirmPass, String newPass)? confirmPassChanged,
     TResult? Function()? obscureChanged,
+    TResult? Function()? newObscureChanged,
     TResult? Function()? submitPressed,
   }) {
-    return passwordChanged?.call(password);
+    return currentPassChanged?.call(password);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String password)? passwordChanged,
-    TResult Function(String confirmPassword, String password)?
-        confirmPasswordChanged,
+    TResult Function(String password)? currentPassChanged,
+    TResult Function(String newPass)? newPassChanged,
+    TResult Function(String confirmPass, String newPass)? confirmPassChanged,
     TResult Function()? obscureChanged,
+    TResult Function()? newObscureChanged,
     TResult Function()? submitPressed,
     required TResult orElse(),
   }) {
-    if (passwordChanged != null) {
-      return passwordChanged(password);
+    if (currentPassChanged != null) {
+      return currentPassChanged(password);
     }
     return orElse();
   }
@@ -196,48 +209,213 @@ class _$PasswordChangedImpl implements PasswordChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PasswordChanged value) passwordChanged,
-    required TResult Function(ConfirmPasswordChanged value)
-        confirmPasswordChanged,
+    required TResult Function(CurrenPassChanged value) currentPassChanged,
+    required TResult Function(NewPassChanged value) newPassChanged,
+    required TResult Function(ConfirmPasswordChanged value) confirmPassChanged,
     required TResult Function(ObscureChanged value) obscureChanged,
+    required TResult Function(NewObscureChanged value) newObscureChanged,
     required TResult Function(SubmitPressed value) submitPressed,
   }) {
-    return passwordChanged(this);
+    return currentPassChanged(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PasswordChanged value)? passwordChanged,
-    TResult? Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
+    TResult? Function(CurrenPassChanged value)? currentPassChanged,
+    TResult? Function(NewPassChanged value)? newPassChanged,
+    TResult? Function(ConfirmPasswordChanged value)? confirmPassChanged,
     TResult? Function(ObscureChanged value)? obscureChanged,
+    TResult? Function(NewObscureChanged value)? newObscureChanged,
     TResult? Function(SubmitPressed value)? submitPressed,
   }) {
-    return passwordChanged?.call(this);
+    return currentPassChanged?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PasswordChanged value)? passwordChanged,
-    TResult Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
+    TResult Function(CurrenPassChanged value)? currentPassChanged,
+    TResult Function(NewPassChanged value)? newPassChanged,
+    TResult Function(ConfirmPasswordChanged value)? confirmPassChanged,
     TResult Function(ObscureChanged value)? obscureChanged,
+    TResult Function(NewObscureChanged value)? newObscureChanged,
     TResult Function(SubmitPressed value)? submitPressed,
     required TResult orElse(),
   }) {
-    if (passwordChanged != null) {
-      return passwordChanged(this);
+    if (currentPassChanged != null) {
+      return currentPassChanged(this);
     }
     return orElse();
   }
 }
 
-abstract class PasswordChanged implements ChangePasswordEvent {
-  const factory PasswordChanged(final String password) = _$PasswordChangedImpl;
+abstract class CurrenPassChanged implements ChangePasswordEvent {
+  const factory CurrenPassChanged(final String password) =
+      _$CurrenPassChangedImpl;
 
   String get password;
   @JsonKey(ignore: true)
-  _$$PasswordChangedImplCopyWith<_$PasswordChangedImpl> get copyWith =>
+  _$$CurrenPassChangedImplCopyWith<_$CurrenPassChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$NewPassChangedImplCopyWith<$Res> {
+  factory _$$NewPassChangedImplCopyWith(_$NewPassChangedImpl value,
+          $Res Function(_$NewPassChangedImpl) then) =
+      __$$NewPassChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String newPass});
+}
+
+/// @nodoc
+class __$$NewPassChangedImplCopyWithImpl<$Res>
+    extends _$ChangePasswordEventCopyWithImpl<$Res, _$NewPassChangedImpl>
+    implements _$$NewPassChangedImplCopyWith<$Res> {
+  __$$NewPassChangedImplCopyWithImpl(
+      _$NewPassChangedImpl _value, $Res Function(_$NewPassChangedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? newPass = null,
+  }) {
+    return _then(_$NewPassChangedImpl(
+      null == newPass
+          ? _value.newPass
+          : newPass // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$NewPassChangedImpl implements NewPassChanged {
+  const _$NewPassChangedImpl(this.newPass);
+
+  @override
+  final String newPass;
+
+  @override
+  String toString() {
+    return 'ChangePasswordEvent.newPassChanged(newPass: $newPass)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$NewPassChangedImpl &&
+            (identical(other.newPass, newPass) || other.newPass == newPass));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, newPass);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$NewPassChangedImplCopyWith<_$NewPassChangedImpl> get copyWith =>
+      __$$NewPassChangedImplCopyWithImpl<_$NewPassChangedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String password) currentPassChanged,
+    required TResult Function(String newPass) newPassChanged,
+    required TResult Function(String confirmPass, String newPass)
+        confirmPassChanged,
+    required TResult Function() obscureChanged,
+    required TResult Function() newObscureChanged,
+    required TResult Function() submitPressed,
+  }) {
+    return newPassChanged(newPass);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String password)? currentPassChanged,
+    TResult? Function(String newPass)? newPassChanged,
+    TResult? Function(String confirmPass, String newPass)? confirmPassChanged,
+    TResult? Function()? obscureChanged,
+    TResult? Function()? newObscureChanged,
+    TResult? Function()? submitPressed,
+  }) {
+    return newPassChanged?.call(newPass);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String password)? currentPassChanged,
+    TResult Function(String newPass)? newPassChanged,
+    TResult Function(String confirmPass, String newPass)? confirmPassChanged,
+    TResult Function()? obscureChanged,
+    TResult Function()? newObscureChanged,
+    TResult Function()? submitPressed,
+    required TResult orElse(),
+  }) {
+    if (newPassChanged != null) {
+      return newPassChanged(newPass);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CurrenPassChanged value) currentPassChanged,
+    required TResult Function(NewPassChanged value) newPassChanged,
+    required TResult Function(ConfirmPasswordChanged value) confirmPassChanged,
+    required TResult Function(ObscureChanged value) obscureChanged,
+    required TResult Function(NewObscureChanged value) newObscureChanged,
+    required TResult Function(SubmitPressed value) submitPressed,
+  }) {
+    return newPassChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CurrenPassChanged value)? currentPassChanged,
+    TResult? Function(NewPassChanged value)? newPassChanged,
+    TResult? Function(ConfirmPasswordChanged value)? confirmPassChanged,
+    TResult? Function(ObscureChanged value)? obscureChanged,
+    TResult? Function(NewObscureChanged value)? newObscureChanged,
+    TResult? Function(SubmitPressed value)? submitPressed,
+  }) {
+    return newPassChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CurrenPassChanged value)? currentPassChanged,
+    TResult Function(NewPassChanged value)? newPassChanged,
+    TResult Function(ConfirmPasswordChanged value)? confirmPassChanged,
+    TResult Function(ObscureChanged value)? obscureChanged,
+    TResult Function(NewObscureChanged value)? newObscureChanged,
+    TResult Function(SubmitPressed value)? submitPressed,
+    required TResult orElse(),
+  }) {
+    if (newPassChanged != null) {
+      return newPassChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NewPassChanged implements ChangePasswordEvent {
+  const factory NewPassChanged(final String newPass) = _$NewPassChangedImpl;
+
+  String get newPass;
+  @JsonKey(ignore: true)
+  _$$NewPassChangedImplCopyWith<_$NewPassChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -248,7 +426,7 @@ abstract class _$$ConfirmPasswordChangedImplCopyWith<$Res> {
           $Res Function(_$ConfirmPasswordChangedImpl) then) =
       __$$ConfirmPasswordChangedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String confirmPassword, String password});
+  $Res call({String confirmPass, String newPass});
 }
 
 /// @nodoc
@@ -264,17 +442,17 @@ class __$$ConfirmPasswordChangedImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? confirmPassword = null,
-    Object? password = null,
+    Object? confirmPass = null,
+    Object? newPass = null,
   }) {
     return _then(_$ConfirmPasswordChangedImpl(
-      null == confirmPassword
-          ? _value.confirmPassword
-          : confirmPassword // ignore: cast_nullable_to_non_nullable
+      null == confirmPass
+          ? _value.confirmPass
+          : confirmPass // ignore: cast_nullable_to_non_nullable
               as String,
-      null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
+      null == newPass
+          ? _value.newPass
+          : newPass // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -283,16 +461,16 @@ class __$$ConfirmPasswordChangedImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$ConfirmPasswordChangedImpl implements ConfirmPasswordChanged {
-  const _$ConfirmPasswordChangedImpl(this.confirmPassword, this.password);
+  const _$ConfirmPasswordChangedImpl(this.confirmPass, this.newPass);
 
   @override
-  final String confirmPassword;
+  final String confirmPass;
   @override
-  final String password;
+  final String newPass;
 
   @override
   String toString() {
-    return 'ChangePasswordEvent.confirmPasswordChanged(confirmPassword: $confirmPassword, password: $password)';
+    return 'ChangePasswordEvent.confirmPassChanged(confirmPass: $confirmPass, newPass: $newPass)';
   }
 
   @override
@@ -300,14 +478,13 @@ class _$ConfirmPasswordChangedImpl implements ConfirmPasswordChanged {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ConfirmPasswordChangedImpl &&
-            (identical(other.confirmPassword, confirmPassword) ||
-                other.confirmPassword == confirmPassword) &&
-            (identical(other.password, password) ||
-                other.password == password));
+            (identical(other.confirmPass, confirmPass) ||
+                other.confirmPass == confirmPass) &&
+            (identical(other.newPass, newPass) || other.newPass == newPass));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, confirmPassword, password);
+  int get hashCode => Object.hash(runtimeType, confirmPass, newPass);
 
   @JsonKey(ignore: true)
   @override
@@ -319,39 +496,43 @@ class _$ConfirmPasswordChangedImpl implements ConfirmPasswordChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String password) passwordChanged,
-    required TResult Function(String confirmPassword, String password)
-        confirmPasswordChanged,
+    required TResult Function(String password) currentPassChanged,
+    required TResult Function(String newPass) newPassChanged,
+    required TResult Function(String confirmPass, String newPass)
+        confirmPassChanged,
     required TResult Function() obscureChanged,
+    required TResult Function() newObscureChanged,
     required TResult Function() submitPressed,
   }) {
-    return confirmPasswordChanged(confirmPassword, password);
+    return confirmPassChanged(confirmPass, newPass);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String password)? passwordChanged,
-    TResult? Function(String confirmPassword, String password)?
-        confirmPasswordChanged,
+    TResult? Function(String password)? currentPassChanged,
+    TResult? Function(String newPass)? newPassChanged,
+    TResult? Function(String confirmPass, String newPass)? confirmPassChanged,
     TResult? Function()? obscureChanged,
+    TResult? Function()? newObscureChanged,
     TResult? Function()? submitPressed,
   }) {
-    return confirmPasswordChanged?.call(confirmPassword, password);
+    return confirmPassChanged?.call(confirmPass, newPass);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String password)? passwordChanged,
-    TResult Function(String confirmPassword, String password)?
-        confirmPasswordChanged,
+    TResult Function(String password)? currentPassChanged,
+    TResult Function(String newPass)? newPassChanged,
+    TResult Function(String confirmPass, String newPass)? confirmPassChanged,
     TResult Function()? obscureChanged,
+    TResult Function()? newObscureChanged,
     TResult Function()? submitPressed,
     required TResult orElse(),
   }) {
-    if (confirmPasswordChanged != null) {
-      return confirmPasswordChanged(confirmPassword, password);
+    if (confirmPassChanged != null) {
+      return confirmPassChanged(confirmPass, newPass);
     }
     return orElse();
   }
@@ -359,37 +540,42 @@ class _$ConfirmPasswordChangedImpl implements ConfirmPasswordChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PasswordChanged value) passwordChanged,
-    required TResult Function(ConfirmPasswordChanged value)
-        confirmPasswordChanged,
+    required TResult Function(CurrenPassChanged value) currentPassChanged,
+    required TResult Function(NewPassChanged value) newPassChanged,
+    required TResult Function(ConfirmPasswordChanged value) confirmPassChanged,
     required TResult Function(ObscureChanged value) obscureChanged,
+    required TResult Function(NewObscureChanged value) newObscureChanged,
     required TResult Function(SubmitPressed value) submitPressed,
   }) {
-    return confirmPasswordChanged(this);
+    return confirmPassChanged(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PasswordChanged value)? passwordChanged,
-    TResult? Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
+    TResult? Function(CurrenPassChanged value)? currentPassChanged,
+    TResult? Function(NewPassChanged value)? newPassChanged,
+    TResult? Function(ConfirmPasswordChanged value)? confirmPassChanged,
     TResult? Function(ObscureChanged value)? obscureChanged,
+    TResult? Function(NewObscureChanged value)? newObscureChanged,
     TResult? Function(SubmitPressed value)? submitPressed,
   }) {
-    return confirmPasswordChanged?.call(this);
+    return confirmPassChanged?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PasswordChanged value)? passwordChanged,
-    TResult Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
+    TResult Function(CurrenPassChanged value)? currentPassChanged,
+    TResult Function(NewPassChanged value)? newPassChanged,
+    TResult Function(ConfirmPasswordChanged value)? confirmPassChanged,
     TResult Function(ObscureChanged value)? obscureChanged,
+    TResult Function(NewObscureChanged value)? newObscureChanged,
     TResult Function(SubmitPressed value)? submitPressed,
     required TResult orElse(),
   }) {
-    if (confirmPasswordChanged != null) {
-      return confirmPasswordChanged(this);
+    if (confirmPassChanged != null) {
+      return confirmPassChanged(this);
     }
     return orElse();
   }
@@ -397,11 +583,11 @@ class _$ConfirmPasswordChangedImpl implements ConfirmPasswordChanged {
 
 abstract class ConfirmPasswordChanged implements ChangePasswordEvent {
   const factory ConfirmPasswordChanged(
-          final String confirmPassword, final String password) =
+          final String confirmPass, final String newPass) =
       _$ConfirmPasswordChangedImpl;
 
-  String get confirmPassword;
-  String get password;
+  String get confirmPass;
+  String get newPass;
   @JsonKey(ignore: true)
   _$$ConfirmPasswordChangedImplCopyWith<_$ConfirmPasswordChangedImpl>
       get copyWith => throw _privateConstructorUsedError;
@@ -445,10 +631,12 @@ class _$ObscureChangedImpl implements ObscureChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String password) passwordChanged,
-    required TResult Function(String confirmPassword, String password)
-        confirmPasswordChanged,
+    required TResult Function(String password) currentPassChanged,
+    required TResult Function(String newPass) newPassChanged,
+    required TResult Function(String confirmPass, String newPass)
+        confirmPassChanged,
     required TResult Function() obscureChanged,
+    required TResult Function() newObscureChanged,
     required TResult Function() submitPressed,
   }) {
     return obscureChanged();
@@ -457,10 +645,11 @@ class _$ObscureChangedImpl implements ObscureChanged {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String password)? passwordChanged,
-    TResult? Function(String confirmPassword, String password)?
-        confirmPasswordChanged,
+    TResult? Function(String password)? currentPassChanged,
+    TResult? Function(String newPass)? newPassChanged,
+    TResult? Function(String confirmPass, String newPass)? confirmPassChanged,
     TResult? Function()? obscureChanged,
+    TResult? Function()? newObscureChanged,
     TResult? Function()? submitPressed,
   }) {
     return obscureChanged?.call();
@@ -469,10 +658,11 @@ class _$ObscureChangedImpl implements ObscureChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String password)? passwordChanged,
-    TResult Function(String confirmPassword, String password)?
-        confirmPasswordChanged,
+    TResult Function(String password)? currentPassChanged,
+    TResult Function(String newPass)? newPassChanged,
+    TResult Function(String confirmPass, String newPass)? confirmPassChanged,
     TResult Function()? obscureChanged,
+    TResult Function()? newObscureChanged,
     TResult Function()? submitPressed,
     required TResult orElse(),
   }) {
@@ -485,10 +675,11 @@ class _$ObscureChangedImpl implements ObscureChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PasswordChanged value) passwordChanged,
-    required TResult Function(ConfirmPasswordChanged value)
-        confirmPasswordChanged,
+    required TResult Function(CurrenPassChanged value) currentPassChanged,
+    required TResult Function(NewPassChanged value) newPassChanged,
+    required TResult Function(ConfirmPasswordChanged value) confirmPassChanged,
     required TResult Function(ObscureChanged value) obscureChanged,
+    required TResult Function(NewObscureChanged value) newObscureChanged,
     required TResult Function(SubmitPressed value) submitPressed,
   }) {
     return obscureChanged(this);
@@ -497,9 +688,11 @@ class _$ObscureChangedImpl implements ObscureChanged {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PasswordChanged value)? passwordChanged,
-    TResult? Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
+    TResult? Function(CurrenPassChanged value)? currentPassChanged,
+    TResult? Function(NewPassChanged value)? newPassChanged,
+    TResult? Function(ConfirmPasswordChanged value)? confirmPassChanged,
     TResult? Function(ObscureChanged value)? obscureChanged,
+    TResult? Function(NewObscureChanged value)? newObscureChanged,
     TResult? Function(SubmitPressed value)? submitPressed,
   }) {
     return obscureChanged?.call(this);
@@ -508,9 +701,11 @@ class _$ObscureChangedImpl implements ObscureChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PasswordChanged value)? passwordChanged,
-    TResult Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
+    TResult Function(CurrenPassChanged value)? currentPassChanged,
+    TResult Function(NewPassChanged value)? newPassChanged,
+    TResult Function(ConfirmPasswordChanged value)? confirmPassChanged,
     TResult Function(ObscureChanged value)? obscureChanged,
+    TResult Function(NewObscureChanged value)? newObscureChanged,
     TResult Function(SubmitPressed value)? submitPressed,
     required TResult orElse(),
   }) {
@@ -523,6 +718,133 @@ class _$ObscureChangedImpl implements ObscureChanged {
 
 abstract class ObscureChanged implements ChangePasswordEvent {
   const factory ObscureChanged() = _$ObscureChangedImpl;
+}
+
+/// @nodoc
+abstract class _$$NewObscureChangedImplCopyWith<$Res> {
+  factory _$$NewObscureChangedImplCopyWith(_$NewObscureChangedImpl value,
+          $Res Function(_$NewObscureChangedImpl) then) =
+      __$$NewObscureChangedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NewObscureChangedImplCopyWithImpl<$Res>
+    extends _$ChangePasswordEventCopyWithImpl<$Res, _$NewObscureChangedImpl>
+    implements _$$NewObscureChangedImplCopyWith<$Res> {
+  __$$NewObscureChangedImplCopyWithImpl(_$NewObscureChangedImpl _value,
+      $Res Function(_$NewObscureChangedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$NewObscureChangedImpl implements NewObscureChanged {
+  const _$NewObscureChangedImpl();
+
+  @override
+  String toString() {
+    return 'ChangePasswordEvent.newObscureChanged()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NewObscureChangedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String password) currentPassChanged,
+    required TResult Function(String newPass) newPassChanged,
+    required TResult Function(String confirmPass, String newPass)
+        confirmPassChanged,
+    required TResult Function() obscureChanged,
+    required TResult Function() newObscureChanged,
+    required TResult Function() submitPressed,
+  }) {
+    return newObscureChanged();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String password)? currentPassChanged,
+    TResult? Function(String newPass)? newPassChanged,
+    TResult? Function(String confirmPass, String newPass)? confirmPassChanged,
+    TResult? Function()? obscureChanged,
+    TResult? Function()? newObscureChanged,
+    TResult? Function()? submitPressed,
+  }) {
+    return newObscureChanged?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String password)? currentPassChanged,
+    TResult Function(String newPass)? newPassChanged,
+    TResult Function(String confirmPass, String newPass)? confirmPassChanged,
+    TResult Function()? obscureChanged,
+    TResult Function()? newObscureChanged,
+    TResult Function()? submitPressed,
+    required TResult orElse(),
+  }) {
+    if (newObscureChanged != null) {
+      return newObscureChanged();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(CurrenPassChanged value) currentPassChanged,
+    required TResult Function(NewPassChanged value) newPassChanged,
+    required TResult Function(ConfirmPasswordChanged value) confirmPassChanged,
+    required TResult Function(ObscureChanged value) obscureChanged,
+    required TResult Function(NewObscureChanged value) newObscureChanged,
+    required TResult Function(SubmitPressed value) submitPressed,
+  }) {
+    return newObscureChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(CurrenPassChanged value)? currentPassChanged,
+    TResult? Function(NewPassChanged value)? newPassChanged,
+    TResult? Function(ConfirmPasswordChanged value)? confirmPassChanged,
+    TResult? Function(ObscureChanged value)? obscureChanged,
+    TResult? Function(NewObscureChanged value)? newObscureChanged,
+    TResult? Function(SubmitPressed value)? submitPressed,
+  }) {
+    return newObscureChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(CurrenPassChanged value)? currentPassChanged,
+    TResult Function(NewPassChanged value)? newPassChanged,
+    TResult Function(ConfirmPasswordChanged value)? confirmPassChanged,
+    TResult Function(ObscureChanged value)? obscureChanged,
+    TResult Function(NewObscureChanged value)? newObscureChanged,
+    TResult Function(SubmitPressed value)? submitPressed,
+    required TResult orElse(),
+  }) {
+    if (newObscureChanged != null) {
+      return newObscureChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NewObscureChanged implements ChangePasswordEvent {
+  const factory NewObscureChanged() = _$NewObscureChangedImpl;
 }
 
 /// @nodoc
@@ -563,10 +885,12 @@ class _$SubmitPressedImpl implements SubmitPressed {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String password) passwordChanged,
-    required TResult Function(String confirmPassword, String password)
-        confirmPasswordChanged,
+    required TResult Function(String password) currentPassChanged,
+    required TResult Function(String newPass) newPassChanged,
+    required TResult Function(String confirmPass, String newPass)
+        confirmPassChanged,
     required TResult Function() obscureChanged,
+    required TResult Function() newObscureChanged,
     required TResult Function() submitPressed,
   }) {
     return submitPressed();
@@ -575,10 +899,11 @@ class _$SubmitPressedImpl implements SubmitPressed {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String password)? passwordChanged,
-    TResult? Function(String confirmPassword, String password)?
-        confirmPasswordChanged,
+    TResult? Function(String password)? currentPassChanged,
+    TResult? Function(String newPass)? newPassChanged,
+    TResult? Function(String confirmPass, String newPass)? confirmPassChanged,
     TResult? Function()? obscureChanged,
+    TResult? Function()? newObscureChanged,
     TResult? Function()? submitPressed,
   }) {
     return submitPressed?.call();
@@ -587,10 +912,11 @@ class _$SubmitPressedImpl implements SubmitPressed {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String password)? passwordChanged,
-    TResult Function(String confirmPassword, String password)?
-        confirmPasswordChanged,
+    TResult Function(String password)? currentPassChanged,
+    TResult Function(String newPass)? newPassChanged,
+    TResult Function(String confirmPass, String newPass)? confirmPassChanged,
     TResult Function()? obscureChanged,
+    TResult Function()? newObscureChanged,
     TResult Function()? submitPressed,
     required TResult orElse(),
   }) {
@@ -603,10 +929,11 @@ class _$SubmitPressedImpl implements SubmitPressed {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(PasswordChanged value) passwordChanged,
-    required TResult Function(ConfirmPasswordChanged value)
-        confirmPasswordChanged,
+    required TResult Function(CurrenPassChanged value) currentPassChanged,
+    required TResult Function(NewPassChanged value) newPassChanged,
+    required TResult Function(ConfirmPasswordChanged value) confirmPassChanged,
     required TResult Function(ObscureChanged value) obscureChanged,
+    required TResult Function(NewObscureChanged value) newObscureChanged,
     required TResult Function(SubmitPressed value) submitPressed,
   }) {
     return submitPressed(this);
@@ -615,9 +942,11 @@ class _$SubmitPressedImpl implements SubmitPressed {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(PasswordChanged value)? passwordChanged,
-    TResult? Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
+    TResult? Function(CurrenPassChanged value)? currentPassChanged,
+    TResult? Function(NewPassChanged value)? newPassChanged,
+    TResult? Function(ConfirmPasswordChanged value)? confirmPassChanged,
     TResult? Function(ObscureChanged value)? obscureChanged,
+    TResult? Function(NewObscureChanged value)? newObscureChanged,
     TResult? Function(SubmitPressed value)? submitPressed,
   }) {
     return submitPressed?.call(this);
@@ -626,9 +955,11 @@ class _$SubmitPressedImpl implements SubmitPressed {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(PasswordChanged value)? passwordChanged,
-    TResult Function(ConfirmPasswordChanged value)? confirmPasswordChanged,
+    TResult Function(CurrenPassChanged value)? currentPassChanged,
+    TResult Function(NewPassChanged value)? newPassChanged,
+    TResult Function(ConfirmPasswordChanged value)? confirmPassChanged,
     TResult Function(ObscureChanged value)? obscureChanged,
+    TResult Function(NewObscureChanged value)? newObscureChanged,
     TResult Function(SubmitPressed value)? submitPressed,
     required TResult orElse(),
   }) {
@@ -645,9 +976,11 @@ abstract class SubmitPressed implements ChangePasswordEvent {
 
 /// @nodoc
 mixin _$ChangePasswordState {
-  Password get password => throw _privateConstructorUsedError;
-  ConfirmPassword get confirmPassword => throw _privateConstructorUsedError;
+  Password get currentPass => throw _privateConstructorUsedError;
+  Password get newPass => throw _privateConstructorUsedError;
+  ConfirmPassword get confirmPass => throw _privateConstructorUsedError;
   bool get isObscure => throw _privateConstructorUsedError;
+  bool get isNewObscure => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   bool get showError => throw _privateConstructorUsedError;
 
@@ -663,9 +996,11 @@ abstract class $ChangePasswordStateCopyWith<$Res> {
       _$ChangePasswordStateCopyWithImpl<$Res, ChangePasswordState>;
   @useResult
   $Res call(
-      {Password password,
-      ConfirmPassword confirmPassword,
+      {Password currentPass,
+      Password newPass,
+      ConfirmPassword confirmPass,
       bool isObscure,
+      bool isNewObscure,
       bool isSubmitting,
       bool showError});
 }
@@ -683,24 +1018,34 @@ class _$ChangePasswordStateCopyWithImpl<$Res, $Val extends ChangePasswordState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? password = null,
-    Object? confirmPassword = null,
+    Object? currentPass = null,
+    Object? newPass = null,
+    Object? confirmPass = null,
     Object? isObscure = null,
+    Object? isNewObscure = null,
     Object? isSubmitting = null,
     Object? showError = null,
   }) {
     return _then(_value.copyWith(
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
+      currentPass: null == currentPass
+          ? _value.currentPass
+          : currentPass // ignore: cast_nullable_to_non_nullable
               as Password,
-      confirmPassword: null == confirmPassword
-          ? _value.confirmPassword
-          : confirmPassword // ignore: cast_nullable_to_non_nullable
+      newPass: null == newPass
+          ? _value.newPass
+          : newPass // ignore: cast_nullable_to_non_nullable
+              as Password,
+      confirmPass: null == confirmPass
+          ? _value.confirmPass
+          : confirmPass // ignore: cast_nullable_to_non_nullable
               as ConfirmPassword,
       isObscure: null == isObscure
           ? _value.isObscure
           : isObscure // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isNewObscure: null == isNewObscure
+          ? _value.isNewObscure
+          : isNewObscure // ignore: cast_nullable_to_non_nullable
               as bool,
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
@@ -723,9 +1068,11 @@ abstract class _$$ChangePasswordStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {Password password,
-      ConfirmPassword confirmPassword,
+      {Password currentPass,
+      Password newPass,
+      ConfirmPassword confirmPass,
       bool isObscure,
+      bool isNewObscure,
       bool isSubmitting,
       bool showError});
 }
@@ -741,24 +1088,34 @@ class __$$ChangePasswordStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? password = null,
-    Object? confirmPassword = null,
+    Object? currentPass = null,
+    Object? newPass = null,
+    Object? confirmPass = null,
     Object? isObscure = null,
+    Object? isNewObscure = null,
     Object? isSubmitting = null,
     Object? showError = null,
   }) {
     return _then(_$ChangePasswordStateImpl(
-      password: null == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
+      currentPass: null == currentPass
+          ? _value.currentPass
+          : currentPass // ignore: cast_nullable_to_non_nullable
               as Password,
-      confirmPassword: null == confirmPassword
-          ? _value.confirmPassword
-          : confirmPassword // ignore: cast_nullable_to_non_nullable
+      newPass: null == newPass
+          ? _value.newPass
+          : newPass // ignore: cast_nullable_to_non_nullable
+              as Password,
+      confirmPass: null == confirmPass
+          ? _value.confirmPass
+          : confirmPass // ignore: cast_nullable_to_non_nullable
               as ConfirmPassword,
       isObscure: null == isObscure
           ? _value.isObscure
           : isObscure // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isNewObscure: null == isNewObscure
+          ? _value.isNewObscure
+          : isNewObscure // ignore: cast_nullable_to_non_nullable
               as bool,
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
@@ -776,18 +1133,24 @@ class __$$ChangePasswordStateImplCopyWithImpl<$Res>
 
 class _$ChangePasswordStateImpl implements _ChangePasswordState {
   _$ChangePasswordStateImpl(
-      {required this.password,
-      required this.confirmPassword,
+      {required this.currentPass,
+      required this.newPass,
+      required this.confirmPass,
       required this.isObscure,
+      required this.isNewObscure,
       required this.isSubmitting,
       required this.showError});
 
   @override
-  final Password password;
+  final Password currentPass;
   @override
-  final ConfirmPassword confirmPassword;
+  final Password newPass;
+  @override
+  final ConfirmPassword confirmPass;
   @override
   final bool isObscure;
+  @override
+  final bool isNewObscure;
   @override
   final bool isSubmitting;
   @override
@@ -795,7 +1158,7 @@ class _$ChangePasswordStateImpl implements _ChangePasswordState {
 
   @override
   String toString() {
-    return 'ChangePasswordState(password: $password, confirmPassword: $confirmPassword, isObscure: $isObscure, isSubmitting: $isSubmitting, showError: $showError)';
+    return 'ChangePasswordState(currentPass: $currentPass, newPass: $newPass, confirmPass: $confirmPass, isObscure: $isObscure, isNewObscure: $isNewObscure, isSubmitting: $isSubmitting, showError: $showError)';
   }
 
   @override
@@ -803,12 +1166,15 @@ class _$ChangePasswordStateImpl implements _ChangePasswordState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ChangePasswordStateImpl &&
-            (identical(other.password, password) ||
-                other.password == password) &&
-            (identical(other.confirmPassword, confirmPassword) ||
-                other.confirmPassword == confirmPassword) &&
+            (identical(other.currentPass, currentPass) ||
+                other.currentPass == currentPass) &&
+            (identical(other.newPass, newPass) || other.newPass == newPass) &&
+            (identical(other.confirmPass, confirmPass) ||
+                other.confirmPass == confirmPass) &&
             (identical(other.isObscure, isObscure) ||
                 other.isObscure == isObscure) &&
+            (identical(other.isNewObscure, isNewObscure) ||
+                other.isNewObscure == isNewObscure) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
             (identical(other.showError, showError) ||
@@ -816,8 +1182,8 @@ class _$ChangePasswordStateImpl implements _ChangePasswordState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, password, confirmPassword,
-      isObscure, isSubmitting, showError);
+  int get hashCode => Object.hash(runtimeType, currentPass, newPass,
+      confirmPass, isObscure, isNewObscure, isSubmitting, showError);
 
   @JsonKey(ignore: true)
   @override
@@ -829,18 +1195,24 @@ class _$ChangePasswordStateImpl implements _ChangePasswordState {
 
 abstract class _ChangePasswordState implements ChangePasswordState {
   factory _ChangePasswordState(
-      {required final Password password,
-      required final ConfirmPassword confirmPassword,
+      {required final Password currentPass,
+      required final Password newPass,
+      required final ConfirmPassword confirmPass,
       required final bool isObscure,
+      required final bool isNewObscure,
       required final bool isSubmitting,
       required final bool showError}) = _$ChangePasswordStateImpl;
 
   @override
-  Password get password;
+  Password get currentPass;
   @override
-  ConfirmPassword get confirmPassword;
+  Password get newPass;
+  @override
+  ConfirmPassword get confirmPass;
   @override
   bool get isObscure;
+  @override
+  bool get isNewObscure;
   @override
   bool get isSubmitting;
   @override

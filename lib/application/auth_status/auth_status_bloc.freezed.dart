@@ -411,7 +411,6 @@ mixin _$AuthStatusState {
     required TResult Function() initial,
     required TResult Function() authenticated,
     required TResult Function(String successMessage) unAuthenticated,
-    required TResult Function() introScreenVisibilty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -419,7 +418,6 @@ mixin _$AuthStatusState {
     TResult? Function()? initial,
     TResult? Function()? authenticated,
     TResult? Function(String successMessage)? unAuthenticated,
-    TResult? Function()? introScreenVisibilty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -427,7 +425,6 @@ mixin _$AuthStatusState {
     TResult Function()? initial,
     TResult Function()? authenticated,
     TResult Function(String successMessage)? unAuthenticated,
-    TResult Function()? introScreenVisibilty,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -436,7 +433,6 @@ mixin _$AuthStatusState {
     required TResult Function(Initial value) initial,
     required TResult Function(Authenticated value) authenticated,
     required TResult Function(UnAuthenticated value) unAuthenticated,
-    required TResult Function(IntroScreenVisibilty value) introScreenVisibilty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -444,7 +440,6 @@ mixin _$AuthStatusState {
     TResult? Function(Initial value)? initial,
     TResult? Function(Authenticated value)? authenticated,
     TResult? Function(UnAuthenticated value)? unAuthenticated,
-    TResult? Function(IntroScreenVisibilty value)? introScreenVisibilty,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -452,7 +447,6 @@ mixin _$AuthStatusState {
     TResult Function(Initial value)? initial,
     TResult Function(Authenticated value)? authenticated,
     TResult Function(UnAuthenticated value)? unAuthenticated,
-    TResult Function(IntroScreenVisibilty value)? introScreenVisibilty,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -517,7 +511,6 @@ class _$InitialImpl implements Initial {
     required TResult Function() initial,
     required TResult Function() authenticated,
     required TResult Function(String successMessage) unAuthenticated,
-    required TResult Function() introScreenVisibilty,
   }) {
     return initial();
   }
@@ -528,7 +521,6 @@ class _$InitialImpl implements Initial {
     TResult? Function()? initial,
     TResult? Function()? authenticated,
     TResult? Function(String successMessage)? unAuthenticated,
-    TResult? Function()? introScreenVisibilty,
   }) {
     return initial?.call();
   }
@@ -539,7 +531,6 @@ class _$InitialImpl implements Initial {
     TResult Function()? initial,
     TResult Function()? authenticated,
     TResult Function(String successMessage)? unAuthenticated,
-    TResult Function()? introScreenVisibilty,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -554,7 +545,6 @@ class _$InitialImpl implements Initial {
     required TResult Function(Initial value) initial,
     required TResult Function(Authenticated value) authenticated,
     required TResult Function(UnAuthenticated value) unAuthenticated,
-    required TResult Function(IntroScreenVisibilty value) introScreenVisibilty,
   }) {
     return initial(this);
   }
@@ -565,7 +555,6 @@ class _$InitialImpl implements Initial {
     TResult? Function(Initial value)? initial,
     TResult? Function(Authenticated value)? authenticated,
     TResult? Function(UnAuthenticated value)? unAuthenticated,
-    TResult? Function(IntroScreenVisibilty value)? introScreenVisibilty,
   }) {
     return initial?.call(this);
   }
@@ -576,7 +565,6 @@ class _$InitialImpl implements Initial {
     TResult Function(Initial value)? initial,
     TResult Function(Authenticated value)? authenticated,
     TResult Function(UnAuthenticated value)? unAuthenticated,
-    TResult Function(IntroScreenVisibilty value)? introScreenVisibilty,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -631,7 +619,6 @@ class _$AuthenticatedImpl implements Authenticated {
     required TResult Function() initial,
     required TResult Function() authenticated,
     required TResult Function(String successMessage) unAuthenticated,
-    required TResult Function() introScreenVisibilty,
   }) {
     return authenticated();
   }
@@ -642,7 +629,6 @@ class _$AuthenticatedImpl implements Authenticated {
     TResult? Function()? initial,
     TResult? Function()? authenticated,
     TResult? Function(String successMessage)? unAuthenticated,
-    TResult? Function()? introScreenVisibilty,
   }) {
     return authenticated?.call();
   }
@@ -653,7 +639,6 @@ class _$AuthenticatedImpl implements Authenticated {
     TResult Function()? initial,
     TResult Function()? authenticated,
     TResult Function(String successMessage)? unAuthenticated,
-    TResult Function()? introScreenVisibilty,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
@@ -668,7 +653,6 @@ class _$AuthenticatedImpl implements Authenticated {
     required TResult Function(Initial value) initial,
     required TResult Function(Authenticated value) authenticated,
     required TResult Function(UnAuthenticated value) unAuthenticated,
-    required TResult Function(IntroScreenVisibilty value) introScreenVisibilty,
   }) {
     return authenticated(this);
   }
@@ -679,7 +663,6 @@ class _$AuthenticatedImpl implements Authenticated {
     TResult? Function(Initial value)? initial,
     TResult? Function(Authenticated value)? authenticated,
     TResult? Function(UnAuthenticated value)? unAuthenticated,
-    TResult? Function(IntroScreenVisibilty value)? introScreenVisibilty,
   }) {
     return authenticated?.call(this);
   }
@@ -690,7 +673,6 @@ class _$AuthenticatedImpl implements Authenticated {
     TResult Function(Initial value)? initial,
     TResult Function(Authenticated value)? authenticated,
     TResult Function(UnAuthenticated value)? unAuthenticated,
-    TResult Function(IntroScreenVisibilty value)? introScreenVisibilty,
     required TResult orElse(),
   }) {
     if (authenticated != null) {
@@ -773,7 +755,6 @@ class _$UnAuthenticatedImpl implements UnAuthenticated {
     required TResult Function() initial,
     required TResult Function() authenticated,
     required TResult Function(String successMessage) unAuthenticated,
-    required TResult Function() introScreenVisibilty,
   }) {
     return unAuthenticated(successMessage);
   }
@@ -784,7 +765,6 @@ class _$UnAuthenticatedImpl implements UnAuthenticated {
     TResult? Function()? initial,
     TResult? Function()? authenticated,
     TResult? Function(String successMessage)? unAuthenticated,
-    TResult? Function()? introScreenVisibilty,
   }) {
     return unAuthenticated?.call(successMessage);
   }
@@ -795,7 +775,6 @@ class _$UnAuthenticatedImpl implements UnAuthenticated {
     TResult Function()? initial,
     TResult Function()? authenticated,
     TResult Function(String successMessage)? unAuthenticated,
-    TResult Function()? introScreenVisibilty,
     required TResult orElse(),
   }) {
     if (unAuthenticated != null) {
@@ -810,7 +789,6 @@ class _$UnAuthenticatedImpl implements UnAuthenticated {
     required TResult Function(Initial value) initial,
     required TResult Function(Authenticated value) authenticated,
     required TResult Function(UnAuthenticated value) unAuthenticated,
-    required TResult Function(IntroScreenVisibilty value) introScreenVisibilty,
   }) {
     return unAuthenticated(this);
   }
@@ -821,7 +799,6 @@ class _$UnAuthenticatedImpl implements UnAuthenticated {
     TResult? Function(Initial value)? initial,
     TResult? Function(Authenticated value)? authenticated,
     TResult? Function(UnAuthenticated value)? unAuthenticated,
-    TResult? Function(IntroScreenVisibilty value)? introScreenVisibilty,
   }) {
     return unAuthenticated?.call(this);
   }
@@ -832,7 +809,6 @@ class _$UnAuthenticatedImpl implements UnAuthenticated {
     TResult Function(Initial value)? initial,
     TResult Function(Authenticated value)? authenticated,
     TResult Function(UnAuthenticated value)? unAuthenticated,
-    TResult Function(IntroScreenVisibilty value)? introScreenVisibilty,
     required TResult orElse(),
   }) {
     if (unAuthenticated != null) {
@@ -850,119 +826,4 @@ abstract class UnAuthenticated implements AuthStatusState {
   @JsonKey(ignore: true)
   _$$UnAuthenticatedImplCopyWith<_$UnAuthenticatedImpl> get copyWith =>
       throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$IntroScreenVisibiltyImplCopyWith<$Res> {
-  factory _$$IntroScreenVisibiltyImplCopyWith(_$IntroScreenVisibiltyImpl value,
-          $Res Function(_$IntroScreenVisibiltyImpl) then) =
-      __$$IntroScreenVisibiltyImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$IntroScreenVisibiltyImplCopyWithImpl<$Res>
-    extends _$AuthStatusStateCopyWithImpl<$Res, _$IntroScreenVisibiltyImpl>
-    implements _$$IntroScreenVisibiltyImplCopyWith<$Res> {
-  __$$IntroScreenVisibiltyImplCopyWithImpl(_$IntroScreenVisibiltyImpl _value,
-      $Res Function(_$IntroScreenVisibiltyImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$IntroScreenVisibiltyImpl implements IntroScreenVisibilty {
-  const _$IntroScreenVisibiltyImpl();
-
-  @override
-  String toString() {
-    return 'AuthStatusState.introScreenVisibilty()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$IntroScreenVisibiltyImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() authenticated,
-    required TResult Function(String successMessage) unAuthenticated,
-    required TResult Function() introScreenVisibilty,
-  }) {
-    return introScreenVisibilty();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? authenticated,
-    TResult? Function(String successMessage)? unAuthenticated,
-    TResult? Function()? introScreenVisibilty,
-  }) {
-    return introScreenVisibilty?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? authenticated,
-    TResult Function(String successMessage)? unAuthenticated,
-    TResult Function()? introScreenVisibilty,
-    required TResult orElse(),
-  }) {
-    if (introScreenVisibilty != null) {
-      return introScreenVisibilty();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Initial value) initial,
-    required TResult Function(Authenticated value) authenticated,
-    required TResult Function(UnAuthenticated value) unAuthenticated,
-    required TResult Function(IntroScreenVisibilty value) introScreenVisibilty,
-  }) {
-    return introScreenVisibilty(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Initial value)? initial,
-    TResult? Function(Authenticated value)? authenticated,
-    TResult? Function(UnAuthenticated value)? unAuthenticated,
-    TResult? Function(IntroScreenVisibilty value)? introScreenVisibilty,
-  }) {
-    return introScreenVisibilty?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Initial value)? initial,
-    TResult Function(Authenticated value)? authenticated,
-    TResult Function(UnAuthenticated value)? unAuthenticated,
-    TResult Function(IntroScreenVisibilty value)? introScreenVisibilty,
-    required TResult orElse(),
-  }) {
-    if (introScreenVisibilty != null) {
-      return introScreenVisibilty(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class IntroScreenVisibilty implements AuthStatusState {
-  const factory IntroScreenVisibilty() = _$IntroScreenVisibiltyImpl;
 }

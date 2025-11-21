@@ -1,6 +1,5 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'dart:developer';
 import 'dart:io';
 import 'package:aire_velo_bearings/core/constants/api_constants.dart';
 import 'package:aire_velo_bearings/core/router/app_router.dart';
@@ -27,6 +26,8 @@ class ApiService {
     final interceptor = InterceptorsWrapper(
       onRequest: (options, handler) async {
         String? userToken = await getToken();
+
+        print("---> ${userToken}");
         if (userToken.isNotEmpty) {
           options.headers.addAll({"Authorization": "Bearer $userToken"});
         }
@@ -155,47 +156,34 @@ class ApiService {
     dynamic data, {
     bool isMultipart = false,
     FormData? formData,
-    dynamic queryPara,
+    Map<String, dynamic>? queryParameters,
   }) async {
-    BuildContext context = getIt<AppRouter>().navigatorKey.currentContext!;
-    dio = initAPIService(isMultipart: isMultipart, context: context);
+    BuildContext currentContext =
+        getIt<AppRouter>().navigatorKey.currentContext!;
 
-    try {
-      Response response = await dio
-          .post(
-            path,
-            data: isMultipart ? formData : data,
-            queryParameters: queryPara,
-          )
-          .catchError((error) {
-            log("==>ERROR===$error");
+    dio = initAPIService(isMultipart: isMultipart, context: currentContext);
 
-            commonResponse = CommonResponse.fromJson(error.response?.data);
-            if (commonResponse.dioMessage != null) {
-              if (commonResponse.dioMessage != 'Success' &&
-                  commonResponse.dioMessage != '') {
-                showError(
-                  message: commonResponse.dioMessage ?? '',
-                ).show(context);
-              }
-            }
-            // Rethrow the error to be caught by the outer try-catch
-            throw error;
-          });
+    var response = await dio.post(
+      path,
+      data: isMultipart ? formData : data,
+      queryParameters: queryParameters,
+    );
 
-      if (response.statusCode == 200) {
-        commonResponse = CommonResponse.fromJson(response.data);
-        if (commonResponse.dioMessage != null &&
-            commonResponse.dioMessage != 'FCM register successfully' &&
-            commonResponse.dioMessage != 'Success') {
-          await showSuccess(
-            message: commonResponse.dioMessage ?? '',
-          ).show(context);
-        }
+    if (response.statusCode == 200) {
+      final commonRes = CommonResponse.fromJson(response.data);
+      if (commonRes.dioMessage != null &&
+          commonRes.dioMessage != 'FCM register successfully' &&
+          commonRes.dioMessage != 'Success') {
+        await showSuccess(
+          message: commonRes.dioMessage ?? '',
+        ).show(currentContext);
       }
-    } catch (e) {
-      log("==**ERROR===$e");
+    } else {
+      showError(
+        message: "${response.statusCode} - ${response.statusMessage ?? ""}",
+      ).show(currentContext);
     }
-    return commonResponse;
+
+    return CommonResponse.fromJson(response.data);
   }
 }

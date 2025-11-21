@@ -1,7 +1,16 @@
 // ignore_for_file: avoid_print
 
 import 'package:aire_velo_bearings/core/constants/string_constant.dart';
+import 'package:aire_velo_bearings/core/router/app_router.dart';
+import 'package:aire_velo_bearings/core/router/app_router.gr.dart';
+import 'package:aire_velo_bearings/domain/auth/auth_failure.dart';
+import 'package:aire_velo_bearings/domain/auth/i_auth_facade.dart';
 import 'package:aire_velo_bearings/domain/validators/validators.dart';
+import 'package:aire_velo_bearings/injection.dart';
+import 'package:aire_velo_bearings/presentation/common/utils/app_focus.dart';
+import 'package:aire_velo_bearings/presentation/common/utils/flushbar_creator.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -12,9 +21,10 @@ part 'sign_up_bloc.freezed.dart';
 
 @injectable
 class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
-  SignUpBloc() : super(SignUpState.initial()) {
-    on<SignUpEvent>((event, emit) {
-      event.map(
+  final IAuthFacade _authFacade;
+  SignUpBloc(this._authFacade) : super(SignUpState.initial()) {
+    on<SignUpEvent>((event, emit) async {
+      await event.map(
         emailChanged: (e) {
           emit(state.copyWith(email: EmailAddress(e.email)));
         },
@@ -40,16 +50,46 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         obscureChanged: (e) {
           emit(state.copyWith(isObscure: !state.isObscure));
         },
-        submitPressed: (e) {
+        submitPressed: (e) async {
+          Either<AuthFailure, String>? failureOrSuccess;
+
           final isEmailValid = state.email.isValid();
           final isPasswordValid = state.password.isValid();
           final isConfirmPassValid = state.confirmPassword.isValid();
 
           if (isEmailValid && isPasswordValid && isConfirmPassValid) {
             print("All Details Are Valid!");
+
+            emit(state.copyWith(isSubmitting: true));
+            failureOrSuccess = await _authFacade.register(
+              email: state.email.getValue(),
+              password: state.password.getValue(),
+              confirmPassword: state.confirmPassword.getValue(),
+            );
+
+            final currentContext =
+                getIt<AppRouter>().navigatorKey.currentContext!;
+            failureOrSuccess.fold(
+              (failure) {
+                AppFocus.unfocus(currentContext);
+                showError(
+                  message: failure.maybeMap(
+                    showAPIResponseMessage: (value) => value.message,
+                    networkError: (value) =>
+                        'Please check your internet connectivity',
+                    orElse: () => "Server Error. Try again later.",
+                  ),
+                ).show(currentContext);
+              },
+              (r) {
+                AppFocus.unfocus(currentContext);
+                currentContext.router.replace(PageRouteInfo(MainTabView.name));
+              },
+            );
           } else {
             print(StringConstant.someDetailAreInvalidPleaseCheck);
           }
+
           emit(state.copyWith(isSubmitting: false, showError: true));
         },
       );

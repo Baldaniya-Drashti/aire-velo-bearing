@@ -1,4 +1,6 @@
+import 'package:aire_velo_bearings/domain/auth/auth_failure.dart';
 import 'package:aire_velo_bearings/domain/auth/i_auth_facade.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -35,12 +37,12 @@ class AuthStatusBloc extends Bloc<AuthStatusEvent, AuthStatusState> {
           // }
         },
         signedOut: (e) async {
-          /* var res = await _authFacade.logout();
-          res.fold(
-            (l) => null,
-            (r) => emit(AuthStatusState.unauthenticated(r)),
-          ); */
-          emit(AuthStatusState.unAuthenticated("Successfully logged out!"));
+          Either<AuthFailure, String> res;
+          res = await _authFacade.logout();
+          res.fold((l) => null, (r) {
+            emit(AuthStatusState.initial());
+            emit(AuthStatusState.unAuthenticated(r));
+          });
         },
       );
     });

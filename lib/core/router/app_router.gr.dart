@@ -8,7 +8,9 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:aire_velo_bearings/infrastructure/common_model/common_model.dart'
+import 'package:aire_velo_bearings/infrastructure/home_dto/home_dto.dart'
+    as _i19;
+import 'package:aire_velo_bearings/infrastructure/sub_category_dto/sub_category_dto.dart'
     as _i18;
 import 'package:aire_velo_bearings/presentation/change_password/change_password.dart'
     as _i1;
@@ -216,13 +218,13 @@ class Onboarding extends _i16.PageRouteInfo<void> {
 class ProductDetail extends _i16.PageRouteInfo<ProductDetailArgs> {
   ProductDetail({
     _i17.Key? key,
-    required String title,
+    required int id,
     List<_i16.PageRouteInfo>? children,
   }) : super(
           ProductDetail.name,
           args: ProductDetailArgs(
             key: key,
-            title: title,
+            id: id,
           ),
           initialChildren: children,
         );
@@ -235,7 +237,7 @@ class ProductDetail extends _i16.PageRouteInfo<ProductDetailArgs> {
       final args = data.argsAs<ProductDetailArgs>();
       return _i10.ProductDetail(
         key: args.key,
-        title: args.title,
+        id: args.id,
       );
     },
   );
@@ -244,16 +246,16 @@ class ProductDetail extends _i16.PageRouteInfo<ProductDetailArgs> {
 class ProductDetailArgs {
   const ProductDetailArgs({
     this.key,
-    required this.title,
+    required this.id,
   });
 
   final _i17.Key? key;
 
-  final String title;
+  final int id;
 
   @override
   String toString() {
-    return 'ProductDetailArgs{key: $key, title: $title}';
+    return 'ProductDetailArgs{key: $key, id: $id}';
   }
 }
 
@@ -262,13 +264,13 @@ class ProductDetailArgs {
 class SearchScreen extends _i16.PageRouteInfo<SearchScreenArgs> {
   SearchScreen({
     _i17.Key? key,
-    String? searchText,
+    _i18.SubCategoryDTO? category,
     List<_i16.PageRouteInfo>? children,
   }) : super(
           SearchScreen.name,
           args: SearchScreenArgs(
             key: key,
-            searchText: searchText,
+            category: category,
           ),
           initialChildren: children,
         );
@@ -282,7 +284,7 @@ class SearchScreen extends _i16.PageRouteInfo<SearchScreenArgs> {
           data.argsAs<SearchScreenArgs>(orElse: () => const SearchScreenArgs());
       return _i11.SearchScreen(
         key: args.key,
-        searchText: args.searchText,
+        category: args.category,
       );
     },
   );
@@ -291,16 +293,16 @@ class SearchScreen extends _i16.PageRouteInfo<SearchScreenArgs> {
 class SearchScreenArgs {
   const SearchScreenArgs({
     this.key,
-    this.searchText,
+    this.category,
   });
 
   final _i17.Key? key;
 
-  final String? searchText;
+  final _i18.SubCategoryDTO? category;
 
   @override
   String toString() {
-    return 'SearchScreenArgs{key: $key, searchText: $searchText}';
+    return 'SearchScreenArgs{key: $key, category: $category}';
   }
 }
 
@@ -366,7 +368,7 @@ class SplashPage extends _i16.PageRouteInfo<void> {
 class SubCategoryList extends _i16.PageRouteInfo<SubCategoryListArgs> {
   SubCategoryList({
     _i17.Key? key,
-    required _i18.CommonModel category,
+    required _i19.HomeDTO category,
     List<_i16.PageRouteInfo>? children,
   }) : super(
           SubCategoryList.name,
@@ -399,7 +401,7 @@ class SubCategoryListArgs {
 
   final _i17.Key? key;
 
-  final _i18.CommonModel category;
+  final _i19.HomeDTO category;
 
   @override
   String toString() {

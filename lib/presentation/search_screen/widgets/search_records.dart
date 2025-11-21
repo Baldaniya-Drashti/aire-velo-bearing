@@ -1,7 +1,10 @@
 import 'package:aire_velo_bearings/core/constants/string_constant.dart';
+import 'package:aire_velo_bearings/core/router/app_router.gr.dart';
 import 'package:aire_velo_bearings/core/utils/math_utils.dart';
+import 'package:aire_velo_bearings/infrastructure/search_product_dto/search_product_dto.dart';
 import 'package:aire_velo_bearings/presentation/common/widgets/base_text.dart';
 import 'package:aire_velo_bearings/presentation/core/styles/app_colors.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 /* 
@@ -114,99 +117,169 @@ class SearchRecords extends StatelessWidget {
  */
 
 class SearchRecords extends StatelessWidget {
-  const SearchRecords({super.key});
+  final SearchProductDTO record;
+
+  final bool isFavourite;
+  final VoidCallback onFavouriteTap;
+  const SearchRecords({
+    super.key,
+    required this.record,
+    required this.isFavourite,
+    required this.onFavouriteTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8),
-        side: BorderSide(color: AppColors.grey, width: 0.3),
+    return Center(
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+          side: BorderSide(color: AppColors.grey, width: 0.3),
+        ),
+        elevation: 2,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: getSize(150),
+              width: MediaQuery.of(context).size.width,
+              padding: EdgeInsets.all(getSize(5)),
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: NetworkImage(record.images?[0] ?? ''),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              alignment: Alignment.bottomRight,
+              child: GestureDetector(
+                onTap: onFavouriteTap,
+                child: CircleAvatar(
+                  backgroundColor: AppColors.grey,
+                  maxRadius: getSize(15),
+                  child: Icon(
+                    isFavourite ? Icons.favorite : Icons.favorite_outline,
+                    color: isFavourite ? AppColors.red : AppColors.white,
+                  ),
+                ),
+              ),
+            ),
+            /* CustomNetworkImage(
+              url: record.images?[0] ?? '',
+              height: getSize(150),
+              width: MediaQuery.of(context).size.width,
+            ), */
+            GestureDetector(
+              onTap: () {
+                context.router.push(
+                  PageRouteInfo(
+                    ProductDetail.name,
+                    args: ProductDetailArgs(id: record.id ?? -1),
+                  ),
+                );
+              },
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: getSize(8),
+                  vertical: getSize(6),
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    BaseText(
+                      text: record.name ?? '',
+                      fontSize: 13,
+                      lineHeight: 1.3,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    Divider(color: AppColors.secondary),
+                    attributeText(
+                      title: StringConstant.dimensions,
+                      value: record.attributes?.dimensions?.join(',') ?? '',
+                    ),
+                    attributeText(
+                      title: StringConstant.id,
+                      value: record.attributes?.id?.join(',') ?? '',
+                    ),
+                    attributeText(
+                      title: StringConstant.od,
+                      value: record.attributes?.od?.join(',') ?? '',
+                    ),
+                    attributeText(
+                      title: StringConstant.depth,
+                      value: record.attributes?.depth?.join(',') ?? '',
+                    ),
+                    Gap(getSize(8)),
+                    // 🔹 Price And Button
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Container(
+                            height: getSize(30),
+                            decoration: BoxDecoration(color: AppColors.red),
+                            alignment: Alignment.center,
+                            child: BaseText(
+                              text: "£45.00",
+                              textColor: AppColors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Container(
+                            height: getSize(30),
+                            decoration: BoxDecoration(
+                              color: AppColors.secondary,
+                            ),
+                            alignment: Alignment.center,
+                            child: BaseText(
+                              text: StringConstant.moreInfo,
+                              textColor: AppColors.white,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
-      elevation: 1,
-      clipBehavior: Clip.antiAlias,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Image.network(
-            "https://www.airevelobearings.com/wp-content/uploads/2025/05/3344-SLT.jpg",
-            fit: BoxFit.cover,
-          ),
+    );
+  }
 
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: getSize(8),
-              vertical: getSize(6),
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                BaseText(
-                  text: "AC3344-SLT-BO SLT HEADSET BEARING 33 × 44 × 6 – 36/45",
-                  fontSize: 13,
-                  lineHeight: 1.3,
-                  maxLines: 3,
-                  overflow: TextOverflow.ellipsis,
-                  fontWeight: FontWeight.w600,
-                ),
-                Gap(getSize(6)),
-                BaseText(
-                  text:
-                      "Dimensions 33 × 44 × 6\nID: 33  |  OD: 44  |  Depth: 6",
-                  fontSize: 12,
-                  lineHeight: 1.4,
-                  textColor: AppColors.black.withValues(alpha: 0.8),
-                ),
-                Gap(getSize(8)),
-                BaseText(text: StringConstant.aireVeloBearings),
-              ],
-            ),
+  Widget attributeText({required String title, required String value}) {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          width: getSize(80),
+          child: BaseText(
+            text: title,
+            fontSize: 12,
+            lineHeight: 1.4,
+            fontWeight: FontWeight.bold,
+            textAlign: TextAlign.start,
+            textColor: AppColors.black.withValues(alpha: 0.8),
           ),
-          Gap(getSize(8)),
-          // 🔹 Price And Button
-          Padding(
-            padding: EdgeInsets.symmetric(vertical: getSize(10)),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    height: 32,
-                    decoration: BoxDecoration(
-                      color: AppColors.red,
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                    alignment: Alignment.center,
-                    child: BaseText(
-                      text: "£45.00",
-                      textColor: AppColors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 12,
-                    ),
-                  ),
-                ),
-                Gap(getSize(8)),
-                Expanded(
-                  child: Container(
-                    height: getSize(32),
-                    decoration: BoxDecoration(
-                      color: AppColors.secondary,
-                      borderRadius: BorderRadius.circular(4),
-                    ),
-                    alignment: Alignment.center,
-                    child: BaseText(
-                      text: StringConstant.moreInfo,
-                      textColor: AppColors.white,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 12,
-                    ),
-                  ),
-                ),
-              ],
-            ),
+        ),
+        Expanded(
+          child: BaseText(
+            text: value,
+            fontSize: 12,
+            lineHeight: 1.4,
+            maxLines: 1,
+            textAlign: TextAlign.start,
+            textColor: AppColors.black.withValues(alpha: 0.8),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

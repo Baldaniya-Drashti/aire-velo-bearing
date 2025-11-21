@@ -1,11 +1,14 @@
 import 'package:aire_velo_bearings/application/main/home_bloc/home_bloc.dart';
 import 'package:aire_velo_bearings/core/constants/font_constants.dart';
+import 'package:aire_velo_bearings/core/router/app_router.gr.dart';
 import 'package:aire_velo_bearings/core/utils/math_utils.dart';
 import 'package:aire_velo_bearings/injection.dart';
 import 'package:aire_velo_bearings/presentation/common/widgets/base_text.dart';
 import 'package:aire_velo_bearings/presentation/common/widgets/center_loading_indicator.dart';
 import 'package:aire_velo_bearings/presentation/common/widgets/paginated_list_view.dart';
+import 'package:aire_velo_bearings/presentation/common/widgets/something_wrong_text.dart';
 import 'package:aire_velo_bearings/presentation/core/styles/app_colors.dart';
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,24 +20,30 @@ class CategoryList extends StatelessWidget {
     return BlocBuilder<HomeBloc, HomeState>(
       builder: (context, state) {
         final productList = state.productList;
-        return (state.isLoading)
-            ? CenterLoadingIndicator()
-            : PaginatedListView(
-                onRefresh: () {},
-                onLoading: () {},
-                refreshController: getIt<HomeBloc>().refreshController,
-                child: ListView.builder(
+        return PaginatedListView(
+          onRefresh: () {
+            context.read<HomeBloc>().add(HomeEvent.getProductList(true));
+          },
+          onLoading: () {
+            context.read<HomeBloc>().add(HomeEvent.getProductList(false));
+          },
+          refreshController: getIt<HomeBloc>().refreshController,
+          child: (state.isLoading)
+              ? CenterLoadingIndicator(isOnlyLoader: true)
+              : state.isErrorInAPI
+              ? SomethingWrong()
+              : ListView.builder(
                   itemCount: productList.length,
                   itemBuilder: (_, index) {
                     final record = productList[index];
                     return GestureDetector(
                       onTap: () {
-                        /* ontext.router.push(
-                  PageRouteInfo(
-                    SubCategoryList.name,
-                    args: SubCategoryListArgs(category: record),
-                  ),
-                ); */
+                        context.router.push(
+                          PageRouteInfo(
+                            SubCategoryList.name,
+                            args: SubCategoryListArgs(category: record),
+                          ),
+                        );
                       },
                       child: Container(
                         height: getSize(120),
@@ -70,7 +79,7 @@ class CategoryList extends StatelessWidget {
                     );
                   },
                 ),
-              );
+        );
       },
     );
   }

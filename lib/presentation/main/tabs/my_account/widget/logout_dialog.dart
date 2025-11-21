@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:aire_velo_bearings/core/constants/font_constants.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:aire_velo_bearings/core/constants/string_constant.dart';
 import 'package:aire_velo_bearings/core/utils/math_utils.dart';
 import 'package:aire_velo_bearings/presentation/common/widgets/base_text.dart';
@@ -17,7 +16,11 @@ class LogOutDialog extends StatelessWidget {
     return const Placeholder();
   }
 
-  logoutDialog(BuildContext context) {
+  logoutDialog(
+    BuildContext context, {
+    required Function() onPressedAccept,
+    required Function() onPressedReject,
+  }) {
     return showDialog<bool>(
       context: context,
       builder: (context) {
@@ -55,9 +58,7 @@ class LogOutDialog extends StatelessWidget {
                   Expanded(
                     child: CommonButton(
                       width: getSize(160),
-                      onPressed: () {
-                        context.router.maybePop(false);
-                      },
+                      onPressed: onPressedReject,
                       borderColor: AppColors.primary,
                       buttonTextColor: AppColors.primary,
                       backgroundColor: AppColors.white,
@@ -68,9 +69,7 @@ class LogOutDialog extends StatelessWidget {
                   Expanded(
                     child: CommonButton(
                       width: getSize(160),
-                      onPressed: () {
-                        context.router.maybePop(true);
-                      },
+                      onPressed: onPressedAccept,
                       buttonText: StringConstant.logout,
                     ),
                   ),

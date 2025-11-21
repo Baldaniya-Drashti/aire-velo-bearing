@@ -6,6 +6,7 @@ import 'package:aire_velo_bearings/presentation/core/styles/app_colors.dart';
 import 'package:aire_velo_bearings/presentation/core/widgets/buttons/common_button.dart';
 import 'package:aire_velo_bearings/presentation/core/widgets/inputs/custom_text_field.dart';
 import 'package:aire_velo_bearings/presentation/core/widgets/layout/layout.dart';
+import 'package:aire_velo_bearings/presentation/core/widgets/layout/unfocus.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,110 +24,155 @@ class ChangePassword extends StatelessWidget {
         builder: (context, state) {
           return Scaffold(
             appBar: CustomAppBar(title: StringConstant.changePassword),
-            body: Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: getSize(20),
-                vertical: getSize(30),
-              ),
-              child: Form(
-                autovalidateMode: (state.showError)
-                    ? AutovalidateMode.always
-                    : AutovalidateMode.disabled,
-                child: Column(
-                  children: [
-                    CustomTextField(
-                      labelText: StringConstant.password,
-                      obscureText: state.isObscure,
-                      suffixIcon: InkWell(
-                        onTap: () {
-                          context.read<ChangePasswordBloc>().add(
-                            const ChangePasswordEvent.obscureChanged(),
-                          );
-                        },
-                        child: Container(
-                          color: AppColors.transparent,
-                          padding: EdgeInsets.all(getSize(9)),
-                          child: Icon(
-                            (state.isObscure)
-                                ? Icons.visibility_outlined
-                                : Icons.visibility_off_outlined,
+            body: CustomUnFocus(
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: getSize(20),
+                  vertical: getSize(30),
+                ),
+                child: SingleChildScrollView(
+                  child: Form(
+                    autovalidateMode: (state.showError)
+                        ? AutovalidateMode.always
+                        : AutovalidateMode.disabled,
+                    child: Column(
+                      children: [
+                        CustomTextField(
+                          labelText: StringConstant.password,
+                          obscureText: state.isObscure,
+                          suffixIcon: InkWell(
+                            onTap: () {
+                              context.read<ChangePasswordBloc>().add(
+                                const ChangePasswordEvent.obscureChanged(),
+                              );
+                            },
+                            child: Container(
+                              color: AppColors.transparent,
+                              padding: EdgeInsets.all(getSize(9)),
+                              child: Icon(
+                                (state.isObscure)
+                                    ? Icons.visibility_outlined
+                                    : Icons.visibility_off_outlined,
+                              ),
+                            ),
                           ),
+                          onChanged: (value) =>
+                              context.read<ChangePasswordBloc>().add(
+                                ChangePasswordEvent.currentPassChanged(value),
+                              ),
+                          validator: (p0, p1) => context
+                              .read<ChangePasswordBloc>()
+                              .state
+                              .currentPass
+                              .value
+                              .fold(
+                                (f) => f.maybeMap(
+                                  empty: (value) =>
+                                      StringConstant.pleaseEnterPassword,
+                                  shortPassword: (_) => StringConstant
+                                      .passwordShouldBeMinimum8Digit,
+                                  orElse: () => null,
+                                ),
+                                (_) => null,
+                              ),
                         ),
-                      ),
-                      onChanged: (value) => context
-                          .read<ChangePasswordBloc>()
-                          .add(ChangePasswordEvent.passwordChanged(value)),
-                      validator: (p0, p1) => context
-                          .read<ChangePasswordBloc>()
-                          .state
-                          .password
-                          .value
-                          .fold(
-                            (f) => f.maybeMap(
-                              empty: (value) =>
-                                  StringConstant.pleaseEnterPassword,
-                              shortPassword: (_) =>
-                                  StringConstant.passwordShouldBeMinimum8Digit,
-                              orElse: () => null,
+                        Gap(getSize(20)),
+                        CustomTextField(
+                          labelText: StringConstant.newPassword,
+                          obscureText: state.isNewObscure,
+                          suffixIcon: InkWell(
+                            onTap: () {
+                              context.read<ChangePasswordBloc>().add(
+                                const ChangePasswordEvent.newObscureChanged(),
+                              );
+                            },
+                            child: Container(
+                              color: AppColors.transparent,
+                              padding: EdgeInsets.all(getSize(9)),
+                              child: Icon(
+                                (state.isNewObscure)
+                                    ? Icons.visibility_outlined
+                                    : Icons.visibility_off_outlined,
+                              ),
                             ),
-                            (_) => null,
                           ),
-                    ),
-                    Gap(getSize(20)),
-                    CustomTextField(
-                      labelText: StringConstant.confirmPassword,
-                      obscureText: state.isObscure,
-                      suffixIcon: InkWell(
-                        onTap: () {
-                          context.read<ChangePasswordBloc>().add(
-                            const ChangePasswordEvent.obscureChanged(),
-                          );
-                        },
-                        child: Container(
-                          color: AppColors.transparent,
-                          padding: EdgeInsets.all(getSize(9)),
-                          child: Icon(
-                            (state.isObscure)
-                                ? Icons.visibility_outlined
-                                : Icons.visibility_off_outlined,
-                          ),
+                          onChanged: (value) => context
+                              .read<ChangePasswordBloc>()
+                              .add(ChangePasswordEvent.newPassChanged(value)),
+                          validator: (p0, p1) => context
+                              .read<ChangePasswordBloc>()
+                              .state
+                              .newPass
+                              .value
+                              .fold(
+                                (f) => f.maybeMap(
+                                  empty: (value) =>
+                                      StringConstant.pleaseEnterNewPassword,
+                                  shortPassword: (_) => StringConstant
+                                      .passwordShouldBeMinimum8Digit,
+                                  orElse: () => null,
+                                ),
+                                (_) => null,
+                              ),
                         ),
-                      ),
-                      onChanged: (value) =>
-                          context.read<ChangePasswordBloc>().add(
-                            ChangePasswordEvent.confirmPasswordChanged(
-                              value,
-                              state.password.getValue(),
+                        Gap(getSize(20)),
+                        CustomTextField(
+                          labelText: StringConstant.confirmPassword,
+                          obscureText: state.isNewObscure,
+                          suffixIcon: InkWell(
+                            onTap: () {
+                              context.read<ChangePasswordBloc>().add(
+                                const ChangePasswordEvent.newObscureChanged(),
+                              );
+                            },
+                            child: Container(
+                              color: AppColors.transparent,
+                              padding: EdgeInsets.all(getSize(9)),
+                              child: Icon(
+                                (state.isNewObscure)
+                                    ? Icons.visibility_outlined
+                                    : Icons.visibility_off_outlined,
+                              ),
                             ),
                           ),
-                      validator: (_, context) => context
-                          .read<ChangePasswordBloc>()
-                          .state
-                          .confirmPassword
-                          .value
-                          .fold(
-                            (f) => f.maybeMap(
-                              empty: (value) =>
-                                  StringConstant.pleaseEnterConfirmPassword,
-                              shortPassword: (_) =>
-                                  StringConstant.passwordShouldBeMinimum8Digit,
-                              passwordsDontMatch: (_) =>
-                                  StringConstant.bothPasswordsAreDoesNotMatch,
-                              orElse: () => null,
-                            ),
-                            (_) => null,
-                          ),
+                          onChanged: (value) =>
+                              context.read<ChangePasswordBloc>().add(
+                                ChangePasswordEvent.confirmPassChanged(
+                                  value,
+                                  state.newPass.getValue(),
+                                ),
+                              ),
+                          validator: (_, context) => context
+                              .read<ChangePasswordBloc>()
+                              .state
+                              .confirmPass
+                              .value
+                              .fold(
+                                (f) => f.maybeMap(
+                                  empty: (value) =>
+                                      StringConstant.pleaseEnterConfirmPassword,
+                                  shortPassword: (_) => StringConstant
+                                      .passwordShouldBeMinimum8Digit,
+                                  passwordsDontMatch: (_) => StringConstant
+                                      .bothPasswordsAreDoesNotMatch,
+                                  orElse: () => null,
+                                ),
+                                (_) => null,
+                              ),
+                        ),
+                        Gap(getSize(50)),
+                        CommonButton(
+                          isSubmitting: state.isSubmitting,
+                          onPressed: () {
+                            context.read<ChangePasswordBloc>().add(
+                              ChangePasswordEvent.submitPressed(),
+                            );
+                          },
+                          buttonText: StringConstant.changePassword,
+                        ),
+                      ],
                     ),
-                    Spacer(),
-                    CommonButton(
-                      onPressed: () {
-                        context.read<ChangePasswordBloc>().add(
-                          ChangePasswordEvent.submitPressed(),
-                        );
-                      },
-                      buttonText: StringConstant.changePassword,
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ),

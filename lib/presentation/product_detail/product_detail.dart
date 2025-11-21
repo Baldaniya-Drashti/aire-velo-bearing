@@ -2,137 +2,141 @@ import 'package:aire_velo_bearings/application/product_detail_bloc/product_detai
 import 'package:aire_velo_bearings/core/constants/font_constants.dart';
 import 'package:aire_velo_bearings/core/constants/string_constant.dart';
 import 'package:aire_velo_bearings/core/utils/math_utils.dart';
+import 'package:aire_velo_bearings/infrastructure/product_detail_dto/product_detail_dto.dart';
 import 'package:aire_velo_bearings/injection.dart';
 import 'package:aire_velo_bearings/presentation/common/widgets/base_text.dart';
+import 'package:aire_velo_bearings/presentation/common/widgets/center_loading_indicator.dart';
+import 'package:aire_velo_bearings/presentation/common/widgets/something_wrong_text.dart';
 import 'package:aire_velo_bearings/presentation/core/styles/app_colors.dart';
 import 'package:aire_velo_bearings/presentation/core/widgets/buttons/common_button.dart';
 import 'package:aire_velo_bearings/presentation/core/widgets/inputs/custom_app_bar.dart';
+import 'package:aire_velo_bearings/presentation/core/widgets/layout/common_url_launcher.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:gap/gap.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 @RoutePage(name: 'ProductDetail')
 class ProductDetail extends StatelessWidget {
-  final String title;
-  ProductDetail({super.key, required this.title});
-
-  final List<String> imageUrls = [
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRD2YAF4IlF_XqEJa4rJ73Owm2Qp0oc03fPNKSEc8Qu0C5vu4peo_V5EF-_paHFOj71m9Q&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQw-NE17nqEX8l1u1RyoXUTYmNFvZpmI2BSl7Bc6V4AxAU5ikY6hle-Y-LuAoz46L_HhHc&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYOIZ-U1WNFd5XrSgyAY7BqVHjmlevDD-VKgSxIunMt2O6DRpaGn4nc1iSeNwne0nHakI&usqp=CAU',
-    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQORur78yVZ5S7zwp39wup7eH6xr8Du1oqHuBWS5UPmrmUWLW8otkTPuPoJUnHFvLf4j1A&usqp=CAU',
-  ];
+  final int id;
+  const ProductDetail({super.key, required this.id});
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<ProductDetailBloc>(),
+      create: (context) =>
+          getIt<ProductDetailBloc>()
+            ..add(ProductDetailEvent.getProductDetail(id)),
       child: BlocBuilder<ProductDetailBloc, ProductDetailState>(
         builder: (context, state) {
+          final prod = state.product ?? ProductDetailDTO();
           return Scaffold(
             appBar: CustomAppBar(title: StringConstant.productDetail),
-            body: SingleChildScrollView(
-              child: Column(
-                children: [
-                  imageView(context, state),
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: getSize(20),
-                      vertical: getSize(20),
-                    ).copyWith(bottom: getSize(60)),
+            body: (state.isLoading)
+                ? CenterLoadingIndicator(isOnlyLoader: true)
+                : state.isErrorInAPI
+                ? SomethingWrong()
+                : SingleChildScrollView(
                     child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        BaseText(
-                          text:
-                              "AC3344-SLT-BO SLT HEADSET BEARING 33 x 44 x 6 – 36/45",
-                          fontSize: 20,
-                          fontFamily: FontConstant.jost,
-                          fontWeight: FontWeight.w600,
-                          textAlign: TextAlign.center,
-                        ),
-                        Gap(getSize(15)),
-                        BaseText(
-                          text:
-                              "AC3344-SLT-BO SLT HEADSET BEARING 33 x 44 x 6 – 36/45 CANYON CF SLX LOWER BEARING",
-                          fontSize: 12,
-                          textAlign: TextAlign.center,
-                        ),
-                        commonDivider(),
-                        BaseText(
-                          text:
-                              "SLT Solid Lube Technology utilized in a headset bearing, instead of using a cage and grease a polymer is used to fill the space.\nThe polymer creates a solid seal up to the internal walls of the bearing preventing liquids and fine grit form getting in to the bearing raceways.\nBlack Oxide outer coating to prevent rust.",
-                          fontSize: 12,
-                          lineHeight: 1.5,
-                          maxLines: 50,
-                        ),
-                        commonDivider(),
-                        tableRow(
-                          title: StringConstant.weight,
-                          value: "0.035${StringConstant.kg}",
-                        ),
-                        tableRow(
-                          title: StringConstant.dimensions,
-                          value: "30 x 41.8 x 8${StringConstant.mm}",
-                          isEven: false,
-                        ),
-                        tableRow(
-                          title: StringConstant.dimensions,
-                          value: "33 x 44 x 6 36/45",
-                        ),
-                        tableRow(
-                          title: StringConstant.id,
-                          value: "33",
-                          isEven: false,
-                        ),
-                        tableRow(title: StringConstant.od, value: "44"),
-                        tableRow(
-                          title: StringConstant.depth,
-                          value: "6",
-                          isEven: false,
-                        ),
-                        tableRow(
-                          title: StringConstant.chamferAngles,
-                          value: "36/45",
-                        ),
-                        tableRow(
-                          title: StringConstant.internalChamferAngle,
-                          value: "36",
-                          isEven: false,
-                        ),
-                        tableRow(
-                          title: StringConstant.externalChamferAngle,
-                          value: "45",
-                        ),
-                        tableRow(
-                          title: StringConstant.material,
-                          value: "Black Oxide/SLT",
-                          isEven: false,
-                        ),
-                        Gap(getSize(10)),
-                        tableRow(
-                          title: "£45.00",
-                          value: "In Stock",
-                          isTotal: true,
-                          isEven: false,
-                        ),
-                        Gap(getSize(10)),
-                        CommonButton(
-                          onPressed: () {},
-                          height: 40,
-                          buttonText: StringConstant.buyOnline,
+                        imageView(context, state),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: getSize(20),
+                            vertical: getSize(20),
+                          ).copyWith(bottom: getSize(60)),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              BaseText(
+                                text: prod.name ?? "",
+                                fontSize: 20,
+                                fontFamily: FontConstant.jost,
+                                fontWeight: FontWeight.w600,
+                                textAlign: TextAlign.center,
+                              ),
+                              Gap(getSize(15)),
+                              BaseText(
+                                text: prod.short_description ?? '',
+                                fontSize: 12,
+                                textAlign: TextAlign.center,
+                              ),
+                              commonDivider(),
+                              Html(data: prod.description ?? ""),
+                              commonDivider(),
+                              tableRow(
+                                title: StringConstant.weight,
+                                value: "0.035${StringConstant.kg}",
+                              ),
+                              tableRow(
+                                title: StringConstant.dimensions,
+                                value: "30 x 41.8 x 8${StringConstant.mm}",
+                                isEven: false,
+                              ),
+                              tableRow(
+                                title: StringConstant.dimensions,
+                                value: "33 x 44 x 6 36/45",
+                              ),
+                              tableRow(
+                                title: StringConstant.id,
+                                value: "33",
+                                isEven: false,
+                              ),
+                              tableRow(title: StringConstant.od, value: "44"),
+                              tableRow(
+                                title: StringConstant.depth,
+                                value: "6",
+                                isEven: false,
+                              ),
+                              tableRow(
+                                title: StringConstant.chamferAngles,
+                                value: "36/45",
+                              ),
+                              tableRow(
+                                title: StringConstant.internalChamferAngle,
+                                value: "36",
+                                isEven: false,
+                              ),
+                              tableRow(
+                                title: StringConstant.externalChamferAngle,
+                                value: "45",
+                              ),
+                              tableRow(
+                                title: StringConstant.material,
+                                value: "Black Oxide/SLT",
+                                isEven: false,
+                              ),
+                              Gap(getSize(10)),
+                              tableRow(
+                                title: "£${prod.price ?? 00.00}",
+                                value: prod.stock_status ?? '',
+                                isTotal: true,
+                                isEven: false,
+                              ),
+                              Gap(getSize(10)),
+                              CommonButton(
+                                onPressed: () {
+                                  if (prod.permalink != null &&
+                                      prod.permalink!.isNotEmpty) {
+                                    CommonUrlLauncher.launchAppUrl(
+                                      prod.permalink!,
+                                    );
+                                  }
+                                },
+                                height: 40,
+                                buttonText: StringConstant.buyOnline,
+                              ),
+                            ],
+                          ),
                         ),
                       ],
                     ),
                   ),
-                ],
-              ),
-            ),
           );
         },
       ),
@@ -185,6 +189,7 @@ class ProductDetail extends StatelessWidget {
   }
 
   Widget imageView(BuildContext context, ProductDetailState state) {
+    final prod = state.product ?? ProductDetailDTO();
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -203,7 +208,7 @@ class ProductDetail extends StatelessWidget {
                   );
                 },
               ),
-              items: imageUrls.map((url) {
+              items: prod.images?.map((url) {
                 return Builder(
                   builder: (BuildContext context) {
                     return Image.network(
@@ -245,7 +250,7 @@ class ProductDetail extends StatelessWidget {
         Gap(getSize(15)),
         AnimatedSmoothIndicator(
           activeIndex: state.currentImageIndex,
-          count: imageUrls.length,
+          count: prod.images?.length ?? 0,
           effect: WormEffect(
             dotHeight: getSize(8),
             dotWidth: getSize(8),

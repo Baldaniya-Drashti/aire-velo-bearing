@@ -6,12 +6,12 @@ class HomeState with _$HomeState {
     required List<HomeDTO> productList,
     required bool isLoading,
     required bool isSubmitting,
-    required bool showErrorMessages,
+    required bool isErrorInAPI,
     required bool isNoDataFound,
   }) = _HomeState;
   factory HomeState.initial() => HomeState(
     productList: [],
-    showErrorMessages: false,
+    isErrorInAPI: false,
     isLoading: false,
     isNoDataFound: false,
     isSubmitting: false,

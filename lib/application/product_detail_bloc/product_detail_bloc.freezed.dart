@@ -20,18 +20,21 @@ mixin _$ProductDetailEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(int index) imageIndexChanged,
     required TResult Function() favoriteChanged,
+    required TResult Function(int id) getProductDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int index)? imageIndexChanged,
     TResult? Function()? favoriteChanged,
+    TResult? Function(int id)? getProductDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int index)? imageIndexChanged,
     TResult Function()? favoriteChanged,
+    TResult Function(int id)? getProductDetail,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +42,21 @@ mixin _$ProductDetailEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(ImageIndexChanged value) imageIndexChanged,
     required TResult Function(FavoriteChanged value) favoriteChanged,
+    required TResult Function(GetProductDetail value) getProductDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ImageIndexChanged value)? imageIndexChanged,
     TResult? Function(FavoriteChanged value)? favoriteChanged,
+    TResult? Function(GetProductDetail value)? getProductDetail,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ImageIndexChanged value)? imageIndexChanged,
     TResult Function(FavoriteChanged value)? favoriteChanged,
+    TResult Function(GetProductDetail value)? getProductDetail,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -141,6 +147,7 @@ class _$ImageIndexChangedImpl implements ImageIndexChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(int index) imageIndexChanged,
     required TResult Function() favoriteChanged,
+    required TResult Function(int id) getProductDetail,
   }) {
     return imageIndexChanged(index);
   }
@@ -150,6 +157,7 @@ class _$ImageIndexChangedImpl implements ImageIndexChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int index)? imageIndexChanged,
     TResult? Function()? favoriteChanged,
+    TResult? Function(int id)? getProductDetail,
   }) {
     return imageIndexChanged?.call(index);
   }
@@ -159,6 +167,7 @@ class _$ImageIndexChangedImpl implements ImageIndexChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int index)? imageIndexChanged,
     TResult Function()? favoriteChanged,
+    TResult Function(int id)? getProductDetail,
     required TResult orElse(),
   }) {
     if (imageIndexChanged != null) {
@@ -172,6 +181,7 @@ class _$ImageIndexChangedImpl implements ImageIndexChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(ImageIndexChanged value) imageIndexChanged,
     required TResult Function(FavoriteChanged value) favoriteChanged,
+    required TResult Function(GetProductDetail value) getProductDetail,
   }) {
     return imageIndexChanged(this);
   }
@@ -181,6 +191,7 @@ class _$ImageIndexChangedImpl implements ImageIndexChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ImageIndexChanged value)? imageIndexChanged,
     TResult? Function(FavoriteChanged value)? favoriteChanged,
+    TResult? Function(GetProductDetail value)? getProductDetail,
   }) {
     return imageIndexChanged?.call(this);
   }
@@ -190,6 +201,7 @@ class _$ImageIndexChangedImpl implements ImageIndexChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ImageIndexChanged value)? imageIndexChanged,
     TResult Function(FavoriteChanged value)? favoriteChanged,
+    TResult Function(GetProductDetail value)? getProductDetail,
     required TResult orElse(),
   }) {
     if (imageIndexChanged != null) {
@@ -248,6 +260,7 @@ class _$FavoriteChangedImpl implements FavoriteChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(int index) imageIndexChanged,
     required TResult Function() favoriteChanged,
+    required TResult Function(int id) getProductDetail,
   }) {
     return favoriteChanged();
   }
@@ -257,6 +270,7 @@ class _$FavoriteChangedImpl implements FavoriteChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int index)? imageIndexChanged,
     TResult? Function()? favoriteChanged,
+    TResult? Function(int id)? getProductDetail,
   }) {
     return favoriteChanged?.call();
   }
@@ -266,6 +280,7 @@ class _$FavoriteChangedImpl implements FavoriteChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int index)? imageIndexChanged,
     TResult Function()? favoriteChanged,
+    TResult Function(int id)? getProductDetail,
     required TResult orElse(),
   }) {
     if (favoriteChanged != null) {
@@ -279,6 +294,7 @@ class _$FavoriteChangedImpl implements FavoriteChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(ImageIndexChanged value) imageIndexChanged,
     required TResult Function(FavoriteChanged value) favoriteChanged,
+    required TResult Function(GetProductDetail value) getProductDetail,
   }) {
     return favoriteChanged(this);
   }
@@ -288,6 +304,7 @@ class _$FavoriteChangedImpl implements FavoriteChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ImageIndexChanged value)? imageIndexChanged,
     TResult? Function(FavoriteChanged value)? favoriteChanged,
+    TResult? Function(GetProductDetail value)? getProductDetail,
   }) {
     return favoriteChanged?.call(this);
   }
@@ -297,6 +314,7 @@ class _$FavoriteChangedImpl implements FavoriteChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ImageIndexChanged value)? imageIndexChanged,
     TResult Function(FavoriteChanged value)? favoriteChanged,
+    TResult Function(GetProductDetail value)? getProductDetail,
     required TResult orElse(),
   }) {
     if (favoriteChanged != null) {
@@ -311,9 +329,152 @@ abstract class FavoriteChanged implements ProductDetailEvent {
 }
 
 /// @nodoc
+abstract class _$$GetProductDetailImplCopyWith<$Res> {
+  factory _$$GetProductDetailImplCopyWith(_$GetProductDetailImpl value,
+          $Res Function(_$GetProductDetailImpl) then) =
+      __$$GetProductDetailImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int id});
+}
+
+/// @nodoc
+class __$$GetProductDetailImplCopyWithImpl<$Res>
+    extends _$ProductDetailEventCopyWithImpl<$Res, _$GetProductDetailImpl>
+    implements _$$GetProductDetailImplCopyWith<$Res> {
+  __$$GetProductDetailImplCopyWithImpl(_$GetProductDetailImpl _value,
+      $Res Function(_$GetProductDetailImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$GetProductDetailImpl(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetProductDetailImpl implements GetProductDetail {
+  const _$GetProductDetailImpl(this.id);
+
+  @override
+  final int id;
+
+  @override
+  String toString() {
+    return 'ProductDetailEvent.getProductDetail(id: $id)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetProductDetailImpl &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetProductDetailImplCopyWith<_$GetProductDetailImpl> get copyWith =>
+      __$$GetProductDetailImplCopyWithImpl<_$GetProductDetailImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int index) imageIndexChanged,
+    required TResult Function() favoriteChanged,
+    required TResult Function(int id) getProductDetail,
+  }) {
+    return getProductDetail(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int index)? imageIndexChanged,
+    TResult? Function()? favoriteChanged,
+    TResult? Function(int id)? getProductDetail,
+  }) {
+    return getProductDetail?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int index)? imageIndexChanged,
+    TResult Function()? favoriteChanged,
+    TResult Function(int id)? getProductDetail,
+    required TResult orElse(),
+  }) {
+    if (getProductDetail != null) {
+      return getProductDetail(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ImageIndexChanged value) imageIndexChanged,
+    required TResult Function(FavoriteChanged value) favoriteChanged,
+    required TResult Function(GetProductDetail value) getProductDetail,
+  }) {
+    return getProductDetail(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ImageIndexChanged value)? imageIndexChanged,
+    TResult? Function(FavoriteChanged value)? favoriteChanged,
+    TResult? Function(GetProductDetail value)? getProductDetail,
+  }) {
+    return getProductDetail?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ImageIndexChanged value)? imageIndexChanged,
+    TResult Function(FavoriteChanged value)? favoriteChanged,
+    TResult Function(GetProductDetail value)? getProductDetail,
+    required TResult orElse(),
+  }) {
+    if (getProductDetail != null) {
+      return getProductDetail(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetProductDetail implements ProductDetailEvent {
+  const factory GetProductDetail(final int id) = _$GetProductDetailImpl;
+
+  int get id;
+  @JsonKey(ignore: true)
+  _$$GetProductDetailImplCopyWith<_$GetProductDetailImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$ProductDetailState {
-  int get currentImageIndex => throw _privateConstructorUsedError;
+  bool get isLoading => throw _privateConstructorUsedError;
+  bool get isErrorInAPI => throw _privateConstructorUsedError;
   int get isFavorite => throw _privateConstructorUsedError;
+  int get currentImageIndex => throw _privateConstructorUsedError;
+  ProductDetailDTO? get product => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ProductDetailStateCopyWith<ProductDetailState> get copyWith =>
@@ -326,7 +487,14 @@ abstract class $ProductDetailStateCopyWith<$Res> {
           ProductDetailState value, $Res Function(ProductDetailState) then) =
       _$ProductDetailStateCopyWithImpl<$Res, ProductDetailState>;
   @useResult
-  $Res call({int currentImageIndex, int isFavorite});
+  $Res call(
+      {bool isLoading,
+      bool isErrorInAPI,
+      int isFavorite,
+      int currentImageIndex,
+      ProductDetailDTO? product});
+
+  $ProductDetailDTOCopyWith<$Res>? get product;
 }
 
 /// @nodoc
@@ -342,19 +510,46 @@ class _$ProductDetailStateCopyWithImpl<$Res, $Val extends ProductDetailState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currentImageIndex = null,
+    Object? isLoading = null,
+    Object? isErrorInAPI = null,
     Object? isFavorite = null,
+    Object? currentImageIndex = null,
+    Object? product = freezed,
   }) {
     return _then(_value.copyWith(
-      currentImageIndex: null == currentImageIndex
-          ? _value.currentImageIndex
-          : currentImageIndex // ignore: cast_nullable_to_non_nullable
-              as int,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isErrorInAPI: null == isErrorInAPI
+          ? _value.isErrorInAPI
+          : isErrorInAPI // ignore: cast_nullable_to_non_nullable
+              as bool,
       isFavorite: null == isFavorite
           ? _value.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
               as int,
+      currentImageIndex: null == currentImageIndex
+          ? _value.currentImageIndex
+          : currentImageIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      product: freezed == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as ProductDetailDTO?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $ProductDetailDTOCopyWith<$Res>? get product {
+    if (_value.product == null) {
+      return null;
+    }
+
+    return $ProductDetailDTOCopyWith<$Res>(_value.product!, (value) {
+      return _then(_value.copyWith(product: value) as $Val);
+    });
   }
 }
 
@@ -366,7 +561,15 @@ abstract class _$$ProductDetailStateImplCopyWith<$Res>
       __$$ProductDetailStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int currentImageIndex, int isFavorite});
+  $Res call(
+      {bool isLoading,
+      bool isErrorInAPI,
+      int isFavorite,
+      int currentImageIndex,
+      ProductDetailDTO? product});
+
+  @override
+  $ProductDetailDTOCopyWith<$Res>? get product;
 }
 
 /// @nodoc
@@ -380,18 +583,33 @@ class __$$ProductDetailStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? currentImageIndex = null,
+    Object? isLoading = null,
+    Object? isErrorInAPI = null,
     Object? isFavorite = null,
+    Object? currentImageIndex = null,
+    Object? product = freezed,
   }) {
     return _then(_$ProductDetailStateImpl(
-      currentImageIndex: null == currentImageIndex
-          ? _value.currentImageIndex
-          : currentImageIndex // ignore: cast_nullable_to_non_nullable
-              as int,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isErrorInAPI: null == isErrorInAPI
+          ? _value.isErrorInAPI
+          : isErrorInAPI // ignore: cast_nullable_to_non_nullable
+              as bool,
       isFavorite: null == isFavorite
           ? _value.isFavorite
           : isFavorite // ignore: cast_nullable_to_non_nullable
               as int,
+      currentImageIndex: null == currentImageIndex
+          ? _value.currentImageIndex
+          : currentImageIndex // ignore: cast_nullable_to_non_nullable
+              as int,
+      product: freezed == product
+          ? _value.product
+          : product // ignore: cast_nullable_to_non_nullable
+              as ProductDetailDTO?,
     ));
   }
 }
@@ -400,16 +618,26 @@ class __$$ProductDetailStateImplCopyWithImpl<$Res>
 
 class _$ProductDetailStateImpl implements _ProductDetailState {
   _$ProductDetailStateImpl(
-      {required this.currentImageIndex, required this.isFavorite});
+      {required this.isLoading,
+      required this.isErrorInAPI,
+      required this.isFavorite,
+      required this.currentImageIndex,
+      required this.product});
 
+  @override
+  final bool isLoading;
+  @override
+  final bool isErrorInAPI;
+  @override
+  final int isFavorite;
   @override
   final int currentImageIndex;
   @override
-  final int isFavorite;
+  final ProductDetailDTO? product;
 
   @override
   String toString() {
-    return 'ProductDetailState(currentImageIndex: $currentImageIndex, isFavorite: $isFavorite)';
+    return 'ProductDetailState(isLoading: $isLoading, isErrorInAPI: $isErrorInAPI, isFavorite: $isFavorite, currentImageIndex: $currentImageIndex, product: $product)';
   }
 
   @override
@@ -417,14 +645,20 @@ class _$ProductDetailStateImpl implements _ProductDetailState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ProductDetailStateImpl &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
+            (identical(other.isErrorInAPI, isErrorInAPI) ||
+                other.isErrorInAPI == isErrorInAPI) &&
+            (identical(other.isFavorite, isFavorite) ||
+                other.isFavorite == isFavorite) &&
             (identical(other.currentImageIndex, currentImageIndex) ||
                 other.currentImageIndex == currentImageIndex) &&
-            (identical(other.isFavorite, isFavorite) ||
-                other.isFavorite == isFavorite));
+            (identical(other.product, product) || other.product == product));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, currentImageIndex, isFavorite);
+  int get hashCode => Object.hash(runtimeType, isLoading, isErrorInAPI,
+      isFavorite, currentImageIndex, product);
 
   @JsonKey(ignore: true)
   @override
@@ -436,13 +670,22 @@ class _$ProductDetailStateImpl implements _ProductDetailState {
 
 abstract class _ProductDetailState implements ProductDetailState {
   factory _ProductDetailState(
-      {required final int currentImageIndex,
-      required final int isFavorite}) = _$ProductDetailStateImpl;
+      {required final bool isLoading,
+      required final bool isErrorInAPI,
+      required final int isFavorite,
+      required final int currentImageIndex,
+      required final ProductDetailDTO? product}) = _$ProductDetailStateImpl;
 
+  @override
+  bool get isLoading;
+  @override
+  bool get isErrorInAPI;
+  @override
+  int get isFavorite;
   @override
   int get currentImageIndex;
   @override
-  int get isFavorite;
+  ProductDetailDTO? get product;
   @override
   @JsonKey(ignore: true)
   _$$ProductDetailStateImplCopyWith<_$ProductDetailStateImpl> get copyWith =>

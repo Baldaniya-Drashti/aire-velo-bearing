@@ -1,14 +1,17 @@
 // ignore_for_file: prefer_const_constructors, use_build_context_synchronously
 
+import 'package:aire_velo_bearings/application/account_bloc/account_bloc.dart';
 import 'package:aire_velo_bearings/core/constants/font_constants.dart';
 import 'package:aire_velo_bearings/core/constants/string_constant.dart';
 import 'package:aire_velo_bearings/core/router/app_router.gr.dart';
 import 'package:aire_velo_bearings/core/utils/math_utils.dart';
+import 'package:aire_velo_bearings/presentation/core/widgets/layout/common_url_launcher.dart';
 import 'package:aire_velo_bearings/presentation/main/tabs/my_account/widget/logout_dialog.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:aire_velo_bearings/application/auth_status/auth_status_bloc.dart';
 import 'package:aire_velo_bearings/presentation/common/widgets/base_text.dart';
 import 'package:aire_velo_bearings/presentation/core/styles/app_colors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -20,7 +23,16 @@ class MyAccountView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocListener<AuthStatusBloc, AuthStatusState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        state.map(
+          initial: (value) {},
+          authenticated: (value) {},
+          unAuthenticated: (value) {
+            print("Logout called!");
+            context.router.replaceAll([PageRouteInfo(Onboarding.name)]);
+          },
+        );
+      },
       child: ListView(
         padding: EdgeInsets.symmetric(
           horizontal: getSize(20),
@@ -39,7 +51,15 @@ class MyAccountView extends StatelessWidget {
             icon: Icons.person_outline,
             title: StringConstant.editProfile,
             onTap: () {
-              context.router.push(PageRouteInfo(EditProfile.name));
+              context.router.push(PageRouteInfo(EditProfile.name)).then((
+                value,
+              ) {
+                if (value == true) {
+                  context.read<AccountBloc>().add(
+                    AccountEvent.getAccountDetailEvent(),
+                  );
+                }
+              });
             },
           ),
           customTile(
@@ -60,15 +80,41 @@ class MyAccountView extends StatelessWidget {
             ),
           ),
           customTile(
+            onTap: () {
+              CommonUrlLauncher.launchAppUrl(
+                "https://www.airevelobearings.com/privacy-policy/",
+              );
+            },
             icon: Icons.shield_outlined,
             title: StringConstant.legalAndPolicies,
+          ),
+          customTile(
+            onTap: () {
+              CommonUrlLauncher.launchAppUrl(
+                "https://www.airevelobearings.com/contact-us/",
+              );
+            },
+            icon: CupertinoIcons.chat_bubble,
+            title: StringConstant.getInTouch,
           ),
           customTile(
             icon: Icons.logout_rounded,
             title: StringConstant.logout,
             isLogout: true,
             onTap: () {
-              LogOutDialog().logoutDialog(context);
+              LogOutDialog().logoutDialog(
+                context,
+                onPressedAccept: () {
+                  context.router.maybePop().then(
+                    (value) => context.read<AuthStatusBloc>().add(
+                      AuthStatusEvent.signedOut(),
+                    ),
+                  );
+                },
+                onPressedReject: () {
+                  context.router.maybePop();
+                },
+              );
             },
           ),
         ],

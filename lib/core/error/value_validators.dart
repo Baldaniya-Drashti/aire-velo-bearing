@@ -8,7 +8,8 @@ Either<ValueFailure<String>, String> validateEmailAddress(String input) {
   } else {
     if (validateStringNotEmpty(input).isRight()) {
       const emailRegex =
-          r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";
+          // r"""^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+""";
+          r"""^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,}$""";
 
       if (RegExp(emailRegex).hasMatch(input)) {
         return right(input);

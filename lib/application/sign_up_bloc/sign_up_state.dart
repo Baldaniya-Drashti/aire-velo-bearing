@@ -16,6 +16,6 @@ class SignUpState with _$SignUpState {
     password: Password(""),
     confirmPassword: ConfirmPassword("", ""),
     showError: false,
-    isObscure: false,
+    isObscure: true,
   );
 }

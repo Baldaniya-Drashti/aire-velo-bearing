@@ -16,19 +16,20 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$HomeEvent {
+  bool get isRefresh => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getProductList,
+    required TResult Function(bool isRefresh) getProductList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getProductList,
+    TResult? Function(bool isRefresh)? getProductList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getProductList,
+    TResult Function(bool isRefresh)? getProductList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -48,12 +49,18 @@ mixin _$HomeEvent {
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $HomeEventCopyWith<HomeEvent> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $HomeEventCopyWith<$Res> {
   factory $HomeEventCopyWith(HomeEvent value, $Res Function(HomeEvent) then) =
       _$HomeEventCopyWithImpl<$Res, HomeEvent>;
+  @useResult
+  $Res call({bool isRefresh});
 }
 
 /// @nodoc
@@ -65,13 +72,30 @@ class _$HomeEventCopyWithImpl<$Res, $Val extends HomeEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isRefresh = null,
+  }) {
+    return _then(_value.copyWith(
+      isRefresh: null == isRefresh
+          ? _value.isRefresh
+          : isRefresh // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$GetProductListImplCopyWith<$Res> {
+abstract class _$$GetProductListImplCopyWith<$Res>
+    implements $HomeEventCopyWith<$Res> {
   factory _$$GetProductListImplCopyWith(_$GetProductListImpl value,
           $Res Function(_$GetProductListImpl) then) =
       __$$GetProductListImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({bool isRefresh});
 }
 
 /// @nodoc
@@ -81,51 +105,77 @@ class __$$GetProductListImplCopyWithImpl<$Res>
   __$$GetProductListImplCopyWithImpl(
       _$GetProductListImpl _value, $Res Function(_$GetProductListImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isRefresh = null,
+  }) {
+    return _then(_$GetProductListImpl(
+      null == isRefresh
+          ? _value.isRefresh
+          : isRefresh // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GetProductListImpl implements GetProductList {
-  const _$GetProductListImpl();
+  const _$GetProductListImpl(this.isRefresh);
+
+  @override
+  final bool isRefresh;
 
   @override
   String toString() {
-    return 'HomeEvent.getProductList()';
+    return 'HomeEvent.getProductList(isRefresh: $isRefresh)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetProductListImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GetProductListImpl &&
+            (identical(other.isRefresh, isRefresh) ||
+                other.isRefresh == isRefresh));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, isRefresh);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetProductListImplCopyWith<_$GetProductListImpl> get copyWith =>
+      __$$GetProductListImplCopyWithImpl<_$GetProductListImpl>(
+          this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() getProductList,
+    required TResult Function(bool isRefresh) getProductList,
   }) {
-    return getProductList();
+    return getProductList(isRefresh);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? getProductList,
+    TResult? Function(bool isRefresh)? getProductList,
   }) {
-    return getProductList?.call();
+    return getProductList?.call(isRefresh);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? getProductList,
+    TResult Function(bool isRefresh)? getProductList,
     required TResult orElse(),
   }) {
     if (getProductList != null) {
-      return getProductList();
+      return getProductList(isRefresh);
     }
     return orElse();
   }
@@ -160,7 +210,14 @@ class _$GetProductListImpl implements GetProductList {
 }
 
 abstract class GetProductList implements HomeEvent {
-  const factory GetProductList() = _$GetProductListImpl;
+  const factory GetProductList(final bool isRefresh) = _$GetProductListImpl;
+
+  @override
+  bool get isRefresh;
+  @override
+  @JsonKey(ignore: true)
+  _$$GetProductListImplCopyWith<_$GetProductListImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -168,7 +225,7 @@ mixin _$HomeState {
   List<HomeDTO> get productList => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
-  bool get showErrorMessages => throw _privateConstructorUsedError;
+  bool get isErrorInAPI => throw _privateConstructorUsedError;
   bool get isNoDataFound => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -185,7 +242,7 @@ abstract class $HomeStateCopyWith<$Res> {
       {List<HomeDTO> productList,
       bool isLoading,
       bool isSubmitting,
-      bool showErrorMessages,
+      bool isErrorInAPI,
       bool isNoDataFound});
 }
 
@@ -205,7 +262,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? productList = null,
     Object? isLoading = null,
     Object? isSubmitting = null,
-    Object? showErrorMessages = null,
+    Object? isErrorInAPI = null,
     Object? isNoDataFound = null,
   }) {
     return _then(_value.copyWith(
@@ -221,9 +278,9 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
-      showErrorMessages: null == showErrorMessages
-          ? _value.showErrorMessages
-          : showErrorMessages // ignore: cast_nullable_to_non_nullable
+      isErrorInAPI: null == isErrorInAPI
+          ? _value.isErrorInAPI
+          : isErrorInAPI // ignore: cast_nullable_to_non_nullable
               as bool,
       isNoDataFound: null == isNoDataFound
           ? _value.isNoDataFound
@@ -245,7 +302,7 @@ abstract class _$$HomeStateImplCopyWith<$Res>
       {List<HomeDTO> productList,
       bool isLoading,
       bool isSubmitting,
-      bool showErrorMessages,
+      bool isErrorInAPI,
       bool isNoDataFound});
 }
 
@@ -263,7 +320,7 @@ class __$$HomeStateImplCopyWithImpl<$Res>
     Object? productList = null,
     Object? isLoading = null,
     Object? isSubmitting = null,
-    Object? showErrorMessages = null,
+    Object? isErrorInAPI = null,
     Object? isNoDataFound = null,
   }) {
     return _then(_$HomeStateImpl(
@@ -279,9 +336,9 @@ class __$$HomeStateImplCopyWithImpl<$Res>
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
               as bool,
-      showErrorMessages: null == showErrorMessages
-          ? _value.showErrorMessages
-          : showErrorMessages // ignore: cast_nullable_to_non_nullable
+      isErrorInAPI: null == isErrorInAPI
+          ? _value.isErrorInAPI
+          : isErrorInAPI // ignore: cast_nullable_to_non_nullable
               as bool,
       isNoDataFound: null == isNoDataFound
           ? _value.isNoDataFound
@@ -298,7 +355,7 @@ class _$HomeStateImpl implements _HomeState {
       {required final List<HomeDTO> productList,
       required this.isLoading,
       required this.isSubmitting,
-      required this.showErrorMessages,
+      required this.isErrorInAPI,
       required this.isNoDataFound})
       : _productList = productList;
 
@@ -315,13 +372,13 @@ class _$HomeStateImpl implements _HomeState {
   @override
   final bool isSubmitting;
   @override
-  final bool showErrorMessages;
+  final bool isErrorInAPI;
   @override
   final bool isNoDataFound;
 
   @override
   String toString() {
-    return 'HomeState(productList: $productList, isLoading: $isLoading, isSubmitting: $isSubmitting, showErrorMessages: $showErrorMessages, isNoDataFound: $isNoDataFound)';
+    return 'HomeState(productList: $productList, isLoading: $isLoading, isSubmitting: $isSubmitting, isErrorInAPI: $isErrorInAPI, isNoDataFound: $isNoDataFound)';
   }
 
   @override
@@ -335,8 +392,8 @@ class _$HomeStateImpl implements _HomeState {
                 other.isLoading == isLoading) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
-            (identical(other.showErrorMessages, showErrorMessages) ||
-                other.showErrorMessages == showErrorMessages) &&
+            (identical(other.isErrorInAPI, isErrorInAPI) ||
+                other.isErrorInAPI == isErrorInAPI) &&
             (identical(other.isNoDataFound, isNoDataFound) ||
                 other.isNoDataFound == isNoDataFound));
   }
@@ -347,7 +404,7 @@ class _$HomeStateImpl implements _HomeState {
       const DeepCollectionEquality().hash(_productList),
       isLoading,
       isSubmitting,
-      showErrorMessages,
+      isErrorInAPI,
       isNoDataFound);
 
   @JsonKey(ignore: true)
@@ -362,7 +419,7 @@ abstract class _HomeState implements HomeState {
       {required final List<HomeDTO> productList,
       required final bool isLoading,
       required final bool isSubmitting,
-      required final bool showErrorMessages,
+      required final bool isErrorInAPI,
       required final bool isNoDataFound}) = _$HomeStateImpl;
 
   @override
@@ -372,7 +429,7 @@ abstract class _HomeState implements HomeState {
   @override
   bool get isSubmitting;
   @override
-  bool get showErrorMessages;
+  bool get isErrorInAPI;
   @override
   bool get isNoDataFound;
   @override

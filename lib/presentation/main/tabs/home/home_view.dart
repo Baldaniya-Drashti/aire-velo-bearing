@@ -1,15 +1,12 @@
 // ignore_for_file: prefer_const_constructors
-import 'package:aire_velo_bearings/application/main/home_bloc/home_bloc.dart';
 import 'package:aire_velo_bearings/core/constants/string_constant.dart';
 import 'package:aire_velo_bearings/core/router/app_router.gr.dart';
 import 'package:aire_velo_bearings/core/utils/math_utils.dart';
-import 'package:aire_velo_bearings/presentation/common/widgets/center_loading_indicator.dart';
 import 'package:aire_velo_bearings/presentation/core/styles/app_colors.dart';
 import 'package:aire_velo_bearings/presentation/core/widgets/inputs/custom_text_field.dart';
 import 'package:aire_velo_bearings/presentation/main/tabs/home/widgets/category_list.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
 @RoutePage(name: 'HomeView')

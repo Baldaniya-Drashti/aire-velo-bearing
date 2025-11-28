@@ -25,6 +25,12 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
   SignUpBloc(this._authFacade) : super(SignUpState.initial()) {
     on<SignUpEvent>((event, emit) async {
       await event.map(
+        firstNameChanged: (e) {
+          emit(state.copyWith(firstName: InputEmptyOrNot(e.firstName)));
+        },
+        lastNameChanged: (e) {
+          emit(state.copyWith(lastName: InputEmptyOrNot(e.lastName)));
+        },
         emailChanged: (e) {
           emit(state.copyWith(email: EmailAddress(e.email)));
         },
@@ -53,15 +59,23 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
         submitPressed: (e) async {
           Either<AuthFailure, String>? failureOrSuccess;
 
+          final isFirstNameValid = state.firstName.isValid();
+          final isLastNameValid = state.lastName.isValid();
           final isEmailValid = state.email.isValid();
           final isPasswordValid = state.password.isValid();
           final isConfirmPassValid = state.confirmPassword.isValid();
 
-          if (isEmailValid && isPasswordValid && isConfirmPassValid) {
+          if (isFirstNameValid &&
+              isLastNameValid &&
+              isEmailValid &&
+              isPasswordValid &&
+              isConfirmPassValid) {
             print("All Details Are Valid!");
 
             emit(state.copyWith(isSubmitting: true));
             failureOrSuccess = await _authFacade.register(
+              firstName: state.firstName.getValue() ?? '',
+              lastName: state.lastName.getValue() ?? '',
               email: state.email.getValue(),
               password: state.password.getValue(),
               confirmPassword: state.confirmPassword.getValue(),

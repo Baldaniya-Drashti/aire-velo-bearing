@@ -23,6 +23,7 @@ mixin _$HomeDTO {
   int? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get slug => throw _privateConstructorUsedError;
+  String? get image_url => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +35,7 @@ abstract class $HomeDTOCopyWith<$Res> {
   factory $HomeDTOCopyWith(HomeDTO value, $Res Function(HomeDTO) then) =
       _$HomeDTOCopyWithImpl<$Res, HomeDTO>;
   @useResult
-  $Res call({int? id, String? name, String? slug});
+  $Res call({int? id, String? name, String? slug, String? image_url});
 }
 
 /// @nodoc
@@ -53,6 +54,7 @@ class _$HomeDTOCopyWithImpl<$Res, $Val extends HomeDTO>
     Object? id = freezed,
     Object? name = freezed,
     Object? slug = freezed,
+    Object? image_url = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -67,6 +69,10 @@ class _$HomeDTOCopyWithImpl<$Res, $Val extends HomeDTO>
           ? _value.slug
           : slug // ignore: cast_nullable_to_non_nullable
               as String?,
+      image_url: freezed == image_url
+          ? _value.image_url
+          : image_url // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -78,7 +84,7 @@ abstract class _$$HomeDTOImplCopyWith<$Res> implements $HomeDTOCopyWith<$Res> {
       __$$HomeDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? id, String? name, String? slug});
+  $Res call({int? id, String? name, String? slug, String? image_url});
 }
 
 /// @nodoc
@@ -95,6 +101,7 @@ class __$$HomeDTOImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? slug = freezed,
+    Object? image_url = freezed,
   }) {
     return _then(_$HomeDTOImpl(
       id: freezed == id
@@ -109,6 +116,10 @@ class __$$HomeDTOImplCopyWithImpl<$Res>
           ? _value.slug
           : slug // ignore: cast_nullable_to_non_nullable
               as String?,
+      image_url: freezed == image_url
+          ? _value.image_url
+          : image_url // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -116,7 +127,7 @@ class __$$HomeDTOImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$HomeDTOImpl implements _HomeDTO {
-  const _$HomeDTOImpl({this.id, this.name, this.slug});
+  const _$HomeDTOImpl({this.id, this.name, this.slug, this.image_url});
 
   factory _$HomeDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$HomeDTOImplFromJson(json);
@@ -127,10 +138,12 @@ class _$HomeDTOImpl implements _HomeDTO {
   final String? name;
   @override
   final String? slug;
+  @override
+  final String? image_url;
 
   @override
   String toString() {
-    return 'HomeDTO(id: $id, name: $name, slug: $slug)';
+    return 'HomeDTO(id: $id, name: $name, slug: $slug, image_url: $image_url)';
   }
 
   @override
@@ -140,12 +153,14 @@ class _$HomeDTOImpl implements _HomeDTO {
             other is _$HomeDTOImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.slug, slug) || other.slug == slug));
+            (identical(other.slug, slug) || other.slug == slug) &&
+            (identical(other.image_url, image_url) ||
+                other.image_url == image_url));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, slug);
+  int get hashCode => Object.hash(runtimeType, id, name, slug, image_url);
 
   @JsonKey(ignore: true)
   @override
@@ -163,7 +178,10 @@ class _$HomeDTOImpl implements _HomeDTO {
 
 abstract class _HomeDTO implements HomeDTO {
   const factory _HomeDTO(
-      {final int? id, final String? name, final String? slug}) = _$HomeDTOImpl;
+      {final int? id,
+      final String? name,
+      final String? slug,
+      final String? image_url}) = _$HomeDTOImpl;
 
   factory _HomeDTO.fromJson(Map<String, dynamic> json) = _$HomeDTOImpl.fromJson;
 
@@ -173,6 +191,8 @@ abstract class _HomeDTO implements HomeDTO {
   String? get name;
   @override
   String? get slug;
+  @override
+  String? get image_url;
   @override
   @JsonKey(ignore: true)
   _$$HomeDTOImplCopyWith<_$HomeDTOImpl> get copyWith =>

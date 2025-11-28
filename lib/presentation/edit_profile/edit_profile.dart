@@ -6,7 +6,6 @@ import 'package:aire_velo_bearings/presentation/common/widgets/center_loading_in
 import 'package:aire_velo_bearings/presentation/core/widgets/buttons/common_button.dart';
 import 'package:aire_velo_bearings/presentation/core/widgets/inputs/custom_app_bar.dart';
 import 'package:aire_velo_bearings/presentation/core/widgets/inputs/custom_text_field.dart';
-import 'package:aire_velo_bearings/presentation/core/widgets/layout/unfocus.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

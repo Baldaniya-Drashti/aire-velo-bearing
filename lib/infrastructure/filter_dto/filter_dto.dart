@@ -15,6 +15,11 @@ class FilterDTO with _$FilterDTO {
     String? filter_depth,
     String? filter_dimensions,
     String? filter_chamfers_angles,
+    String? min_price,
+    String? max_price,
+    String? id,
+    String? od,
+    String? depth,
   }) = _FilterDTO;
 
   factory FilterDTO.fromJson(Map<String, dynamic> json) =>

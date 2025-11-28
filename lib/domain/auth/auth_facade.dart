@@ -25,12 +25,19 @@ class AuthFacade implements IAuthFacade {
 
   @override
   Future<Either<AuthFailure, String>> register({
+    required String firstName,
+    required String lastName,
     required String email,
     required String password,
     required String confirmPassword,
   }) async {
     try {
-      var mapData = {"email": email, "password": password};
+      var mapData = {
+        "email": email,
+        "password": password,
+        'first_name': firstName,
+        'last_name': lastName,
+      };
 
       print("Sending data---> ${jsonEncode(mapData)}");
 
@@ -38,6 +45,7 @@ class AuthFacade implements IAuthFacade {
         ApiConstants.register,
         mapData,
       );
+
       print("RESPONSE OF REGISTER---> ${response.data}");
 
       final account = CurrentUserDTO.fromJson(response.data);
@@ -110,16 +118,9 @@ class AuthFacade implements IAuthFacade {
     try {
       return apiService.getMethod(ApiConstants.logout).then((value) async {
         final rememberUser = await getRememberLogin();
-        print(
-          "Remember login cred before dying---> ${await getRememberLogin()}",
-        );
 
         clearLocalStorage();
         await setRememberLogin(cred: rememberUser);
-
-        print(
-          "Remember login cred after dying---> ${await getRememberLogin()}",
-        );
 
         return right(value.dioMessage ?? "");
       });

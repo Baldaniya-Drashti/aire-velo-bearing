@@ -27,7 +27,8 @@ class ApiService {
       onRequest: (options, handler) async {
         String? userToken = await getToken();
 
-        print("---> ${userToken}");
+        print("User Token ----> $userToken");
+
         if (userToken.isNotEmpty) {
           options.headers.addAll({"Authorization": "Bearer $userToken"});
         }
@@ -51,8 +52,8 @@ class ApiService {
     };
     final BaseOptions options = BaseOptions(
       baseUrl: ApiConstants.baseUrl,
-      connectTimeout: const Duration(milliseconds: 5000),
-      receiveTimeout: const Duration(milliseconds: 15000),
+      connectTimeout: const Duration(milliseconds: 150000),
+      receiveTimeout: const Duration(milliseconds: 150000),
       headers: headers,
       contentType: isMultipart
           ? Headers.multipartFormDataContentType

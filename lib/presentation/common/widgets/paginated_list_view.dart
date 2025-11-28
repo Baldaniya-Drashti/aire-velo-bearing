@@ -42,6 +42,34 @@ class PaginatedListView extends StatelessWidget {
       scrollDirection: scrollDirection,
       controller: refreshController,
       physics: BouncingScrollPhysics(),
+      footer: CustomFooter(
+        builder: (_, mode) {
+          String text;
+          if (mode == LoadStatus.idle) {
+            text = "↑ Pull up to load more";
+          } else if (mode == LoadStatus.failed) {
+            text = "Load Failed! Tap to try again.";
+          } else if (mode == LoadStatus.canLoading) {
+            text = "⟳ Release to load more";
+          } else {
+            text = "No more data";
+          }
+          return Padding(
+            padding: EdgeInsets.symmetric(vertical: 12),
+            child: Center(
+              child: (mode == LoadStatus.loading)
+                  ? CircularProgressIndicator(strokeWidth: 2)
+                  : BaseText(
+                      text: text,
+                      fontSize: 13,
+                      textColor: AppColors.black.withValues(
+                        alpha: getSize(0.4),
+                      ),
+                    ),
+            ),
+          );
+        },
+      ),
       onRefresh: () {
         onRefreshData();
       },

@@ -1,12 +1,8 @@
-import 'dart:ui';
-
 import 'package:aire_velo_bearings/application/search_bloc/search_bloc.dart';
 import 'package:aire_velo_bearings/core/constants/font_constants.dart';
 import 'package:aire_velo_bearings/core/constants/string_constant.dart';
-import 'package:aire_velo_bearings/core/router/app_router.dart';
 import 'package:aire_velo_bearings/core/utils/math_utils.dart';
 import 'package:aire_velo_bearings/infrastructure/filter_option_list_dto/filter_option_list_dto.dart';
-import 'package:aire_velo_bearings/injection.dart';
 import 'package:aire_velo_bearings/presentation/common/widgets/base_text.dart';
 import 'package:aire_velo_bearings/presentation/common/widgets/center_loading_indicator.dart';
 import 'package:aire_velo_bearings/presentation/core/enum.dart';
@@ -17,7 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
 class ShowFilterBottomSheet extends StatelessWidget {
-  ShowFilterBottomSheet({super.key});
+  const ShowFilterBottomSheet({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +21,7 @@ class ShowFilterBottomSheet extends StatelessWidget {
   }
 
   // static double _priceValue = 50;
-  static RangeValues _currentRange = const RangeValues(0, 100);
+  // static RangeValues _currentRange = const RangeValues(0, 100);
 
   static void bottomSheet(
     BuildContext context, {
@@ -64,23 +60,23 @@ class ShowFilterBottomSheet extends StatelessWidget {
                           ),
                         ),
                         Gap(getSize(10)),
-                        Expanded(
-                          child: SingleChildScrollView(
-                            child: Column(
-                              mainAxisSize: MainAxisSize.min,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                _priceView(setState),
-                                Gap(getSize(20)),
-
-                                // Category
-                                (state.isFilterLoading)
-                                    ? CenterLoadingIndicator(isOnlyLoader: true)
-                                    : filterView(context, state),
-                              ],
-                            ),
-                          ),
-                        ),
+                        (state.isFilterLoading)
+                            ? CenterLoadingIndicator(isOnlyLoader: true)
+                            : Expanded(
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      _priceView(context, state),
+                                      Gap(getSize(20)),
+                                      // Category
+                                      filterView(context, state),
+                                    ],
+                                  ),
+                                ),
+                              ),
                       ],
                     ),
                   );
@@ -104,9 +100,10 @@ class ShowFilterBottomSheet extends StatelessWidget {
           items: state.categoryList,
           selectedSlug: state.filters?.category,
           onChanged: (value) {
-            print("onChanged calleld");
             context.read<SearchBloc>().add(
-              SearchEvent.categoryChanged(value: value?.slug ?? ''),
+              SearchEvent.categoryChanged(
+                value: value ?? FilterOptionListDTO(),
+              ),
             );
           },
         ),
@@ -118,7 +115,6 @@ class ShowFilterBottomSheet extends StatelessWidget {
           items: state.brandList,
           selectedSlug: state.filters?.filter_brand,
           onChanged: (value) {
-            print("onChanged calleld");
             context.read<SearchBloc>().add(
               SearchEvent.filterChanged(
                 attribute: FilterAttribute.brand,
@@ -247,7 +243,7 @@ class ShowFilterBottomSheet extends StatelessWidget {
     );
   }
 
-  static Widget _priceView(setState) {
+  static Widget _priceView(BuildContext context, SearchState state) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -261,27 +257,25 @@ class ShowFilterBottomSheet extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            BaseText(text: "£0"),
-            BaseText(text: "£100"),
+            BaseText(text: "£${state.minPrice ?? 0}"),
+            BaseText(text: "£${state.maxPrice ?? 0}"),
           ],
         ),
         RangeSlider(
-          // value: _priceValue,
-          values: _currentRange,
-          min: 0,
-          max: 100,
+          values: state.range,
+          min: state.minPrice ?? 0,
+          max: state.maxPrice ?? 0,
           activeColor: AppColors.primary,
           inactiveColor: AppColors.lightGrey,
           onChanged: (values) {
-            setState(() {
-              _currentRange = values;
-            });
-            // setState(() => _priceValue = value);
+            context.read<SearchBloc>().add(
+              SearchEvent.rangePriceChanged(values),
+            );
           },
         ),
         BaseText(
           text:
-              "${StringConstant.price}: £${_currentRange.start.toStringAsFixed(0)} - £${_currentRange.end.toStringAsFixed(0)}",
+              "${StringConstant.price}: £${state.range.start.toStringAsFixed(0)} - £${state.range.end.toStringAsFixed(0)}",
           fontSize: 14,
         ),
       ],
@@ -309,7 +303,7 @@ class ShowFilterBottomSheet extends StatelessWidget {
         BaseText(text: title, fontSize: 14),
         Gap(getSize(8)),
         DropdownButtonFormField<FilterOptionListDTO>(
-          initialValue: selectedItem,
+          initialValue: (items.isNotEmpty) ? selectedItem ?? items.first : null,
           menuMaxHeight: getSize(200),
           decoration: InputDecoration(
             border: OutlineInputBorder(),
@@ -320,7 +314,7 @@ class ShowFilterBottomSheet extends StatelessWidget {
             ),
           ),
           dropdownColor: AppColors.white,
-          hint: BaseText(text: hint),
+          hint: BaseText(text: hint, maxLines: 2, fontSize: 14),
           isDense: true,
           items: items
               .map(

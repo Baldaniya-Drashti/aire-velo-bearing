@@ -20,43 +20,58 @@ mixin _$SearchEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(SubCategoryDTO? val) initialEvent,
     required TResult Function(bool isRefresh) onSearch,
+    required TResult Function() onShortCutSearch,
     required TResult Function(String? val) getSearchText,
     required TResult Function() getCategoryList,
     required TResult Function() loadAllFilterList,
     required TResult Function(FilterAttribute attribute, String value)
         filterChanged,
-    required TResult Function(String value) categoryChanged,
+    required TResult Function(FilterOptionListDTO value) categoryChanged,
     required TResult Function() submitFilter,
     required TResult Function() clearAllFilters,
     required TResult Function(int id) toggleFavourite,
+    required TResult Function(RangeValues value) rangePriceChanged,
+    required TResult Function(String value) idTextChanged,
+    required TResult Function(String value) odTextChanged,
+    required TResult Function(String value) depthTextChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(SubCategoryDTO? val)? initialEvent,
     TResult? Function(bool isRefresh)? onSearch,
+    TResult? Function()? onShortCutSearch,
     TResult? Function(String? val)? getSearchText,
     TResult? Function()? getCategoryList,
     TResult? Function()? loadAllFilterList,
     TResult? Function(FilterAttribute attribute, String value)? filterChanged,
-    TResult? Function(String value)? categoryChanged,
+    TResult? Function(FilterOptionListDTO value)? categoryChanged,
     TResult? Function()? submitFilter,
     TResult? Function()? clearAllFilters,
     TResult? Function(int id)? toggleFavourite,
+    TResult? Function(RangeValues value)? rangePriceChanged,
+    TResult? Function(String value)? idTextChanged,
+    TResult? Function(String value)? odTextChanged,
+    TResult? Function(String value)? depthTextChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(SubCategoryDTO? val)? initialEvent,
     TResult Function(bool isRefresh)? onSearch,
+    TResult Function()? onShortCutSearch,
     TResult Function(String? val)? getSearchText,
     TResult Function()? getCategoryList,
     TResult Function()? loadAllFilterList,
     TResult Function(FilterAttribute attribute, String value)? filterChanged,
-    TResult Function(String value)? categoryChanged,
+    TResult Function(FilterOptionListDTO value)? categoryChanged,
     TResult Function()? submitFilter,
     TResult Function()? clearAllFilters,
     TResult Function(int id)? toggleFavourite,
+    TResult Function(RangeValues value)? rangePriceChanged,
+    TResult Function(String value)? idTextChanged,
+    TResult Function(String value)? odTextChanged,
+    TResult Function(String value)? depthTextChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -64,6 +79,7 @@ mixin _$SearchEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialEvent value) initialEvent,
     required TResult Function(OnSearch value) onSearch,
+    required TResult Function(OnShortCutSearch value) onShortCutSearch,
     required TResult Function(GetSearchText value) getSearchText,
     required TResult Function(GetCategoryList value) getCategoryList,
     required TResult Function(LoadAllFilterList value) loadAllFilterList,
@@ -72,12 +88,17 @@ mixin _$SearchEvent {
     required TResult Function(SubmitFilter value) submitFilter,
     required TResult Function(ClearAllFilters value) clearAllFilters,
     required TResult Function(ToggleFavourite value) toggleFavourite,
+    required TResult Function(RangePriceChanged value) rangePriceChanged,
+    required TResult Function(IdTextChanged value) idTextChanged,
+    required TResult Function(OdTextChanged value) odTextChanged,
+    required TResult Function(DepthTextChanged value) depthTextChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitialEvent value)? initialEvent,
     TResult? Function(OnSearch value)? onSearch,
+    TResult? Function(OnShortCutSearch value)? onShortCutSearch,
     TResult? Function(GetSearchText value)? getSearchText,
     TResult? Function(GetCategoryList value)? getCategoryList,
     TResult? Function(LoadAllFilterList value)? loadAllFilterList,
@@ -86,12 +107,17 @@ mixin _$SearchEvent {
     TResult? Function(SubmitFilter value)? submitFilter,
     TResult? Function(ClearAllFilters value)? clearAllFilters,
     TResult? Function(ToggleFavourite value)? toggleFavourite,
+    TResult? Function(RangePriceChanged value)? rangePriceChanged,
+    TResult? Function(IdTextChanged value)? idTextChanged,
+    TResult? Function(OdTextChanged value)? odTextChanged,
+    TResult? Function(DepthTextChanged value)? depthTextChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialEvent value)? initialEvent,
     TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnShortCutSearch value)? onShortCutSearch,
     TResult Function(GetSearchText value)? getSearchText,
     TResult Function(GetCategoryList value)? getCategoryList,
     TResult Function(LoadAllFilterList value)? loadAllFilterList,
@@ -100,6 +126,10 @@ mixin _$SearchEvent {
     TResult Function(SubmitFilter value)? submitFilter,
     TResult Function(ClearAllFilters value)? clearAllFilters,
     TResult Function(ToggleFavourite value)? toggleFavourite,
+    TResult Function(RangePriceChanged value)? rangePriceChanged,
+    TResult Function(IdTextChanged value)? idTextChanged,
+    TResult Function(OdTextChanged value)? odTextChanged,
+    TResult Function(DepthTextChanged value)? depthTextChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -203,15 +233,20 @@ class _$InitialEventImpl implements InitialEvent {
   TResult when<TResult extends Object?>({
     required TResult Function(SubCategoryDTO? val) initialEvent,
     required TResult Function(bool isRefresh) onSearch,
+    required TResult Function() onShortCutSearch,
     required TResult Function(String? val) getSearchText,
     required TResult Function() getCategoryList,
     required TResult Function() loadAllFilterList,
     required TResult Function(FilterAttribute attribute, String value)
         filterChanged,
-    required TResult Function(String value) categoryChanged,
+    required TResult Function(FilterOptionListDTO value) categoryChanged,
     required TResult Function() submitFilter,
     required TResult Function() clearAllFilters,
     required TResult Function(int id) toggleFavourite,
+    required TResult Function(RangeValues value) rangePriceChanged,
+    required TResult Function(String value) idTextChanged,
+    required TResult Function(String value) odTextChanged,
+    required TResult Function(String value) depthTextChanged,
   }) {
     return initialEvent(val);
   }
@@ -221,14 +256,19 @@ class _$InitialEventImpl implements InitialEvent {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(SubCategoryDTO? val)? initialEvent,
     TResult? Function(bool isRefresh)? onSearch,
+    TResult? Function()? onShortCutSearch,
     TResult? Function(String? val)? getSearchText,
     TResult? Function()? getCategoryList,
     TResult? Function()? loadAllFilterList,
     TResult? Function(FilterAttribute attribute, String value)? filterChanged,
-    TResult? Function(String value)? categoryChanged,
+    TResult? Function(FilterOptionListDTO value)? categoryChanged,
     TResult? Function()? submitFilter,
     TResult? Function()? clearAllFilters,
     TResult? Function(int id)? toggleFavourite,
+    TResult? Function(RangeValues value)? rangePriceChanged,
+    TResult? Function(String value)? idTextChanged,
+    TResult? Function(String value)? odTextChanged,
+    TResult? Function(String value)? depthTextChanged,
   }) {
     return initialEvent?.call(val);
   }
@@ -238,14 +278,19 @@ class _$InitialEventImpl implements InitialEvent {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(SubCategoryDTO? val)? initialEvent,
     TResult Function(bool isRefresh)? onSearch,
+    TResult Function()? onShortCutSearch,
     TResult Function(String? val)? getSearchText,
     TResult Function()? getCategoryList,
     TResult Function()? loadAllFilterList,
     TResult Function(FilterAttribute attribute, String value)? filterChanged,
-    TResult Function(String value)? categoryChanged,
+    TResult Function(FilterOptionListDTO value)? categoryChanged,
     TResult Function()? submitFilter,
     TResult Function()? clearAllFilters,
     TResult Function(int id)? toggleFavourite,
+    TResult Function(RangeValues value)? rangePriceChanged,
+    TResult Function(String value)? idTextChanged,
+    TResult Function(String value)? odTextChanged,
+    TResult Function(String value)? depthTextChanged,
     required TResult orElse(),
   }) {
     if (initialEvent != null) {
@@ -259,6 +304,7 @@ class _$InitialEventImpl implements InitialEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialEvent value) initialEvent,
     required TResult Function(OnSearch value) onSearch,
+    required TResult Function(OnShortCutSearch value) onShortCutSearch,
     required TResult Function(GetSearchText value) getSearchText,
     required TResult Function(GetCategoryList value) getCategoryList,
     required TResult Function(LoadAllFilterList value) loadAllFilterList,
@@ -267,6 +313,10 @@ class _$InitialEventImpl implements InitialEvent {
     required TResult Function(SubmitFilter value) submitFilter,
     required TResult Function(ClearAllFilters value) clearAllFilters,
     required TResult Function(ToggleFavourite value) toggleFavourite,
+    required TResult Function(RangePriceChanged value) rangePriceChanged,
+    required TResult Function(IdTextChanged value) idTextChanged,
+    required TResult Function(OdTextChanged value) odTextChanged,
+    required TResult Function(DepthTextChanged value) depthTextChanged,
   }) {
     return initialEvent(this);
   }
@@ -276,6 +326,7 @@ class _$InitialEventImpl implements InitialEvent {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitialEvent value)? initialEvent,
     TResult? Function(OnSearch value)? onSearch,
+    TResult? Function(OnShortCutSearch value)? onShortCutSearch,
     TResult? Function(GetSearchText value)? getSearchText,
     TResult? Function(GetCategoryList value)? getCategoryList,
     TResult? Function(LoadAllFilterList value)? loadAllFilterList,
@@ -284,6 +335,10 @@ class _$InitialEventImpl implements InitialEvent {
     TResult? Function(SubmitFilter value)? submitFilter,
     TResult? Function(ClearAllFilters value)? clearAllFilters,
     TResult? Function(ToggleFavourite value)? toggleFavourite,
+    TResult? Function(RangePriceChanged value)? rangePriceChanged,
+    TResult? Function(IdTextChanged value)? idTextChanged,
+    TResult? Function(OdTextChanged value)? odTextChanged,
+    TResult? Function(DepthTextChanged value)? depthTextChanged,
   }) {
     return initialEvent?.call(this);
   }
@@ -293,6 +348,7 @@ class _$InitialEventImpl implements InitialEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialEvent value)? initialEvent,
     TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnShortCutSearch value)? onShortCutSearch,
     TResult Function(GetSearchText value)? getSearchText,
     TResult Function(GetCategoryList value)? getCategoryList,
     TResult Function(LoadAllFilterList value)? loadAllFilterList,
@@ -301,6 +357,10 @@ class _$InitialEventImpl implements InitialEvent {
     TResult Function(SubmitFilter value)? submitFilter,
     TResult Function(ClearAllFilters value)? clearAllFilters,
     TResult Function(ToggleFavourite value)? toggleFavourite,
+    TResult Function(RangePriceChanged value)? rangePriceChanged,
+    TResult Function(IdTextChanged value)? idTextChanged,
+    TResult Function(OdTextChanged value)? odTextChanged,
+    TResult Function(DepthTextChanged value)? depthTextChanged,
     required TResult orElse(),
   }) {
     if (initialEvent != null) {
@@ -387,15 +447,20 @@ class _$OnSearchImpl implements OnSearch {
   TResult when<TResult extends Object?>({
     required TResult Function(SubCategoryDTO? val) initialEvent,
     required TResult Function(bool isRefresh) onSearch,
+    required TResult Function() onShortCutSearch,
     required TResult Function(String? val) getSearchText,
     required TResult Function() getCategoryList,
     required TResult Function() loadAllFilterList,
     required TResult Function(FilterAttribute attribute, String value)
         filterChanged,
-    required TResult Function(String value) categoryChanged,
+    required TResult Function(FilterOptionListDTO value) categoryChanged,
     required TResult Function() submitFilter,
     required TResult Function() clearAllFilters,
     required TResult Function(int id) toggleFavourite,
+    required TResult Function(RangeValues value) rangePriceChanged,
+    required TResult Function(String value) idTextChanged,
+    required TResult Function(String value) odTextChanged,
+    required TResult Function(String value) depthTextChanged,
   }) {
     return onSearch(isRefresh);
   }
@@ -405,14 +470,19 @@ class _$OnSearchImpl implements OnSearch {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(SubCategoryDTO? val)? initialEvent,
     TResult? Function(bool isRefresh)? onSearch,
+    TResult? Function()? onShortCutSearch,
     TResult? Function(String? val)? getSearchText,
     TResult? Function()? getCategoryList,
     TResult? Function()? loadAllFilterList,
     TResult? Function(FilterAttribute attribute, String value)? filterChanged,
-    TResult? Function(String value)? categoryChanged,
+    TResult? Function(FilterOptionListDTO value)? categoryChanged,
     TResult? Function()? submitFilter,
     TResult? Function()? clearAllFilters,
     TResult? Function(int id)? toggleFavourite,
+    TResult? Function(RangeValues value)? rangePriceChanged,
+    TResult? Function(String value)? idTextChanged,
+    TResult? Function(String value)? odTextChanged,
+    TResult? Function(String value)? depthTextChanged,
   }) {
     return onSearch?.call(isRefresh);
   }
@@ -422,14 +492,19 @@ class _$OnSearchImpl implements OnSearch {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(SubCategoryDTO? val)? initialEvent,
     TResult Function(bool isRefresh)? onSearch,
+    TResult Function()? onShortCutSearch,
     TResult Function(String? val)? getSearchText,
     TResult Function()? getCategoryList,
     TResult Function()? loadAllFilterList,
     TResult Function(FilterAttribute attribute, String value)? filterChanged,
-    TResult Function(String value)? categoryChanged,
+    TResult Function(FilterOptionListDTO value)? categoryChanged,
     TResult Function()? submitFilter,
     TResult Function()? clearAllFilters,
     TResult Function(int id)? toggleFavourite,
+    TResult Function(RangeValues value)? rangePriceChanged,
+    TResult Function(String value)? idTextChanged,
+    TResult Function(String value)? odTextChanged,
+    TResult Function(String value)? depthTextChanged,
     required TResult orElse(),
   }) {
     if (onSearch != null) {
@@ -443,6 +518,7 @@ class _$OnSearchImpl implements OnSearch {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialEvent value) initialEvent,
     required TResult Function(OnSearch value) onSearch,
+    required TResult Function(OnShortCutSearch value) onShortCutSearch,
     required TResult Function(GetSearchText value) getSearchText,
     required TResult Function(GetCategoryList value) getCategoryList,
     required TResult Function(LoadAllFilterList value) loadAllFilterList,
@@ -451,6 +527,10 @@ class _$OnSearchImpl implements OnSearch {
     required TResult Function(SubmitFilter value) submitFilter,
     required TResult Function(ClearAllFilters value) clearAllFilters,
     required TResult Function(ToggleFavourite value) toggleFavourite,
+    required TResult Function(RangePriceChanged value) rangePriceChanged,
+    required TResult Function(IdTextChanged value) idTextChanged,
+    required TResult Function(OdTextChanged value) odTextChanged,
+    required TResult Function(DepthTextChanged value) depthTextChanged,
   }) {
     return onSearch(this);
   }
@@ -460,6 +540,7 @@ class _$OnSearchImpl implements OnSearch {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitialEvent value)? initialEvent,
     TResult? Function(OnSearch value)? onSearch,
+    TResult? Function(OnShortCutSearch value)? onShortCutSearch,
     TResult? Function(GetSearchText value)? getSearchText,
     TResult? Function(GetCategoryList value)? getCategoryList,
     TResult? Function(LoadAllFilterList value)? loadAllFilterList,
@@ -468,6 +549,10 @@ class _$OnSearchImpl implements OnSearch {
     TResult? Function(SubmitFilter value)? submitFilter,
     TResult? Function(ClearAllFilters value)? clearAllFilters,
     TResult? Function(ToggleFavourite value)? toggleFavourite,
+    TResult? Function(RangePriceChanged value)? rangePriceChanged,
+    TResult? Function(IdTextChanged value)? idTextChanged,
+    TResult? Function(OdTextChanged value)? odTextChanged,
+    TResult? Function(DepthTextChanged value)? depthTextChanged,
   }) {
     return onSearch?.call(this);
   }
@@ -477,6 +562,7 @@ class _$OnSearchImpl implements OnSearch {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialEvent value)? initialEvent,
     TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnShortCutSearch value)? onShortCutSearch,
     TResult Function(GetSearchText value)? getSearchText,
     TResult Function(GetCategoryList value)? getCategoryList,
     TResult Function(LoadAllFilterList value)? loadAllFilterList,
@@ -485,6 +571,10 @@ class _$OnSearchImpl implements OnSearch {
     TResult Function(SubmitFilter value)? submitFilter,
     TResult Function(ClearAllFilters value)? clearAllFilters,
     TResult Function(ToggleFavourite value)? toggleFavourite,
+    TResult Function(RangePriceChanged value)? rangePriceChanged,
+    TResult Function(IdTextChanged value)? idTextChanged,
+    TResult Function(OdTextChanged value)? odTextChanged,
+    TResult Function(DepthTextChanged value)? depthTextChanged,
     required TResult orElse(),
   }) {
     if (onSearch != null) {
@@ -501,6 +591,187 @@ abstract class OnSearch implements SearchEvent {
   @JsonKey(ignore: true)
   _$$OnSearchImplCopyWith<_$OnSearchImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OnShortCutSearchImplCopyWith<$Res> {
+  factory _$$OnShortCutSearchImplCopyWith(_$OnShortCutSearchImpl value,
+          $Res Function(_$OnShortCutSearchImpl) then) =
+      __$$OnShortCutSearchImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$OnShortCutSearchImplCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res, _$OnShortCutSearchImpl>
+    implements _$$OnShortCutSearchImplCopyWith<$Res> {
+  __$$OnShortCutSearchImplCopyWithImpl(_$OnShortCutSearchImpl _value,
+      $Res Function(_$OnShortCutSearchImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$OnShortCutSearchImpl implements OnShortCutSearch {
+  const _$OnShortCutSearchImpl();
+
+  @override
+  String toString() {
+    return 'SearchEvent.onShortCutSearch()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$OnShortCutSearchImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(SubCategoryDTO? val) initialEvent,
+    required TResult Function(bool isRefresh) onSearch,
+    required TResult Function() onShortCutSearch,
+    required TResult Function(String? val) getSearchText,
+    required TResult Function() getCategoryList,
+    required TResult Function() loadAllFilterList,
+    required TResult Function(FilterAttribute attribute, String value)
+        filterChanged,
+    required TResult Function(FilterOptionListDTO value) categoryChanged,
+    required TResult Function() submitFilter,
+    required TResult Function() clearAllFilters,
+    required TResult Function(int id) toggleFavourite,
+    required TResult Function(RangeValues value) rangePriceChanged,
+    required TResult Function(String value) idTextChanged,
+    required TResult Function(String value) odTextChanged,
+    required TResult Function(String value) depthTextChanged,
+  }) {
+    return onShortCutSearch();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(SubCategoryDTO? val)? initialEvent,
+    TResult? Function(bool isRefresh)? onSearch,
+    TResult? Function()? onShortCutSearch,
+    TResult? Function(String? val)? getSearchText,
+    TResult? Function()? getCategoryList,
+    TResult? Function()? loadAllFilterList,
+    TResult? Function(FilterAttribute attribute, String value)? filterChanged,
+    TResult? Function(FilterOptionListDTO value)? categoryChanged,
+    TResult? Function()? submitFilter,
+    TResult? Function()? clearAllFilters,
+    TResult? Function(int id)? toggleFavourite,
+    TResult? Function(RangeValues value)? rangePriceChanged,
+    TResult? Function(String value)? idTextChanged,
+    TResult? Function(String value)? odTextChanged,
+    TResult? Function(String value)? depthTextChanged,
+  }) {
+    return onShortCutSearch?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(SubCategoryDTO? val)? initialEvent,
+    TResult Function(bool isRefresh)? onSearch,
+    TResult Function()? onShortCutSearch,
+    TResult Function(String? val)? getSearchText,
+    TResult Function()? getCategoryList,
+    TResult Function()? loadAllFilterList,
+    TResult Function(FilterAttribute attribute, String value)? filterChanged,
+    TResult Function(FilterOptionListDTO value)? categoryChanged,
+    TResult Function()? submitFilter,
+    TResult Function()? clearAllFilters,
+    TResult Function(int id)? toggleFavourite,
+    TResult Function(RangeValues value)? rangePriceChanged,
+    TResult Function(String value)? idTextChanged,
+    TResult Function(String value)? odTextChanged,
+    TResult Function(String value)? depthTextChanged,
+    required TResult orElse(),
+  }) {
+    if (onShortCutSearch != null) {
+      return onShortCutSearch();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialEvent value) initialEvent,
+    required TResult Function(OnSearch value) onSearch,
+    required TResult Function(OnShortCutSearch value) onShortCutSearch,
+    required TResult Function(GetSearchText value) getSearchText,
+    required TResult Function(GetCategoryList value) getCategoryList,
+    required TResult Function(LoadAllFilterList value) loadAllFilterList,
+    required TResult Function(FilterChanged value) filterChanged,
+    required TResult Function(CategoryChanged value) categoryChanged,
+    required TResult Function(SubmitFilter value) submitFilter,
+    required TResult Function(ClearAllFilters value) clearAllFilters,
+    required TResult Function(ToggleFavourite value) toggleFavourite,
+    required TResult Function(RangePriceChanged value) rangePriceChanged,
+    required TResult Function(IdTextChanged value) idTextChanged,
+    required TResult Function(OdTextChanged value) odTextChanged,
+    required TResult Function(DepthTextChanged value) depthTextChanged,
+  }) {
+    return onShortCutSearch(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialEvent value)? initialEvent,
+    TResult? Function(OnSearch value)? onSearch,
+    TResult? Function(OnShortCutSearch value)? onShortCutSearch,
+    TResult? Function(GetSearchText value)? getSearchText,
+    TResult? Function(GetCategoryList value)? getCategoryList,
+    TResult? Function(LoadAllFilterList value)? loadAllFilterList,
+    TResult? Function(FilterChanged value)? filterChanged,
+    TResult? Function(CategoryChanged value)? categoryChanged,
+    TResult? Function(SubmitFilter value)? submitFilter,
+    TResult? Function(ClearAllFilters value)? clearAllFilters,
+    TResult? Function(ToggleFavourite value)? toggleFavourite,
+    TResult? Function(RangePriceChanged value)? rangePriceChanged,
+    TResult? Function(IdTextChanged value)? idTextChanged,
+    TResult? Function(OdTextChanged value)? odTextChanged,
+    TResult? Function(DepthTextChanged value)? depthTextChanged,
+  }) {
+    return onShortCutSearch?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialEvent value)? initialEvent,
+    TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnShortCutSearch value)? onShortCutSearch,
+    TResult Function(GetSearchText value)? getSearchText,
+    TResult Function(GetCategoryList value)? getCategoryList,
+    TResult Function(LoadAllFilterList value)? loadAllFilterList,
+    TResult Function(FilterChanged value)? filterChanged,
+    TResult Function(CategoryChanged value)? categoryChanged,
+    TResult Function(SubmitFilter value)? submitFilter,
+    TResult Function(ClearAllFilters value)? clearAllFilters,
+    TResult Function(ToggleFavourite value)? toggleFavourite,
+    TResult Function(RangePriceChanged value)? rangePriceChanged,
+    TResult Function(IdTextChanged value)? idTextChanged,
+    TResult Function(OdTextChanged value)? odTextChanged,
+    TResult Function(DepthTextChanged value)? depthTextChanged,
+    required TResult orElse(),
+  }) {
+    if (onShortCutSearch != null) {
+      return onShortCutSearch(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OnShortCutSearch implements SearchEvent {
+  const factory OnShortCutSearch() = _$OnShortCutSearchImpl;
 }
 
 /// @nodoc
@@ -569,15 +840,20 @@ class _$GetSearchTextImpl implements GetSearchText {
   TResult when<TResult extends Object?>({
     required TResult Function(SubCategoryDTO? val) initialEvent,
     required TResult Function(bool isRefresh) onSearch,
+    required TResult Function() onShortCutSearch,
     required TResult Function(String? val) getSearchText,
     required TResult Function() getCategoryList,
     required TResult Function() loadAllFilterList,
     required TResult Function(FilterAttribute attribute, String value)
         filterChanged,
-    required TResult Function(String value) categoryChanged,
+    required TResult Function(FilterOptionListDTO value) categoryChanged,
     required TResult Function() submitFilter,
     required TResult Function() clearAllFilters,
     required TResult Function(int id) toggleFavourite,
+    required TResult Function(RangeValues value) rangePriceChanged,
+    required TResult Function(String value) idTextChanged,
+    required TResult Function(String value) odTextChanged,
+    required TResult Function(String value) depthTextChanged,
   }) {
     return getSearchText(val);
   }
@@ -587,14 +863,19 @@ class _$GetSearchTextImpl implements GetSearchText {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(SubCategoryDTO? val)? initialEvent,
     TResult? Function(bool isRefresh)? onSearch,
+    TResult? Function()? onShortCutSearch,
     TResult? Function(String? val)? getSearchText,
     TResult? Function()? getCategoryList,
     TResult? Function()? loadAllFilterList,
     TResult? Function(FilterAttribute attribute, String value)? filterChanged,
-    TResult? Function(String value)? categoryChanged,
+    TResult? Function(FilterOptionListDTO value)? categoryChanged,
     TResult? Function()? submitFilter,
     TResult? Function()? clearAllFilters,
     TResult? Function(int id)? toggleFavourite,
+    TResult? Function(RangeValues value)? rangePriceChanged,
+    TResult? Function(String value)? idTextChanged,
+    TResult? Function(String value)? odTextChanged,
+    TResult? Function(String value)? depthTextChanged,
   }) {
     return getSearchText?.call(val);
   }
@@ -604,14 +885,19 @@ class _$GetSearchTextImpl implements GetSearchText {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(SubCategoryDTO? val)? initialEvent,
     TResult Function(bool isRefresh)? onSearch,
+    TResult Function()? onShortCutSearch,
     TResult Function(String? val)? getSearchText,
     TResult Function()? getCategoryList,
     TResult Function()? loadAllFilterList,
     TResult Function(FilterAttribute attribute, String value)? filterChanged,
-    TResult Function(String value)? categoryChanged,
+    TResult Function(FilterOptionListDTO value)? categoryChanged,
     TResult Function()? submitFilter,
     TResult Function()? clearAllFilters,
     TResult Function(int id)? toggleFavourite,
+    TResult Function(RangeValues value)? rangePriceChanged,
+    TResult Function(String value)? idTextChanged,
+    TResult Function(String value)? odTextChanged,
+    TResult Function(String value)? depthTextChanged,
     required TResult orElse(),
   }) {
     if (getSearchText != null) {
@@ -625,6 +911,7 @@ class _$GetSearchTextImpl implements GetSearchText {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialEvent value) initialEvent,
     required TResult Function(OnSearch value) onSearch,
+    required TResult Function(OnShortCutSearch value) onShortCutSearch,
     required TResult Function(GetSearchText value) getSearchText,
     required TResult Function(GetCategoryList value) getCategoryList,
     required TResult Function(LoadAllFilterList value) loadAllFilterList,
@@ -633,6 +920,10 @@ class _$GetSearchTextImpl implements GetSearchText {
     required TResult Function(SubmitFilter value) submitFilter,
     required TResult Function(ClearAllFilters value) clearAllFilters,
     required TResult Function(ToggleFavourite value) toggleFavourite,
+    required TResult Function(RangePriceChanged value) rangePriceChanged,
+    required TResult Function(IdTextChanged value) idTextChanged,
+    required TResult Function(OdTextChanged value) odTextChanged,
+    required TResult Function(DepthTextChanged value) depthTextChanged,
   }) {
     return getSearchText(this);
   }
@@ -642,6 +933,7 @@ class _$GetSearchTextImpl implements GetSearchText {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitialEvent value)? initialEvent,
     TResult? Function(OnSearch value)? onSearch,
+    TResult? Function(OnShortCutSearch value)? onShortCutSearch,
     TResult? Function(GetSearchText value)? getSearchText,
     TResult? Function(GetCategoryList value)? getCategoryList,
     TResult? Function(LoadAllFilterList value)? loadAllFilterList,
@@ -650,6 +942,10 @@ class _$GetSearchTextImpl implements GetSearchText {
     TResult? Function(SubmitFilter value)? submitFilter,
     TResult? Function(ClearAllFilters value)? clearAllFilters,
     TResult? Function(ToggleFavourite value)? toggleFavourite,
+    TResult? Function(RangePriceChanged value)? rangePriceChanged,
+    TResult? Function(IdTextChanged value)? idTextChanged,
+    TResult? Function(OdTextChanged value)? odTextChanged,
+    TResult? Function(DepthTextChanged value)? depthTextChanged,
   }) {
     return getSearchText?.call(this);
   }
@@ -659,6 +955,7 @@ class _$GetSearchTextImpl implements GetSearchText {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialEvent value)? initialEvent,
     TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnShortCutSearch value)? onShortCutSearch,
     TResult Function(GetSearchText value)? getSearchText,
     TResult Function(GetCategoryList value)? getCategoryList,
     TResult Function(LoadAllFilterList value)? loadAllFilterList,
@@ -667,6 +964,10 @@ class _$GetSearchTextImpl implements GetSearchText {
     TResult Function(SubmitFilter value)? submitFilter,
     TResult Function(ClearAllFilters value)? clearAllFilters,
     TResult Function(ToggleFavourite value)? toggleFavourite,
+    TResult Function(RangePriceChanged value)? rangePriceChanged,
+    TResult Function(IdTextChanged value)? idTextChanged,
+    TResult Function(OdTextChanged value)? odTextChanged,
+    TResult Function(DepthTextChanged value)? depthTextChanged,
     required TResult orElse(),
   }) {
     if (getSearchText != null) {
@@ -726,15 +1027,20 @@ class _$GetCategoryListImpl implements GetCategoryList {
   TResult when<TResult extends Object?>({
     required TResult Function(SubCategoryDTO? val) initialEvent,
     required TResult Function(bool isRefresh) onSearch,
+    required TResult Function() onShortCutSearch,
     required TResult Function(String? val) getSearchText,
     required TResult Function() getCategoryList,
     required TResult Function() loadAllFilterList,
     required TResult Function(FilterAttribute attribute, String value)
         filterChanged,
-    required TResult Function(String value) categoryChanged,
+    required TResult Function(FilterOptionListDTO value) categoryChanged,
     required TResult Function() submitFilter,
     required TResult Function() clearAllFilters,
     required TResult Function(int id) toggleFavourite,
+    required TResult Function(RangeValues value) rangePriceChanged,
+    required TResult Function(String value) idTextChanged,
+    required TResult Function(String value) odTextChanged,
+    required TResult Function(String value) depthTextChanged,
   }) {
     return getCategoryList();
   }
@@ -744,14 +1050,19 @@ class _$GetCategoryListImpl implements GetCategoryList {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(SubCategoryDTO? val)? initialEvent,
     TResult? Function(bool isRefresh)? onSearch,
+    TResult? Function()? onShortCutSearch,
     TResult? Function(String? val)? getSearchText,
     TResult? Function()? getCategoryList,
     TResult? Function()? loadAllFilterList,
     TResult? Function(FilterAttribute attribute, String value)? filterChanged,
-    TResult? Function(String value)? categoryChanged,
+    TResult? Function(FilterOptionListDTO value)? categoryChanged,
     TResult? Function()? submitFilter,
     TResult? Function()? clearAllFilters,
     TResult? Function(int id)? toggleFavourite,
+    TResult? Function(RangeValues value)? rangePriceChanged,
+    TResult? Function(String value)? idTextChanged,
+    TResult? Function(String value)? odTextChanged,
+    TResult? Function(String value)? depthTextChanged,
   }) {
     return getCategoryList?.call();
   }
@@ -761,14 +1072,19 @@ class _$GetCategoryListImpl implements GetCategoryList {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(SubCategoryDTO? val)? initialEvent,
     TResult Function(bool isRefresh)? onSearch,
+    TResult Function()? onShortCutSearch,
     TResult Function(String? val)? getSearchText,
     TResult Function()? getCategoryList,
     TResult Function()? loadAllFilterList,
     TResult Function(FilterAttribute attribute, String value)? filterChanged,
-    TResult Function(String value)? categoryChanged,
+    TResult Function(FilterOptionListDTO value)? categoryChanged,
     TResult Function()? submitFilter,
     TResult Function()? clearAllFilters,
     TResult Function(int id)? toggleFavourite,
+    TResult Function(RangeValues value)? rangePriceChanged,
+    TResult Function(String value)? idTextChanged,
+    TResult Function(String value)? odTextChanged,
+    TResult Function(String value)? depthTextChanged,
     required TResult orElse(),
   }) {
     if (getCategoryList != null) {
@@ -782,6 +1098,7 @@ class _$GetCategoryListImpl implements GetCategoryList {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialEvent value) initialEvent,
     required TResult Function(OnSearch value) onSearch,
+    required TResult Function(OnShortCutSearch value) onShortCutSearch,
     required TResult Function(GetSearchText value) getSearchText,
     required TResult Function(GetCategoryList value) getCategoryList,
     required TResult Function(LoadAllFilterList value) loadAllFilterList,
@@ -790,6 +1107,10 @@ class _$GetCategoryListImpl implements GetCategoryList {
     required TResult Function(SubmitFilter value) submitFilter,
     required TResult Function(ClearAllFilters value) clearAllFilters,
     required TResult Function(ToggleFavourite value) toggleFavourite,
+    required TResult Function(RangePriceChanged value) rangePriceChanged,
+    required TResult Function(IdTextChanged value) idTextChanged,
+    required TResult Function(OdTextChanged value) odTextChanged,
+    required TResult Function(DepthTextChanged value) depthTextChanged,
   }) {
     return getCategoryList(this);
   }
@@ -799,6 +1120,7 @@ class _$GetCategoryListImpl implements GetCategoryList {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitialEvent value)? initialEvent,
     TResult? Function(OnSearch value)? onSearch,
+    TResult? Function(OnShortCutSearch value)? onShortCutSearch,
     TResult? Function(GetSearchText value)? getSearchText,
     TResult? Function(GetCategoryList value)? getCategoryList,
     TResult? Function(LoadAllFilterList value)? loadAllFilterList,
@@ -807,6 +1129,10 @@ class _$GetCategoryListImpl implements GetCategoryList {
     TResult? Function(SubmitFilter value)? submitFilter,
     TResult? Function(ClearAllFilters value)? clearAllFilters,
     TResult? Function(ToggleFavourite value)? toggleFavourite,
+    TResult? Function(RangePriceChanged value)? rangePriceChanged,
+    TResult? Function(IdTextChanged value)? idTextChanged,
+    TResult? Function(OdTextChanged value)? odTextChanged,
+    TResult? Function(DepthTextChanged value)? depthTextChanged,
   }) {
     return getCategoryList?.call(this);
   }
@@ -816,6 +1142,7 @@ class _$GetCategoryListImpl implements GetCategoryList {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialEvent value)? initialEvent,
     TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnShortCutSearch value)? onShortCutSearch,
     TResult Function(GetSearchText value)? getSearchText,
     TResult Function(GetCategoryList value)? getCategoryList,
     TResult Function(LoadAllFilterList value)? loadAllFilterList,
@@ -824,6 +1151,10 @@ class _$GetCategoryListImpl implements GetCategoryList {
     TResult Function(SubmitFilter value)? submitFilter,
     TResult Function(ClearAllFilters value)? clearAllFilters,
     TResult Function(ToggleFavourite value)? toggleFavourite,
+    TResult Function(RangePriceChanged value)? rangePriceChanged,
+    TResult Function(IdTextChanged value)? idTextChanged,
+    TResult Function(OdTextChanged value)? odTextChanged,
+    TResult Function(DepthTextChanged value)? depthTextChanged,
     required TResult orElse(),
   }) {
     if (getCategoryList != null) {
@@ -877,15 +1208,20 @@ class _$LoadAllFilterListImpl implements LoadAllFilterList {
   TResult when<TResult extends Object?>({
     required TResult Function(SubCategoryDTO? val) initialEvent,
     required TResult Function(bool isRefresh) onSearch,
+    required TResult Function() onShortCutSearch,
     required TResult Function(String? val) getSearchText,
     required TResult Function() getCategoryList,
     required TResult Function() loadAllFilterList,
     required TResult Function(FilterAttribute attribute, String value)
         filterChanged,
-    required TResult Function(String value) categoryChanged,
+    required TResult Function(FilterOptionListDTO value) categoryChanged,
     required TResult Function() submitFilter,
     required TResult Function() clearAllFilters,
     required TResult Function(int id) toggleFavourite,
+    required TResult Function(RangeValues value) rangePriceChanged,
+    required TResult Function(String value) idTextChanged,
+    required TResult Function(String value) odTextChanged,
+    required TResult Function(String value) depthTextChanged,
   }) {
     return loadAllFilterList();
   }
@@ -895,14 +1231,19 @@ class _$LoadAllFilterListImpl implements LoadAllFilterList {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(SubCategoryDTO? val)? initialEvent,
     TResult? Function(bool isRefresh)? onSearch,
+    TResult? Function()? onShortCutSearch,
     TResult? Function(String? val)? getSearchText,
     TResult? Function()? getCategoryList,
     TResult? Function()? loadAllFilterList,
     TResult? Function(FilterAttribute attribute, String value)? filterChanged,
-    TResult? Function(String value)? categoryChanged,
+    TResult? Function(FilterOptionListDTO value)? categoryChanged,
     TResult? Function()? submitFilter,
     TResult? Function()? clearAllFilters,
     TResult? Function(int id)? toggleFavourite,
+    TResult? Function(RangeValues value)? rangePriceChanged,
+    TResult? Function(String value)? idTextChanged,
+    TResult? Function(String value)? odTextChanged,
+    TResult? Function(String value)? depthTextChanged,
   }) {
     return loadAllFilterList?.call();
   }
@@ -912,14 +1253,19 @@ class _$LoadAllFilterListImpl implements LoadAllFilterList {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(SubCategoryDTO? val)? initialEvent,
     TResult Function(bool isRefresh)? onSearch,
+    TResult Function()? onShortCutSearch,
     TResult Function(String? val)? getSearchText,
     TResult Function()? getCategoryList,
     TResult Function()? loadAllFilterList,
     TResult Function(FilterAttribute attribute, String value)? filterChanged,
-    TResult Function(String value)? categoryChanged,
+    TResult Function(FilterOptionListDTO value)? categoryChanged,
     TResult Function()? submitFilter,
     TResult Function()? clearAllFilters,
     TResult Function(int id)? toggleFavourite,
+    TResult Function(RangeValues value)? rangePriceChanged,
+    TResult Function(String value)? idTextChanged,
+    TResult Function(String value)? odTextChanged,
+    TResult Function(String value)? depthTextChanged,
     required TResult orElse(),
   }) {
     if (loadAllFilterList != null) {
@@ -933,6 +1279,7 @@ class _$LoadAllFilterListImpl implements LoadAllFilterList {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialEvent value) initialEvent,
     required TResult Function(OnSearch value) onSearch,
+    required TResult Function(OnShortCutSearch value) onShortCutSearch,
     required TResult Function(GetSearchText value) getSearchText,
     required TResult Function(GetCategoryList value) getCategoryList,
     required TResult Function(LoadAllFilterList value) loadAllFilterList,
@@ -941,6 +1288,10 @@ class _$LoadAllFilterListImpl implements LoadAllFilterList {
     required TResult Function(SubmitFilter value) submitFilter,
     required TResult Function(ClearAllFilters value) clearAllFilters,
     required TResult Function(ToggleFavourite value) toggleFavourite,
+    required TResult Function(RangePriceChanged value) rangePriceChanged,
+    required TResult Function(IdTextChanged value) idTextChanged,
+    required TResult Function(OdTextChanged value) odTextChanged,
+    required TResult Function(DepthTextChanged value) depthTextChanged,
   }) {
     return loadAllFilterList(this);
   }
@@ -950,6 +1301,7 @@ class _$LoadAllFilterListImpl implements LoadAllFilterList {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitialEvent value)? initialEvent,
     TResult? Function(OnSearch value)? onSearch,
+    TResult? Function(OnShortCutSearch value)? onShortCutSearch,
     TResult? Function(GetSearchText value)? getSearchText,
     TResult? Function(GetCategoryList value)? getCategoryList,
     TResult? Function(LoadAllFilterList value)? loadAllFilterList,
@@ -958,6 +1310,10 @@ class _$LoadAllFilterListImpl implements LoadAllFilterList {
     TResult? Function(SubmitFilter value)? submitFilter,
     TResult? Function(ClearAllFilters value)? clearAllFilters,
     TResult? Function(ToggleFavourite value)? toggleFavourite,
+    TResult? Function(RangePriceChanged value)? rangePriceChanged,
+    TResult? Function(IdTextChanged value)? idTextChanged,
+    TResult? Function(OdTextChanged value)? odTextChanged,
+    TResult? Function(DepthTextChanged value)? depthTextChanged,
   }) {
     return loadAllFilterList?.call(this);
   }
@@ -967,6 +1323,7 @@ class _$LoadAllFilterListImpl implements LoadAllFilterList {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialEvent value)? initialEvent,
     TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnShortCutSearch value)? onShortCutSearch,
     TResult Function(GetSearchText value)? getSearchText,
     TResult Function(GetCategoryList value)? getCategoryList,
     TResult Function(LoadAllFilterList value)? loadAllFilterList,
@@ -975,6 +1332,10 @@ class _$LoadAllFilterListImpl implements LoadAllFilterList {
     TResult Function(SubmitFilter value)? submitFilter,
     TResult Function(ClearAllFilters value)? clearAllFilters,
     TResult Function(ToggleFavourite value)? toggleFavourite,
+    TResult Function(RangePriceChanged value)? rangePriceChanged,
+    TResult Function(IdTextChanged value)? idTextChanged,
+    TResult Function(OdTextChanged value)? odTextChanged,
+    TResult Function(DepthTextChanged value)? depthTextChanged,
     required TResult orElse(),
   }) {
     if (loadAllFilterList != null) {
@@ -1063,15 +1424,20 @@ class _$FilterChangedImpl implements FilterChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(SubCategoryDTO? val) initialEvent,
     required TResult Function(bool isRefresh) onSearch,
+    required TResult Function() onShortCutSearch,
     required TResult Function(String? val) getSearchText,
     required TResult Function() getCategoryList,
     required TResult Function() loadAllFilterList,
     required TResult Function(FilterAttribute attribute, String value)
         filterChanged,
-    required TResult Function(String value) categoryChanged,
+    required TResult Function(FilterOptionListDTO value) categoryChanged,
     required TResult Function() submitFilter,
     required TResult Function() clearAllFilters,
     required TResult Function(int id) toggleFavourite,
+    required TResult Function(RangeValues value) rangePriceChanged,
+    required TResult Function(String value) idTextChanged,
+    required TResult Function(String value) odTextChanged,
+    required TResult Function(String value) depthTextChanged,
   }) {
     return filterChanged(attribute, value);
   }
@@ -1081,14 +1447,19 @@ class _$FilterChangedImpl implements FilterChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(SubCategoryDTO? val)? initialEvent,
     TResult? Function(bool isRefresh)? onSearch,
+    TResult? Function()? onShortCutSearch,
     TResult? Function(String? val)? getSearchText,
     TResult? Function()? getCategoryList,
     TResult? Function()? loadAllFilterList,
     TResult? Function(FilterAttribute attribute, String value)? filterChanged,
-    TResult? Function(String value)? categoryChanged,
+    TResult? Function(FilterOptionListDTO value)? categoryChanged,
     TResult? Function()? submitFilter,
     TResult? Function()? clearAllFilters,
     TResult? Function(int id)? toggleFavourite,
+    TResult? Function(RangeValues value)? rangePriceChanged,
+    TResult? Function(String value)? idTextChanged,
+    TResult? Function(String value)? odTextChanged,
+    TResult? Function(String value)? depthTextChanged,
   }) {
     return filterChanged?.call(attribute, value);
   }
@@ -1098,14 +1469,19 @@ class _$FilterChangedImpl implements FilterChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(SubCategoryDTO? val)? initialEvent,
     TResult Function(bool isRefresh)? onSearch,
+    TResult Function()? onShortCutSearch,
     TResult Function(String? val)? getSearchText,
     TResult Function()? getCategoryList,
     TResult Function()? loadAllFilterList,
     TResult Function(FilterAttribute attribute, String value)? filterChanged,
-    TResult Function(String value)? categoryChanged,
+    TResult Function(FilterOptionListDTO value)? categoryChanged,
     TResult Function()? submitFilter,
     TResult Function()? clearAllFilters,
     TResult Function(int id)? toggleFavourite,
+    TResult Function(RangeValues value)? rangePriceChanged,
+    TResult Function(String value)? idTextChanged,
+    TResult Function(String value)? odTextChanged,
+    TResult Function(String value)? depthTextChanged,
     required TResult orElse(),
   }) {
     if (filterChanged != null) {
@@ -1119,6 +1495,7 @@ class _$FilterChangedImpl implements FilterChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialEvent value) initialEvent,
     required TResult Function(OnSearch value) onSearch,
+    required TResult Function(OnShortCutSearch value) onShortCutSearch,
     required TResult Function(GetSearchText value) getSearchText,
     required TResult Function(GetCategoryList value) getCategoryList,
     required TResult Function(LoadAllFilterList value) loadAllFilterList,
@@ -1127,6 +1504,10 @@ class _$FilterChangedImpl implements FilterChanged {
     required TResult Function(SubmitFilter value) submitFilter,
     required TResult Function(ClearAllFilters value) clearAllFilters,
     required TResult Function(ToggleFavourite value) toggleFavourite,
+    required TResult Function(RangePriceChanged value) rangePriceChanged,
+    required TResult Function(IdTextChanged value) idTextChanged,
+    required TResult Function(OdTextChanged value) odTextChanged,
+    required TResult Function(DepthTextChanged value) depthTextChanged,
   }) {
     return filterChanged(this);
   }
@@ -1136,6 +1517,7 @@ class _$FilterChangedImpl implements FilterChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitialEvent value)? initialEvent,
     TResult? Function(OnSearch value)? onSearch,
+    TResult? Function(OnShortCutSearch value)? onShortCutSearch,
     TResult? Function(GetSearchText value)? getSearchText,
     TResult? Function(GetCategoryList value)? getCategoryList,
     TResult? Function(LoadAllFilterList value)? loadAllFilterList,
@@ -1144,6 +1526,10 @@ class _$FilterChangedImpl implements FilterChanged {
     TResult? Function(SubmitFilter value)? submitFilter,
     TResult? Function(ClearAllFilters value)? clearAllFilters,
     TResult? Function(ToggleFavourite value)? toggleFavourite,
+    TResult? Function(RangePriceChanged value)? rangePriceChanged,
+    TResult? Function(IdTextChanged value)? idTextChanged,
+    TResult? Function(OdTextChanged value)? odTextChanged,
+    TResult? Function(DepthTextChanged value)? depthTextChanged,
   }) {
     return filterChanged?.call(this);
   }
@@ -1153,6 +1539,7 @@ class _$FilterChangedImpl implements FilterChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialEvent value)? initialEvent,
     TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnShortCutSearch value)? onShortCutSearch,
     TResult Function(GetSearchText value)? getSearchText,
     TResult Function(GetCategoryList value)? getCategoryList,
     TResult Function(LoadAllFilterList value)? loadAllFilterList,
@@ -1161,6 +1548,10 @@ class _$FilterChangedImpl implements FilterChanged {
     TResult Function(SubmitFilter value)? submitFilter,
     TResult Function(ClearAllFilters value)? clearAllFilters,
     TResult Function(ToggleFavourite value)? toggleFavourite,
+    TResult Function(RangePriceChanged value)? rangePriceChanged,
+    TResult Function(IdTextChanged value)? idTextChanged,
+    TResult Function(OdTextChanged value)? odTextChanged,
+    TResult Function(DepthTextChanged value)? depthTextChanged,
     required TResult orElse(),
   }) {
     if (filterChanged != null) {
@@ -1188,7 +1579,9 @@ abstract class _$$CategoryChangedImplCopyWith<$Res> {
           $Res Function(_$CategoryChangedImpl) then) =
       __$$CategoryChangedImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String value});
+  $Res call({FilterOptionListDTO value});
+
+  $FilterOptionListDTOCopyWith<$Res> get value;
 }
 
 /// @nodoc
@@ -1208,8 +1601,16 @@ class __$$CategoryChangedImplCopyWithImpl<$Res>
       value: null == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as String,
+              as FilterOptionListDTO,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $FilterOptionListDTOCopyWith<$Res> get value {
+    return $FilterOptionListDTOCopyWith<$Res>(_value.value, (value) {
+      return _then(_value.copyWith(value: value));
+    });
   }
 }
 
@@ -1219,7 +1620,7 @@ class _$CategoryChangedImpl implements CategoryChanged {
   const _$CategoryChangedImpl({required this.value});
 
   @override
-  final String value;
+  final FilterOptionListDTO value;
 
   @override
   String toString() {
@@ -1249,15 +1650,20 @@ class _$CategoryChangedImpl implements CategoryChanged {
   TResult when<TResult extends Object?>({
     required TResult Function(SubCategoryDTO? val) initialEvent,
     required TResult Function(bool isRefresh) onSearch,
+    required TResult Function() onShortCutSearch,
     required TResult Function(String? val) getSearchText,
     required TResult Function() getCategoryList,
     required TResult Function() loadAllFilterList,
     required TResult Function(FilterAttribute attribute, String value)
         filterChanged,
-    required TResult Function(String value) categoryChanged,
+    required TResult Function(FilterOptionListDTO value) categoryChanged,
     required TResult Function() submitFilter,
     required TResult Function() clearAllFilters,
     required TResult Function(int id) toggleFavourite,
+    required TResult Function(RangeValues value) rangePriceChanged,
+    required TResult Function(String value) idTextChanged,
+    required TResult Function(String value) odTextChanged,
+    required TResult Function(String value) depthTextChanged,
   }) {
     return categoryChanged(value);
   }
@@ -1267,14 +1673,19 @@ class _$CategoryChangedImpl implements CategoryChanged {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(SubCategoryDTO? val)? initialEvent,
     TResult? Function(bool isRefresh)? onSearch,
+    TResult? Function()? onShortCutSearch,
     TResult? Function(String? val)? getSearchText,
     TResult? Function()? getCategoryList,
     TResult? Function()? loadAllFilterList,
     TResult? Function(FilterAttribute attribute, String value)? filterChanged,
-    TResult? Function(String value)? categoryChanged,
+    TResult? Function(FilterOptionListDTO value)? categoryChanged,
     TResult? Function()? submitFilter,
     TResult? Function()? clearAllFilters,
     TResult? Function(int id)? toggleFavourite,
+    TResult? Function(RangeValues value)? rangePriceChanged,
+    TResult? Function(String value)? idTextChanged,
+    TResult? Function(String value)? odTextChanged,
+    TResult? Function(String value)? depthTextChanged,
   }) {
     return categoryChanged?.call(value);
   }
@@ -1284,14 +1695,19 @@ class _$CategoryChangedImpl implements CategoryChanged {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(SubCategoryDTO? val)? initialEvent,
     TResult Function(bool isRefresh)? onSearch,
+    TResult Function()? onShortCutSearch,
     TResult Function(String? val)? getSearchText,
     TResult Function()? getCategoryList,
     TResult Function()? loadAllFilterList,
     TResult Function(FilterAttribute attribute, String value)? filterChanged,
-    TResult Function(String value)? categoryChanged,
+    TResult Function(FilterOptionListDTO value)? categoryChanged,
     TResult Function()? submitFilter,
     TResult Function()? clearAllFilters,
     TResult Function(int id)? toggleFavourite,
+    TResult Function(RangeValues value)? rangePriceChanged,
+    TResult Function(String value)? idTextChanged,
+    TResult Function(String value)? odTextChanged,
+    TResult Function(String value)? depthTextChanged,
     required TResult orElse(),
   }) {
     if (categoryChanged != null) {
@@ -1305,6 +1721,7 @@ class _$CategoryChangedImpl implements CategoryChanged {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialEvent value) initialEvent,
     required TResult Function(OnSearch value) onSearch,
+    required TResult Function(OnShortCutSearch value) onShortCutSearch,
     required TResult Function(GetSearchText value) getSearchText,
     required TResult Function(GetCategoryList value) getCategoryList,
     required TResult Function(LoadAllFilterList value) loadAllFilterList,
@@ -1313,6 +1730,10 @@ class _$CategoryChangedImpl implements CategoryChanged {
     required TResult Function(SubmitFilter value) submitFilter,
     required TResult Function(ClearAllFilters value) clearAllFilters,
     required TResult Function(ToggleFavourite value) toggleFavourite,
+    required TResult Function(RangePriceChanged value) rangePriceChanged,
+    required TResult Function(IdTextChanged value) idTextChanged,
+    required TResult Function(OdTextChanged value) odTextChanged,
+    required TResult Function(DepthTextChanged value) depthTextChanged,
   }) {
     return categoryChanged(this);
   }
@@ -1322,6 +1743,7 @@ class _$CategoryChangedImpl implements CategoryChanged {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitialEvent value)? initialEvent,
     TResult? Function(OnSearch value)? onSearch,
+    TResult? Function(OnShortCutSearch value)? onShortCutSearch,
     TResult? Function(GetSearchText value)? getSearchText,
     TResult? Function(GetCategoryList value)? getCategoryList,
     TResult? Function(LoadAllFilterList value)? loadAllFilterList,
@@ -1330,6 +1752,10 @@ class _$CategoryChangedImpl implements CategoryChanged {
     TResult? Function(SubmitFilter value)? submitFilter,
     TResult? Function(ClearAllFilters value)? clearAllFilters,
     TResult? Function(ToggleFavourite value)? toggleFavourite,
+    TResult? Function(RangePriceChanged value)? rangePriceChanged,
+    TResult? Function(IdTextChanged value)? idTextChanged,
+    TResult? Function(OdTextChanged value)? odTextChanged,
+    TResult? Function(DepthTextChanged value)? depthTextChanged,
   }) {
     return categoryChanged?.call(this);
   }
@@ -1339,6 +1765,7 @@ class _$CategoryChangedImpl implements CategoryChanged {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialEvent value)? initialEvent,
     TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnShortCutSearch value)? onShortCutSearch,
     TResult Function(GetSearchText value)? getSearchText,
     TResult Function(GetCategoryList value)? getCategoryList,
     TResult Function(LoadAllFilterList value)? loadAllFilterList,
@@ -1347,6 +1774,10 @@ class _$CategoryChangedImpl implements CategoryChanged {
     TResult Function(SubmitFilter value)? submitFilter,
     TResult Function(ClearAllFilters value)? clearAllFilters,
     TResult Function(ToggleFavourite value)? toggleFavourite,
+    TResult Function(RangePriceChanged value)? rangePriceChanged,
+    TResult Function(IdTextChanged value)? idTextChanged,
+    TResult Function(OdTextChanged value)? odTextChanged,
+    TResult Function(DepthTextChanged value)? depthTextChanged,
     required TResult orElse(),
   }) {
     if (categoryChanged != null) {
@@ -1357,10 +1788,10 @@ class _$CategoryChangedImpl implements CategoryChanged {
 }
 
 abstract class CategoryChanged implements SearchEvent {
-  const factory CategoryChanged({required final String value}) =
+  const factory CategoryChanged({required final FilterOptionListDTO value}) =
       _$CategoryChangedImpl;
 
-  String get value;
+  FilterOptionListDTO get value;
   @JsonKey(ignore: true)
   _$$CategoryChangedImplCopyWith<_$CategoryChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1406,15 +1837,20 @@ class _$SubmitFilterImpl implements SubmitFilter {
   TResult when<TResult extends Object?>({
     required TResult Function(SubCategoryDTO? val) initialEvent,
     required TResult Function(bool isRefresh) onSearch,
+    required TResult Function() onShortCutSearch,
     required TResult Function(String? val) getSearchText,
     required TResult Function() getCategoryList,
     required TResult Function() loadAllFilterList,
     required TResult Function(FilterAttribute attribute, String value)
         filterChanged,
-    required TResult Function(String value) categoryChanged,
+    required TResult Function(FilterOptionListDTO value) categoryChanged,
     required TResult Function() submitFilter,
     required TResult Function() clearAllFilters,
     required TResult Function(int id) toggleFavourite,
+    required TResult Function(RangeValues value) rangePriceChanged,
+    required TResult Function(String value) idTextChanged,
+    required TResult Function(String value) odTextChanged,
+    required TResult Function(String value) depthTextChanged,
   }) {
     return submitFilter();
   }
@@ -1424,14 +1860,19 @@ class _$SubmitFilterImpl implements SubmitFilter {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(SubCategoryDTO? val)? initialEvent,
     TResult? Function(bool isRefresh)? onSearch,
+    TResult? Function()? onShortCutSearch,
     TResult? Function(String? val)? getSearchText,
     TResult? Function()? getCategoryList,
     TResult? Function()? loadAllFilterList,
     TResult? Function(FilterAttribute attribute, String value)? filterChanged,
-    TResult? Function(String value)? categoryChanged,
+    TResult? Function(FilterOptionListDTO value)? categoryChanged,
     TResult? Function()? submitFilter,
     TResult? Function()? clearAllFilters,
     TResult? Function(int id)? toggleFavourite,
+    TResult? Function(RangeValues value)? rangePriceChanged,
+    TResult? Function(String value)? idTextChanged,
+    TResult? Function(String value)? odTextChanged,
+    TResult? Function(String value)? depthTextChanged,
   }) {
     return submitFilter?.call();
   }
@@ -1441,14 +1882,19 @@ class _$SubmitFilterImpl implements SubmitFilter {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(SubCategoryDTO? val)? initialEvent,
     TResult Function(bool isRefresh)? onSearch,
+    TResult Function()? onShortCutSearch,
     TResult Function(String? val)? getSearchText,
     TResult Function()? getCategoryList,
     TResult Function()? loadAllFilterList,
     TResult Function(FilterAttribute attribute, String value)? filterChanged,
-    TResult Function(String value)? categoryChanged,
+    TResult Function(FilterOptionListDTO value)? categoryChanged,
     TResult Function()? submitFilter,
     TResult Function()? clearAllFilters,
     TResult Function(int id)? toggleFavourite,
+    TResult Function(RangeValues value)? rangePriceChanged,
+    TResult Function(String value)? idTextChanged,
+    TResult Function(String value)? odTextChanged,
+    TResult Function(String value)? depthTextChanged,
     required TResult orElse(),
   }) {
     if (submitFilter != null) {
@@ -1462,6 +1908,7 @@ class _$SubmitFilterImpl implements SubmitFilter {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialEvent value) initialEvent,
     required TResult Function(OnSearch value) onSearch,
+    required TResult Function(OnShortCutSearch value) onShortCutSearch,
     required TResult Function(GetSearchText value) getSearchText,
     required TResult Function(GetCategoryList value) getCategoryList,
     required TResult Function(LoadAllFilterList value) loadAllFilterList,
@@ -1470,6 +1917,10 @@ class _$SubmitFilterImpl implements SubmitFilter {
     required TResult Function(SubmitFilter value) submitFilter,
     required TResult Function(ClearAllFilters value) clearAllFilters,
     required TResult Function(ToggleFavourite value) toggleFavourite,
+    required TResult Function(RangePriceChanged value) rangePriceChanged,
+    required TResult Function(IdTextChanged value) idTextChanged,
+    required TResult Function(OdTextChanged value) odTextChanged,
+    required TResult Function(DepthTextChanged value) depthTextChanged,
   }) {
     return submitFilter(this);
   }
@@ -1479,6 +1930,7 @@ class _$SubmitFilterImpl implements SubmitFilter {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitialEvent value)? initialEvent,
     TResult? Function(OnSearch value)? onSearch,
+    TResult? Function(OnShortCutSearch value)? onShortCutSearch,
     TResult? Function(GetSearchText value)? getSearchText,
     TResult? Function(GetCategoryList value)? getCategoryList,
     TResult? Function(LoadAllFilterList value)? loadAllFilterList,
@@ -1487,6 +1939,10 @@ class _$SubmitFilterImpl implements SubmitFilter {
     TResult? Function(SubmitFilter value)? submitFilter,
     TResult? Function(ClearAllFilters value)? clearAllFilters,
     TResult? Function(ToggleFavourite value)? toggleFavourite,
+    TResult? Function(RangePriceChanged value)? rangePriceChanged,
+    TResult? Function(IdTextChanged value)? idTextChanged,
+    TResult? Function(OdTextChanged value)? odTextChanged,
+    TResult? Function(DepthTextChanged value)? depthTextChanged,
   }) {
     return submitFilter?.call(this);
   }
@@ -1496,6 +1952,7 @@ class _$SubmitFilterImpl implements SubmitFilter {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialEvent value)? initialEvent,
     TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnShortCutSearch value)? onShortCutSearch,
     TResult Function(GetSearchText value)? getSearchText,
     TResult Function(GetCategoryList value)? getCategoryList,
     TResult Function(LoadAllFilterList value)? loadAllFilterList,
@@ -1504,6 +1961,10 @@ class _$SubmitFilterImpl implements SubmitFilter {
     TResult Function(SubmitFilter value)? submitFilter,
     TResult Function(ClearAllFilters value)? clearAllFilters,
     TResult Function(ToggleFavourite value)? toggleFavourite,
+    TResult Function(RangePriceChanged value)? rangePriceChanged,
+    TResult Function(IdTextChanged value)? idTextChanged,
+    TResult Function(OdTextChanged value)? odTextChanged,
+    TResult Function(DepthTextChanged value)? depthTextChanged,
     required TResult orElse(),
   }) {
     if (submitFilter != null) {
@@ -1557,15 +2018,20 @@ class _$ClearAllFiltersImpl implements ClearAllFilters {
   TResult when<TResult extends Object?>({
     required TResult Function(SubCategoryDTO? val) initialEvent,
     required TResult Function(bool isRefresh) onSearch,
+    required TResult Function() onShortCutSearch,
     required TResult Function(String? val) getSearchText,
     required TResult Function() getCategoryList,
     required TResult Function() loadAllFilterList,
     required TResult Function(FilterAttribute attribute, String value)
         filterChanged,
-    required TResult Function(String value) categoryChanged,
+    required TResult Function(FilterOptionListDTO value) categoryChanged,
     required TResult Function() submitFilter,
     required TResult Function() clearAllFilters,
     required TResult Function(int id) toggleFavourite,
+    required TResult Function(RangeValues value) rangePriceChanged,
+    required TResult Function(String value) idTextChanged,
+    required TResult Function(String value) odTextChanged,
+    required TResult Function(String value) depthTextChanged,
   }) {
     return clearAllFilters();
   }
@@ -1575,14 +2041,19 @@ class _$ClearAllFiltersImpl implements ClearAllFilters {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(SubCategoryDTO? val)? initialEvent,
     TResult? Function(bool isRefresh)? onSearch,
+    TResult? Function()? onShortCutSearch,
     TResult? Function(String? val)? getSearchText,
     TResult? Function()? getCategoryList,
     TResult? Function()? loadAllFilterList,
     TResult? Function(FilterAttribute attribute, String value)? filterChanged,
-    TResult? Function(String value)? categoryChanged,
+    TResult? Function(FilterOptionListDTO value)? categoryChanged,
     TResult? Function()? submitFilter,
     TResult? Function()? clearAllFilters,
     TResult? Function(int id)? toggleFavourite,
+    TResult? Function(RangeValues value)? rangePriceChanged,
+    TResult? Function(String value)? idTextChanged,
+    TResult? Function(String value)? odTextChanged,
+    TResult? Function(String value)? depthTextChanged,
   }) {
     return clearAllFilters?.call();
   }
@@ -1592,14 +2063,19 @@ class _$ClearAllFiltersImpl implements ClearAllFilters {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(SubCategoryDTO? val)? initialEvent,
     TResult Function(bool isRefresh)? onSearch,
+    TResult Function()? onShortCutSearch,
     TResult Function(String? val)? getSearchText,
     TResult Function()? getCategoryList,
     TResult Function()? loadAllFilterList,
     TResult Function(FilterAttribute attribute, String value)? filterChanged,
-    TResult Function(String value)? categoryChanged,
+    TResult Function(FilterOptionListDTO value)? categoryChanged,
     TResult Function()? submitFilter,
     TResult Function()? clearAllFilters,
     TResult Function(int id)? toggleFavourite,
+    TResult Function(RangeValues value)? rangePriceChanged,
+    TResult Function(String value)? idTextChanged,
+    TResult Function(String value)? odTextChanged,
+    TResult Function(String value)? depthTextChanged,
     required TResult orElse(),
   }) {
     if (clearAllFilters != null) {
@@ -1613,6 +2089,7 @@ class _$ClearAllFiltersImpl implements ClearAllFilters {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialEvent value) initialEvent,
     required TResult Function(OnSearch value) onSearch,
+    required TResult Function(OnShortCutSearch value) onShortCutSearch,
     required TResult Function(GetSearchText value) getSearchText,
     required TResult Function(GetCategoryList value) getCategoryList,
     required TResult Function(LoadAllFilterList value) loadAllFilterList,
@@ -1621,6 +2098,10 @@ class _$ClearAllFiltersImpl implements ClearAllFilters {
     required TResult Function(SubmitFilter value) submitFilter,
     required TResult Function(ClearAllFilters value) clearAllFilters,
     required TResult Function(ToggleFavourite value) toggleFavourite,
+    required TResult Function(RangePriceChanged value) rangePriceChanged,
+    required TResult Function(IdTextChanged value) idTextChanged,
+    required TResult Function(OdTextChanged value) odTextChanged,
+    required TResult Function(DepthTextChanged value) depthTextChanged,
   }) {
     return clearAllFilters(this);
   }
@@ -1630,6 +2111,7 @@ class _$ClearAllFiltersImpl implements ClearAllFilters {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitialEvent value)? initialEvent,
     TResult? Function(OnSearch value)? onSearch,
+    TResult? Function(OnShortCutSearch value)? onShortCutSearch,
     TResult? Function(GetSearchText value)? getSearchText,
     TResult? Function(GetCategoryList value)? getCategoryList,
     TResult? Function(LoadAllFilterList value)? loadAllFilterList,
@@ -1638,6 +2120,10 @@ class _$ClearAllFiltersImpl implements ClearAllFilters {
     TResult? Function(SubmitFilter value)? submitFilter,
     TResult? Function(ClearAllFilters value)? clearAllFilters,
     TResult? Function(ToggleFavourite value)? toggleFavourite,
+    TResult? Function(RangePriceChanged value)? rangePriceChanged,
+    TResult? Function(IdTextChanged value)? idTextChanged,
+    TResult? Function(OdTextChanged value)? odTextChanged,
+    TResult? Function(DepthTextChanged value)? depthTextChanged,
   }) {
     return clearAllFilters?.call(this);
   }
@@ -1647,6 +2133,7 @@ class _$ClearAllFiltersImpl implements ClearAllFilters {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialEvent value)? initialEvent,
     TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnShortCutSearch value)? onShortCutSearch,
     TResult Function(GetSearchText value)? getSearchText,
     TResult Function(GetCategoryList value)? getCategoryList,
     TResult Function(LoadAllFilterList value)? loadAllFilterList,
@@ -1655,6 +2142,10 @@ class _$ClearAllFiltersImpl implements ClearAllFilters {
     TResult Function(SubmitFilter value)? submitFilter,
     TResult Function(ClearAllFilters value)? clearAllFilters,
     TResult Function(ToggleFavourite value)? toggleFavourite,
+    TResult Function(RangePriceChanged value)? rangePriceChanged,
+    TResult Function(IdTextChanged value)? idTextChanged,
+    TResult Function(OdTextChanged value)? odTextChanged,
+    TResult Function(DepthTextChanged value)? depthTextChanged,
     required TResult orElse(),
   }) {
     if (clearAllFilters != null) {
@@ -1735,15 +2226,20 @@ class _$ToggleFavouriteImpl implements ToggleFavourite {
   TResult when<TResult extends Object?>({
     required TResult Function(SubCategoryDTO? val) initialEvent,
     required TResult Function(bool isRefresh) onSearch,
+    required TResult Function() onShortCutSearch,
     required TResult Function(String? val) getSearchText,
     required TResult Function() getCategoryList,
     required TResult Function() loadAllFilterList,
     required TResult Function(FilterAttribute attribute, String value)
         filterChanged,
-    required TResult Function(String value) categoryChanged,
+    required TResult Function(FilterOptionListDTO value) categoryChanged,
     required TResult Function() submitFilter,
     required TResult Function() clearAllFilters,
     required TResult Function(int id) toggleFavourite,
+    required TResult Function(RangeValues value) rangePriceChanged,
+    required TResult Function(String value) idTextChanged,
+    required TResult Function(String value) odTextChanged,
+    required TResult Function(String value) depthTextChanged,
   }) {
     return toggleFavourite(id);
   }
@@ -1753,14 +2249,19 @@ class _$ToggleFavouriteImpl implements ToggleFavourite {
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(SubCategoryDTO? val)? initialEvent,
     TResult? Function(bool isRefresh)? onSearch,
+    TResult? Function()? onShortCutSearch,
     TResult? Function(String? val)? getSearchText,
     TResult? Function()? getCategoryList,
     TResult? Function()? loadAllFilterList,
     TResult? Function(FilterAttribute attribute, String value)? filterChanged,
-    TResult? Function(String value)? categoryChanged,
+    TResult? Function(FilterOptionListDTO value)? categoryChanged,
     TResult? Function()? submitFilter,
     TResult? Function()? clearAllFilters,
     TResult? Function(int id)? toggleFavourite,
+    TResult? Function(RangeValues value)? rangePriceChanged,
+    TResult? Function(String value)? idTextChanged,
+    TResult? Function(String value)? odTextChanged,
+    TResult? Function(String value)? depthTextChanged,
   }) {
     return toggleFavourite?.call(id);
   }
@@ -1770,14 +2271,19 @@ class _$ToggleFavouriteImpl implements ToggleFavourite {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(SubCategoryDTO? val)? initialEvent,
     TResult Function(bool isRefresh)? onSearch,
+    TResult Function()? onShortCutSearch,
     TResult Function(String? val)? getSearchText,
     TResult Function()? getCategoryList,
     TResult Function()? loadAllFilterList,
     TResult Function(FilterAttribute attribute, String value)? filterChanged,
-    TResult Function(String value)? categoryChanged,
+    TResult Function(FilterOptionListDTO value)? categoryChanged,
     TResult Function()? submitFilter,
     TResult Function()? clearAllFilters,
     TResult Function(int id)? toggleFavourite,
+    TResult Function(RangeValues value)? rangePriceChanged,
+    TResult Function(String value)? idTextChanged,
+    TResult Function(String value)? odTextChanged,
+    TResult Function(String value)? depthTextChanged,
     required TResult orElse(),
   }) {
     if (toggleFavourite != null) {
@@ -1791,6 +2297,7 @@ class _$ToggleFavouriteImpl implements ToggleFavourite {
   TResult map<TResult extends Object?>({
     required TResult Function(InitialEvent value) initialEvent,
     required TResult Function(OnSearch value) onSearch,
+    required TResult Function(OnShortCutSearch value) onShortCutSearch,
     required TResult Function(GetSearchText value) getSearchText,
     required TResult Function(GetCategoryList value) getCategoryList,
     required TResult Function(LoadAllFilterList value) loadAllFilterList,
@@ -1799,6 +2306,10 @@ class _$ToggleFavouriteImpl implements ToggleFavourite {
     required TResult Function(SubmitFilter value) submitFilter,
     required TResult Function(ClearAllFilters value) clearAllFilters,
     required TResult Function(ToggleFavourite value) toggleFavourite,
+    required TResult Function(RangePriceChanged value) rangePriceChanged,
+    required TResult Function(IdTextChanged value) idTextChanged,
+    required TResult Function(OdTextChanged value) odTextChanged,
+    required TResult Function(DepthTextChanged value) depthTextChanged,
   }) {
     return toggleFavourite(this);
   }
@@ -1808,6 +2319,7 @@ class _$ToggleFavouriteImpl implements ToggleFavourite {
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(InitialEvent value)? initialEvent,
     TResult? Function(OnSearch value)? onSearch,
+    TResult? Function(OnShortCutSearch value)? onShortCutSearch,
     TResult? Function(GetSearchText value)? getSearchText,
     TResult? Function(GetCategoryList value)? getCategoryList,
     TResult? Function(LoadAllFilterList value)? loadAllFilterList,
@@ -1816,6 +2328,10 @@ class _$ToggleFavouriteImpl implements ToggleFavourite {
     TResult? Function(SubmitFilter value)? submitFilter,
     TResult? Function(ClearAllFilters value)? clearAllFilters,
     TResult? Function(ToggleFavourite value)? toggleFavourite,
+    TResult? Function(RangePriceChanged value)? rangePriceChanged,
+    TResult? Function(IdTextChanged value)? idTextChanged,
+    TResult? Function(OdTextChanged value)? odTextChanged,
+    TResult? Function(DepthTextChanged value)? depthTextChanged,
   }) {
     return toggleFavourite?.call(this);
   }
@@ -1825,6 +2341,7 @@ class _$ToggleFavouriteImpl implements ToggleFavourite {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(InitialEvent value)? initialEvent,
     TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnShortCutSearch value)? onShortCutSearch,
     TResult Function(GetSearchText value)? getSearchText,
     TResult Function(GetCategoryList value)? getCategoryList,
     TResult Function(LoadAllFilterList value)? loadAllFilterList,
@@ -1833,6 +2350,10 @@ class _$ToggleFavouriteImpl implements ToggleFavourite {
     TResult Function(SubmitFilter value)? submitFilter,
     TResult Function(ClearAllFilters value)? clearAllFilters,
     TResult Function(ToggleFavourite value)? toggleFavourite,
+    TResult Function(RangePriceChanged value)? rangePriceChanged,
+    TResult Function(IdTextChanged value)? idTextChanged,
+    TResult Function(OdTextChanged value)? odTextChanged,
+    TResult Function(DepthTextChanged value)? depthTextChanged,
     required TResult orElse(),
   }) {
     if (toggleFavourite != null) {
@@ -1848,6 +2369,860 @@ abstract class ToggleFavourite implements SearchEvent {
   int get id;
   @JsonKey(ignore: true)
   _$$ToggleFavouriteImplCopyWith<_$ToggleFavouriteImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RangePriceChangedImplCopyWith<$Res> {
+  factory _$$RangePriceChangedImplCopyWith(_$RangePriceChangedImpl value,
+          $Res Function(_$RangePriceChangedImpl) then) =
+      __$$RangePriceChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({RangeValues value});
+}
+
+/// @nodoc
+class __$$RangePriceChangedImplCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res, _$RangePriceChangedImpl>
+    implements _$$RangePriceChangedImplCopyWith<$Res> {
+  __$$RangePriceChangedImplCopyWithImpl(_$RangePriceChangedImpl _value,
+      $Res Function(_$RangePriceChangedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$RangePriceChangedImpl(
+      null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as RangeValues,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RangePriceChangedImpl implements RangePriceChanged {
+  const _$RangePriceChangedImpl(this.value);
+
+  @override
+  final RangeValues value;
+
+  @override
+  String toString() {
+    return 'SearchEvent.rangePriceChanged(value: $value)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RangePriceChangedImpl &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RangePriceChangedImplCopyWith<_$RangePriceChangedImpl> get copyWith =>
+      __$$RangePriceChangedImplCopyWithImpl<_$RangePriceChangedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(SubCategoryDTO? val) initialEvent,
+    required TResult Function(bool isRefresh) onSearch,
+    required TResult Function() onShortCutSearch,
+    required TResult Function(String? val) getSearchText,
+    required TResult Function() getCategoryList,
+    required TResult Function() loadAllFilterList,
+    required TResult Function(FilterAttribute attribute, String value)
+        filterChanged,
+    required TResult Function(FilterOptionListDTO value) categoryChanged,
+    required TResult Function() submitFilter,
+    required TResult Function() clearAllFilters,
+    required TResult Function(int id) toggleFavourite,
+    required TResult Function(RangeValues value) rangePriceChanged,
+    required TResult Function(String value) idTextChanged,
+    required TResult Function(String value) odTextChanged,
+    required TResult Function(String value) depthTextChanged,
+  }) {
+    return rangePriceChanged(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(SubCategoryDTO? val)? initialEvent,
+    TResult? Function(bool isRefresh)? onSearch,
+    TResult? Function()? onShortCutSearch,
+    TResult? Function(String? val)? getSearchText,
+    TResult? Function()? getCategoryList,
+    TResult? Function()? loadAllFilterList,
+    TResult? Function(FilterAttribute attribute, String value)? filterChanged,
+    TResult? Function(FilterOptionListDTO value)? categoryChanged,
+    TResult? Function()? submitFilter,
+    TResult? Function()? clearAllFilters,
+    TResult? Function(int id)? toggleFavourite,
+    TResult? Function(RangeValues value)? rangePriceChanged,
+    TResult? Function(String value)? idTextChanged,
+    TResult? Function(String value)? odTextChanged,
+    TResult? Function(String value)? depthTextChanged,
+  }) {
+    return rangePriceChanged?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(SubCategoryDTO? val)? initialEvent,
+    TResult Function(bool isRefresh)? onSearch,
+    TResult Function()? onShortCutSearch,
+    TResult Function(String? val)? getSearchText,
+    TResult Function()? getCategoryList,
+    TResult Function()? loadAllFilterList,
+    TResult Function(FilterAttribute attribute, String value)? filterChanged,
+    TResult Function(FilterOptionListDTO value)? categoryChanged,
+    TResult Function()? submitFilter,
+    TResult Function()? clearAllFilters,
+    TResult Function(int id)? toggleFavourite,
+    TResult Function(RangeValues value)? rangePriceChanged,
+    TResult Function(String value)? idTextChanged,
+    TResult Function(String value)? odTextChanged,
+    TResult Function(String value)? depthTextChanged,
+    required TResult orElse(),
+  }) {
+    if (rangePriceChanged != null) {
+      return rangePriceChanged(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialEvent value) initialEvent,
+    required TResult Function(OnSearch value) onSearch,
+    required TResult Function(OnShortCutSearch value) onShortCutSearch,
+    required TResult Function(GetSearchText value) getSearchText,
+    required TResult Function(GetCategoryList value) getCategoryList,
+    required TResult Function(LoadAllFilterList value) loadAllFilterList,
+    required TResult Function(FilterChanged value) filterChanged,
+    required TResult Function(CategoryChanged value) categoryChanged,
+    required TResult Function(SubmitFilter value) submitFilter,
+    required TResult Function(ClearAllFilters value) clearAllFilters,
+    required TResult Function(ToggleFavourite value) toggleFavourite,
+    required TResult Function(RangePriceChanged value) rangePriceChanged,
+    required TResult Function(IdTextChanged value) idTextChanged,
+    required TResult Function(OdTextChanged value) odTextChanged,
+    required TResult Function(DepthTextChanged value) depthTextChanged,
+  }) {
+    return rangePriceChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialEvent value)? initialEvent,
+    TResult? Function(OnSearch value)? onSearch,
+    TResult? Function(OnShortCutSearch value)? onShortCutSearch,
+    TResult? Function(GetSearchText value)? getSearchText,
+    TResult? Function(GetCategoryList value)? getCategoryList,
+    TResult? Function(LoadAllFilterList value)? loadAllFilterList,
+    TResult? Function(FilterChanged value)? filterChanged,
+    TResult? Function(CategoryChanged value)? categoryChanged,
+    TResult? Function(SubmitFilter value)? submitFilter,
+    TResult? Function(ClearAllFilters value)? clearAllFilters,
+    TResult? Function(ToggleFavourite value)? toggleFavourite,
+    TResult? Function(RangePriceChanged value)? rangePriceChanged,
+    TResult? Function(IdTextChanged value)? idTextChanged,
+    TResult? Function(OdTextChanged value)? odTextChanged,
+    TResult? Function(DepthTextChanged value)? depthTextChanged,
+  }) {
+    return rangePriceChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialEvent value)? initialEvent,
+    TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnShortCutSearch value)? onShortCutSearch,
+    TResult Function(GetSearchText value)? getSearchText,
+    TResult Function(GetCategoryList value)? getCategoryList,
+    TResult Function(LoadAllFilterList value)? loadAllFilterList,
+    TResult Function(FilterChanged value)? filterChanged,
+    TResult Function(CategoryChanged value)? categoryChanged,
+    TResult Function(SubmitFilter value)? submitFilter,
+    TResult Function(ClearAllFilters value)? clearAllFilters,
+    TResult Function(ToggleFavourite value)? toggleFavourite,
+    TResult Function(RangePriceChanged value)? rangePriceChanged,
+    TResult Function(IdTextChanged value)? idTextChanged,
+    TResult Function(OdTextChanged value)? odTextChanged,
+    TResult Function(DepthTextChanged value)? depthTextChanged,
+    required TResult orElse(),
+  }) {
+    if (rangePriceChanged != null) {
+      return rangePriceChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class RangePriceChanged implements SearchEvent {
+  const factory RangePriceChanged(final RangeValues value) =
+      _$RangePriceChangedImpl;
+
+  RangeValues get value;
+  @JsonKey(ignore: true)
+  _$$RangePriceChangedImplCopyWith<_$RangePriceChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$IdTextChangedImplCopyWith<$Res> {
+  factory _$$IdTextChangedImplCopyWith(
+          _$IdTextChangedImpl value, $Res Function(_$IdTextChangedImpl) then) =
+      __$$IdTextChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String value});
+}
+
+/// @nodoc
+class __$$IdTextChangedImplCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res, _$IdTextChangedImpl>
+    implements _$$IdTextChangedImplCopyWith<$Res> {
+  __$$IdTextChangedImplCopyWithImpl(
+      _$IdTextChangedImpl _value, $Res Function(_$IdTextChangedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$IdTextChangedImpl(
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$IdTextChangedImpl implements IdTextChanged {
+  const _$IdTextChangedImpl({required this.value});
+
+  @override
+  final String value;
+
+  @override
+  String toString() {
+    return 'SearchEvent.idTextChanged(value: $value)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$IdTextChangedImpl &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$IdTextChangedImplCopyWith<_$IdTextChangedImpl> get copyWith =>
+      __$$IdTextChangedImplCopyWithImpl<_$IdTextChangedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(SubCategoryDTO? val) initialEvent,
+    required TResult Function(bool isRefresh) onSearch,
+    required TResult Function() onShortCutSearch,
+    required TResult Function(String? val) getSearchText,
+    required TResult Function() getCategoryList,
+    required TResult Function() loadAllFilterList,
+    required TResult Function(FilterAttribute attribute, String value)
+        filterChanged,
+    required TResult Function(FilterOptionListDTO value) categoryChanged,
+    required TResult Function() submitFilter,
+    required TResult Function() clearAllFilters,
+    required TResult Function(int id) toggleFavourite,
+    required TResult Function(RangeValues value) rangePriceChanged,
+    required TResult Function(String value) idTextChanged,
+    required TResult Function(String value) odTextChanged,
+    required TResult Function(String value) depthTextChanged,
+  }) {
+    return idTextChanged(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(SubCategoryDTO? val)? initialEvent,
+    TResult? Function(bool isRefresh)? onSearch,
+    TResult? Function()? onShortCutSearch,
+    TResult? Function(String? val)? getSearchText,
+    TResult? Function()? getCategoryList,
+    TResult? Function()? loadAllFilterList,
+    TResult? Function(FilterAttribute attribute, String value)? filterChanged,
+    TResult? Function(FilterOptionListDTO value)? categoryChanged,
+    TResult? Function()? submitFilter,
+    TResult? Function()? clearAllFilters,
+    TResult? Function(int id)? toggleFavourite,
+    TResult? Function(RangeValues value)? rangePriceChanged,
+    TResult? Function(String value)? idTextChanged,
+    TResult? Function(String value)? odTextChanged,
+    TResult? Function(String value)? depthTextChanged,
+  }) {
+    return idTextChanged?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(SubCategoryDTO? val)? initialEvent,
+    TResult Function(bool isRefresh)? onSearch,
+    TResult Function()? onShortCutSearch,
+    TResult Function(String? val)? getSearchText,
+    TResult Function()? getCategoryList,
+    TResult Function()? loadAllFilterList,
+    TResult Function(FilterAttribute attribute, String value)? filterChanged,
+    TResult Function(FilterOptionListDTO value)? categoryChanged,
+    TResult Function()? submitFilter,
+    TResult Function()? clearAllFilters,
+    TResult Function(int id)? toggleFavourite,
+    TResult Function(RangeValues value)? rangePriceChanged,
+    TResult Function(String value)? idTextChanged,
+    TResult Function(String value)? odTextChanged,
+    TResult Function(String value)? depthTextChanged,
+    required TResult orElse(),
+  }) {
+    if (idTextChanged != null) {
+      return idTextChanged(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialEvent value) initialEvent,
+    required TResult Function(OnSearch value) onSearch,
+    required TResult Function(OnShortCutSearch value) onShortCutSearch,
+    required TResult Function(GetSearchText value) getSearchText,
+    required TResult Function(GetCategoryList value) getCategoryList,
+    required TResult Function(LoadAllFilterList value) loadAllFilterList,
+    required TResult Function(FilterChanged value) filterChanged,
+    required TResult Function(CategoryChanged value) categoryChanged,
+    required TResult Function(SubmitFilter value) submitFilter,
+    required TResult Function(ClearAllFilters value) clearAllFilters,
+    required TResult Function(ToggleFavourite value) toggleFavourite,
+    required TResult Function(RangePriceChanged value) rangePriceChanged,
+    required TResult Function(IdTextChanged value) idTextChanged,
+    required TResult Function(OdTextChanged value) odTextChanged,
+    required TResult Function(DepthTextChanged value) depthTextChanged,
+  }) {
+    return idTextChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialEvent value)? initialEvent,
+    TResult? Function(OnSearch value)? onSearch,
+    TResult? Function(OnShortCutSearch value)? onShortCutSearch,
+    TResult? Function(GetSearchText value)? getSearchText,
+    TResult? Function(GetCategoryList value)? getCategoryList,
+    TResult? Function(LoadAllFilterList value)? loadAllFilterList,
+    TResult? Function(FilterChanged value)? filterChanged,
+    TResult? Function(CategoryChanged value)? categoryChanged,
+    TResult? Function(SubmitFilter value)? submitFilter,
+    TResult? Function(ClearAllFilters value)? clearAllFilters,
+    TResult? Function(ToggleFavourite value)? toggleFavourite,
+    TResult? Function(RangePriceChanged value)? rangePriceChanged,
+    TResult? Function(IdTextChanged value)? idTextChanged,
+    TResult? Function(OdTextChanged value)? odTextChanged,
+    TResult? Function(DepthTextChanged value)? depthTextChanged,
+  }) {
+    return idTextChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialEvent value)? initialEvent,
+    TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnShortCutSearch value)? onShortCutSearch,
+    TResult Function(GetSearchText value)? getSearchText,
+    TResult Function(GetCategoryList value)? getCategoryList,
+    TResult Function(LoadAllFilterList value)? loadAllFilterList,
+    TResult Function(FilterChanged value)? filterChanged,
+    TResult Function(CategoryChanged value)? categoryChanged,
+    TResult Function(SubmitFilter value)? submitFilter,
+    TResult Function(ClearAllFilters value)? clearAllFilters,
+    TResult Function(ToggleFavourite value)? toggleFavourite,
+    TResult Function(RangePriceChanged value)? rangePriceChanged,
+    TResult Function(IdTextChanged value)? idTextChanged,
+    TResult Function(OdTextChanged value)? odTextChanged,
+    TResult Function(DepthTextChanged value)? depthTextChanged,
+    required TResult orElse(),
+  }) {
+    if (idTextChanged != null) {
+      return idTextChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class IdTextChanged implements SearchEvent {
+  const factory IdTextChanged({required final String value}) =
+      _$IdTextChangedImpl;
+
+  String get value;
+  @JsonKey(ignore: true)
+  _$$IdTextChangedImplCopyWith<_$IdTextChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OdTextChangedImplCopyWith<$Res> {
+  factory _$$OdTextChangedImplCopyWith(
+          _$OdTextChangedImpl value, $Res Function(_$OdTextChangedImpl) then) =
+      __$$OdTextChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String value});
+}
+
+/// @nodoc
+class __$$OdTextChangedImplCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res, _$OdTextChangedImpl>
+    implements _$$OdTextChangedImplCopyWith<$Res> {
+  __$$OdTextChangedImplCopyWithImpl(
+      _$OdTextChangedImpl _value, $Res Function(_$OdTextChangedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$OdTextChangedImpl(
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$OdTextChangedImpl implements OdTextChanged {
+  const _$OdTextChangedImpl({required this.value});
+
+  @override
+  final String value;
+
+  @override
+  String toString() {
+    return 'SearchEvent.odTextChanged(value: $value)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OdTextChangedImpl &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OdTextChangedImplCopyWith<_$OdTextChangedImpl> get copyWith =>
+      __$$OdTextChangedImplCopyWithImpl<_$OdTextChangedImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(SubCategoryDTO? val) initialEvent,
+    required TResult Function(bool isRefresh) onSearch,
+    required TResult Function() onShortCutSearch,
+    required TResult Function(String? val) getSearchText,
+    required TResult Function() getCategoryList,
+    required TResult Function() loadAllFilterList,
+    required TResult Function(FilterAttribute attribute, String value)
+        filterChanged,
+    required TResult Function(FilterOptionListDTO value) categoryChanged,
+    required TResult Function() submitFilter,
+    required TResult Function() clearAllFilters,
+    required TResult Function(int id) toggleFavourite,
+    required TResult Function(RangeValues value) rangePriceChanged,
+    required TResult Function(String value) idTextChanged,
+    required TResult Function(String value) odTextChanged,
+    required TResult Function(String value) depthTextChanged,
+  }) {
+    return odTextChanged(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(SubCategoryDTO? val)? initialEvent,
+    TResult? Function(bool isRefresh)? onSearch,
+    TResult? Function()? onShortCutSearch,
+    TResult? Function(String? val)? getSearchText,
+    TResult? Function()? getCategoryList,
+    TResult? Function()? loadAllFilterList,
+    TResult? Function(FilterAttribute attribute, String value)? filterChanged,
+    TResult? Function(FilterOptionListDTO value)? categoryChanged,
+    TResult? Function()? submitFilter,
+    TResult? Function()? clearAllFilters,
+    TResult? Function(int id)? toggleFavourite,
+    TResult? Function(RangeValues value)? rangePriceChanged,
+    TResult? Function(String value)? idTextChanged,
+    TResult? Function(String value)? odTextChanged,
+    TResult? Function(String value)? depthTextChanged,
+  }) {
+    return odTextChanged?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(SubCategoryDTO? val)? initialEvent,
+    TResult Function(bool isRefresh)? onSearch,
+    TResult Function()? onShortCutSearch,
+    TResult Function(String? val)? getSearchText,
+    TResult Function()? getCategoryList,
+    TResult Function()? loadAllFilterList,
+    TResult Function(FilterAttribute attribute, String value)? filterChanged,
+    TResult Function(FilterOptionListDTO value)? categoryChanged,
+    TResult Function()? submitFilter,
+    TResult Function()? clearAllFilters,
+    TResult Function(int id)? toggleFavourite,
+    TResult Function(RangeValues value)? rangePriceChanged,
+    TResult Function(String value)? idTextChanged,
+    TResult Function(String value)? odTextChanged,
+    TResult Function(String value)? depthTextChanged,
+    required TResult orElse(),
+  }) {
+    if (odTextChanged != null) {
+      return odTextChanged(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialEvent value) initialEvent,
+    required TResult Function(OnSearch value) onSearch,
+    required TResult Function(OnShortCutSearch value) onShortCutSearch,
+    required TResult Function(GetSearchText value) getSearchText,
+    required TResult Function(GetCategoryList value) getCategoryList,
+    required TResult Function(LoadAllFilterList value) loadAllFilterList,
+    required TResult Function(FilterChanged value) filterChanged,
+    required TResult Function(CategoryChanged value) categoryChanged,
+    required TResult Function(SubmitFilter value) submitFilter,
+    required TResult Function(ClearAllFilters value) clearAllFilters,
+    required TResult Function(ToggleFavourite value) toggleFavourite,
+    required TResult Function(RangePriceChanged value) rangePriceChanged,
+    required TResult Function(IdTextChanged value) idTextChanged,
+    required TResult Function(OdTextChanged value) odTextChanged,
+    required TResult Function(DepthTextChanged value) depthTextChanged,
+  }) {
+    return odTextChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialEvent value)? initialEvent,
+    TResult? Function(OnSearch value)? onSearch,
+    TResult? Function(OnShortCutSearch value)? onShortCutSearch,
+    TResult? Function(GetSearchText value)? getSearchText,
+    TResult? Function(GetCategoryList value)? getCategoryList,
+    TResult? Function(LoadAllFilterList value)? loadAllFilterList,
+    TResult? Function(FilterChanged value)? filterChanged,
+    TResult? Function(CategoryChanged value)? categoryChanged,
+    TResult? Function(SubmitFilter value)? submitFilter,
+    TResult? Function(ClearAllFilters value)? clearAllFilters,
+    TResult? Function(ToggleFavourite value)? toggleFavourite,
+    TResult? Function(RangePriceChanged value)? rangePriceChanged,
+    TResult? Function(IdTextChanged value)? idTextChanged,
+    TResult? Function(OdTextChanged value)? odTextChanged,
+    TResult? Function(DepthTextChanged value)? depthTextChanged,
+  }) {
+    return odTextChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialEvent value)? initialEvent,
+    TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnShortCutSearch value)? onShortCutSearch,
+    TResult Function(GetSearchText value)? getSearchText,
+    TResult Function(GetCategoryList value)? getCategoryList,
+    TResult Function(LoadAllFilterList value)? loadAllFilterList,
+    TResult Function(FilterChanged value)? filterChanged,
+    TResult Function(CategoryChanged value)? categoryChanged,
+    TResult Function(SubmitFilter value)? submitFilter,
+    TResult Function(ClearAllFilters value)? clearAllFilters,
+    TResult Function(ToggleFavourite value)? toggleFavourite,
+    TResult Function(RangePriceChanged value)? rangePriceChanged,
+    TResult Function(IdTextChanged value)? idTextChanged,
+    TResult Function(OdTextChanged value)? odTextChanged,
+    TResult Function(DepthTextChanged value)? depthTextChanged,
+    required TResult orElse(),
+  }) {
+    if (odTextChanged != null) {
+      return odTextChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class OdTextChanged implements SearchEvent {
+  const factory OdTextChanged({required final String value}) =
+      _$OdTextChangedImpl;
+
+  String get value;
+  @JsonKey(ignore: true)
+  _$$OdTextChangedImplCopyWith<_$OdTextChangedImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$DepthTextChangedImplCopyWith<$Res> {
+  factory _$$DepthTextChangedImplCopyWith(_$DepthTextChangedImpl value,
+          $Res Function(_$DepthTextChangedImpl) then) =
+      __$$DepthTextChangedImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String value});
+}
+
+/// @nodoc
+class __$$DepthTextChangedImplCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res, _$DepthTextChangedImpl>
+    implements _$$DepthTextChangedImplCopyWith<$Res> {
+  __$$DepthTextChangedImplCopyWithImpl(_$DepthTextChangedImpl _value,
+      $Res Function(_$DepthTextChangedImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? value = null,
+  }) {
+    return _then(_$DepthTextChangedImpl(
+      value: null == value
+          ? _value.value
+          : value // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DepthTextChangedImpl implements DepthTextChanged {
+  const _$DepthTextChangedImpl({required this.value});
+
+  @override
+  final String value;
+
+  @override
+  String toString() {
+    return 'SearchEvent.depthTextChanged(value: $value)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DepthTextChangedImpl &&
+            (identical(other.value, value) || other.value == value));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, value);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DepthTextChangedImplCopyWith<_$DepthTextChangedImpl> get copyWith =>
+      __$$DepthTextChangedImplCopyWithImpl<_$DepthTextChangedImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(SubCategoryDTO? val) initialEvent,
+    required TResult Function(bool isRefresh) onSearch,
+    required TResult Function() onShortCutSearch,
+    required TResult Function(String? val) getSearchText,
+    required TResult Function() getCategoryList,
+    required TResult Function() loadAllFilterList,
+    required TResult Function(FilterAttribute attribute, String value)
+        filterChanged,
+    required TResult Function(FilterOptionListDTO value) categoryChanged,
+    required TResult Function() submitFilter,
+    required TResult Function() clearAllFilters,
+    required TResult Function(int id) toggleFavourite,
+    required TResult Function(RangeValues value) rangePriceChanged,
+    required TResult Function(String value) idTextChanged,
+    required TResult Function(String value) odTextChanged,
+    required TResult Function(String value) depthTextChanged,
+  }) {
+    return depthTextChanged(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(SubCategoryDTO? val)? initialEvent,
+    TResult? Function(bool isRefresh)? onSearch,
+    TResult? Function()? onShortCutSearch,
+    TResult? Function(String? val)? getSearchText,
+    TResult? Function()? getCategoryList,
+    TResult? Function()? loadAllFilterList,
+    TResult? Function(FilterAttribute attribute, String value)? filterChanged,
+    TResult? Function(FilterOptionListDTO value)? categoryChanged,
+    TResult? Function()? submitFilter,
+    TResult? Function()? clearAllFilters,
+    TResult? Function(int id)? toggleFavourite,
+    TResult? Function(RangeValues value)? rangePriceChanged,
+    TResult? Function(String value)? idTextChanged,
+    TResult? Function(String value)? odTextChanged,
+    TResult? Function(String value)? depthTextChanged,
+  }) {
+    return depthTextChanged?.call(value);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(SubCategoryDTO? val)? initialEvent,
+    TResult Function(bool isRefresh)? onSearch,
+    TResult Function()? onShortCutSearch,
+    TResult Function(String? val)? getSearchText,
+    TResult Function()? getCategoryList,
+    TResult Function()? loadAllFilterList,
+    TResult Function(FilterAttribute attribute, String value)? filterChanged,
+    TResult Function(FilterOptionListDTO value)? categoryChanged,
+    TResult Function()? submitFilter,
+    TResult Function()? clearAllFilters,
+    TResult Function(int id)? toggleFavourite,
+    TResult Function(RangeValues value)? rangePriceChanged,
+    TResult Function(String value)? idTextChanged,
+    TResult Function(String value)? odTextChanged,
+    TResult Function(String value)? depthTextChanged,
+    required TResult orElse(),
+  }) {
+    if (depthTextChanged != null) {
+      return depthTextChanged(value);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialEvent value) initialEvent,
+    required TResult Function(OnSearch value) onSearch,
+    required TResult Function(OnShortCutSearch value) onShortCutSearch,
+    required TResult Function(GetSearchText value) getSearchText,
+    required TResult Function(GetCategoryList value) getCategoryList,
+    required TResult Function(LoadAllFilterList value) loadAllFilterList,
+    required TResult Function(FilterChanged value) filterChanged,
+    required TResult Function(CategoryChanged value) categoryChanged,
+    required TResult Function(SubmitFilter value) submitFilter,
+    required TResult Function(ClearAllFilters value) clearAllFilters,
+    required TResult Function(ToggleFavourite value) toggleFavourite,
+    required TResult Function(RangePriceChanged value) rangePriceChanged,
+    required TResult Function(IdTextChanged value) idTextChanged,
+    required TResult Function(OdTextChanged value) odTextChanged,
+    required TResult Function(DepthTextChanged value) depthTextChanged,
+  }) {
+    return depthTextChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialEvent value)? initialEvent,
+    TResult? Function(OnSearch value)? onSearch,
+    TResult? Function(OnShortCutSearch value)? onShortCutSearch,
+    TResult? Function(GetSearchText value)? getSearchText,
+    TResult? Function(GetCategoryList value)? getCategoryList,
+    TResult? Function(LoadAllFilterList value)? loadAllFilterList,
+    TResult? Function(FilterChanged value)? filterChanged,
+    TResult? Function(CategoryChanged value)? categoryChanged,
+    TResult? Function(SubmitFilter value)? submitFilter,
+    TResult? Function(ClearAllFilters value)? clearAllFilters,
+    TResult? Function(ToggleFavourite value)? toggleFavourite,
+    TResult? Function(RangePriceChanged value)? rangePriceChanged,
+    TResult? Function(IdTextChanged value)? idTextChanged,
+    TResult? Function(OdTextChanged value)? odTextChanged,
+    TResult? Function(DepthTextChanged value)? depthTextChanged,
+  }) {
+    return depthTextChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialEvent value)? initialEvent,
+    TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnShortCutSearch value)? onShortCutSearch,
+    TResult Function(GetSearchText value)? getSearchText,
+    TResult Function(GetCategoryList value)? getCategoryList,
+    TResult Function(LoadAllFilterList value)? loadAllFilterList,
+    TResult Function(FilterChanged value)? filterChanged,
+    TResult Function(CategoryChanged value)? categoryChanged,
+    TResult Function(SubmitFilter value)? submitFilter,
+    TResult Function(ClearAllFilters value)? clearAllFilters,
+    TResult Function(ToggleFavourite value)? toggleFavourite,
+    TResult Function(RangePriceChanged value)? rangePriceChanged,
+    TResult Function(IdTextChanged value)? idTextChanged,
+    TResult Function(OdTextChanged value)? odTextChanged,
+    TResult Function(DepthTextChanged value)? depthTextChanged,
+    required TResult orElse(),
+  }) {
+    if (depthTextChanged != null) {
+      return depthTextChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DepthTextChanged implements SearchEvent {
+  const factory DepthTextChanged({required final String value}) =
+      _$DepthTextChangedImpl;
+
+  String get value;
+  @JsonKey(ignore: true)
+  _$$DepthTextChangedImplCopyWith<_$DepthTextChangedImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1871,9 +3246,15 @@ mixin _$SearchState {
   List<FilterOptionListDTO> get anglesList =>
       throw _privateConstructorUsedError;
   bool get isFilterLoading => throw _privateConstructorUsedError;
-  bool get isErrorInFilterAPI => throw _privateConstructorUsedError;
-  SubCategoryDTO? get selecetedCategory => throw _privateConstructorUsedError;
+  bool get isErrorInFilterAPI =>
+      throw _privateConstructorUsedError; // required SubCategoryDTO? selecetedCategory,
   List<int> get favouriteIds => throw _privateConstructorUsedError;
+  RangeValues get range => throw _privateConstructorUsedError;
+  double? get minPrice => throw _privateConstructorUsedError;
+  double? get maxPrice => throw _privateConstructorUsedError;
+  InputEmptyOrNot get idText => throw _privateConstructorUsedError;
+  InputEmptyOrNot get odText => throw _privateConstructorUsedError;
+  InputEmptyOrNot get depthText => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $SearchStateCopyWith<SearchState> get copyWith =>
@@ -1901,11 +3282,15 @@ abstract class $SearchStateCopyWith<$Res> {
       List<FilterOptionListDTO> anglesList,
       bool isFilterLoading,
       bool isErrorInFilterAPI,
-      SubCategoryDTO? selecetedCategory,
-      List<int> favouriteIds});
+      List<int> favouriteIds,
+      RangeValues range,
+      double? minPrice,
+      double? maxPrice,
+      InputEmptyOrNot idText,
+      InputEmptyOrNot odText,
+      InputEmptyOrNot depthText});
 
   $FilterDTOCopyWith<$Res>? get filters;
-  $SubCategoryDTOCopyWith<$Res>? get selecetedCategory;
 }
 
 /// @nodoc
@@ -1935,8 +3320,13 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
     Object? anglesList = null,
     Object? isFilterLoading = null,
     Object? isErrorInFilterAPI = null,
-    Object? selecetedCategory = freezed,
     Object? favouriteIds = null,
+    Object? range = null,
+    Object? minPrice = freezed,
+    Object? maxPrice = freezed,
+    Object? idText = null,
+    Object? odText = null,
+    Object? depthText = null,
   }) {
     return _then(_value.copyWith(
       isLoading: null == isLoading
@@ -1995,14 +3385,34 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
           ? _value.isErrorInFilterAPI
           : isErrorInFilterAPI // ignore: cast_nullable_to_non_nullable
               as bool,
-      selecetedCategory: freezed == selecetedCategory
-          ? _value.selecetedCategory
-          : selecetedCategory // ignore: cast_nullable_to_non_nullable
-              as SubCategoryDTO?,
       favouriteIds: null == favouriteIds
           ? _value.favouriteIds
           : favouriteIds // ignore: cast_nullable_to_non_nullable
               as List<int>,
+      range: null == range
+          ? _value.range
+          : range // ignore: cast_nullable_to_non_nullable
+              as RangeValues,
+      minPrice: freezed == minPrice
+          ? _value.minPrice
+          : minPrice // ignore: cast_nullable_to_non_nullable
+              as double?,
+      maxPrice: freezed == maxPrice
+          ? _value.maxPrice
+          : maxPrice // ignore: cast_nullable_to_non_nullable
+              as double?,
+      idText: null == idText
+          ? _value.idText
+          : idText // ignore: cast_nullable_to_non_nullable
+              as InputEmptyOrNot,
+      odText: null == odText
+          ? _value.odText
+          : odText // ignore: cast_nullable_to_non_nullable
+              as InputEmptyOrNot,
+      depthText: null == depthText
+          ? _value.depthText
+          : depthText // ignore: cast_nullable_to_non_nullable
+              as InputEmptyOrNot,
     ) as $Val);
   }
 
@@ -2015,18 +3425,6 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
 
     return $FilterDTOCopyWith<$Res>(_value.filters!, (value) {
       return _then(_value.copyWith(filters: value) as $Val);
-    });
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $SubCategoryDTOCopyWith<$Res>? get selecetedCategory {
-    if (_value.selecetedCategory == null) {
-      return null;
-    }
-
-    return $SubCategoryDTOCopyWith<$Res>(_value.selecetedCategory!, (value) {
-      return _then(_value.copyWith(selecetedCategory: value) as $Val);
     });
   }
 }
@@ -2054,13 +3452,16 @@ abstract class _$$SearchStateImplCopyWith<$Res>
       List<FilterOptionListDTO> anglesList,
       bool isFilterLoading,
       bool isErrorInFilterAPI,
-      SubCategoryDTO? selecetedCategory,
-      List<int> favouriteIds});
+      List<int> favouriteIds,
+      RangeValues range,
+      double? minPrice,
+      double? maxPrice,
+      InputEmptyOrNot idText,
+      InputEmptyOrNot odText,
+      InputEmptyOrNot depthText});
 
   @override
   $FilterDTOCopyWith<$Res>? get filters;
-  @override
-  $SubCategoryDTOCopyWith<$Res>? get selecetedCategory;
 }
 
 /// @nodoc
@@ -2088,8 +3489,13 @@ class __$$SearchStateImplCopyWithImpl<$Res>
     Object? anglesList = null,
     Object? isFilterLoading = null,
     Object? isErrorInFilterAPI = null,
-    Object? selecetedCategory = freezed,
     Object? favouriteIds = null,
+    Object? range = null,
+    Object? minPrice = freezed,
+    Object? maxPrice = freezed,
+    Object? idText = null,
+    Object? odText = null,
+    Object? depthText = null,
   }) {
     return _then(_$SearchStateImpl(
       isLoading: null == isLoading
@@ -2148,14 +3554,34 @@ class __$$SearchStateImplCopyWithImpl<$Res>
           ? _value.isErrorInFilterAPI
           : isErrorInFilterAPI // ignore: cast_nullable_to_non_nullable
               as bool,
-      selecetedCategory: freezed == selecetedCategory
-          ? _value.selecetedCategory
-          : selecetedCategory // ignore: cast_nullable_to_non_nullable
-              as SubCategoryDTO?,
       favouriteIds: null == favouriteIds
           ? _value._favouriteIds
           : favouriteIds // ignore: cast_nullable_to_non_nullable
               as List<int>,
+      range: null == range
+          ? _value.range
+          : range // ignore: cast_nullable_to_non_nullable
+              as RangeValues,
+      minPrice: freezed == minPrice
+          ? _value.minPrice
+          : minPrice // ignore: cast_nullable_to_non_nullable
+              as double?,
+      maxPrice: freezed == maxPrice
+          ? _value.maxPrice
+          : maxPrice // ignore: cast_nullable_to_non_nullable
+              as double?,
+      idText: null == idText
+          ? _value.idText
+          : idText // ignore: cast_nullable_to_non_nullable
+              as InputEmptyOrNot,
+      odText: null == odText
+          ? _value.odText
+          : odText // ignore: cast_nullable_to_non_nullable
+              as InputEmptyOrNot,
+      depthText: null == depthText
+          ? _value.depthText
+          : depthText // ignore: cast_nullable_to_non_nullable
+              as InputEmptyOrNot,
     ));
   }
 }
@@ -2178,8 +3604,13 @@ class _$SearchStateImpl implements _SearchState {
       required final List<FilterOptionListDTO> anglesList,
       required this.isFilterLoading,
       required this.isErrorInFilterAPI,
-      required this.selecetedCategory,
-      required final List<int> favouriteIds})
+      required final List<int> favouriteIds,
+      required this.range,
+      required this.minPrice,
+      required this.maxPrice,
+      required this.idText,
+      required this.odText,
+      required this.depthText})
       : _productList = productList,
         _categoryList = categoryList,
         _brandList = brandList,
@@ -2269,9 +3700,9 @@ class _$SearchStateImpl implements _SearchState {
   final bool isFilterLoading;
   @override
   final bool isErrorInFilterAPI;
-  @override
-  final SubCategoryDTO? selecetedCategory;
+// required SubCategoryDTO? selecetedCategory,
   final List<int> _favouriteIds;
+// required SubCategoryDTO? selecetedCategory,
   @override
   List<int> get favouriteIds {
     if (_favouriteIds is EqualUnmodifiableListView) return _favouriteIds;
@@ -2280,8 +3711,21 @@ class _$SearchStateImpl implements _SearchState {
   }
 
   @override
+  final RangeValues range;
+  @override
+  final double? minPrice;
+  @override
+  final double? maxPrice;
+  @override
+  final InputEmptyOrNot idText;
+  @override
+  final InputEmptyOrNot odText;
+  @override
+  final InputEmptyOrNot depthText;
+
+  @override
   String toString() {
-    return 'SearchState(isLoading: $isLoading, filters: $filters, isErrorInAPI: $isErrorInAPI, isNoDataFound: $isNoDataFound, productList: $productList, categoryList: $categoryList, brandList: $brandList, dimensionList: $dimensionList, iDList: $iDList, oDList: $oDList, depthList: $depthList, anglesList: $anglesList, isFilterLoading: $isFilterLoading, isErrorInFilterAPI: $isErrorInFilterAPI, selecetedCategory: $selecetedCategory, favouriteIds: $favouriteIds)';
+    return 'SearchState(isLoading: $isLoading, filters: $filters, isErrorInAPI: $isErrorInAPI, isNoDataFound: $isNoDataFound, productList: $productList, categoryList: $categoryList, brandList: $brandList, dimensionList: $dimensionList, iDList: $iDList, oDList: $oDList, depthList: $depthList, anglesList: $anglesList, isFilterLoading: $isFilterLoading, isErrorInFilterAPI: $isErrorInFilterAPI, favouriteIds: $favouriteIds, range: $range, minPrice: $minPrice, maxPrice: $maxPrice, idText: $idText, odText: $odText, depthText: $depthText)';
   }
 
   @override
@@ -2314,31 +3758,44 @@ class _$SearchStateImpl implements _SearchState {
                 other.isFilterLoading == isFilterLoading) &&
             (identical(other.isErrorInFilterAPI, isErrorInFilterAPI) ||
                 other.isErrorInFilterAPI == isErrorInFilterAPI) &&
-            (identical(other.selecetedCategory, selecetedCategory) ||
-                other.selecetedCategory == selecetedCategory) &&
             const DeepCollectionEquality()
-                .equals(other._favouriteIds, _favouriteIds));
+                .equals(other._favouriteIds, _favouriteIds) &&
+            (identical(other.range, range) || other.range == range) &&
+            (identical(other.minPrice, minPrice) ||
+                other.minPrice == minPrice) &&
+            (identical(other.maxPrice, maxPrice) ||
+                other.maxPrice == maxPrice) &&
+            (identical(other.idText, idText) || other.idText == idText) &&
+            (identical(other.odText, odText) || other.odText == odText) &&
+            (identical(other.depthText, depthText) ||
+                other.depthText == depthText));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      isLoading,
-      filters,
-      isErrorInAPI,
-      isNoDataFound,
-      const DeepCollectionEquality().hash(_productList),
-      const DeepCollectionEquality().hash(_categoryList),
-      const DeepCollectionEquality().hash(_brandList),
-      const DeepCollectionEquality().hash(_dimensionList),
-      const DeepCollectionEquality().hash(_iDList),
-      const DeepCollectionEquality().hash(_oDList),
-      const DeepCollectionEquality().hash(_depthList),
-      const DeepCollectionEquality().hash(_anglesList),
-      isFilterLoading,
-      isErrorInFilterAPI,
-      selecetedCategory,
-      const DeepCollectionEquality().hash(_favouriteIds));
+  int get hashCode => Object.hashAll([
+        runtimeType,
+        isLoading,
+        filters,
+        isErrorInAPI,
+        isNoDataFound,
+        const DeepCollectionEquality().hash(_productList),
+        const DeepCollectionEquality().hash(_categoryList),
+        const DeepCollectionEquality().hash(_brandList),
+        const DeepCollectionEquality().hash(_dimensionList),
+        const DeepCollectionEquality().hash(_iDList),
+        const DeepCollectionEquality().hash(_oDList),
+        const DeepCollectionEquality().hash(_depthList),
+        const DeepCollectionEquality().hash(_anglesList),
+        isFilterLoading,
+        isErrorInFilterAPI,
+        const DeepCollectionEquality().hash(_favouriteIds),
+        range,
+        minPrice,
+        maxPrice,
+        idText,
+        odText,
+        depthText
+      ]);
 
   @JsonKey(ignore: true)
   @override
@@ -2363,8 +3820,13 @@ abstract class _SearchState implements SearchState {
       required final List<FilterOptionListDTO> anglesList,
       required final bool isFilterLoading,
       required final bool isErrorInFilterAPI,
-      required final SubCategoryDTO? selecetedCategory,
-      required final List<int> favouriteIds}) = _$SearchStateImpl;
+      required final List<int> favouriteIds,
+      required final RangeValues range,
+      required final double? minPrice,
+      required final double? maxPrice,
+      required final InputEmptyOrNot idText,
+      required final InputEmptyOrNot odText,
+      required final InputEmptyOrNot depthText}) = _$SearchStateImpl;
 
   @override
   bool get isLoading;
@@ -2396,10 +3858,20 @@ abstract class _SearchState implements SearchState {
   bool get isFilterLoading;
   @override
   bool get isErrorInFilterAPI;
-  @override
-  SubCategoryDTO? get selecetedCategory;
-  @override
+  @override // required SubCategoryDTO? selecetedCategory,
   List<int> get favouriteIds;
+  @override
+  RangeValues get range;
+  @override
+  double? get minPrice;
+  @override
+  double? get maxPrice;
+  @override
+  InputEmptyOrNot get idText;
+  @override
+  InputEmptyOrNot get odText;
+  @override
+  InputEmptyOrNot get depthText;
   @override
   @JsonKey(ignore: true)
   _$$SearchStateImplCopyWith<_$SearchStateImpl> get copyWith =>

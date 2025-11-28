@@ -16,12 +16,7 @@ class AuthStatusBloc extends Bloc<AuthStatusEvent, AuthStatusState> {
     on<AuthStatusEvent>((event, emit) async {
       await event.map(
         started: (e) async {
-          /* final authenticated = true;
-          emit(
-            authenticated
-                ? const AuthStatusState.authenticated()
-                : const AuthStatusState.unAuthenticated(''),
-          ); */
+          await _authFacade.getCurrentUser();
         },
         authCheckRequested: (e) async {
           final authenticated = await _authFacade.checkAuthenticated();

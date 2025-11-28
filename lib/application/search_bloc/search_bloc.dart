@@ -2,6 +2,7 @@ import 'package:aire_velo_bearings/core/database/local_preference.dart';
 import 'package:aire_velo_bearings/core/router/app_router.dart';
 import 'package:aire_velo_bearings/domain/main/i_main_facade.dart';
 import 'package:aire_velo_bearings/domain/main/main_failure.dart';
+import 'package:aire_velo_bearings/domain/validators/validators.dart';
 import 'package:aire_velo_bearings/infrastructure/filter_dto/filter_dto.dart';
 import 'package:aire_velo_bearings/infrastructure/filter_option_list_dto/filter_option_list_dto.dart';
 import 'package:aire_velo_bearings/infrastructure/search_product_dto/search_product_dto.dart';
@@ -11,6 +12,7 @@ import 'package:aire_velo_bearings/presentation/common/utils/flushbar_creator.da
 import 'package:aire_velo_bearings/presentation/core/enum.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -31,12 +33,15 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
   SearchBloc(this.mainFacade) : super(SearchState.initial()) {
     on<SearchEvent>((event, emit) async {
       await event.map(
+        rangePriceChanged: (e) {
+          emit(state.copyWith(range: e.value));
+        },
         initialEvent: (e) async {
           if (e.val != null) {
             emit(
               state.copyWith(
                 filters: FilterDTO(category: e.val?.slug ?? ''),
-                selecetedCategory: e.val,
+                // selecetedCategory: e.val,
               ),
             );
           }
@@ -56,7 +61,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         getCategoryList: (e) async {
           Either<MainFailure, List<FilterOptionListDTO>>? failureOrSuccess;
 
-          emit(state.copyWith(isErrorInAPI: false));
+          emit(state.copyWith(isFilterLoading: true, isErrorInAPI: false));
 
           failureOrSuccess = await mainFacade.getFilterCategoryList();
           failureOrSuccess.fold(
@@ -72,7 +77,14 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
               emit(state.copyWith(isFilterLoading: false, isErrorInAPI: true));
             },
             (r) {
-              emit(state.copyWith(categoryList: r, isErrorInAPI: false));
+              final defaultValue = FilterOptionListDTO(
+                term_id: -1,
+                name: "Any Category",
+                slug: null,
+              );
+              final list = [defaultValue, ...r];
+
+              emit(state.copyWith(categoryList: list, isErrorInAPI: false));
             },
           );
         },
@@ -99,14 +111,13 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             );
             failureOrSuccess.fold(
               (l) {
-                /* showError(
-                  message: l.maybeMap(
-                    showAPIResponseMessage: (value) => value.message,
-                    networkError: (value) =>
-                        'Please check your internet connectivity',
-                    orElse: () => "Server Error. Try again later.",
+                emit(
+                  _updateStateWithAttribute(
+                    state: state,
+                    attribute: attribute,
+                    data: [],
                   ),
-                ).show(currentContext); */
+                );
                 emit(
                   state.copyWith(isFilterLoading: false, isErrorInAPI: true),
                 );
@@ -119,24 +130,34 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
                     data: r,
                   ),
                 );
-                print("StateDepth List---> ${state.depthList}");
               },
             );
           }
           emit(state.copyWith(isFilterLoading: false, isErrorInAPI: false));
         },
         categoryChanged: (e) {
-          final initialFilters = state.filters ?? FilterDTO();
-
+          final intialFilter = state.filters ?? FilterDTO();
+          final filters = FilterDTO(
+            id: intialFilter.id,
+            od: intialFilter.od,
+            depth: intialFilter.depth,
+            category: e.value.slug ?? '',
+          );
           emit(
-            state.copyWith(filters: initialFilters.copyWith(category: e.value)),
+            state.copyWith(
+              filters: filters,
+              range: RangeValues(
+                e.value.ui_min_price ?? 0,
+                e.value.ui_min_price ?? 0,
+              ),
+              minPrice: e.value.ui_min_price,
+              maxPrice: e.value.ui_max_price,
+            ),
           );
 
           add(SearchEvent.loadAllFilterList());
         },
         filterChanged: (e) {
-          print("e.attribute---> ${e.attribute}");
-
           emit(
             _updateFilterOption(
               attribute: e.attribute,
@@ -149,7 +170,6 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         submitFilter: (e) {
           currentContext.router.maybePop();
           add(SearchEvent.onSearch(isRefresh: true));
-          print("Selected Filters---> ${state.filters}");
         },
         onSearch: (e) async {
           try {
@@ -163,21 +183,27 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
                 return;
               }
             }
-            var res = await mainFacade.filterAPI(
-              filters: state.filters,
-              page: page,
-            );
+
+            FilterDTO? filter = state.filters;
+
+            if (filter != null && state.range.start != 0) {
+              filter = filter.copyWith(min_price: state.range.start.toString());
+            }
+            if (filter != null && state.range.end != 0) {
+              filter = filter.copyWith(max_price: state.range.end.toString());
+            }
+            var res = await mainFacade.filterAPI(filters: filter, page: page);
             page++;
             res.fold(
               (l) {
-                showError(
+                /* showError(
                   message: l.maybeMap(
                     showAPIResponseMessage: (value) => value.message,
                     networkError: (value) =>
                         'Please check your internet connectivity',
                     orElse: () => "Server Error. Try again later.",
                   ),
-                ).show(currentContext);
+                ).show(currentContext); */
                 emit(
                   state.copyWith(
                     isLoading: false,
@@ -224,6 +250,35 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
 
           final ids = await getFavouriteIds();
           emit(state.copyWith(favouriteIds: ids));
+        },
+        onShortCutSearch: (e) {
+          FilterDTO initialFilter = state.filters ?? FilterDTO();
+
+          final isDepthValid = state.depthText.isValid();
+          final isIDValid = state.idText.isValid();
+          final isODValid = state.odText.isValid();
+          initialFilter = initialFilter.copyWith(
+            depth: state.depthText.getValue(),
+            od: state.odText.getValue(),
+            id: state.idText.getValue(),
+          );
+
+          emit(state.copyWith(filters: initialFilter));
+
+          if (isDepthValid || isIDValid || isODValid) {
+            add(SearchEvent.onSearch(isRefresh: true));
+          } else {
+            showError(message: "Please add at least one filter");
+          }
+        },
+        depthTextChanged: (e) {
+          emit(state.copyWith(depthText: InputEmptyOrNot(e.value)));
+        },
+        idTextChanged: (e) {
+          emit(state.copyWith(idText: InputEmptyOrNot(e.value)));
+        },
+        odTextChanged: (e) {
+          emit(state.copyWith(odText: InputEmptyOrNot(e.value)));
         },
       );
     });
@@ -274,24 +329,49 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     required FilterAttribute attribute,
     required List<FilterOptionListDTO> data,
   }) {
+    // If API returns empty → return EMPTY LIST
+    if (data.isEmpty) {
+      switch (attribute) {
+        case FilterAttribute.brand:
+          return state.copyWith(brandList: []);
+        case FilterAttribute.chamfersAngles:
+          return state.copyWith(anglesList: []);
+        case FilterAttribute.id:
+          return state.copyWith(iDList: []);
+        case FilterAttribute.od:
+          return state.copyWith(oDList: []);
+        case FilterAttribute.depth:
+          return state.copyWith(depthList: []);
+        case FilterAttribute.dimension:
+          return state.copyWith(dimensionList: []);
+      }
+    }
+    List<FilterOptionListDTO> updatedList;
+
     switch (attribute) {
       case FilterAttribute.brand:
-        return state.copyWith(brandList: data);
+        updatedList = [defaultOption("Brand"), ...data];
+        return state.copyWith(brandList: updatedList);
 
       case FilterAttribute.chamfersAngles:
-        return state.copyWith(anglesList: data);
+        updatedList = [defaultOption("Chamfer Angles"), ...data];
+        return state.copyWith(anglesList: updatedList);
 
       case FilterAttribute.id:
-        return state.copyWith(iDList: data);
+        updatedList = [defaultOption("Inner Diameter"), ...data];
+        return state.copyWith(iDList: updatedList);
 
       case FilterAttribute.od:
-        return state.copyWith(oDList: data);
+        updatedList = [defaultOption("Outer Diameter"), ...data];
+        return state.copyWith(oDList: updatedList);
 
       case FilterAttribute.depth:
-        return state.copyWith(depthList: data);
+        updatedList = [defaultOption("Depth"), ...data];
+        return state.copyWith(depthList: updatedList);
 
       case FilterAttribute.dimension:
-        return state.copyWith(dimensionList: data);
+        updatedList = [defaultOption("Dimensions"), ...data];
+        return state.copyWith(dimensionList: updatedList);
     }
   }
 }

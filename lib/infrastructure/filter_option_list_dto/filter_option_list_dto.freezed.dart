@@ -26,6 +26,8 @@ mixin _$FilterOptionListDTO {
   bool? get selected => throw _privateConstructorUsedError;
   int? get count => throw _privateConstructorUsedError;
   bool? get is_parent => throw _privateConstructorUsedError;
+  double? get ui_min_price => throw _privateConstructorUsedError;
+  double? get ui_max_price => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -45,7 +47,9 @@ abstract class $FilterOptionListDTOCopyWith<$Res> {
       String? name,
       bool? selected,
       int? count,
-      bool? is_parent});
+      bool? is_parent,
+      double? ui_min_price,
+      double? ui_max_price});
 }
 
 /// @nodoc
@@ -67,6 +71,8 @@ class _$FilterOptionListDTOCopyWithImpl<$Res, $Val extends FilterOptionListDTO>
     Object? selected = freezed,
     Object? count = freezed,
     Object? is_parent = freezed,
+    Object? ui_min_price = freezed,
+    Object? ui_max_price = freezed,
   }) {
     return _then(_value.copyWith(
       term_id: freezed == term_id
@@ -93,6 +99,14 @@ class _$FilterOptionListDTOCopyWithImpl<$Res, $Val extends FilterOptionListDTO>
           ? _value.is_parent
           : is_parent // ignore: cast_nullable_to_non_nullable
               as bool?,
+      ui_min_price: freezed == ui_min_price
+          ? _value.ui_min_price
+          : ui_min_price // ignore: cast_nullable_to_non_nullable
+              as double?,
+      ui_max_price: freezed == ui_max_price
+          ? _value.ui_max_price
+          : ui_max_price // ignore: cast_nullable_to_non_nullable
+              as double?,
     ) as $Val);
   }
 }
@@ -111,7 +125,9 @@ abstract class _$$FilterOptionListDTOImplCopyWith<$Res>
       String? name,
       bool? selected,
       int? count,
-      bool? is_parent});
+      bool? is_parent,
+      double? ui_min_price,
+      double? ui_max_price});
 }
 
 /// @nodoc
@@ -131,6 +147,8 @@ class __$$FilterOptionListDTOImplCopyWithImpl<$Res>
     Object? selected = freezed,
     Object? count = freezed,
     Object? is_parent = freezed,
+    Object? ui_min_price = freezed,
+    Object? ui_max_price = freezed,
   }) {
     return _then(_$FilterOptionListDTOImpl(
       term_id: freezed == term_id
@@ -157,6 +175,14 @@ class __$$FilterOptionListDTOImplCopyWithImpl<$Res>
           ? _value.is_parent
           : is_parent // ignore: cast_nullable_to_non_nullable
               as bool?,
+      ui_min_price: freezed == ui_min_price
+          ? _value.ui_min_price
+          : ui_min_price // ignore: cast_nullable_to_non_nullable
+              as double?,
+      ui_max_price: freezed == ui_max_price
+          ? _value.ui_max_price
+          : ui_max_price // ignore: cast_nullable_to_non_nullable
+              as double?,
     ));
   }
 }
@@ -170,7 +196,9 @@ class _$FilterOptionListDTOImpl implements _FilterOptionListDTO {
       this.name,
       this.selected,
       this.count,
-      this.is_parent});
+      this.is_parent,
+      this.ui_min_price,
+      this.ui_max_price});
 
   factory _$FilterOptionListDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$FilterOptionListDTOImplFromJson(json);
@@ -187,10 +215,14 @@ class _$FilterOptionListDTOImpl implements _FilterOptionListDTO {
   final int? count;
   @override
   final bool? is_parent;
+  @override
+  final double? ui_min_price;
+  @override
+  final double? ui_max_price;
 
   @override
   String toString() {
-    return 'FilterOptionListDTO(term_id: $term_id, slug: $slug, name: $name, selected: $selected, count: $count, is_parent: $is_parent)';
+    return 'FilterOptionListDTO(term_id: $term_id, slug: $slug, name: $name, selected: $selected, count: $count, is_parent: $is_parent, ui_min_price: $ui_min_price, ui_max_price: $ui_max_price)';
   }
 
   @override
@@ -205,13 +237,17 @@ class _$FilterOptionListDTOImpl implements _FilterOptionListDTO {
                 other.selected == selected) &&
             (identical(other.count, count) || other.count == count) &&
             (identical(other.is_parent, is_parent) ||
-                other.is_parent == is_parent));
+                other.is_parent == is_parent) &&
+            (identical(other.ui_min_price, ui_min_price) ||
+                other.ui_min_price == ui_min_price) &&
+            (identical(other.ui_max_price, ui_max_price) ||
+                other.ui_max_price == ui_max_price));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, term_id, slug, name, selected, count, is_parent);
+  int get hashCode => Object.hash(runtimeType, term_id, slug, name, selected,
+      count, is_parent, ui_min_price, ui_max_price);
 
   @JsonKey(ignore: true)
   @override
@@ -235,7 +271,9 @@ abstract class _FilterOptionListDTO implements FilterOptionListDTO {
       final String? name,
       final bool? selected,
       final int? count,
-      final bool? is_parent}) = _$FilterOptionListDTOImpl;
+      final bool? is_parent,
+      final double? ui_min_price,
+      final double? ui_max_price}) = _$FilterOptionListDTOImpl;
 
   factory _FilterOptionListDTO.fromJson(Map<String, dynamic> json) =
       _$FilterOptionListDTOImpl.fromJson;
@@ -252,6 +290,10 @@ abstract class _FilterOptionListDTO implements FilterOptionListDTO {
   int? get count;
   @override
   bool? get is_parent;
+  @override
+  double? get ui_min_price;
+  @override
+  double? get ui_max_price;
   @override
   @JsonKey(ignore: true)
   _$$FilterOptionListDTOImplCopyWith<_$FilterOptionListDTOImpl> get copyWith =>

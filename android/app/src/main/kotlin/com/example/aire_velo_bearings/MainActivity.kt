@@ -1,4 +1,4 @@
-package com.example.aire_velo_bearings
+package com.mobile.aire_velo_bearings
 
 import io.flutter.embedding.android.FlutterActivity
 

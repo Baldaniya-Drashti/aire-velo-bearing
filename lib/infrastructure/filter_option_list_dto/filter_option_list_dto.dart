@@ -13,6 +13,8 @@ class FilterOptionListDTO with _$FilterOptionListDTO {
     bool? selected,
     int? count,
     bool? is_parent,
+    double? ui_min_price,
+    double? ui_max_price,
   }) = _FilterOptionListDTO;
 
   factory FilterOptionListDTO.fromJson(Map<String, dynamic> json) =>

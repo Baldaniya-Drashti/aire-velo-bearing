@@ -6,7 +6,12 @@ part 'home_dto.g.dart';
 
 @freezed
 class HomeDTO with _$HomeDTO {
-  const factory HomeDTO({int? id, String? name, String? slug}) = _HomeDTO;
+  const factory HomeDTO({
+    int? id,
+    String? name,
+    String? slug,
+    String? image_url,
+  }) = _HomeDTO;
 
   factory HomeDTO.fromJson(Map<String, dynamic> json) =>
       _$HomeDTOFromJson(json);

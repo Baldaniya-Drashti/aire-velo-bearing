@@ -25,9 +25,12 @@ mixin _$ProductDetailDTO {
   String? get name => throw _privateConstructorUsedError;
   String? get price => throw _privateConstructorUsedError;
   String? get stock_status => throw _privateConstructorUsedError;
+  int? get stock_status_int => throw _privateConstructorUsedError;
   String? get short_description => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String? get permalink => throw _privateConstructorUsedError;
+  Map<String, dynamic>? get additional_info =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -47,9 +50,11 @@ abstract class $ProductDetailDTOCopyWith<$Res> {
       String? name,
       String? price,
       String? stock_status,
+      int? stock_status_int,
       String? short_description,
       String? description,
-      String? permalink});
+      String? permalink,
+      Map<String, dynamic>? additional_info});
 }
 
 /// @nodoc
@@ -70,9 +75,11 @@ class _$ProductDetailDTOCopyWithImpl<$Res, $Val extends ProductDetailDTO>
     Object? name = freezed,
     Object? price = freezed,
     Object? stock_status = freezed,
+    Object? stock_status_int = freezed,
     Object? short_description = freezed,
     Object? description = freezed,
     Object? permalink = freezed,
+    Object? additional_info = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -95,6 +102,10 @@ class _$ProductDetailDTOCopyWithImpl<$Res, $Val extends ProductDetailDTO>
           ? _value.stock_status
           : stock_status // ignore: cast_nullable_to_non_nullable
               as String?,
+      stock_status_int: freezed == stock_status_int
+          ? _value.stock_status_int
+          : stock_status_int // ignore: cast_nullable_to_non_nullable
+              as int?,
       short_description: freezed == short_description
           ? _value.short_description
           : short_description // ignore: cast_nullable_to_non_nullable
@@ -107,6 +118,10 @@ class _$ProductDetailDTOCopyWithImpl<$Res, $Val extends ProductDetailDTO>
           ? _value.permalink
           : permalink // ignore: cast_nullable_to_non_nullable
               as String?,
+      additional_info: freezed == additional_info
+          ? _value.additional_info
+          : additional_info // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
     ) as $Val);
   }
 }
@@ -125,9 +140,11 @@ abstract class _$$ProductDetailDTOImplCopyWith<$Res>
       String? name,
       String? price,
       String? stock_status,
+      int? stock_status_int,
       String? short_description,
       String? description,
-      String? permalink});
+      String? permalink,
+      Map<String, dynamic>? additional_info});
 }
 
 /// @nodoc
@@ -146,9 +163,11 @@ class __$$ProductDetailDTOImplCopyWithImpl<$Res>
     Object? name = freezed,
     Object? price = freezed,
     Object? stock_status = freezed,
+    Object? stock_status_int = freezed,
     Object? short_description = freezed,
     Object? description = freezed,
     Object? permalink = freezed,
+    Object? additional_info = freezed,
   }) {
     return _then(_$ProductDetailDTOImpl(
       id: freezed == id
@@ -171,6 +190,10 @@ class __$$ProductDetailDTOImplCopyWithImpl<$Res>
           ? _value.stock_status
           : stock_status // ignore: cast_nullable_to_non_nullable
               as String?,
+      stock_status_int: freezed == stock_status_int
+          ? _value.stock_status_int
+          : stock_status_int // ignore: cast_nullable_to_non_nullable
+              as int?,
       short_description: freezed == short_description
           ? _value.short_description
           : short_description // ignore: cast_nullable_to_non_nullable
@@ -183,6 +206,10 @@ class __$$ProductDetailDTOImplCopyWithImpl<$Res>
           ? _value.permalink
           : permalink // ignore: cast_nullable_to_non_nullable
               as String?,
+      additional_info: freezed == additional_info
+          ? _value._additional_info
+          : additional_info // ignore: cast_nullable_to_non_nullable
+              as Map<String, dynamic>?,
     ));
   }
 }
@@ -196,10 +223,13 @@ class _$ProductDetailDTOImpl implements _ProductDetailDTO {
       this.name,
       this.price,
       this.stock_status,
+      this.stock_status_int,
       this.short_description,
       this.description,
-      this.permalink})
-      : _images = images;
+      this.permalink,
+      final Map<String, dynamic>? additional_info})
+      : _images = images,
+        _additional_info = additional_info;
 
   factory _$ProductDetailDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$ProductDetailDTOImplFromJson(json);
@@ -223,15 +253,26 @@ class _$ProductDetailDTOImpl implements _ProductDetailDTO {
   @override
   final String? stock_status;
   @override
+  final int? stock_status_int;
+  @override
   final String? short_description;
   @override
   final String? description;
   @override
   final String? permalink;
+  final Map<String, dynamic>? _additional_info;
+  @override
+  Map<String, dynamic>? get additional_info {
+    final value = _additional_info;
+    if (value == null) return null;
+    if (_additional_info is EqualUnmodifiableMapView) return _additional_info;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableMapView(value);
+  }
 
   @override
   String toString() {
-    return 'ProductDetailDTO(id: $id, images: $images, name: $name, price: $price, stock_status: $stock_status, short_description: $short_description, description: $description, permalink: $permalink)';
+    return 'ProductDetailDTO(id: $id, images: $images, name: $name, price: $price, stock_status: $stock_status, stock_status_int: $stock_status_int, short_description: $short_description, description: $description, permalink: $permalink, additional_info: $additional_info)';
   }
 
   @override
@@ -245,12 +286,16 @@ class _$ProductDetailDTOImpl implements _ProductDetailDTO {
             (identical(other.price, price) || other.price == price) &&
             (identical(other.stock_status, stock_status) ||
                 other.stock_status == stock_status) &&
+            (identical(other.stock_status_int, stock_status_int) ||
+                other.stock_status_int == stock_status_int) &&
             (identical(other.short_description, short_description) ||
                 other.short_description == short_description) &&
             (identical(other.description, description) ||
                 other.description == description) &&
             (identical(other.permalink, permalink) ||
-                other.permalink == permalink));
+                other.permalink == permalink) &&
+            const DeepCollectionEquality()
+                .equals(other._additional_info, _additional_info));
   }
 
   @JsonKey(ignore: true)
@@ -262,9 +307,11 @@ class _$ProductDetailDTOImpl implements _ProductDetailDTO {
       name,
       price,
       stock_status,
+      stock_status_int,
       short_description,
       description,
-      permalink);
+      permalink,
+      const DeepCollectionEquality().hash(_additional_info));
 
   @JsonKey(ignore: true)
   @override
@@ -288,9 +335,11 @@ abstract class _ProductDetailDTO implements ProductDetailDTO {
       final String? name,
       final String? price,
       final String? stock_status,
+      final int? stock_status_int,
       final String? short_description,
       final String? description,
-      final String? permalink}) = _$ProductDetailDTOImpl;
+      final String? permalink,
+      final Map<String, dynamic>? additional_info}) = _$ProductDetailDTOImpl;
 
   factory _ProductDetailDTO.fromJson(Map<String, dynamic> json) =
       _$ProductDetailDTOImpl.fromJson;
@@ -306,11 +355,15 @@ abstract class _ProductDetailDTO implements ProductDetailDTO {
   @override
   String? get stock_status;
   @override
+  int? get stock_status_int;
+  @override
   String? get short_description;
   @override
   String? get description;
   @override
   String? get permalink;
+  @override
+  Map<String, dynamic>? get additional_info;
   @override
   @JsonKey(ignore: true)
   _$$ProductDetailDTOImplCopyWith<_$ProductDetailDTOImpl> get copyWith =>

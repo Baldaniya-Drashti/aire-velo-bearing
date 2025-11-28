@@ -18,9 +18,9 @@ class AppWidget extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) =>
-              getIt<AuthStatusBloc>()
-                ..add(const AuthStatusEvent.authCheckRequested()),
+          create: (context) => getIt<AuthStatusBloc>()
+            ..add(const AuthStatusEvent.started())
+            ..add(const AuthStatusEvent.authCheckRequested()),
         ),
       ],
       child: _App(),

@@ -1,13 +1,8 @@
 import 'package:aire_velo_bearings/core/database/local_preference.dart';
 import 'package:aire_velo_bearings/core/router/app_router.dart';
 import 'package:aire_velo_bearings/domain/main/i_main_facade.dart';
-import 'package:aire_velo_bearings/domain/main/main_failure.dart';
-import 'package:aire_velo_bearings/infrastructure/common_response/common_response.dart';
 import 'package:aire_velo_bearings/infrastructure/favorites_dto/favorites_dto.dart';
-import 'package:aire_velo_bearings/infrastructure/filter_option_list_dto/filter_option_list_dto.dart';
 import 'package:aire_velo_bearings/injection.dart';
-import 'package:aire_velo_bearings/presentation/common/utils/flushbar_creator.dart';
-import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';

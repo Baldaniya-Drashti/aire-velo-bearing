@@ -34,7 +34,7 @@ class ProductDetail extends StatelessWidget {
         builder: (context, state) {
           final prod = state.product ?? ProductDetailDTO();
           return Scaffold(
-            appBar: CustomAppBar(title: StringConstant.productDetail),
+            appBar: CustomAppBar(title: StringConstant.productDetails),
             body: (state.isLoading)
                 ? CenterLoadingIndicator(isOnlyLoader: true)
                 : state.isErrorInAPI
@@ -56,6 +56,7 @@ class ProductDetail extends StatelessWidget {
                               BaseText(
                                 text: prod.name ?? "",
                                 fontSize: 20,
+                                maxLines: 20,
                                 fontFamily: FontConstant.jost,
                                 fontWeight: FontWeight.w600,
                                 textAlign: TextAlign.center,
@@ -64,57 +65,29 @@ class ProductDetail extends StatelessWidget {
                               BaseText(
                                 text: prod.short_description ?? '',
                                 fontSize: 12,
+                                maxLines: 30,
                                 textAlign: TextAlign.center,
                               ),
                               commonDivider(),
                               Html(data: prod.description ?? ""),
                               commonDivider(),
-                              tableRow(
-                                title: StringConstant.weight,
-                                value: "0.035${StringConstant.kg}",
-                              ),
-                              tableRow(
-                                title: StringConstant.dimensions,
-                                value: "30 x 41.8 x 8${StringConstant.mm}",
-                                isEven: false,
-                              ),
-                              tableRow(
-                                title: StringConstant.dimensions,
-                                value: "33 x 44 x 6 36/45",
-                              ),
-                              tableRow(
-                                title: StringConstant.id,
-                                value: "33",
-                                isEven: false,
-                              ),
-                              tableRow(title: StringConstant.od, value: "44"),
-                              tableRow(
-                                title: StringConstant.depth,
-                                value: "6",
-                                isEven: false,
-                              ),
-                              tableRow(
-                                title: StringConstant.chamferAngles,
-                                value: "36/45",
-                              ),
-                              tableRow(
-                                title: StringConstant.internalChamferAngle,
-                                value: "36",
-                                isEven: false,
-                              ),
-                              tableRow(
-                                title: StringConstant.externalChamferAngle,
-                                value: "45",
-                              ),
-                              tableRow(
-                                title: StringConstant.material,
-                                value: "Black Oxide/SLT",
-                                isEven: false,
-                              ),
+                              if (prod.additional_info != null)
+                                ...prod.additional_info!.entries.map((e) {
+                                  int index = prod.additional_info!.keys
+                                      .toList()
+                                      .indexOf(e.key);
+                                  return tableRow(
+                                    title: e.key,
+                                    value: e.value.toString(),
+                                    isEven: index % 2 == 0,
+                                  );
+                                }),
                               Gap(getSize(10)),
                               tableRow(
                                 title: "£${prod.price ?? 00.00}",
-                                value: prod.stock_status ?? '',
+                                value: (prod.stock_status_int == 1)
+                                    ? StringConstant.outOfStock
+                                    : StringConstant.inStock,
                                 isTotal: true,
                                 isEven: false,
                               ),
@@ -199,7 +172,7 @@ class ProductDetail extends StatelessWidget {
             CarouselSlider(
               options: CarouselOptions(
                 autoPlay: true,
-                height: getSize(300),
+                height: getSize(350),
                 enableInfiniteScroll: false,
                 viewportFraction: 1.0,
                 onPageChanged: (index, reason) {

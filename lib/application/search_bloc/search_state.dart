@@ -19,8 +19,14 @@ class SearchState with _$SearchState {
     required List<FilterOptionListDTO> anglesList,
     required bool isFilterLoading,
     required bool isErrorInFilterAPI,
-    required SubCategoryDTO? selecetedCategory,
+    // required SubCategoryDTO? selecetedCategory,
     required List<int> favouriteIds,
+    required RangeValues range,
+    required double? minPrice,
+    required double? maxPrice,
+    required InputEmptyOrNot idText,
+    required InputEmptyOrNot odText,
+    required InputEmptyOrNot depthText,
 
     // required String searchText,
   }) = _SearchState;
@@ -40,7 +46,13 @@ class SearchState with _$SearchState {
     anglesList: [],
     isErrorInFilterAPI: false,
     isFilterLoading: false,
-    selecetedCategory: null,
+    // selecetedCategory: null,
     favouriteIds: [],
+    range: RangeValues(0, 0),
+    minPrice: null,
+    maxPrice: null,
+    depthText: InputEmptyOrNot(""),
+    odText: InputEmptyOrNot(""),
+    idText: InputEmptyOrNot(""),
   );
 }

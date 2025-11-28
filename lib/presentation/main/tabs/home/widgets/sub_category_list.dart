@@ -33,14 +33,16 @@ class SubCategoryList extends StatelessWidget {
           return Scaffold(
             appBar: CustomAppBar(title: category.name ?? ""),
             body: Padding(
-              padding: EdgeInsets.symmetric(horizontal: getSize(15)),
+              padding: EdgeInsets.symmetric(
+                horizontal: getSize(15),
+                vertical: getSize(15),
+              ),
               child: Column(
                 children: [
-                  Container(
+                  /* Container(
                     height: getSize(120),
                     margin: EdgeInsets.only(
                       bottom: getSize(30),
-                      top: getSize(20),
                     ),
                     alignment: Alignment.centerLeft,
                     decoration: BoxDecoration(
@@ -57,7 +59,7 @@ class SubCategoryList extends StatelessWidget {
                       //   fit: BoxFit.fill,
                       // ),
                     ),
-                  ),
+                  ), */
                   Expanded(
                     child: PaginatedListView(
                       onRefresh: () {

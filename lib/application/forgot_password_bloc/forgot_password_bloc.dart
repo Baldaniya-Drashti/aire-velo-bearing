@@ -1,4 +1,3 @@
-import 'package:aire_velo_bearings/core/constants/string_constant.dart';
 import 'package:aire_velo_bearings/core/router/app_router.dart';
 import 'package:aire_velo_bearings/domain/auth/auth_failure.dart';
 import 'package:aire_velo_bearings/domain/auth/i_auth_facade.dart';
@@ -84,8 +83,6 @@ class ForgotPasswordBloc
                 AppFocus.unfocus(currentContext);
               },
             );
-          } else {
-            print(StringConstant.someDetailAreInvalidPleaseCheck);
           }
           emit(state.copyWith(isSubmitting: false, showError: true));
         },

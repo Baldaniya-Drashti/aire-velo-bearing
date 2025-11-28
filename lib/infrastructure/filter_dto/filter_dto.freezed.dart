@@ -28,6 +28,11 @@ mixin _$FilterDTO {
   String? get filter_depth => throw _privateConstructorUsedError;
   String? get filter_dimensions => throw _privateConstructorUsedError;
   String? get filter_chamfers_angles => throw _privateConstructorUsedError;
+  String? get min_price => throw _privateConstructorUsedError;
+  String? get max_price => throw _privateConstructorUsedError;
+  String? get id => throw _privateConstructorUsedError;
+  String? get od => throw _privateConstructorUsedError;
+  String? get depth => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,7 +53,12 @@ abstract class $FilterDTOCopyWith<$Res> {
       String? filter_od,
       String? filter_depth,
       String? filter_dimensions,
-      String? filter_chamfers_angles});
+      String? filter_chamfers_angles,
+      String? min_price,
+      String? max_price,
+      String? id,
+      String? od,
+      String? depth});
 }
 
 /// @nodoc
@@ -72,6 +82,11 @@ class _$FilterDTOCopyWithImpl<$Res, $Val extends FilterDTO>
     Object? filter_depth = freezed,
     Object? filter_dimensions = freezed,
     Object? filter_chamfers_angles = freezed,
+    Object? min_price = freezed,
+    Object? max_price = freezed,
+    Object? id = freezed,
+    Object? od = freezed,
+    Object? depth = freezed,
   }) {
     return _then(_value.copyWith(
       search: freezed == search
@@ -106,6 +121,26 @@ class _$FilterDTOCopyWithImpl<$Res, $Val extends FilterDTO>
           ? _value.filter_chamfers_angles
           : filter_chamfers_angles // ignore: cast_nullable_to_non_nullable
               as String?,
+      min_price: freezed == min_price
+          ? _value.min_price
+          : min_price // ignore: cast_nullable_to_non_nullable
+              as String?,
+      max_price: freezed == max_price
+          ? _value.max_price
+          : max_price // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      od: freezed == od
+          ? _value.od
+          : od // ignore: cast_nullable_to_non_nullable
+              as String?,
+      depth: freezed == depth
+          ? _value.depth
+          : depth // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -126,7 +161,12 @@ abstract class _$$FilterDTOImplCopyWith<$Res>
       String? filter_od,
       String? filter_depth,
       String? filter_dimensions,
-      String? filter_chamfers_angles});
+      String? filter_chamfers_angles,
+      String? min_price,
+      String? max_price,
+      String? id,
+      String? od,
+      String? depth});
 }
 
 /// @nodoc
@@ -148,6 +188,11 @@ class __$$FilterDTOImplCopyWithImpl<$Res>
     Object? filter_depth = freezed,
     Object? filter_dimensions = freezed,
     Object? filter_chamfers_angles = freezed,
+    Object? min_price = freezed,
+    Object? max_price = freezed,
+    Object? id = freezed,
+    Object? od = freezed,
+    Object? depth = freezed,
   }) {
     return _then(_$FilterDTOImpl(
       search: freezed == search
@@ -182,6 +227,26 @@ class __$$FilterDTOImplCopyWithImpl<$Res>
           ? _value.filter_chamfers_angles
           : filter_chamfers_angles // ignore: cast_nullable_to_non_nullable
               as String?,
+      min_price: freezed == min_price
+          ? _value.min_price
+          : min_price // ignore: cast_nullable_to_non_nullable
+              as String?,
+      max_price: freezed == max_price
+          ? _value.max_price
+          : max_price // ignore: cast_nullable_to_non_nullable
+              as String?,
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String?,
+      od: freezed == od
+          ? _value.od
+          : od // ignore: cast_nullable_to_non_nullable
+              as String?,
+      depth: freezed == depth
+          ? _value.depth
+          : depth // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -197,7 +262,12 @@ class _$FilterDTOImpl implements _FilterDTO {
       this.filter_od,
       this.filter_depth,
       this.filter_dimensions,
-      this.filter_chamfers_angles});
+      this.filter_chamfers_angles,
+      this.min_price,
+      this.max_price,
+      this.id,
+      this.od,
+      this.depth});
 
   factory _$FilterDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$FilterDTOImplFromJson(json);
@@ -218,10 +288,20 @@ class _$FilterDTOImpl implements _FilterDTO {
   final String? filter_dimensions;
   @override
   final String? filter_chamfers_angles;
+  @override
+  final String? min_price;
+  @override
+  final String? max_price;
+  @override
+  final String? id;
+  @override
+  final String? od;
+  @override
+  final String? depth;
 
   @override
   String toString() {
-    return 'FilterDTO(search: $search, category: $category, filter_brand: $filter_brand, filter_id: $filter_id, filter_od: $filter_od, filter_depth: $filter_depth, filter_dimensions: $filter_dimensions, filter_chamfers_angles: $filter_chamfers_angles)';
+    return 'FilterDTO(search: $search, category: $category, filter_brand: $filter_brand, filter_id: $filter_id, filter_od: $filter_od, filter_depth: $filter_depth, filter_dimensions: $filter_dimensions, filter_chamfers_angles: $filter_chamfers_angles, min_price: $min_price, max_price: $max_price, id: $id, od: $od, depth: $depth)';
   }
 
   @override
@@ -243,7 +323,14 @@ class _$FilterDTOImpl implements _FilterDTO {
             (identical(other.filter_dimensions, filter_dimensions) ||
                 other.filter_dimensions == filter_dimensions) &&
             (identical(other.filter_chamfers_angles, filter_chamfers_angles) ||
-                other.filter_chamfers_angles == filter_chamfers_angles));
+                other.filter_chamfers_angles == filter_chamfers_angles) &&
+            (identical(other.min_price, min_price) ||
+                other.min_price == min_price) &&
+            (identical(other.max_price, max_price) ||
+                other.max_price == max_price) &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.od, od) || other.od == od) &&
+            (identical(other.depth, depth) || other.depth == depth));
   }
 
   @JsonKey(ignore: true)
@@ -257,7 +344,12 @@ class _$FilterDTOImpl implements _FilterDTO {
       filter_od,
       filter_depth,
       filter_dimensions,
-      filter_chamfers_angles);
+      filter_chamfers_angles,
+      min_price,
+      max_price,
+      id,
+      od,
+      depth);
 
   @JsonKey(ignore: true)
   @override
@@ -282,7 +374,12 @@ abstract class _FilterDTO implements FilterDTO {
       final String? filter_od,
       final String? filter_depth,
       final String? filter_dimensions,
-      final String? filter_chamfers_angles}) = _$FilterDTOImpl;
+      final String? filter_chamfers_angles,
+      final String? min_price,
+      final String? max_price,
+      final String? id,
+      final String? od,
+      final String? depth}) = _$FilterDTOImpl;
 
   factory _FilterDTO.fromJson(Map<String, dynamic> json) =
       _$FilterDTOImpl.fromJson;
@@ -303,6 +400,16 @@ abstract class _FilterDTO implements FilterDTO {
   String? get filter_dimensions;
   @override
   String? get filter_chamfers_angles;
+  @override
+  String? get min_price;
+  @override
+  String? get max_price;
+  @override
+  String? get id;
+  @override
+  String? get od;
+  @override
+  String? get depth;
   @override
   @JsonKey(ignore: true)
   _$$FilterDTOImplCopyWith<_$FilterDTOImpl> get copyWith =>

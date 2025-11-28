@@ -16,6 +16,11 @@ _$FilterDTOImpl _$$FilterDTOImplFromJson(Map<String, dynamic> json) =>
       filter_depth: json['filter_depth'] as String?,
       filter_dimensions: json['filter_dimensions'] as String?,
       filter_chamfers_angles: json['filter_chamfers_angles'] as String?,
+      min_price: json['min_price'] as String?,
+      max_price: json['max_price'] as String?,
+      id: json['id'] as String?,
+      od: json['od'] as String?,
+      depth: json['depth'] as String?,
     );
 
 Map<String, dynamic> _$$FilterDTOImplToJson(_$FilterDTOImpl instance) =>
@@ -28,4 +33,9 @@ Map<String, dynamic> _$$FilterDTOImplToJson(_$FilterDTOImpl instance) =>
       'filter_depth': instance.filter_depth,
       'filter_dimensions': instance.filter_dimensions,
       'filter_chamfers_angles': instance.filter_chamfers_angles,
+      'min_price': instance.min_price,
+      'max_price': instance.max_price,
+      'id': instance.id,
+      'od': instance.od,
+      'depth': instance.depth,
     };

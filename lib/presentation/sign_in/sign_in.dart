@@ -14,42 +14,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-/* 
-@RoutePage(name: 'SignIn')
-class SignIn extends StatelessWidget {
-  const SignIn({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.symmetric(
-          horizontal: getSize(20),
-          vertical: getSize(10),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            CommonButton(
-              onPressed: () async {
-                try {
-                  await CommonUrlLauncher.launchAppUrl(
-                    'https://www.airevelobearings.com/product/ac3344-slt-bo-slt-headset-bearing-33-x-44-x-6-36-45/',
-                  );
-                } catch (err) {
-                  print("Call Error: $err");
-                }
-              },
-              buttonText: "Go To WebSite",
-            ),
-            Gap(getSize(15)),
-          ],
-        ),
-      ),
-    );
-  }
-}
- */
 
 @RoutePage(name: 'SignIn')
 class SignIn extends StatelessWidget {

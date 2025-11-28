@@ -39,7 +39,7 @@ class StringConstant {
   static const String od = 'OD';
   static const String depth = 'Depth';
   static const String moreInfo = 'More Info';
-  static const String productDetail = 'Product Detail';
+  static const String productDetails = 'Product Details';
 
   static const String weight = 'Weight';
   static const String chamferAngles = 'Chamfer Angles';
@@ -89,13 +89,10 @@ class StringConstant {
   static const String displayName = 'Display Name';
   static const String somethingWentWrong = 'Something Went Wrong!';
   static const String noDataFound = 'No Data Found';
+  static const String noProductsFound = 'No Products Found';
+  static const String inStock = 'In Stock';
+  static const String outOfStock = 'Out of Stock';
 
-  ///
-  ///
-  ///
-  ///
-  ///
-  ///
   /// ------------- Validator ------------- ///
   static const String pleaseEnterEmail = 'Please enter email';
   static const String pleaseEnterValidEmail = 'Please enter valid email';

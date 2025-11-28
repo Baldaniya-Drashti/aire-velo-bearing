@@ -12,9 +12,11 @@ class ProductDetailDTO with _$ProductDetailDTO {
     String? name,
     String? price,
     String? stock_status,
+    int? stock_status_int,
     String? short_description,
     String? description,
     String? permalink,
+    Map<String, dynamic>? additional_info,
   }) = _ProductDetailDTO;
 
   factory ProductDetailDTO.fromJson(Map<String, dynamic> json) =>

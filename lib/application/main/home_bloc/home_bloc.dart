@@ -21,16 +21,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<HomeEvent>((event, emit) async {
       await event.map(
         getProductList: (e) async {
-          /* emit(state.copyWith(isLoading: true));
-          failureOrSuccess = await mainFacade.homeListAPI(page: page);
-
-          failureOrSuccess.fold((l) => emit(state.copyWith(isLoading: false)), (
-            r,
-          ) {
-            print("Home List API success---> $r");
-            emit(state.copyWith(isLoading: false, productList: r));
-          }); */
-
           try {
             if (e.isRefresh) {
               page = 1;

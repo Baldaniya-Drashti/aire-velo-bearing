@@ -1,4 +1,3 @@
-import 'package:aire_velo_bearings/core/constants/string_constant.dart';
 import 'package:aire_velo_bearings/core/database/local_preference.dart';
 import 'package:aire_velo_bearings/core/router/app_router.dart';
 import 'package:aire_velo_bearings/core/router/app_router.gr.dart';
@@ -86,8 +85,6 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
                 ]);
               },
             );
-          } else {
-            print(StringConstant.someDetailAreInvalidPleaseCheck);
           }
           emit(state.copyWith(isSubmitting: false, showError: true));
         },

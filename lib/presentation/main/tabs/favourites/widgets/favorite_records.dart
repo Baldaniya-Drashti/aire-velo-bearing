@@ -23,6 +23,7 @@ class FavoriteRecords extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Card(
+        color: AppColors.white,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
           side: BorderSide(color: AppColors.grey, width: 0.3),
@@ -38,7 +39,7 @@ class FavoriteRecords extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: NetworkImage(record.image ?? ''),
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                 ),
               ),
               alignment: Alignment.bottomRight,
@@ -54,7 +55,6 @@ class FavoriteRecords extends StatelessWidget {
                 ),
               ),
             ),
-
             GestureDetector(
               onTap: () {
                 context.router.push(
@@ -83,19 +83,19 @@ class FavoriteRecords extends StatelessWidget {
                     Divider(color: AppColors.secondary),
                     attributeText(
                       title: StringConstant.dimensions,
-                      value: record.additional_info?.dimensions?.join(','),
+                      value: record.additional_info?.Dimensions,
                     ),
                     attributeText(
                       title: StringConstant.id,
-                      value: record.additional_info?.id?.join(','),
+                      value: record.additional_info?.ID,
                     ),
                     attributeText(
                       title: StringConstant.od,
-                      value: record.additional_info?.od?.join(','),
+                      value: record.additional_info?.OD,
                     ),
                     attributeText(
                       title: StringConstant.depth,
-                      value: record.additional_info?.depth?.join(','),
+                      value: record.additional_info?.Depth,
                     ),
                     Gap(getSize(8)),
                     // 🔹 Price And Button
@@ -107,7 +107,7 @@ class FavoriteRecords extends StatelessWidget {
                             decoration: BoxDecoration(color: AppColors.red),
                             alignment: Alignment.center,
                             child: BaseText(
-                              text: "£45.00",
+                              text: "£${record.price}",
                               textColor: AppColors.white,
                               fontWeight: FontWeight.w600,
                               fontSize: 12,

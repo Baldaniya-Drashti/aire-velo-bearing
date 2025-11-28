@@ -20,7 +20,7 @@ String attributeToString(FilterAttribute attribute) {
     case FilterAttribute.depth:
       return "depth";
     case FilterAttribute.dimension:
-      return "depth";
+      return "dimensions";
     case FilterAttribute.chamfersAngles:
       return "chamfers-angles";
   }

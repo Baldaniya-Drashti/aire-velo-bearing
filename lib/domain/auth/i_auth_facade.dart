@@ -5,6 +5,8 @@ abstract class IAuthFacade {
   Future<bool> checkAuthenticated();
 
   Future<Either<AuthFailure, String>> register({
+    required String firstName,
+    required String lastName,
     required String email,
     required String password,
     required String confirmPassword,

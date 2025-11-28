@@ -217,7 +217,7 @@ class MainFacade implements IMainFacade {
       final ids = await getFavouriteIds();
 
       Map<String, dynamic> mapData = {
-        'ids': (ids.isEmpty) ? '' : ids.join(','),
+        'ids': (ids.isEmpty) ? "" : ids.join(','),
         'page': page,
         'per_page': _perPage,
       };

@@ -10,8 +10,9 @@ class SearchProductDTO with _$SearchProductDTO {
     int? id,
     String? name,
     List<String>? images,
+    String? price,
     String? slug,
-    Attributes? attributes,
+    Attributes? additional_info,
   }) = _SearchProductDTO;
 
   factory SearchProductDTO.fromJson(Map<String, dynamic> json) =>
@@ -21,11 +22,11 @@ class SearchProductDTO with _$SearchProductDTO {
 @freezed
 class Attributes with _$Attributes {
   const factory Attributes({
-    List<String>? dimensions,
-    List<String>? id,
-    List<String>? od,
-    @JsonKey(name: 'chamfers-angles') List<String>? chamfers_angles,
-    List<String>? depth,
+    String? Dimensions,
+    String? ID,
+    String? OD,
+    @JsonKey(name: 'Chamfer Angles') String? chamfersAngles,
+    String? Depth,
   }) = _Attributes;
 
   factory Attributes.fromJson(Map<String, dynamic> json) =>

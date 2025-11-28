@@ -42,6 +42,50 @@ class SignUp extends StatelessWidget {
                         child: Column(
                           children: [
                             CustomTextField(
+                              initialValue: state.firstName.getValue(),
+                              labelText: StringConstant.firstName,
+                              onChanged: (value) => context
+                                  .read<SignUpBloc>()
+                                  .add(SignUpEvent.firstNameChanged(value)),
+                              validator: (p0, p1) => context
+                                  .read<SignUpBloc>()
+                                  .state
+                                  .firstName
+                                  .value
+                                  .fold(
+                                    (f) => f.maybeMap(
+                                      empty: (value) =>
+                                          StringConstant.pleaseEnterFirstName,
+                                      orElse: () => null,
+                                    ),
+                                    (_) => null,
+                                  ),
+                            ),
+                            Gap(getSize(20)),
+                            CustomTextField(
+                              initialValue: state.lastName.getValue(),
+
+                              labelText: StringConstant.lastName,
+                              onChanged: (value) => context
+                                  .read<SignUpBloc>()
+                                  .add(SignUpEvent.lastNameChanged(value)),
+                              validator: (p0, p1) => context
+                                  .read<SignUpBloc>()
+                                  .state
+                                  .lastName
+                                  .value
+                                  .fold(
+                                    (f) => f.maybeMap(
+                                      empty: (value) =>
+                                          StringConstant.pleaseEnterLastName,
+                                      orElse: () => null,
+                                    ),
+                                    (_) => null,
+                                  ),
+                            ),
+                            Gap(getSize(20)),
+
+                            CustomTextField(
                               labelText: StringConstant.email,
                               onChanged: (value) => context
                                   .read<SignUpBloc>()

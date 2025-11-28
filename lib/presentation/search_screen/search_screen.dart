@@ -7,12 +7,17 @@ import 'package:aire_velo_bearings/presentation/common/utils/app_focus.dart';
 import 'package:aire_velo_bearings/presentation/common/widgets/center_loading_indicator.dart';
 import 'package:aire_velo_bearings/presentation/common/widgets/paginated_list_view.dart';
 import 'package:aire_velo_bearings/presentation/common/widgets/something_wrong_text.dart';
+import 'package:aire_velo_bearings/presentation/core/styles/app_colors.dart';
+import 'package:aire_velo_bearings/presentation/core/widgets/buttons/common_button.dart';
 import 'package:aire_velo_bearings/presentation/core/widgets/inputs/custom_app_bar.dart';
+import 'package:aire_velo_bearings/presentation/core/widgets/inputs/inputs.dart';
 import 'package:aire_velo_bearings/presentation/search_field/search_field.dart';
 import 'package:aire_velo_bearings/presentation/search_screen/widgets/search_records.dart';
 import 'package:aire_velo_bearings/presentation/search_screen/widgets/show_filter_bottom_sheet.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
@@ -31,11 +36,11 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   void initState() {
     super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
+    /* WidgetsBinding.instance.addPostFrameCallback((_) {
       // if (widget.searchText == null) {
       _focusNode.requestFocus();
       // }
-    });
+    }); */
   }
 
   @override
@@ -71,12 +76,15 @@ class _SearchScreenState extends State<SearchScreen> {
                         );
                       },
                     ),
+                    Gap(getSize(5)),
+                    shortcutFiters(context),
                     Gap(getSize(20)),
                     Expanded(
                       child: PaginatedListView(
                         refreshController:
                             getIt<SearchBloc>().refreshController,
                         isNoDataFound: state.isNoDataFound,
+                        dataStatus: StringConstant.noProductsFound,
                         onRefresh: () {
                           context.read<SearchBloc>().add(
                             SearchEvent.onSearch(isRefresh: true),
@@ -90,19 +98,15 @@ class _SearchScreenState extends State<SearchScreen> {
                         child: (state.isLoading)
                             ? CenterLoadingIndicator(isOnlyLoader: true)
                             : state.isErrorInAPI
-                            ? SomethingWrong()
-                            : GridView.builder(
+                            ? SomethingWrong(
+                                title: StringConstant.noProductsFound,
+                              )
+                            : DynamicHeightGridView(
                                 itemCount: state.productList.length,
-                                shrinkWrap: true,
+                                crossAxisCount: 2,
                                 physics: NeverScrollableScrollPhysics(),
-                                gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 2,
-                                      mainAxisSpacing: 5,
-                                      crossAxisSpacing: 5,
-                                      childAspectRatio: 0.48,
-                                    ),
-                                itemBuilder: (context, index) {
+                                shrinkWrap: true,
+                                builder: (con, index) {
                                   final prod = state.productList[index];
                                   return SearchRecords(
                                     record: prod,
@@ -119,6 +123,30 @@ class _SearchScreenState extends State<SearchScreen> {
                                   );
                                 },
                               ),
+                        /* GridView.builder(
+                          itemCount: state.productList.length,
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                                mainAxisSpacing: 5,
+                                crossAxisSpacing: 5,
+                                childAspectRatio: 0.48,
+                              ),
+                          itemBuilder: (context, index) {
+                            final prod = state.productList[index];
+                            return SearchRecords(
+                              record: prod,
+                              isFavourite: state.favouriteIds.contains(prod.id),
+                              onFavouriteTap: () {
+                                context.read<SearchBloc>().add(
+                                  SearchEvent.toggleFavourite(prod.id ?? 0),
+                                );
+                              },
+                            );
+                          },
+                        ), */
                       ),
                     ),
                   ],
@@ -128,6 +156,75 @@ class _SearchScreenState extends State<SearchScreen> {
           );
         },
       ),
+    );
+  }
+
+  Widget shortcutFiters(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(
+          flex: 2,
+          child: CustomTextField(
+            hintText: StringConstant.id,
+            keyboardType: TextInputType.numberWithOptions(decimal: true),
+            maxLength: 10,
+            inputFormatters: [
+              FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}')),
+            ],
+            onChanged: (val) {
+              context.read<SearchBloc>().add(
+                SearchEvent.idTextChanged(value: val),
+              );
+            },
+          ),
+        ),
+        Gap(getSize(5)),
+        Expanded(
+          flex: 2,
+          child: CustomTextField(
+            hintText: StringConstant.od,
+            keyboardType: TextInputType.numberWithOptions(decimal: true),
+            maxLength: 10,
+            inputFormatters: [
+              FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}')),
+            ],
+            onChanged: (val) {
+              context.read<SearchBloc>().add(
+                SearchEvent.odTextChanged(value: val),
+              );
+            },
+          ),
+        ),
+        Gap(getSize(5)),
+        Expanded(
+          flex: 2,
+          child: CustomTextField(
+            hintText: StringConstant.depth,
+            keyboardType: TextInputType.numberWithOptions(decimal: true),
+            maxLength: 10,
+            inputFormatters: [
+              FilteringTextInputFormatter.allow(RegExp(r'^\d+\.?\d{0,2}')),
+            ],
+            onChanged: (val) {
+              context.read<SearchBloc>().add(
+                SearchEvent.depthTextChanged(value: val),
+              );
+            },
+          ),
+        ),
+        Gap(getSize(5)),
+        Expanded(
+          flex: 1,
+          child: CommonButton(
+            height: 40,
+            onPressed: () {
+              context.read<SearchBloc>().add(SearchEvent.onShortCutSearch());
+            },
+            customWidget: Icon(Icons.search, color: AppColors.white),
+            buttonText: StringConstant.search,
+          ),
+        ),
+      ],
     );
   }
 }

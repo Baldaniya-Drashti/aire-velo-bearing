@@ -23,8 +23,9 @@ mixin _$SearchProductDTO {
   int? get id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   List<String>? get images => throw _privateConstructorUsedError;
+  String? get price => throw _privateConstructorUsedError;
   String? get slug => throw _privateConstructorUsedError;
-  Attributes? get attributes => throw _privateConstructorUsedError;
+  Attributes? get additional_info => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -42,10 +43,11 @@ abstract class $SearchProductDTOCopyWith<$Res> {
       {int? id,
       String? name,
       List<String>? images,
+      String? price,
       String? slug,
-      Attributes? attributes});
+      Attributes? additional_info});
 
-  $AttributesCopyWith<$Res>? get attributes;
+  $AttributesCopyWith<$Res>? get additional_info;
 }
 
 /// @nodoc
@@ -64,8 +66,9 @@ class _$SearchProductDTOCopyWithImpl<$Res, $Val extends SearchProductDTO>
     Object? id = freezed,
     Object? name = freezed,
     Object? images = freezed,
+    Object? price = freezed,
     Object? slug = freezed,
-    Object? attributes = freezed,
+    Object? additional_info = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -80,26 +83,30 @@ class _$SearchProductDTOCopyWithImpl<$Res, $Val extends SearchProductDTO>
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      price: freezed == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as String?,
       slug: freezed == slug
           ? _value.slug
           : slug // ignore: cast_nullable_to_non_nullable
               as String?,
-      attributes: freezed == attributes
-          ? _value.attributes
-          : attributes // ignore: cast_nullable_to_non_nullable
+      additional_info: freezed == additional_info
+          ? _value.additional_info
+          : additional_info // ignore: cast_nullable_to_non_nullable
               as Attributes?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $AttributesCopyWith<$Res>? get attributes {
-    if (_value.attributes == null) {
+  $AttributesCopyWith<$Res>? get additional_info {
+    if (_value.additional_info == null) {
       return null;
     }
 
-    return $AttributesCopyWith<$Res>(_value.attributes!, (value) {
-      return _then(_value.copyWith(attributes: value) as $Val);
+    return $AttributesCopyWith<$Res>(_value.additional_info!, (value) {
+      return _then(_value.copyWith(additional_info: value) as $Val);
     });
   }
 }
@@ -116,11 +123,12 @@ abstract class _$$SearchProductDTOImplCopyWith<$Res>
       {int? id,
       String? name,
       List<String>? images,
+      String? price,
       String? slug,
-      Attributes? attributes});
+      Attributes? additional_info});
 
   @override
-  $AttributesCopyWith<$Res>? get attributes;
+  $AttributesCopyWith<$Res>? get additional_info;
 }
 
 /// @nodoc
@@ -137,8 +145,9 @@ class __$$SearchProductDTOImplCopyWithImpl<$Res>
     Object? id = freezed,
     Object? name = freezed,
     Object? images = freezed,
+    Object? price = freezed,
     Object? slug = freezed,
-    Object? attributes = freezed,
+    Object? additional_info = freezed,
   }) {
     return _then(_$SearchProductDTOImpl(
       id: freezed == id
@@ -153,13 +162,17 @@ class __$$SearchProductDTOImplCopyWithImpl<$Res>
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
               as List<String>?,
+      price: freezed == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as String?,
       slug: freezed == slug
           ? _value.slug
           : slug // ignore: cast_nullable_to_non_nullable
               as String?,
-      attributes: freezed == attributes
-          ? _value.attributes
-          : attributes // ignore: cast_nullable_to_non_nullable
+      additional_info: freezed == additional_info
+          ? _value.additional_info
+          : additional_info // ignore: cast_nullable_to_non_nullable
               as Attributes?,
     ));
   }
@@ -172,8 +185,9 @@ class _$SearchProductDTOImpl implements _SearchProductDTO {
       {this.id,
       this.name,
       final List<String>? images,
+      this.price,
       this.slug,
-      this.attributes})
+      this.additional_info})
       : _images = images;
 
   factory _$SearchProductDTOImpl.fromJson(Map<String, dynamic> json) =>
@@ -194,13 +208,15 @@ class _$SearchProductDTOImpl implements _SearchProductDTO {
   }
 
   @override
+  final String? price;
+  @override
   final String? slug;
   @override
-  final Attributes? attributes;
+  final Attributes? additional_info;
 
   @override
   String toString() {
-    return 'SearchProductDTO(id: $id, name: $name, images: $images, slug: $slug, attributes: $attributes)';
+    return 'SearchProductDTO(id: $id, name: $name, images: $images, price: $price, slug: $slug, additional_info: $additional_info)';
   }
 
   @override
@@ -211,15 +227,22 @@ class _$SearchProductDTOImpl implements _SearchProductDTO {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
+            (identical(other.price, price) || other.price == price) &&
             (identical(other.slug, slug) || other.slug == slug) &&
-            (identical(other.attributes, attributes) ||
-                other.attributes == attributes));
+            (identical(other.additional_info, additional_info) ||
+                other.additional_info == additional_info));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name,
-      const DeepCollectionEquality().hash(_images), slug, attributes);
+  int get hashCode => Object.hash(
+      runtimeType,
+      id,
+      name,
+      const DeepCollectionEquality().hash(_images),
+      price,
+      slug,
+      additional_info);
 
   @JsonKey(ignore: true)
   @override
@@ -241,8 +264,9 @@ abstract class _SearchProductDTO implements SearchProductDTO {
       {final int? id,
       final String? name,
       final List<String>? images,
+      final String? price,
       final String? slug,
-      final Attributes? attributes}) = _$SearchProductDTOImpl;
+      final Attributes? additional_info}) = _$SearchProductDTOImpl;
 
   factory _SearchProductDTO.fromJson(Map<String, dynamic> json) =
       _$SearchProductDTOImpl.fromJson;
@@ -254,9 +278,11 @@ abstract class _SearchProductDTO implements SearchProductDTO {
   @override
   List<String>? get images;
   @override
+  String? get price;
+  @override
   String? get slug;
   @override
-  Attributes? get attributes;
+  Attributes? get additional_info;
   @override
   @JsonKey(ignore: true)
   _$$SearchProductDTOImplCopyWith<_$SearchProductDTOImpl> get copyWith =>
@@ -269,12 +295,12 @@ Attributes _$AttributesFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Attributes {
-  List<String>? get dimensions => throw _privateConstructorUsedError;
-  List<String>? get id => throw _privateConstructorUsedError;
-  List<String>? get od => throw _privateConstructorUsedError;
-  @JsonKey(name: 'chamfers-angles')
-  List<String>? get chamfers_angles => throw _privateConstructorUsedError;
-  List<String>? get depth => throw _privateConstructorUsedError;
+  String? get Dimensions => throw _privateConstructorUsedError;
+  String? get ID => throw _privateConstructorUsedError;
+  String? get OD => throw _privateConstructorUsedError;
+  @JsonKey(name: 'Chamfer Angles')
+  String? get chamfersAngles => throw _privateConstructorUsedError;
+  String? get Depth => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -289,11 +315,11 @@ abstract class $AttributesCopyWith<$Res> {
       _$AttributesCopyWithImpl<$Res, Attributes>;
   @useResult
   $Res call(
-      {List<String>? dimensions,
-      List<String>? id,
-      List<String>? od,
-      @JsonKey(name: 'chamfers-angles') List<String>? chamfers_angles,
-      List<String>? depth});
+      {String? Dimensions,
+      String? ID,
+      String? OD,
+      @JsonKey(name: 'Chamfer Angles') String? chamfersAngles,
+      String? Depth});
 }
 
 /// @nodoc
@@ -309,33 +335,33 @@ class _$AttributesCopyWithImpl<$Res, $Val extends Attributes>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? dimensions = freezed,
-    Object? id = freezed,
-    Object? od = freezed,
-    Object? chamfers_angles = freezed,
-    Object? depth = freezed,
+    Object? Dimensions = freezed,
+    Object? ID = freezed,
+    Object? OD = freezed,
+    Object? chamfersAngles = freezed,
+    Object? Depth = freezed,
   }) {
     return _then(_value.copyWith(
-      dimensions: freezed == dimensions
-          ? _value.dimensions
-          : dimensions // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      id: freezed == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      od: freezed == od
-          ? _value.od
-          : od // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      chamfers_angles: freezed == chamfers_angles
-          ? _value.chamfers_angles
-          : chamfers_angles // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      depth: freezed == depth
-          ? _value.depth
-          : depth // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+      Dimensions: freezed == Dimensions
+          ? _value.Dimensions
+          : Dimensions // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ID: freezed == ID
+          ? _value.ID
+          : ID // ignore: cast_nullable_to_non_nullable
+              as String?,
+      OD: freezed == OD
+          ? _value.OD
+          : OD // ignore: cast_nullable_to_non_nullable
+              as String?,
+      chamfersAngles: freezed == chamfersAngles
+          ? _value.chamfersAngles
+          : chamfersAngles // ignore: cast_nullable_to_non_nullable
+              as String?,
+      Depth: freezed == Depth
+          ? _value.Depth
+          : Depth // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -349,11 +375,11 @@ abstract class _$$AttributesImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {List<String>? dimensions,
-      List<String>? id,
-      List<String>? od,
-      @JsonKey(name: 'chamfers-angles') List<String>? chamfers_angles,
-      List<String>? depth});
+      {String? Dimensions,
+      String? ID,
+      String? OD,
+      @JsonKey(name: 'Chamfer Angles') String? chamfersAngles,
+      String? Depth});
 }
 
 /// @nodoc
@@ -367,33 +393,33 @@ class __$$AttributesImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? dimensions = freezed,
-    Object? id = freezed,
-    Object? od = freezed,
-    Object? chamfers_angles = freezed,
-    Object? depth = freezed,
+    Object? Dimensions = freezed,
+    Object? ID = freezed,
+    Object? OD = freezed,
+    Object? chamfersAngles = freezed,
+    Object? Depth = freezed,
   }) {
     return _then(_$AttributesImpl(
-      dimensions: freezed == dimensions
-          ? _value._dimensions
-          : dimensions // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      id: freezed == id
-          ? _value._id
-          : id // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      od: freezed == od
-          ? _value._od
-          : od // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      chamfers_angles: freezed == chamfers_angles
-          ? _value._chamfers_angles
-          : chamfers_angles // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
-      depth: freezed == depth
-          ? _value._depth
-          : depth // ignore: cast_nullable_to_non_nullable
-              as List<String>?,
+      Dimensions: freezed == Dimensions
+          ? _value.Dimensions
+          : Dimensions // ignore: cast_nullable_to_non_nullable
+              as String?,
+      ID: freezed == ID
+          ? _value.ID
+          : ID // ignore: cast_nullable_to_non_nullable
+              as String?,
+      OD: freezed == OD
+          ? _value.OD
+          : OD // ignore: cast_nullable_to_non_nullable
+              as String?,
+      chamfersAngles: freezed == chamfersAngles
+          ? _value.chamfersAngles
+          : chamfersAngles // ignore: cast_nullable_to_non_nullable
+              as String?,
+      Depth: freezed == Depth
+          ? _value.Depth
+          : Depth // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -402,74 +428,30 @@ class __$$AttributesImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$AttributesImpl implements _Attributes {
   const _$AttributesImpl(
-      {final List<String>? dimensions,
-      final List<String>? id,
-      final List<String>? od,
-      @JsonKey(name: 'chamfers-angles') final List<String>? chamfers_angles,
-      final List<String>? depth})
-      : _dimensions = dimensions,
-        _id = id,
-        _od = od,
-        _chamfers_angles = chamfers_angles,
-        _depth = depth;
+      {this.Dimensions,
+      this.ID,
+      this.OD,
+      @JsonKey(name: 'Chamfer Angles') this.chamfersAngles,
+      this.Depth});
 
   factory _$AttributesImpl.fromJson(Map<String, dynamic> json) =>
       _$$AttributesImplFromJson(json);
 
-  final List<String>? _dimensions;
   @override
-  List<String>? get dimensions {
-    final value = _dimensions;
-    if (value == null) return null;
-    if (_dimensions is EqualUnmodifiableListView) return _dimensions;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<String>? _id;
+  final String? Dimensions;
   @override
-  List<String>? get id {
-    final value = _id;
-    if (value == null) return null;
-    if (_id is EqualUnmodifiableListView) return _id;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<String>? _od;
+  final String? ID;
   @override
-  List<String>? get od {
-    final value = _od;
-    if (value == null) return null;
-    if (_od is EqualUnmodifiableListView) return _od;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<String>? _chamfers_angles;
+  final String? OD;
   @override
-  @JsonKey(name: 'chamfers-angles')
-  List<String>? get chamfers_angles {
-    final value = _chamfers_angles;
-    if (value == null) return null;
-    if (_chamfers_angles is EqualUnmodifiableListView) return _chamfers_angles;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<String>? _depth;
+  @JsonKey(name: 'Chamfer Angles')
+  final String? chamfersAngles;
   @override
-  List<String>? get depth {
-    final value = _depth;
-    if (value == null) return null;
-    if (_depth is EqualUnmodifiableListView) return _depth;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  final String? Depth;
 
   @override
   String toString() {
-    return 'Attributes(dimensions: $dimensions, id: $id, od: $od, chamfers_angles: $chamfers_angles, depth: $depth)';
+    return 'Attributes(Dimensions: $Dimensions, ID: $ID, OD: $OD, chamfersAngles: $chamfersAngles, Depth: $Depth)';
   }
 
   @override
@@ -477,24 +459,19 @@ class _$AttributesImpl implements _Attributes {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AttributesImpl &&
-            const DeepCollectionEquality()
-                .equals(other._dimensions, _dimensions) &&
-            const DeepCollectionEquality().equals(other._id, _id) &&
-            const DeepCollectionEquality().equals(other._od, _od) &&
-            const DeepCollectionEquality()
-                .equals(other._chamfers_angles, _chamfers_angles) &&
-            const DeepCollectionEquality().equals(other._depth, _depth));
+            (identical(other.Dimensions, Dimensions) ||
+                other.Dimensions == Dimensions) &&
+            (identical(other.ID, ID) || other.ID == ID) &&
+            (identical(other.OD, OD) || other.OD == OD) &&
+            (identical(other.chamfersAngles, chamfersAngles) ||
+                other.chamfersAngles == chamfersAngles) &&
+            (identical(other.Depth, Depth) || other.Depth == Depth));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_dimensions),
-      const DeepCollectionEquality().hash(_id),
-      const DeepCollectionEquality().hash(_od),
-      const DeepCollectionEquality().hash(_chamfers_angles),
-      const DeepCollectionEquality().hash(_depth));
+  int get hashCode =>
+      Object.hash(runtimeType, Dimensions, ID, OD, chamfersAngles, Depth);
 
   @JsonKey(ignore: true)
   @override
@@ -512,26 +489,26 @@ class _$AttributesImpl implements _Attributes {
 
 abstract class _Attributes implements Attributes {
   const factory _Attributes(
-      {final List<String>? dimensions,
-      final List<String>? id,
-      final List<String>? od,
-      @JsonKey(name: 'chamfers-angles') final List<String>? chamfers_angles,
-      final List<String>? depth}) = _$AttributesImpl;
+      {final String? Dimensions,
+      final String? ID,
+      final String? OD,
+      @JsonKey(name: 'Chamfer Angles') final String? chamfersAngles,
+      final String? Depth}) = _$AttributesImpl;
 
   factory _Attributes.fromJson(Map<String, dynamic> json) =
       _$AttributesImpl.fromJson;
 
   @override
-  List<String>? get dimensions;
+  String? get Dimensions;
   @override
-  List<String>? get id;
+  String? get ID;
   @override
-  List<String>? get od;
+  String? get OD;
   @override
-  @JsonKey(name: 'chamfers-angles')
-  List<String>? get chamfers_angles;
+  @JsonKey(name: 'Chamfer Angles')
+  String? get chamfersAngles;
   @override
-  List<String>? get depth;
+  String? get Depth;
   @override
   @JsonKey(ignore: true)
   _$$AttributesImplCopyWith<_$AttributesImpl> get copyWith =>

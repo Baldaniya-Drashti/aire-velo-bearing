@@ -34,6 +34,8 @@ class CategoryList extends StatelessWidget {
               ? SomethingWrong()
               : ListView.builder(
                   itemCount: productList.length,
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
                   itemBuilder: (_, index) {
                     final record = productList[index];
                     return GestureDetector(
@@ -59,10 +61,13 @@ class CategoryList extends StatelessWidget {
                               blurRadius: 5,
                             ),
                           ],
-                          /* image: DecorationImage(
-                    image: NetworkImage(record.image ?? ""),
-                    fit: BoxFit.fill,
-                  ), */
+                          image: DecorationImage(
+                            image: NetworkImage(
+                              record.image_url ??
+                                  "https://www.airevelobearings.com/wp-content/uploads/2022/04/cat-headerbg.jpeg",
+                            ),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                         child: BaseText(
                           text: record.name ?? "",

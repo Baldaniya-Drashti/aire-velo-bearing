@@ -13,10 +13,12 @@ _$SearchProductDTOImpl _$$SearchProductDTOImplFromJson(
       name: json['name'] as String?,
       images:
           (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      price: json['price'] as String?,
       slug: json['slug'] as String?,
-      attributes: json['attributes'] == null
+      additional_info: json['additional_info'] == null
           ? null
-          : Attributes.fromJson(json['attributes'] as Map<String, dynamic>),
+          : Attributes.fromJson(
+              json['additional_info'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$SearchProductDTOImplToJson(
@@ -25,29 +27,25 @@ Map<String, dynamic> _$$SearchProductDTOImplToJson(
       'id': instance.id,
       'name': instance.name,
       'images': instance.images,
+      'price': instance.price,
       'slug': instance.slug,
-      'attributes': instance.attributes,
+      'additional_info': instance.additional_info,
     };
 
 _$AttributesImpl _$$AttributesImplFromJson(Map<String, dynamic> json) =>
     _$AttributesImpl(
-      dimensions: (json['dimensions'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-      id: (json['id'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      od: (json['od'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      chamfers_angles: (json['chamfers-angles'] as List<dynamic>?)
-          ?.map((e) => e as String)
-          .toList(),
-      depth:
-          (json['depth'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      Dimensions: json['Dimensions'] as String?,
+      ID: json['ID'] as String?,
+      OD: json['OD'] as String?,
+      chamfersAngles: json['Chamfer Angles'] as String?,
+      Depth: json['Depth'] as String?,
     );
 
 Map<String, dynamic> _$$AttributesImplToJson(_$AttributesImpl instance) =>
     <String, dynamic>{
-      'dimensions': instance.dimensions,
-      'id': instance.id,
-      'od': instance.od,
-      'chamfers-angles': instance.chamfers_angles,
-      'depth': instance.depth,
+      'Dimensions': instance.Dimensions,
+      'ID': instance.ID,
+      'OD': instance.OD,
+      'Chamfer Angles': instance.chamfersAngles,
+      'Depth': instance.Depth,
     };

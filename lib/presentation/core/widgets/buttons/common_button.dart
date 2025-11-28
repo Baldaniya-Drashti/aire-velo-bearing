@@ -17,7 +17,6 @@ class CommonButton extends StatefulWidget {
   final String buttonText;
   final Widget? customWidget;
   final List<BoxShadow>? shadows;
-  final Widget? iconWidget;
   final Color? backgroundColor;
   final Color? borderColor;
   final Color? buttonTextColor;
@@ -36,7 +35,6 @@ class CommonButton extends StatefulWidget {
     this.gradient,
     this.backgroundColor,
     required this.buttonText,
-    this.iconWidget,
     this.buttonTextColor,
     this.buttonFontSize,
     this.buttonFontWeight,
@@ -106,13 +104,14 @@ class _CommonButtonState extends State<CommonButton> {
               width: getSize(20),
               child: CircularProgressIndicator(color: AppColors.white),
             )
-          : BaseText(
-              text: widget.buttonText,
-              fontSize: widget.buttonFontSize ?? 16,
-              textAlign: TextAlign.center,
-              fontWeight: widget.buttonFontWeight ?? FontWeight.w400,
-              textColor: widget.buttonTextColor ?? Colors.white,
-            ),
+          : widget.customWidget ??
+                BaseText(
+                  text: widget.buttonText,
+                  fontSize: widget.buttonFontSize ?? 16,
+                  textAlign: TextAlign.center,
+                  fontWeight: widget.buttonFontWeight ?? FontWeight.w400,
+                  textColor: widget.buttonTextColor ?? Colors.white,
+                ),
     );
   }
 }

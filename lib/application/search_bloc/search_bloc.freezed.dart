@@ -34,6 +34,7 @@ mixin _$SearchEvent {
     required TResult Function(String value) idTextChanged,
     required TResult Function(String value) odTextChanged,
     required TResult Function(String value) depthTextChanged,
+    required TResult Function() closeBottomSheet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -53,6 +54,7 @@ mixin _$SearchEvent {
     TResult? Function(String value)? idTextChanged,
     TResult? Function(String value)? odTextChanged,
     TResult? Function(String value)? depthTextChanged,
+    TResult? Function()? closeBottomSheet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -72,6 +74,7 @@ mixin _$SearchEvent {
     TResult Function(String value)? idTextChanged,
     TResult Function(String value)? odTextChanged,
     TResult Function(String value)? depthTextChanged,
+    TResult Function()? closeBottomSheet,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -92,6 +95,7 @@ mixin _$SearchEvent {
     required TResult Function(IdTextChanged value) idTextChanged,
     required TResult Function(OdTextChanged value) odTextChanged,
     required TResult Function(DepthTextChanged value) depthTextChanged,
+    required TResult Function(CloseBottomSheet value) closeBottomSheet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -111,6 +115,7 @@ mixin _$SearchEvent {
     TResult? Function(IdTextChanged value)? idTextChanged,
     TResult? Function(OdTextChanged value)? odTextChanged,
     TResult? Function(DepthTextChanged value)? depthTextChanged,
+    TResult? Function(CloseBottomSheet value)? closeBottomSheet,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -130,6 +135,7 @@ mixin _$SearchEvent {
     TResult Function(IdTextChanged value)? idTextChanged,
     TResult Function(OdTextChanged value)? odTextChanged,
     TResult Function(DepthTextChanged value)? depthTextChanged,
+    TResult Function(CloseBottomSheet value)? closeBottomSheet,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -247,6 +253,7 @@ class _$InitialEventImpl implements InitialEvent {
     required TResult Function(String value) idTextChanged,
     required TResult Function(String value) odTextChanged,
     required TResult Function(String value) depthTextChanged,
+    required TResult Function() closeBottomSheet,
   }) {
     return initialEvent(val);
   }
@@ -269,6 +276,7 @@ class _$InitialEventImpl implements InitialEvent {
     TResult? Function(String value)? idTextChanged,
     TResult? Function(String value)? odTextChanged,
     TResult? Function(String value)? depthTextChanged,
+    TResult? Function()? closeBottomSheet,
   }) {
     return initialEvent?.call(val);
   }
@@ -291,6 +299,7 @@ class _$InitialEventImpl implements InitialEvent {
     TResult Function(String value)? idTextChanged,
     TResult Function(String value)? odTextChanged,
     TResult Function(String value)? depthTextChanged,
+    TResult Function()? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (initialEvent != null) {
@@ -317,6 +326,7 @@ class _$InitialEventImpl implements InitialEvent {
     required TResult Function(IdTextChanged value) idTextChanged,
     required TResult Function(OdTextChanged value) odTextChanged,
     required TResult Function(DepthTextChanged value) depthTextChanged,
+    required TResult Function(CloseBottomSheet value) closeBottomSheet,
   }) {
     return initialEvent(this);
   }
@@ -339,6 +349,7 @@ class _$InitialEventImpl implements InitialEvent {
     TResult? Function(IdTextChanged value)? idTextChanged,
     TResult? Function(OdTextChanged value)? odTextChanged,
     TResult? Function(DepthTextChanged value)? depthTextChanged,
+    TResult? Function(CloseBottomSheet value)? closeBottomSheet,
   }) {
     return initialEvent?.call(this);
   }
@@ -361,6 +372,7 @@ class _$InitialEventImpl implements InitialEvent {
     TResult Function(IdTextChanged value)? idTextChanged,
     TResult Function(OdTextChanged value)? odTextChanged,
     TResult Function(DepthTextChanged value)? depthTextChanged,
+    TResult Function(CloseBottomSheet value)? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (initialEvent != null) {
@@ -461,6 +473,7 @@ class _$OnSearchImpl implements OnSearch {
     required TResult Function(String value) idTextChanged,
     required TResult Function(String value) odTextChanged,
     required TResult Function(String value) depthTextChanged,
+    required TResult Function() closeBottomSheet,
   }) {
     return onSearch(isRefresh);
   }
@@ -483,6 +496,7 @@ class _$OnSearchImpl implements OnSearch {
     TResult? Function(String value)? idTextChanged,
     TResult? Function(String value)? odTextChanged,
     TResult? Function(String value)? depthTextChanged,
+    TResult? Function()? closeBottomSheet,
   }) {
     return onSearch?.call(isRefresh);
   }
@@ -505,6 +519,7 @@ class _$OnSearchImpl implements OnSearch {
     TResult Function(String value)? idTextChanged,
     TResult Function(String value)? odTextChanged,
     TResult Function(String value)? depthTextChanged,
+    TResult Function()? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (onSearch != null) {
@@ -531,6 +546,7 @@ class _$OnSearchImpl implements OnSearch {
     required TResult Function(IdTextChanged value) idTextChanged,
     required TResult Function(OdTextChanged value) odTextChanged,
     required TResult Function(DepthTextChanged value) depthTextChanged,
+    required TResult Function(CloseBottomSheet value) closeBottomSheet,
   }) {
     return onSearch(this);
   }
@@ -553,6 +569,7 @@ class _$OnSearchImpl implements OnSearch {
     TResult? Function(IdTextChanged value)? idTextChanged,
     TResult? Function(OdTextChanged value)? odTextChanged,
     TResult? Function(DepthTextChanged value)? depthTextChanged,
+    TResult? Function(CloseBottomSheet value)? closeBottomSheet,
   }) {
     return onSearch?.call(this);
   }
@@ -575,6 +592,7 @@ class _$OnSearchImpl implements OnSearch {
     TResult Function(IdTextChanged value)? idTextChanged,
     TResult Function(OdTextChanged value)? odTextChanged,
     TResult Function(DepthTextChanged value)? depthTextChanged,
+    TResult Function(CloseBottomSheet value)? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (onSearch != null) {
@@ -647,6 +665,7 @@ class _$OnShortCutSearchImpl implements OnShortCutSearch {
     required TResult Function(String value) idTextChanged,
     required TResult Function(String value) odTextChanged,
     required TResult Function(String value) depthTextChanged,
+    required TResult Function() closeBottomSheet,
   }) {
     return onShortCutSearch();
   }
@@ -669,6 +688,7 @@ class _$OnShortCutSearchImpl implements OnShortCutSearch {
     TResult? Function(String value)? idTextChanged,
     TResult? Function(String value)? odTextChanged,
     TResult? Function(String value)? depthTextChanged,
+    TResult? Function()? closeBottomSheet,
   }) {
     return onShortCutSearch?.call();
   }
@@ -691,6 +711,7 @@ class _$OnShortCutSearchImpl implements OnShortCutSearch {
     TResult Function(String value)? idTextChanged,
     TResult Function(String value)? odTextChanged,
     TResult Function(String value)? depthTextChanged,
+    TResult Function()? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (onShortCutSearch != null) {
@@ -717,6 +738,7 @@ class _$OnShortCutSearchImpl implements OnShortCutSearch {
     required TResult Function(IdTextChanged value) idTextChanged,
     required TResult Function(OdTextChanged value) odTextChanged,
     required TResult Function(DepthTextChanged value) depthTextChanged,
+    required TResult Function(CloseBottomSheet value) closeBottomSheet,
   }) {
     return onShortCutSearch(this);
   }
@@ -739,6 +761,7 @@ class _$OnShortCutSearchImpl implements OnShortCutSearch {
     TResult? Function(IdTextChanged value)? idTextChanged,
     TResult? Function(OdTextChanged value)? odTextChanged,
     TResult? Function(DepthTextChanged value)? depthTextChanged,
+    TResult? Function(CloseBottomSheet value)? closeBottomSheet,
   }) {
     return onShortCutSearch?.call(this);
   }
@@ -761,6 +784,7 @@ class _$OnShortCutSearchImpl implements OnShortCutSearch {
     TResult Function(IdTextChanged value)? idTextChanged,
     TResult Function(OdTextChanged value)? odTextChanged,
     TResult Function(DepthTextChanged value)? depthTextChanged,
+    TResult Function(CloseBottomSheet value)? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (onShortCutSearch != null) {
@@ -854,6 +878,7 @@ class _$GetSearchTextImpl implements GetSearchText {
     required TResult Function(String value) idTextChanged,
     required TResult Function(String value) odTextChanged,
     required TResult Function(String value) depthTextChanged,
+    required TResult Function() closeBottomSheet,
   }) {
     return getSearchText(val);
   }
@@ -876,6 +901,7 @@ class _$GetSearchTextImpl implements GetSearchText {
     TResult? Function(String value)? idTextChanged,
     TResult? Function(String value)? odTextChanged,
     TResult? Function(String value)? depthTextChanged,
+    TResult? Function()? closeBottomSheet,
   }) {
     return getSearchText?.call(val);
   }
@@ -898,6 +924,7 @@ class _$GetSearchTextImpl implements GetSearchText {
     TResult Function(String value)? idTextChanged,
     TResult Function(String value)? odTextChanged,
     TResult Function(String value)? depthTextChanged,
+    TResult Function()? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (getSearchText != null) {
@@ -924,6 +951,7 @@ class _$GetSearchTextImpl implements GetSearchText {
     required TResult Function(IdTextChanged value) idTextChanged,
     required TResult Function(OdTextChanged value) odTextChanged,
     required TResult Function(DepthTextChanged value) depthTextChanged,
+    required TResult Function(CloseBottomSheet value) closeBottomSheet,
   }) {
     return getSearchText(this);
   }
@@ -946,6 +974,7 @@ class _$GetSearchTextImpl implements GetSearchText {
     TResult? Function(IdTextChanged value)? idTextChanged,
     TResult? Function(OdTextChanged value)? odTextChanged,
     TResult? Function(DepthTextChanged value)? depthTextChanged,
+    TResult? Function(CloseBottomSheet value)? closeBottomSheet,
   }) {
     return getSearchText?.call(this);
   }
@@ -968,6 +997,7 @@ class _$GetSearchTextImpl implements GetSearchText {
     TResult Function(IdTextChanged value)? idTextChanged,
     TResult Function(OdTextChanged value)? odTextChanged,
     TResult Function(DepthTextChanged value)? depthTextChanged,
+    TResult Function(CloseBottomSheet value)? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (getSearchText != null) {
@@ -1041,6 +1071,7 @@ class _$GetCategoryListImpl implements GetCategoryList {
     required TResult Function(String value) idTextChanged,
     required TResult Function(String value) odTextChanged,
     required TResult Function(String value) depthTextChanged,
+    required TResult Function() closeBottomSheet,
   }) {
     return getCategoryList();
   }
@@ -1063,6 +1094,7 @@ class _$GetCategoryListImpl implements GetCategoryList {
     TResult? Function(String value)? idTextChanged,
     TResult? Function(String value)? odTextChanged,
     TResult? Function(String value)? depthTextChanged,
+    TResult? Function()? closeBottomSheet,
   }) {
     return getCategoryList?.call();
   }
@@ -1085,6 +1117,7 @@ class _$GetCategoryListImpl implements GetCategoryList {
     TResult Function(String value)? idTextChanged,
     TResult Function(String value)? odTextChanged,
     TResult Function(String value)? depthTextChanged,
+    TResult Function()? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (getCategoryList != null) {
@@ -1111,6 +1144,7 @@ class _$GetCategoryListImpl implements GetCategoryList {
     required TResult Function(IdTextChanged value) idTextChanged,
     required TResult Function(OdTextChanged value) odTextChanged,
     required TResult Function(DepthTextChanged value) depthTextChanged,
+    required TResult Function(CloseBottomSheet value) closeBottomSheet,
   }) {
     return getCategoryList(this);
   }
@@ -1133,6 +1167,7 @@ class _$GetCategoryListImpl implements GetCategoryList {
     TResult? Function(IdTextChanged value)? idTextChanged,
     TResult? Function(OdTextChanged value)? odTextChanged,
     TResult? Function(DepthTextChanged value)? depthTextChanged,
+    TResult? Function(CloseBottomSheet value)? closeBottomSheet,
   }) {
     return getCategoryList?.call(this);
   }
@@ -1155,6 +1190,7 @@ class _$GetCategoryListImpl implements GetCategoryList {
     TResult Function(IdTextChanged value)? idTextChanged,
     TResult Function(OdTextChanged value)? odTextChanged,
     TResult Function(DepthTextChanged value)? depthTextChanged,
+    TResult Function(CloseBottomSheet value)? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (getCategoryList != null) {
@@ -1222,6 +1258,7 @@ class _$LoadAllFilterListImpl implements LoadAllFilterList {
     required TResult Function(String value) idTextChanged,
     required TResult Function(String value) odTextChanged,
     required TResult Function(String value) depthTextChanged,
+    required TResult Function() closeBottomSheet,
   }) {
     return loadAllFilterList();
   }
@@ -1244,6 +1281,7 @@ class _$LoadAllFilterListImpl implements LoadAllFilterList {
     TResult? Function(String value)? idTextChanged,
     TResult? Function(String value)? odTextChanged,
     TResult? Function(String value)? depthTextChanged,
+    TResult? Function()? closeBottomSheet,
   }) {
     return loadAllFilterList?.call();
   }
@@ -1266,6 +1304,7 @@ class _$LoadAllFilterListImpl implements LoadAllFilterList {
     TResult Function(String value)? idTextChanged,
     TResult Function(String value)? odTextChanged,
     TResult Function(String value)? depthTextChanged,
+    TResult Function()? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (loadAllFilterList != null) {
@@ -1292,6 +1331,7 @@ class _$LoadAllFilterListImpl implements LoadAllFilterList {
     required TResult Function(IdTextChanged value) idTextChanged,
     required TResult Function(OdTextChanged value) odTextChanged,
     required TResult Function(DepthTextChanged value) depthTextChanged,
+    required TResult Function(CloseBottomSheet value) closeBottomSheet,
   }) {
     return loadAllFilterList(this);
   }
@@ -1314,6 +1354,7 @@ class _$LoadAllFilterListImpl implements LoadAllFilterList {
     TResult? Function(IdTextChanged value)? idTextChanged,
     TResult? Function(OdTextChanged value)? odTextChanged,
     TResult? Function(DepthTextChanged value)? depthTextChanged,
+    TResult? Function(CloseBottomSheet value)? closeBottomSheet,
   }) {
     return loadAllFilterList?.call(this);
   }
@@ -1336,6 +1377,7 @@ class _$LoadAllFilterListImpl implements LoadAllFilterList {
     TResult Function(IdTextChanged value)? idTextChanged,
     TResult Function(OdTextChanged value)? odTextChanged,
     TResult Function(DepthTextChanged value)? depthTextChanged,
+    TResult Function(CloseBottomSheet value)? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (loadAllFilterList != null) {
@@ -1438,6 +1480,7 @@ class _$FilterChangedImpl implements FilterChanged {
     required TResult Function(String value) idTextChanged,
     required TResult Function(String value) odTextChanged,
     required TResult Function(String value) depthTextChanged,
+    required TResult Function() closeBottomSheet,
   }) {
     return filterChanged(attribute, value);
   }
@@ -1460,6 +1503,7 @@ class _$FilterChangedImpl implements FilterChanged {
     TResult? Function(String value)? idTextChanged,
     TResult? Function(String value)? odTextChanged,
     TResult? Function(String value)? depthTextChanged,
+    TResult? Function()? closeBottomSheet,
   }) {
     return filterChanged?.call(attribute, value);
   }
@@ -1482,6 +1526,7 @@ class _$FilterChangedImpl implements FilterChanged {
     TResult Function(String value)? idTextChanged,
     TResult Function(String value)? odTextChanged,
     TResult Function(String value)? depthTextChanged,
+    TResult Function()? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (filterChanged != null) {
@@ -1508,6 +1553,7 @@ class _$FilterChangedImpl implements FilterChanged {
     required TResult Function(IdTextChanged value) idTextChanged,
     required TResult Function(OdTextChanged value) odTextChanged,
     required TResult Function(DepthTextChanged value) depthTextChanged,
+    required TResult Function(CloseBottomSheet value) closeBottomSheet,
   }) {
     return filterChanged(this);
   }
@@ -1530,6 +1576,7 @@ class _$FilterChangedImpl implements FilterChanged {
     TResult? Function(IdTextChanged value)? idTextChanged,
     TResult? Function(OdTextChanged value)? odTextChanged,
     TResult? Function(DepthTextChanged value)? depthTextChanged,
+    TResult? Function(CloseBottomSheet value)? closeBottomSheet,
   }) {
     return filterChanged?.call(this);
   }
@@ -1552,6 +1599,7 @@ class _$FilterChangedImpl implements FilterChanged {
     TResult Function(IdTextChanged value)? idTextChanged,
     TResult Function(OdTextChanged value)? odTextChanged,
     TResult Function(DepthTextChanged value)? depthTextChanged,
+    TResult Function(CloseBottomSheet value)? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (filterChanged != null) {
@@ -1664,6 +1712,7 @@ class _$CategoryChangedImpl implements CategoryChanged {
     required TResult Function(String value) idTextChanged,
     required TResult Function(String value) odTextChanged,
     required TResult Function(String value) depthTextChanged,
+    required TResult Function() closeBottomSheet,
   }) {
     return categoryChanged(value);
   }
@@ -1686,6 +1735,7 @@ class _$CategoryChangedImpl implements CategoryChanged {
     TResult? Function(String value)? idTextChanged,
     TResult? Function(String value)? odTextChanged,
     TResult? Function(String value)? depthTextChanged,
+    TResult? Function()? closeBottomSheet,
   }) {
     return categoryChanged?.call(value);
   }
@@ -1708,6 +1758,7 @@ class _$CategoryChangedImpl implements CategoryChanged {
     TResult Function(String value)? idTextChanged,
     TResult Function(String value)? odTextChanged,
     TResult Function(String value)? depthTextChanged,
+    TResult Function()? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (categoryChanged != null) {
@@ -1734,6 +1785,7 @@ class _$CategoryChangedImpl implements CategoryChanged {
     required TResult Function(IdTextChanged value) idTextChanged,
     required TResult Function(OdTextChanged value) odTextChanged,
     required TResult Function(DepthTextChanged value) depthTextChanged,
+    required TResult Function(CloseBottomSheet value) closeBottomSheet,
   }) {
     return categoryChanged(this);
   }
@@ -1756,6 +1808,7 @@ class _$CategoryChangedImpl implements CategoryChanged {
     TResult? Function(IdTextChanged value)? idTextChanged,
     TResult? Function(OdTextChanged value)? odTextChanged,
     TResult? Function(DepthTextChanged value)? depthTextChanged,
+    TResult? Function(CloseBottomSheet value)? closeBottomSheet,
   }) {
     return categoryChanged?.call(this);
   }
@@ -1778,6 +1831,7 @@ class _$CategoryChangedImpl implements CategoryChanged {
     TResult Function(IdTextChanged value)? idTextChanged,
     TResult Function(OdTextChanged value)? odTextChanged,
     TResult Function(DepthTextChanged value)? depthTextChanged,
+    TResult Function(CloseBottomSheet value)? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (categoryChanged != null) {
@@ -1851,6 +1905,7 @@ class _$SubmitFilterImpl implements SubmitFilter {
     required TResult Function(String value) idTextChanged,
     required TResult Function(String value) odTextChanged,
     required TResult Function(String value) depthTextChanged,
+    required TResult Function() closeBottomSheet,
   }) {
     return submitFilter();
   }
@@ -1873,6 +1928,7 @@ class _$SubmitFilterImpl implements SubmitFilter {
     TResult? Function(String value)? idTextChanged,
     TResult? Function(String value)? odTextChanged,
     TResult? Function(String value)? depthTextChanged,
+    TResult? Function()? closeBottomSheet,
   }) {
     return submitFilter?.call();
   }
@@ -1895,6 +1951,7 @@ class _$SubmitFilterImpl implements SubmitFilter {
     TResult Function(String value)? idTextChanged,
     TResult Function(String value)? odTextChanged,
     TResult Function(String value)? depthTextChanged,
+    TResult Function()? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (submitFilter != null) {
@@ -1921,6 +1978,7 @@ class _$SubmitFilterImpl implements SubmitFilter {
     required TResult Function(IdTextChanged value) idTextChanged,
     required TResult Function(OdTextChanged value) odTextChanged,
     required TResult Function(DepthTextChanged value) depthTextChanged,
+    required TResult Function(CloseBottomSheet value) closeBottomSheet,
   }) {
     return submitFilter(this);
   }
@@ -1943,6 +2001,7 @@ class _$SubmitFilterImpl implements SubmitFilter {
     TResult? Function(IdTextChanged value)? idTextChanged,
     TResult? Function(OdTextChanged value)? odTextChanged,
     TResult? Function(DepthTextChanged value)? depthTextChanged,
+    TResult? Function(CloseBottomSheet value)? closeBottomSheet,
   }) {
     return submitFilter?.call(this);
   }
@@ -1965,6 +2024,7 @@ class _$SubmitFilterImpl implements SubmitFilter {
     TResult Function(IdTextChanged value)? idTextChanged,
     TResult Function(OdTextChanged value)? odTextChanged,
     TResult Function(DepthTextChanged value)? depthTextChanged,
+    TResult Function(CloseBottomSheet value)? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (submitFilter != null) {
@@ -2032,6 +2092,7 @@ class _$ClearAllFiltersImpl implements ClearAllFilters {
     required TResult Function(String value) idTextChanged,
     required TResult Function(String value) odTextChanged,
     required TResult Function(String value) depthTextChanged,
+    required TResult Function() closeBottomSheet,
   }) {
     return clearAllFilters();
   }
@@ -2054,6 +2115,7 @@ class _$ClearAllFiltersImpl implements ClearAllFilters {
     TResult? Function(String value)? idTextChanged,
     TResult? Function(String value)? odTextChanged,
     TResult? Function(String value)? depthTextChanged,
+    TResult? Function()? closeBottomSheet,
   }) {
     return clearAllFilters?.call();
   }
@@ -2076,6 +2138,7 @@ class _$ClearAllFiltersImpl implements ClearAllFilters {
     TResult Function(String value)? idTextChanged,
     TResult Function(String value)? odTextChanged,
     TResult Function(String value)? depthTextChanged,
+    TResult Function()? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (clearAllFilters != null) {
@@ -2102,6 +2165,7 @@ class _$ClearAllFiltersImpl implements ClearAllFilters {
     required TResult Function(IdTextChanged value) idTextChanged,
     required TResult Function(OdTextChanged value) odTextChanged,
     required TResult Function(DepthTextChanged value) depthTextChanged,
+    required TResult Function(CloseBottomSheet value) closeBottomSheet,
   }) {
     return clearAllFilters(this);
   }
@@ -2124,6 +2188,7 @@ class _$ClearAllFiltersImpl implements ClearAllFilters {
     TResult? Function(IdTextChanged value)? idTextChanged,
     TResult? Function(OdTextChanged value)? odTextChanged,
     TResult? Function(DepthTextChanged value)? depthTextChanged,
+    TResult? Function(CloseBottomSheet value)? closeBottomSheet,
   }) {
     return clearAllFilters?.call(this);
   }
@@ -2146,6 +2211,7 @@ class _$ClearAllFiltersImpl implements ClearAllFilters {
     TResult Function(IdTextChanged value)? idTextChanged,
     TResult Function(OdTextChanged value)? odTextChanged,
     TResult Function(DepthTextChanged value)? depthTextChanged,
+    TResult Function(CloseBottomSheet value)? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (clearAllFilters != null) {
@@ -2240,6 +2306,7 @@ class _$ToggleFavouriteImpl implements ToggleFavourite {
     required TResult Function(String value) idTextChanged,
     required TResult Function(String value) odTextChanged,
     required TResult Function(String value) depthTextChanged,
+    required TResult Function() closeBottomSheet,
   }) {
     return toggleFavourite(id);
   }
@@ -2262,6 +2329,7 @@ class _$ToggleFavouriteImpl implements ToggleFavourite {
     TResult? Function(String value)? idTextChanged,
     TResult? Function(String value)? odTextChanged,
     TResult? Function(String value)? depthTextChanged,
+    TResult? Function()? closeBottomSheet,
   }) {
     return toggleFavourite?.call(id);
   }
@@ -2284,6 +2352,7 @@ class _$ToggleFavouriteImpl implements ToggleFavourite {
     TResult Function(String value)? idTextChanged,
     TResult Function(String value)? odTextChanged,
     TResult Function(String value)? depthTextChanged,
+    TResult Function()? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (toggleFavourite != null) {
@@ -2310,6 +2379,7 @@ class _$ToggleFavouriteImpl implements ToggleFavourite {
     required TResult Function(IdTextChanged value) idTextChanged,
     required TResult Function(OdTextChanged value) odTextChanged,
     required TResult Function(DepthTextChanged value) depthTextChanged,
+    required TResult Function(CloseBottomSheet value) closeBottomSheet,
   }) {
     return toggleFavourite(this);
   }
@@ -2332,6 +2402,7 @@ class _$ToggleFavouriteImpl implements ToggleFavourite {
     TResult? Function(IdTextChanged value)? idTextChanged,
     TResult? Function(OdTextChanged value)? odTextChanged,
     TResult? Function(DepthTextChanged value)? depthTextChanged,
+    TResult? Function(CloseBottomSheet value)? closeBottomSheet,
   }) {
     return toggleFavourite?.call(this);
   }
@@ -2354,6 +2425,7 @@ class _$ToggleFavouriteImpl implements ToggleFavourite {
     TResult Function(IdTextChanged value)? idTextChanged,
     TResult Function(OdTextChanged value)? odTextChanged,
     TResult Function(DepthTextChanged value)? depthTextChanged,
+    TResult Function(CloseBottomSheet value)? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (toggleFavourite != null) {
@@ -2453,6 +2525,7 @@ class _$RangePriceChangedImpl implements RangePriceChanged {
     required TResult Function(String value) idTextChanged,
     required TResult Function(String value) odTextChanged,
     required TResult Function(String value) depthTextChanged,
+    required TResult Function() closeBottomSheet,
   }) {
     return rangePriceChanged(value);
   }
@@ -2475,6 +2548,7 @@ class _$RangePriceChangedImpl implements RangePriceChanged {
     TResult? Function(String value)? idTextChanged,
     TResult? Function(String value)? odTextChanged,
     TResult? Function(String value)? depthTextChanged,
+    TResult? Function()? closeBottomSheet,
   }) {
     return rangePriceChanged?.call(value);
   }
@@ -2497,6 +2571,7 @@ class _$RangePriceChangedImpl implements RangePriceChanged {
     TResult Function(String value)? idTextChanged,
     TResult Function(String value)? odTextChanged,
     TResult Function(String value)? depthTextChanged,
+    TResult Function()? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (rangePriceChanged != null) {
@@ -2523,6 +2598,7 @@ class _$RangePriceChangedImpl implements RangePriceChanged {
     required TResult Function(IdTextChanged value) idTextChanged,
     required TResult Function(OdTextChanged value) odTextChanged,
     required TResult Function(DepthTextChanged value) depthTextChanged,
+    required TResult Function(CloseBottomSheet value) closeBottomSheet,
   }) {
     return rangePriceChanged(this);
   }
@@ -2545,6 +2621,7 @@ class _$RangePriceChangedImpl implements RangePriceChanged {
     TResult? Function(IdTextChanged value)? idTextChanged,
     TResult? Function(OdTextChanged value)? odTextChanged,
     TResult? Function(DepthTextChanged value)? depthTextChanged,
+    TResult? Function(CloseBottomSheet value)? closeBottomSheet,
   }) {
     return rangePriceChanged?.call(this);
   }
@@ -2567,6 +2644,7 @@ class _$RangePriceChangedImpl implements RangePriceChanged {
     TResult Function(IdTextChanged value)? idTextChanged,
     TResult Function(OdTextChanged value)? odTextChanged,
     TResult Function(DepthTextChanged value)? depthTextChanged,
+    TResult Function(CloseBottomSheet value)? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (rangePriceChanged != null) {
@@ -2666,6 +2744,7 @@ class _$IdTextChangedImpl implements IdTextChanged {
     required TResult Function(String value) idTextChanged,
     required TResult Function(String value) odTextChanged,
     required TResult Function(String value) depthTextChanged,
+    required TResult Function() closeBottomSheet,
   }) {
     return idTextChanged(value);
   }
@@ -2688,6 +2767,7 @@ class _$IdTextChangedImpl implements IdTextChanged {
     TResult? Function(String value)? idTextChanged,
     TResult? Function(String value)? odTextChanged,
     TResult? Function(String value)? depthTextChanged,
+    TResult? Function()? closeBottomSheet,
   }) {
     return idTextChanged?.call(value);
   }
@@ -2710,6 +2790,7 @@ class _$IdTextChangedImpl implements IdTextChanged {
     TResult Function(String value)? idTextChanged,
     TResult Function(String value)? odTextChanged,
     TResult Function(String value)? depthTextChanged,
+    TResult Function()? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (idTextChanged != null) {
@@ -2736,6 +2817,7 @@ class _$IdTextChangedImpl implements IdTextChanged {
     required TResult Function(IdTextChanged value) idTextChanged,
     required TResult Function(OdTextChanged value) odTextChanged,
     required TResult Function(DepthTextChanged value) depthTextChanged,
+    required TResult Function(CloseBottomSheet value) closeBottomSheet,
   }) {
     return idTextChanged(this);
   }
@@ -2758,6 +2840,7 @@ class _$IdTextChangedImpl implements IdTextChanged {
     TResult? Function(IdTextChanged value)? idTextChanged,
     TResult? Function(OdTextChanged value)? odTextChanged,
     TResult? Function(DepthTextChanged value)? depthTextChanged,
+    TResult? Function(CloseBottomSheet value)? closeBottomSheet,
   }) {
     return idTextChanged?.call(this);
   }
@@ -2780,6 +2863,7 @@ class _$IdTextChangedImpl implements IdTextChanged {
     TResult Function(IdTextChanged value)? idTextChanged,
     TResult Function(OdTextChanged value)? odTextChanged,
     TResult Function(DepthTextChanged value)? depthTextChanged,
+    TResult Function(CloseBottomSheet value)? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (idTextChanged != null) {
@@ -2879,6 +2963,7 @@ class _$OdTextChangedImpl implements OdTextChanged {
     required TResult Function(String value) idTextChanged,
     required TResult Function(String value) odTextChanged,
     required TResult Function(String value) depthTextChanged,
+    required TResult Function() closeBottomSheet,
   }) {
     return odTextChanged(value);
   }
@@ -2901,6 +2986,7 @@ class _$OdTextChangedImpl implements OdTextChanged {
     TResult? Function(String value)? idTextChanged,
     TResult? Function(String value)? odTextChanged,
     TResult? Function(String value)? depthTextChanged,
+    TResult? Function()? closeBottomSheet,
   }) {
     return odTextChanged?.call(value);
   }
@@ -2923,6 +3009,7 @@ class _$OdTextChangedImpl implements OdTextChanged {
     TResult Function(String value)? idTextChanged,
     TResult Function(String value)? odTextChanged,
     TResult Function(String value)? depthTextChanged,
+    TResult Function()? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (odTextChanged != null) {
@@ -2949,6 +3036,7 @@ class _$OdTextChangedImpl implements OdTextChanged {
     required TResult Function(IdTextChanged value) idTextChanged,
     required TResult Function(OdTextChanged value) odTextChanged,
     required TResult Function(DepthTextChanged value) depthTextChanged,
+    required TResult Function(CloseBottomSheet value) closeBottomSheet,
   }) {
     return odTextChanged(this);
   }
@@ -2971,6 +3059,7 @@ class _$OdTextChangedImpl implements OdTextChanged {
     TResult? Function(IdTextChanged value)? idTextChanged,
     TResult? Function(OdTextChanged value)? odTextChanged,
     TResult? Function(DepthTextChanged value)? depthTextChanged,
+    TResult? Function(CloseBottomSheet value)? closeBottomSheet,
   }) {
     return odTextChanged?.call(this);
   }
@@ -2993,6 +3082,7 @@ class _$OdTextChangedImpl implements OdTextChanged {
     TResult Function(IdTextChanged value)? idTextChanged,
     TResult Function(OdTextChanged value)? odTextChanged,
     TResult Function(DepthTextChanged value)? depthTextChanged,
+    TResult Function(CloseBottomSheet value)? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (odTextChanged != null) {
@@ -3093,6 +3183,7 @@ class _$DepthTextChangedImpl implements DepthTextChanged {
     required TResult Function(String value) idTextChanged,
     required TResult Function(String value) odTextChanged,
     required TResult Function(String value) depthTextChanged,
+    required TResult Function() closeBottomSheet,
   }) {
     return depthTextChanged(value);
   }
@@ -3115,6 +3206,7 @@ class _$DepthTextChangedImpl implements DepthTextChanged {
     TResult? Function(String value)? idTextChanged,
     TResult? Function(String value)? odTextChanged,
     TResult? Function(String value)? depthTextChanged,
+    TResult? Function()? closeBottomSheet,
   }) {
     return depthTextChanged?.call(value);
   }
@@ -3137,6 +3229,7 @@ class _$DepthTextChangedImpl implements DepthTextChanged {
     TResult Function(String value)? idTextChanged,
     TResult Function(String value)? odTextChanged,
     TResult Function(String value)? depthTextChanged,
+    TResult Function()? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (depthTextChanged != null) {
@@ -3163,6 +3256,7 @@ class _$DepthTextChangedImpl implements DepthTextChanged {
     required TResult Function(IdTextChanged value) idTextChanged,
     required TResult Function(OdTextChanged value) odTextChanged,
     required TResult Function(DepthTextChanged value) depthTextChanged,
+    required TResult Function(CloseBottomSheet value) closeBottomSheet,
   }) {
     return depthTextChanged(this);
   }
@@ -3185,6 +3279,7 @@ class _$DepthTextChangedImpl implements DepthTextChanged {
     TResult? Function(IdTextChanged value)? idTextChanged,
     TResult? Function(OdTextChanged value)? odTextChanged,
     TResult? Function(DepthTextChanged value)? depthTextChanged,
+    TResult? Function(CloseBottomSheet value)? closeBottomSheet,
   }) {
     return depthTextChanged?.call(this);
   }
@@ -3207,6 +3302,7 @@ class _$DepthTextChangedImpl implements DepthTextChanged {
     TResult Function(IdTextChanged value)? idTextChanged,
     TResult Function(OdTextChanged value)? odTextChanged,
     TResult Function(DepthTextChanged value)? depthTextChanged,
+    TResult Function(CloseBottomSheet value)? closeBottomSheet,
     required TResult orElse(),
   }) {
     if (depthTextChanged != null) {
@@ -3227,10 +3323,197 @@ abstract class DepthTextChanged implements SearchEvent {
 }
 
 /// @nodoc
+abstract class _$$CloseBottomSheetImplCopyWith<$Res> {
+  factory _$$CloseBottomSheetImplCopyWith(_$CloseBottomSheetImpl value,
+          $Res Function(_$CloseBottomSheetImpl) then) =
+      __$$CloseBottomSheetImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$CloseBottomSheetImplCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res, _$CloseBottomSheetImpl>
+    implements _$$CloseBottomSheetImplCopyWith<$Res> {
+  __$$CloseBottomSheetImplCopyWithImpl(_$CloseBottomSheetImpl _value,
+      $Res Function(_$CloseBottomSheetImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$CloseBottomSheetImpl implements CloseBottomSheet {
+  const _$CloseBottomSheetImpl();
+
+  @override
+  String toString() {
+    return 'SearchEvent.closeBottomSheet()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$CloseBottomSheetImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(SubCategoryDTO? val) initialEvent,
+    required TResult Function(bool isRefresh) onSearch,
+    required TResult Function() onShortCutSearch,
+    required TResult Function(String? val) getSearchText,
+    required TResult Function() getCategoryList,
+    required TResult Function() loadAllFilterList,
+    required TResult Function(FilterAttribute attribute, String value)
+        filterChanged,
+    required TResult Function(FilterOptionListDTO value) categoryChanged,
+    required TResult Function() submitFilter,
+    required TResult Function() clearAllFilters,
+    required TResult Function(int id) toggleFavourite,
+    required TResult Function(RangeValues value) rangePriceChanged,
+    required TResult Function(String value) idTextChanged,
+    required TResult Function(String value) odTextChanged,
+    required TResult Function(String value) depthTextChanged,
+    required TResult Function() closeBottomSheet,
+  }) {
+    return closeBottomSheet();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(SubCategoryDTO? val)? initialEvent,
+    TResult? Function(bool isRefresh)? onSearch,
+    TResult? Function()? onShortCutSearch,
+    TResult? Function(String? val)? getSearchText,
+    TResult? Function()? getCategoryList,
+    TResult? Function()? loadAllFilterList,
+    TResult? Function(FilterAttribute attribute, String value)? filterChanged,
+    TResult? Function(FilterOptionListDTO value)? categoryChanged,
+    TResult? Function()? submitFilter,
+    TResult? Function()? clearAllFilters,
+    TResult? Function(int id)? toggleFavourite,
+    TResult? Function(RangeValues value)? rangePriceChanged,
+    TResult? Function(String value)? idTextChanged,
+    TResult? Function(String value)? odTextChanged,
+    TResult? Function(String value)? depthTextChanged,
+    TResult? Function()? closeBottomSheet,
+  }) {
+    return closeBottomSheet?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(SubCategoryDTO? val)? initialEvent,
+    TResult Function(bool isRefresh)? onSearch,
+    TResult Function()? onShortCutSearch,
+    TResult Function(String? val)? getSearchText,
+    TResult Function()? getCategoryList,
+    TResult Function()? loadAllFilterList,
+    TResult Function(FilterAttribute attribute, String value)? filterChanged,
+    TResult Function(FilterOptionListDTO value)? categoryChanged,
+    TResult Function()? submitFilter,
+    TResult Function()? clearAllFilters,
+    TResult Function(int id)? toggleFavourite,
+    TResult Function(RangeValues value)? rangePriceChanged,
+    TResult Function(String value)? idTextChanged,
+    TResult Function(String value)? odTextChanged,
+    TResult Function(String value)? depthTextChanged,
+    TResult Function()? closeBottomSheet,
+    required TResult orElse(),
+  }) {
+    if (closeBottomSheet != null) {
+      return closeBottomSheet();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(InitialEvent value) initialEvent,
+    required TResult Function(OnSearch value) onSearch,
+    required TResult Function(OnShortCutSearch value) onShortCutSearch,
+    required TResult Function(GetSearchText value) getSearchText,
+    required TResult Function(GetCategoryList value) getCategoryList,
+    required TResult Function(LoadAllFilterList value) loadAllFilterList,
+    required TResult Function(FilterChanged value) filterChanged,
+    required TResult Function(CategoryChanged value) categoryChanged,
+    required TResult Function(SubmitFilter value) submitFilter,
+    required TResult Function(ClearAllFilters value) clearAllFilters,
+    required TResult Function(ToggleFavourite value) toggleFavourite,
+    required TResult Function(RangePriceChanged value) rangePriceChanged,
+    required TResult Function(IdTextChanged value) idTextChanged,
+    required TResult Function(OdTextChanged value) odTextChanged,
+    required TResult Function(DepthTextChanged value) depthTextChanged,
+    required TResult Function(CloseBottomSheet value) closeBottomSheet,
+  }) {
+    return closeBottomSheet(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(InitialEvent value)? initialEvent,
+    TResult? Function(OnSearch value)? onSearch,
+    TResult? Function(OnShortCutSearch value)? onShortCutSearch,
+    TResult? Function(GetSearchText value)? getSearchText,
+    TResult? Function(GetCategoryList value)? getCategoryList,
+    TResult? Function(LoadAllFilterList value)? loadAllFilterList,
+    TResult? Function(FilterChanged value)? filterChanged,
+    TResult? Function(CategoryChanged value)? categoryChanged,
+    TResult? Function(SubmitFilter value)? submitFilter,
+    TResult? Function(ClearAllFilters value)? clearAllFilters,
+    TResult? Function(ToggleFavourite value)? toggleFavourite,
+    TResult? Function(RangePriceChanged value)? rangePriceChanged,
+    TResult? Function(IdTextChanged value)? idTextChanged,
+    TResult? Function(OdTextChanged value)? odTextChanged,
+    TResult? Function(DepthTextChanged value)? depthTextChanged,
+    TResult? Function(CloseBottomSheet value)? closeBottomSheet,
+  }) {
+    return closeBottomSheet?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(InitialEvent value)? initialEvent,
+    TResult Function(OnSearch value)? onSearch,
+    TResult Function(OnShortCutSearch value)? onShortCutSearch,
+    TResult Function(GetSearchText value)? getSearchText,
+    TResult Function(GetCategoryList value)? getCategoryList,
+    TResult Function(LoadAllFilterList value)? loadAllFilterList,
+    TResult Function(FilterChanged value)? filterChanged,
+    TResult Function(CategoryChanged value)? categoryChanged,
+    TResult Function(SubmitFilter value)? submitFilter,
+    TResult Function(ClearAllFilters value)? clearAllFilters,
+    TResult Function(ToggleFavourite value)? toggleFavourite,
+    TResult Function(RangePriceChanged value)? rangePriceChanged,
+    TResult Function(IdTextChanged value)? idTextChanged,
+    TResult Function(OdTextChanged value)? odTextChanged,
+    TResult Function(DepthTextChanged value)? depthTextChanged,
+    TResult Function(CloseBottomSheet value)? closeBottomSheet,
+    required TResult orElse(),
+  }) {
+    if (closeBottomSheet != null) {
+      return closeBottomSheet(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CloseBottomSheet implements SearchEvent {
+  const factory CloseBottomSheet() = _$CloseBottomSheetImpl;
+}
+
+/// @nodoc
 mixin _$SearchState {
   bool get isLoading => throw _privateConstructorUsedError;
   FilterDTO? get filters => throw _privateConstructorUsedError;
-  bool get isErrorInAPI => throw _privateConstructorUsedError;
+  bool get isErrorOnSearch => throw _privateConstructorUsedError;
   bool get isNoDataFound => throw _privateConstructorUsedError;
   List<SearchProductDTO> get productList => throw _privateConstructorUsedError;
 
@@ -3246,6 +3529,7 @@ mixin _$SearchState {
   List<FilterOptionListDTO> get anglesList =>
       throw _privateConstructorUsedError;
   bool get isFilterLoading => throw _privateConstructorUsedError;
+  bool get isErrorInAPI => throw _privateConstructorUsedError;
   bool get isErrorInFilterAPI =>
       throw _privateConstructorUsedError; // required SubCategoryDTO? selecetedCategory,
   List<int> get favouriteIds => throw _privateConstructorUsedError;
@@ -3270,7 +3554,7 @@ abstract class $SearchStateCopyWith<$Res> {
   $Res call(
       {bool isLoading,
       FilterDTO? filters,
-      bool isErrorInAPI,
+      bool isErrorOnSearch,
       bool isNoDataFound,
       List<SearchProductDTO> productList,
       List<FilterOptionListDTO> categoryList,
@@ -3281,6 +3565,7 @@ abstract class $SearchStateCopyWith<$Res> {
       List<FilterOptionListDTO> depthList,
       List<FilterOptionListDTO> anglesList,
       bool isFilterLoading,
+      bool isErrorInAPI,
       bool isErrorInFilterAPI,
       List<int> favouriteIds,
       RangeValues range,
@@ -3308,7 +3593,7 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
   $Res call({
     Object? isLoading = null,
     Object? filters = freezed,
-    Object? isErrorInAPI = null,
+    Object? isErrorOnSearch = null,
     Object? isNoDataFound = null,
     Object? productList = null,
     Object? categoryList = null,
@@ -3319,6 +3604,7 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
     Object? depthList = null,
     Object? anglesList = null,
     Object? isFilterLoading = null,
+    Object? isErrorInAPI = null,
     Object? isErrorInFilterAPI = null,
     Object? favouriteIds = null,
     Object? range = null,
@@ -3337,9 +3623,9 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
           ? _value.filters
           : filters // ignore: cast_nullable_to_non_nullable
               as FilterDTO?,
-      isErrorInAPI: null == isErrorInAPI
-          ? _value.isErrorInAPI
-          : isErrorInAPI // ignore: cast_nullable_to_non_nullable
+      isErrorOnSearch: null == isErrorOnSearch
+          ? _value.isErrorOnSearch
+          : isErrorOnSearch // ignore: cast_nullable_to_non_nullable
               as bool,
       isNoDataFound: null == isNoDataFound
           ? _value.isNoDataFound
@@ -3380,6 +3666,10 @@ class _$SearchStateCopyWithImpl<$Res, $Val extends SearchState>
       isFilterLoading: null == isFilterLoading
           ? _value.isFilterLoading
           : isFilterLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isErrorInAPI: null == isErrorInAPI
+          ? _value.isErrorInAPI
+          : isErrorInAPI // ignore: cast_nullable_to_non_nullable
               as bool,
       isErrorInFilterAPI: null == isErrorInFilterAPI
           ? _value.isErrorInFilterAPI
@@ -3440,7 +3730,7 @@ abstract class _$$SearchStateImplCopyWith<$Res>
   $Res call(
       {bool isLoading,
       FilterDTO? filters,
-      bool isErrorInAPI,
+      bool isErrorOnSearch,
       bool isNoDataFound,
       List<SearchProductDTO> productList,
       List<FilterOptionListDTO> categoryList,
@@ -3451,6 +3741,7 @@ abstract class _$$SearchStateImplCopyWith<$Res>
       List<FilterOptionListDTO> depthList,
       List<FilterOptionListDTO> anglesList,
       bool isFilterLoading,
+      bool isErrorInAPI,
       bool isErrorInFilterAPI,
       List<int> favouriteIds,
       RangeValues range,
@@ -3477,7 +3768,7 @@ class __$$SearchStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isLoading = null,
     Object? filters = freezed,
-    Object? isErrorInAPI = null,
+    Object? isErrorOnSearch = null,
     Object? isNoDataFound = null,
     Object? productList = null,
     Object? categoryList = null,
@@ -3488,6 +3779,7 @@ class __$$SearchStateImplCopyWithImpl<$Res>
     Object? depthList = null,
     Object? anglesList = null,
     Object? isFilterLoading = null,
+    Object? isErrorInAPI = null,
     Object? isErrorInFilterAPI = null,
     Object? favouriteIds = null,
     Object? range = null,
@@ -3506,9 +3798,9 @@ class __$$SearchStateImplCopyWithImpl<$Res>
           ? _value.filters
           : filters // ignore: cast_nullable_to_non_nullable
               as FilterDTO?,
-      isErrorInAPI: null == isErrorInAPI
-          ? _value.isErrorInAPI
-          : isErrorInAPI // ignore: cast_nullable_to_non_nullable
+      isErrorOnSearch: null == isErrorOnSearch
+          ? _value.isErrorOnSearch
+          : isErrorOnSearch // ignore: cast_nullable_to_non_nullable
               as bool,
       isNoDataFound: null == isNoDataFound
           ? _value.isNoDataFound
@@ -3549,6 +3841,10 @@ class __$$SearchStateImplCopyWithImpl<$Res>
       isFilterLoading: null == isFilterLoading
           ? _value.isFilterLoading
           : isFilterLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isErrorInAPI: null == isErrorInAPI
+          ? _value.isErrorInAPI
+          : isErrorInAPI // ignore: cast_nullable_to_non_nullable
               as bool,
       isErrorInFilterAPI: null == isErrorInFilterAPI
           ? _value.isErrorInFilterAPI
@@ -3592,7 +3888,7 @@ class _$SearchStateImpl implements _SearchState {
   _$SearchStateImpl(
       {required this.isLoading,
       required this.filters,
-      required this.isErrorInAPI,
+      required this.isErrorOnSearch,
       required this.isNoDataFound,
       required final List<SearchProductDTO> productList,
       required final List<FilterOptionListDTO> categoryList,
@@ -3603,6 +3899,7 @@ class _$SearchStateImpl implements _SearchState {
       required final List<FilterOptionListDTO> depthList,
       required final List<FilterOptionListDTO> anglesList,
       required this.isFilterLoading,
+      required this.isErrorInAPI,
       required this.isErrorInFilterAPI,
       required final List<int> favouriteIds,
       required this.range,
@@ -3626,7 +3923,7 @@ class _$SearchStateImpl implements _SearchState {
   @override
   final FilterDTO? filters;
   @override
-  final bool isErrorInAPI;
+  final bool isErrorOnSearch;
   @override
   final bool isNoDataFound;
   final List<SearchProductDTO> _productList;
@@ -3699,6 +3996,8 @@ class _$SearchStateImpl implements _SearchState {
   @override
   final bool isFilterLoading;
   @override
+  final bool isErrorInAPI;
+  @override
   final bool isErrorInFilterAPI;
 // required SubCategoryDTO? selecetedCategory,
   final List<int> _favouriteIds;
@@ -3725,7 +4024,7 @@ class _$SearchStateImpl implements _SearchState {
 
   @override
   String toString() {
-    return 'SearchState(isLoading: $isLoading, filters: $filters, isErrorInAPI: $isErrorInAPI, isNoDataFound: $isNoDataFound, productList: $productList, categoryList: $categoryList, brandList: $brandList, dimensionList: $dimensionList, iDList: $iDList, oDList: $oDList, depthList: $depthList, anglesList: $anglesList, isFilterLoading: $isFilterLoading, isErrorInFilterAPI: $isErrorInFilterAPI, favouriteIds: $favouriteIds, range: $range, minPrice: $minPrice, maxPrice: $maxPrice, idText: $idText, odText: $odText, depthText: $depthText)';
+    return 'SearchState(isLoading: $isLoading, filters: $filters, isErrorOnSearch: $isErrorOnSearch, isNoDataFound: $isNoDataFound, productList: $productList, categoryList: $categoryList, brandList: $brandList, dimensionList: $dimensionList, iDList: $iDList, oDList: $oDList, depthList: $depthList, anglesList: $anglesList, isFilterLoading: $isFilterLoading, isErrorInAPI: $isErrorInAPI, isErrorInFilterAPI: $isErrorInFilterAPI, favouriteIds: $favouriteIds, range: $range, minPrice: $minPrice, maxPrice: $maxPrice, idText: $idText, odText: $odText, depthText: $depthText)';
   }
 
   @override
@@ -3736,8 +4035,8 @@ class _$SearchStateImpl implements _SearchState {
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             (identical(other.filters, filters) || other.filters == filters) &&
-            (identical(other.isErrorInAPI, isErrorInAPI) ||
-                other.isErrorInAPI == isErrorInAPI) &&
+            (identical(other.isErrorOnSearch, isErrorOnSearch) ||
+                other.isErrorOnSearch == isErrorOnSearch) &&
             (identical(other.isNoDataFound, isNoDataFound) ||
                 other.isNoDataFound == isNoDataFound) &&
             const DeepCollectionEquality()
@@ -3756,6 +4055,8 @@ class _$SearchStateImpl implements _SearchState {
                 .equals(other._anglesList, _anglesList) &&
             (identical(other.isFilterLoading, isFilterLoading) ||
                 other.isFilterLoading == isFilterLoading) &&
+            (identical(other.isErrorInAPI, isErrorInAPI) ||
+                other.isErrorInAPI == isErrorInAPI) &&
             (identical(other.isErrorInFilterAPI, isErrorInFilterAPI) ||
                 other.isErrorInFilterAPI == isErrorInFilterAPI) &&
             const DeepCollectionEquality()
@@ -3776,7 +4077,7 @@ class _$SearchStateImpl implements _SearchState {
         runtimeType,
         isLoading,
         filters,
-        isErrorInAPI,
+        isErrorOnSearch,
         isNoDataFound,
         const DeepCollectionEquality().hash(_productList),
         const DeepCollectionEquality().hash(_categoryList),
@@ -3787,6 +4088,7 @@ class _$SearchStateImpl implements _SearchState {
         const DeepCollectionEquality().hash(_depthList),
         const DeepCollectionEquality().hash(_anglesList),
         isFilterLoading,
+        isErrorInAPI,
         isErrorInFilterAPI,
         const DeepCollectionEquality().hash(_favouriteIds),
         range,
@@ -3808,7 +4110,7 @@ abstract class _SearchState implements SearchState {
   factory _SearchState(
       {required final bool isLoading,
       required final FilterDTO? filters,
-      required final bool isErrorInAPI,
+      required final bool isErrorOnSearch,
       required final bool isNoDataFound,
       required final List<SearchProductDTO> productList,
       required final List<FilterOptionListDTO> categoryList,
@@ -3819,6 +4121,7 @@ abstract class _SearchState implements SearchState {
       required final List<FilterOptionListDTO> depthList,
       required final List<FilterOptionListDTO> anglesList,
       required final bool isFilterLoading,
+      required final bool isErrorInAPI,
       required final bool isErrorInFilterAPI,
       required final List<int> favouriteIds,
       required final RangeValues range,
@@ -3833,7 +4136,7 @@ abstract class _SearchState implements SearchState {
   @override
   FilterDTO? get filters;
   @override
-  bool get isErrorInAPI;
+  bool get isErrorOnSearch;
   @override
   bool get isNoDataFound;
   @override
@@ -3856,6 +4159,8 @@ abstract class _SearchState implements SearchState {
   List<FilterOptionListDTO> get anglesList;
   @override
   bool get isFilterLoading;
+  @override
+  bool get isErrorInAPI;
   @override
   bool get isErrorInFilterAPI;
   @override // required SubCategoryDTO? selecetedCategory,

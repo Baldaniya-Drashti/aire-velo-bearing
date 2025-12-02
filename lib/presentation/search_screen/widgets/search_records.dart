@@ -10,7 +10,6 @@ import 'package:gap/gap.dart';
 
 class SearchRecords extends StatelessWidget {
   final SearchProductDTO record;
-
   final bool isFavourite;
   final VoidCallback onFavouriteTap;
   const SearchRecords({
@@ -37,30 +36,55 @@ class SearchRecords extends StatelessWidget {
               height: getSize(150),
               width: MediaQuery.of(context).size.width,
               padding: EdgeInsets.all(getSize(5)),
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: NetworkImage(record.images?[0] ?? ''),
-                  fit: BoxFit.fill,
-                ),
-              ),
-              alignment: Alignment.bottomRight,
-              child: GestureDetector(
-                onTap: onFavouriteTap,
-                child: CircleAvatar(
-                  backgroundColor: AppColors.grey,
-                  maxRadius: getSize(15),
-                  child: Icon(
-                    isFavourite ? Icons.favorite : Icons.favorite_outline,
-                    color: isFavourite ? AppColors.red : AppColors.white,
-                  ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(8)),
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Image.network(
+                      record.images?.isNotEmpty == true
+                          ? record.images![0]
+                          : '',
+                      fit: BoxFit.cover,
+                      errorBuilder: (context, error, stackTrace) => Container(
+                        color: AppColors.grey.withValues(alpha: 0.1),
+                        alignment: Alignment.center,
+                        child: Icon(Icons.broken_image, color: AppColors.grey),
+                      ),
+                      loadingBuilder: (context, child, loadingProgress) {
+                        if (loadingProgress == null) return child;
+                        return Center(
+                          child: SizedBox(
+                            width: getSize(24),
+                            height: getSize(24),
+                            child: CircularProgressIndicator(strokeWidth: 2),
+                          ),
+                        );
+                      },
+                    ),
+                    Positioned(
+                      right: getSize(8),
+                      bottom: getSize(8),
+                      child: GestureDetector(
+                        onTap: onFavouriteTap,
+                        child: CircleAvatar(
+                          backgroundColor: AppColors.grey,
+                          maxRadius: getSize(15),
+                          child: Icon(
+                            isFavourite
+                                ? Icons.favorite
+                                : Icons.favorite_outline,
+                            color: isFavourite
+                                ? AppColors.red
+                                : AppColors.white,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
-            /* CustomNetworkImage(
-              url: record.images?[0] ?? '',
-              height: getSize(150),
-              width: MediaQuery.of(context).size.width,
-            ), */
             GestureDetector(
               onTap: () {
                 context.router.push(
@@ -113,7 +137,8 @@ class SearchRecords extends StatelessWidget {
                             decoration: BoxDecoration(color: AppColors.red),
                             alignment: Alignment.center,
                             child: BaseText(
-                              text: "£${record.price ?? 0.0}",
+                              text:
+                                  "£${double.parse(record.price ?? "0.0").toStringAsFixed(2)}",
                               textColor: AppColors.white,
                               fontWeight: FontWeight.w600,
                               fontSize: 12,
@@ -167,7 +192,7 @@ class SearchRecords extends StatelessWidget {
             text: value,
             fontSize: 12,
             lineHeight: 1.4,
-            maxLines: 1,
+            maxLines: 4,
             textAlign: TextAlign.start,
             textColor: AppColors.black.withValues(alpha: 0.8),
           ),

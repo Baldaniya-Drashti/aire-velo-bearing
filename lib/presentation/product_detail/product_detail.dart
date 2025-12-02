@@ -85,6 +85,8 @@ class ProductDetail extends StatelessWidget {
                               Gap(getSize(10)),
                               tableRow(
                                 title: "£${prod.price ?? 00.00}",
+
+                                // "£${double.parse(prod.price ?? "0.0").toStringAsFixed(2)}",
                                 value: (prod.stock_status_int == 1)
                                     ? StringConstant.outOfStock
                                     : StringConstant.inStock,

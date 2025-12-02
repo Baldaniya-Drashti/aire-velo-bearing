@@ -64,11 +64,14 @@ Future<RememberDTO> getRememberLogin() async {
 Future<void> setFavoriteIds(int productId) async {
   final prefs = await SharedPreferences.getInstance();
   List<String> ids = prefs.getStringList(StorageConstants.favoriteIds) ?? [];
-  if (ids.contains(productId.toString())) {
+  final isContain = ids.contains(productId.toString());
+  if (isContain) {
     ids.remove(productId.toString());
   } else {
     ids.add(productId.toString());
   }
+
+  print("IsContain----> $isContain");
   prefs.setStringList(StorageConstants.favoriteIds, ids);
 }
 

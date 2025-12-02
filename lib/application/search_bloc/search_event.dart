@@ -30,4 +30,6 @@ class SearchEvent with _$SearchEvent {
       OdTextChanged;
   const factory SearchEvent.depthTextChanged({required String value}) =
       DepthTextChanged;
+
+  const factory SearchEvent.closeBottomSheet() = CloseBottomSheet;
 }

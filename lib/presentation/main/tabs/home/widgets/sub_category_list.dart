@@ -39,27 +39,23 @@ class SubCategoryList extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  /* Container(
-                    height: getSize(120),
-                    margin: EdgeInsets.only(
-                      bottom: getSize(30),
-                    ),
+                  Container(
+                    height: getSize(150),
+                    margin: EdgeInsets.only(bottom: getSize(30)),
                     alignment: Alignment.centerLeft,
                     decoration: BoxDecoration(
                       color: AppColors.black,
                       borderRadius: BorderRadius.circular(getSize(15)),
-                      boxShadow: [
-                        BoxShadow(
-                          color: AppColors.black.withValues(alpha: 0.5),
-                          blurRadius: 5,
+                      border: Border.all(color: AppColors.black),
+                      image: DecorationImage(
+                        image: NetworkImage(
+                          category.image_url ??
+                              "https://www.airevelobearings.com/wp-content/uploads/2022/04/cat-headerbg.jpeg",
                         ),
-                      ],
-                      // image: DecorationImage(
-                      //   image: NetworkImage(category.image ?? ""),
-                      //   fit: BoxFit.fill,
-                      // ),
+                        fit: BoxFit.fill,
+                      ),
                     ),
-                  ), */
+                  ),
                   Expanded(
                     child: PaginatedListView(
                       onRefresh: () {
@@ -92,7 +88,10 @@ class SubCategoryList extends StatelessWidget {
                               itemBuilder: (_, index) {
                                 final subCategory =
                                     state.subCategoryList[index];
-                                return GestureDetector(
+                                return InkWell(
+                                  overlayColor: WidgetStatePropertyAll(
+                                    AppColors.transparent,
+                                  ),
                                   onTap: () {
                                     context.router.push(
                                       PageRouteInfo(
@@ -103,18 +102,22 @@ class SubCategoryList extends StatelessWidget {
                                       ),
                                     );
                                   },
-                                  child: BaseText(
-                                    text: subCategory.name ?? "",
-                                    fontSize: 14,
+
+                                  child: Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: getSize(15),
+                                    ),
+                                    child: BaseText(
+                                      text: subCategory.name ?? "",
+                                      fontSize: 14,
+                                    ),
                                   ),
                                 );
                               },
                               separatorBuilder: (_, index) {
-                                return Padding(
-                                  padding: EdgeInsets.symmetric(
-                                    vertical: getSize(10),
-                                  ),
-                                  child: Divider(color: AppColors.grey),
+                                return Divider(
+                                  color: AppColors.grey,
+                                  height: 0,
                                 );
                               },
                             ),

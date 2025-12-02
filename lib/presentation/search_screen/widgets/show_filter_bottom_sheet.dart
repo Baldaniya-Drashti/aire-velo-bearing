@@ -31,58 +31,80 @@ class ShowFilterBottomSheet extends StatelessWidget {
       context: context,
       isScrollControlled: true,
       useSafeArea: true,
+      enableDrag: false,
+      isDismissible: false,
       backgroundColor: AppColors.white,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (context) {
-        return BlocProvider.value(
-          value: searchBloc,
-          child: BlocBuilder<SearchBloc, SearchState>(
-            builder: (context, state) {
-              return StatefulBuilder(
-                builder: (context, setState) {
-                  return Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: getSize(16),
-                      vertical: getSize(30),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Align(
-                          alignment: Alignment.center,
-                          child: BaseText(
+        return PopScope(
+          canPop: false,
+          child: BlocProvider.value(
+            value: searchBloc,
+            child: BlocBuilder<SearchBloc, SearchState>(
+              builder: (context, state) {
+                return Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: getSize(16),
+                    vertical: getSize(30),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Stack(
+                        alignment: Alignment.center,
+                        children: [
+                          BaseText(
                             text: StringConstant.filter,
                             fontWeight: FontWeight.w600,
                             fontSize: 22,
                             fontFamily: FontConstant.jost,
                           ),
-                        ),
-                        Gap(getSize(10)),
-                        (state.isFilterLoading)
-                            ? CenterLoadingIndicator(isOnlyLoader: true)
-                            : Expanded(
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      _priceView(context, state),
-                                      Gap(getSize(20)),
-                                      // Category
-                                      filterView(context, state),
-                                    ],
-                                  ),
+                          GestureDetector(
+                            onTap: () {
+                              context.read<SearchBloc>().add(
+                                SearchEvent.closeBottomSheet(),
+                              );
+                            },
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: getSize(10),
+                                ),
+                                child: Icon(
+                                  Icons.clear_rounded,
+                                  color: AppColors.black,
+                                  size: getSize(25),
                                 ),
                               ),
-                      ],
-                    ),
-                  );
-                },
-              );
-            },
+                            ),
+                          ),
+                        ],
+                      ),
+                      Gap(getSize(10)),
+                      Expanded(
+                        child: (state.isFilterLoading)
+                            ? CenterLoadingIndicator(isOnlyLoader: true)
+                            : SingleChildScrollView(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    _priceView(context, state),
+                                    Gap(getSize(20)),
+                                    // Category
+                                    filterView(context, state),
+                                  ],
+                                ),
+                              ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
           ),
         );
       },
@@ -257,14 +279,14 @@ class ShowFilterBottomSheet extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            BaseText(text: "£${state.minPrice ?? 0}"),
-            BaseText(text: "£${state.maxPrice ?? 0}"),
+            BaseText(text: "£${(state.minPrice ?? 0.0).toStringAsFixed(2)}"),
+            BaseText(text: "£${(state.maxPrice ?? 0.0).toStringAsFixed(2)}"),
           ],
         ),
         RangeSlider(
           values: state.range,
-          min: state.minPrice ?? 0,
-          max: state.maxPrice ?? 0,
+          min: state.minPrice ?? 0.0,
+          max: state.maxPrice ?? 0.0,
           activeColor: AppColors.primary,
           inactiveColor: AppColors.lightGrey,
           onChanged: (values) {
@@ -275,7 +297,7 @@ class ShowFilterBottomSheet extends StatelessWidget {
         ),
         BaseText(
           text:
-              "${StringConstant.price}: £${state.range.start.toStringAsFixed(0)} - £${state.range.end.toStringAsFixed(0)}",
+              "${StringConstant.price}: £${state.range.start.toStringAsFixed(2)} - £${state.range.end.toStringAsFixed(2)}",
           fontSize: 14,
         ),
       ],

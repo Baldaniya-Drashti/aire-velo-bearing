@@ -87,6 +87,7 @@ class SignUp extends StatelessWidget {
 
                             CustomTextField(
                               labelText: StringConstant.email,
+                              keyboardType: TextInputType.emailAddress,
                               onChanged: (value) => context
                                   .read<SignUpBloc>()
                                   .add(SignUpEvent.emailChanged(value)),

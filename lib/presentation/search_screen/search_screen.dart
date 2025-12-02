@@ -15,10 +15,10 @@ import 'package:aire_velo_bearings/presentation/search_field/search_field.dart';
 import 'package:aire_velo_bearings/presentation/search_screen/widgets/search_records.dart';
 import 'package:aire_velo_bearings/presentation/search_screen/widgets/show_filter_bottom_sheet.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:dynamic_height_grid_view/dynamic_height_grid_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:gap/gap.dart';
 
 @RoutePage(name: 'SearchScreen')
@@ -59,7 +59,7 @@ class _SearchScreenState extends State<SearchScreen> {
             child: Scaffold(
               appBar: CustomAppBar(title: StringConstant.searchProducts),
               body: Padding(
-                padding: EdgeInsets.symmetric(horizontal: getSize(15)),
+                padding: EdgeInsets.symmetric(horizontal: getSize(10)),
                 child: Column(
                   children: [
                     SearchField(
@@ -97,11 +97,32 @@ class _SearchScreenState extends State<SearchScreen> {
                         },
                         child: (state.isLoading)
                             ? CenterLoadingIndicator(isOnlyLoader: true)
-                            : state.isErrorInAPI
+                            : state.isErrorOnSearch
                             ? SomethingWrong(
                                 title: StringConstant.noProductsFound,
                               )
-                            : DynamicHeightGridView(
+                            : StaggeredGrid.count(
+                                crossAxisCount: 2,
+                                crossAxisSpacing: getSize(5),
+                                mainAxisSpacing: getSize(5),
+                                children: [
+                                  for (var prod in state.productList)
+                                    SearchRecords(
+                                      record: prod,
+                                      isFavourite: state.favouriteIds.contains(
+                                        prod.id,
+                                      ),
+                                      onFavouriteTap: () {
+                                        context.read<SearchBloc>().add(
+                                          SearchEvent.toggleFavourite(
+                                            prod.id ?? 0,
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                ],
+                              ),
+                        /* DynamicHeightGridView(
                                 itemCount: state.productList.length,
                                 crossAxisCount: 2,
                                 physics: NeverScrollableScrollPhysics(),
@@ -122,7 +143,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                     },
                                   );
                                 },
-                              ),
+                              ), */
                         /* GridView.builder(
                           itemCount: state.productList.length,
                           shrinkWrap: true,

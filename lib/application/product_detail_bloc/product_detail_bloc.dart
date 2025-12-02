@@ -1,3 +1,4 @@
+import 'package:aire_velo_bearings/core/database/local_preference.dart';
 import 'package:aire_velo_bearings/core/router/app_router.dart';
 import 'package:aire_velo_bearings/domain/main/i_main_facade.dart';
 import 'package:aire_velo_bearings/domain/main/main_failure.dart';
@@ -24,6 +25,7 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
         getProductDetail: (e) async {
           Either<MainFailure, ProductDetailDTO>? failureOrSuccess;
           emit(state.copyWith(isLoading: true));
+          final favoriteIds = await getFavouriteIds();
           failureOrSuccess = await mainFacade.getProductDetail(postId: e.id);
           failureOrSuccess.fold(
             (l) {
@@ -48,6 +50,7 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
                 state.copyWith(
                   isLoading: false,
                   isErrorInAPI: false,
+                  isFavorite: (favoriteIds.contains(r.id ?? 0)) ? 1 : 0,
                   product: r,
                 ),
               );
@@ -57,7 +60,8 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
         imageIndexChanged: (e) {
           emit(state.copyWith(currentImageIndex: e.index));
         },
-        favoriteChanged: (e) {
+        favoriteChanged: (e) async {
+          await setFavoriteIds(state.product?.id ?? 0);
           emit(state.copyWith(isFavorite: (state.isFavorite == 0) ? 1 : 0));
         },
       );

@@ -48,6 +48,7 @@ class SignIn extends StatelessWidget {
                                   CustomTextField(
                                     initialValue: state.email.getValue(),
                                     labelText: StringConstant.email,
+                                    keyboardType: TextInputType.emailAddress,
                                     onChanged: (value) => context
                                         .read<SignInBloc>()
                                         .add(SignInEvent.emailChanged(value)),

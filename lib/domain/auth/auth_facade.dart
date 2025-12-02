@@ -128,7 +128,6 @@ class AuthFacade implements IAuthFacade {
       if (err.response != null) {
         return left(AuthFailure.showAPIResponseMessage(err.message ?? ''));
       }
-
       return left(const AuthFailure.serverError());
     }
   }

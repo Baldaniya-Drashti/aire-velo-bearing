@@ -58,7 +58,14 @@ class PaginatedListView extends StatelessWidget {
             padding: EdgeInsets.symmetric(vertical: 12),
             child: Center(
               child: (mode == LoadStatus.loading)
-                  ? CircularProgressIndicator(strokeWidth: 2)
+                  ? SizedBox(
+                      height: getSize(25),
+                      width: getSize(25),
+                      child: CircularProgressIndicator(
+                        color: AppColors.primary,
+                        strokeWidth: getSize(3),
+                      ),
+                    )
                   : BaseText(
                       text: text,
                       fontSize: 13,

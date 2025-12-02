@@ -23,7 +23,7 @@ class Onboarding extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                height: getSize(423),
+                height: getSize(410),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(getSize(35)),
                   image: DecorationImage(
@@ -62,7 +62,7 @@ class Onboarding extends StatelessWidget {
                 },
                 buttonText: StringConstant.createAccount,
               ),
-              Gap(getSize(15)),
+              Gap(getSize(5)),
               CommonButton(
                 onPressed: () {
                   context.router.push(PageRouteInfo(SignIn.name));

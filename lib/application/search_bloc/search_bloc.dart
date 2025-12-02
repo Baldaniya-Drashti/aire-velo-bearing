@@ -10,7 +10,6 @@ import 'package:aire_velo_bearings/infrastructure/sub_category_dto/sub_category_
 import 'package:aire_velo_bearings/injection.dart';
 import 'package:aire_velo_bearings/presentation/common/utils/flushbar_creator.dart';
 import 'package:aire_velo_bearings/presentation/core/enum.dart';
-import 'package:auto_route/auto_route.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -147,11 +146,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             state.copyWith(
               filters: filters,
               range: RangeValues(
-                e.value.ui_min_price ?? 0,
-                e.value.ui_min_price ?? 0,
+                e.value.ui_min_price ?? 0.0,
+                e.value.ui_max_price ?? 0.0,
               ),
-              minPrice: e.value.ui_min_price,
-              maxPrice: e.value.ui_max_price,
+              minPrice: e.value.ui_min_price ?? 0.0,
+              maxPrice: e.value.ui_max_price ?? 0.0,
             ),
           );
 
@@ -166,9 +165,8 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
             ),
           );
         },
-
         submitFilter: (e) {
-          currentContext.router.maybePop();
+          Navigator.pop(currentContext);
           add(SearchEvent.onSearch(isRefresh: true));
         },
         onSearch: (e) async {
@@ -207,7 +205,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
                 emit(
                   state.copyWith(
                     isLoading: false,
-                    isErrorInAPI: true,
+                    isErrorOnSearch: true,
                     productList: [],
                   ),
                 );
@@ -221,7 +219,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
                 return emit(
                   state.copyWith(
                     isLoading: false,
-                    isErrorInAPI: false,
+                    isErrorOnSearch: false,
                     isNoDataFound: (r.data as List<dynamic>)
                         .map((e) => SearchProductDTO.fromJson(e))
                         .toList()
@@ -279,6 +277,23 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         },
         odTextChanged: (e) {
           emit(state.copyWith(odText: InputEmptyOrNot(e.value)));
+        },
+        closeBottomSheet: (e) {
+          final initialFilter = FilterDTO(
+            depth: state.filters?.depth,
+            id: state.filters?.id,
+            od: state.filters?.od,
+          );
+          emit(
+            state.copyWith(
+              filters: initialFilter,
+              range: RangeValues(0, 0),
+              minPrice: null,
+              maxPrice: null,
+            ),
+          );
+
+          Navigator.pop(currentContext);
         },
       );
     });

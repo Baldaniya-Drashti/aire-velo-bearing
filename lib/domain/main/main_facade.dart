@@ -155,7 +155,10 @@ class MainFacade implements IMainFacade {
   }) async {
     try {
       Map<String, dynamic> mapData = {
+        'page': 1,
+        'per_page': 1000,
         'attribute': attribute,
+
         if (category != null && category.isNotEmpty) 'category': category,
       };
       final res = await apiService.getMethod(

@@ -5,7 +5,9 @@ class SearchState with _$SearchState {
   factory SearchState({
     required bool isLoading,
     required FilterDTO? filters,
-    required bool isErrorInAPI,
+
+    required bool isErrorOnSearch,
+
     required bool isNoDataFound,
     required List<SearchProductDTO> productList,
 
@@ -18,6 +20,7 @@ class SearchState with _$SearchState {
     required List<FilterOptionListDTO> depthList,
     required List<FilterOptionListDTO> anglesList,
     required bool isFilterLoading,
+    required bool isErrorInAPI,
     required bool isErrorInFilterAPI,
     // required SubCategoryDTO? selecetedCategory,
     required List<int> favouriteIds,
@@ -32,6 +35,7 @@ class SearchState with _$SearchState {
   }) = _SearchState;
   factory SearchState.initial() => SearchState(
     isErrorInAPI: false,
+    isErrorOnSearch: false,
     isLoading: false,
     isNoDataFound: false,
     // searchText: "",
@@ -48,7 +52,7 @@ class SearchState with _$SearchState {
     isFilterLoading: false,
     // selecetedCategory: null,
     favouriteIds: [],
-    range: RangeValues(0, 0),
+    range: RangeValues(0.0, 0.0),
     minPrice: null,
     maxPrice: null,
     depthText: InputEmptyOrNot(""),

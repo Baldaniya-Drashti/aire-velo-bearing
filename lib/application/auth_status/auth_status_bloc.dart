@@ -20,16 +20,11 @@ class AuthStatusBloc extends Bloc<AuthStatusEvent, AuthStatusState> {
         },
         authCheckRequested: (e) async {
           final authenticated = await _authFacade.checkAuthenticated();
-          // final isShowIntroScreen = isUserShowIntro();
-          /*  if (isShowIntroScreen == null) {
-            emit(const AuthStatusState.introScreenVisibilty());
-          } else { */
           emit(
             authenticated
                 ? const AuthStatusState.authenticated()
                 : const AuthStatusState.unAuthenticated(''),
           );
-          // }
         },
         signedOut: (e) async {
           Either<AuthFailure, String> res;

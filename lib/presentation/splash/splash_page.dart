@@ -25,8 +25,8 @@ class SplashPage extends StatelessWidget {
               await context.router.replace(PageRouteInfo(MainTabView.name));
             },
             unAuthenticated: (value) async {
-              // await context.router.replace(PageRouteInfo(MainTabView.name));
-              await context.router.replace(PageRouteInfo(Onboarding.name));
+              await context.router.replace(PageRouteInfo(MainTabView.name));
+              // await context.router.replace(PageRouteInfo(Onboarding.name));
             },
           );
         });

@@ -1,5 +1,4 @@
 import 'package:aire_velo_bearings/domain/auth/i_auth_facade.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -46,26 +45,6 @@ class MainTabBloc extends Bloc<MainTabEvent, MainTabState> {
               );
               break;
           }
-        },
-        registerForPush: (RegisterForPush value) async {
-          // await authFacade.registerForPush(fcmToken: value.fcmToken);
-        },
-        pushNotificationInitialize: (PushNotificationInitialize value) async {
-          // await PushNotificationService().setupInteractedMessage(value.context);
-          // PushNotificationService().firebaseMessaging.onTokenRefresh.listen((
-          //   event,
-          // ) {
-          //   add(MainTabEvent.registerForPush(event));
-          // });
-          // await PushNotificationService().firebaseMessaging.getToken().then((
-          //   value,
-          // ) async {
-          //   add(MainTabEvent.registerForPush(value ?? ""));
-          // });
-        },
-        initDynamicLink: (InitDynamicLink value) async {
-          // DynamicLinksService.initDynamicLinks(value.context);
-          // add(MainTabEvent.pushNotificationInitialize(value.context));
         },
       );
     });

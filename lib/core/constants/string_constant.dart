@@ -3,7 +3,7 @@ class StringConstant {
   static const String frFR = 'french';
 
   //onboarding
-  static const String aireVeloBearings = 'Aire-Velo-Bearings';
+  static const String aireVeloBearings = 'Aire Velo Bearings';
   static const String noResultFound = 'No result found.';
   static const String permissionDenied = 'Permission Denied!';
   static const String photos = 'Photos';
@@ -11,7 +11,6 @@ class StringConstant {
   static const String camera = 'Camera';
   static const String cancel = 'Cancel';
   static const String openSettings = 'Open Settings';
-  static const String location = 'Location';
   static const String notification = 'Notification';
   static const String allNotification = 'All Notification';
   static const String allMessages = 'All Messages';

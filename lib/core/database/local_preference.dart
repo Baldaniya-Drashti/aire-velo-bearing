@@ -1,21 +1,8 @@
-import 'dart:io';
 import 'package:aire_velo_bearings/infrastructure/current_user/current_user_response.dart';
 import 'package:aire_velo_bearings/infrastructure/remember_dto/remember_dto.dart';
-import 'package:device_info_plus/device_info_plus.dart';
 import 'dart:convert';
 import 'package:aire_velo_bearings/core/constants/storage_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-Future<String?> getDeviceId() async {
-  DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
-  if (Platform.isAndroid) {
-    AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
-    return androidInfo.id;
-  } else {
-    IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
-    return iosInfo.identifierForVendor ?? '';
-  }
-}
 
 Future<void> setToken(String token) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();

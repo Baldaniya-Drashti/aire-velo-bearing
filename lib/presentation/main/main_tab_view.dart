@@ -25,10 +25,7 @@ class MainTabView extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) =>
-              getIt<MainTabBloc>()..add(MainTabEvent.initDynamicLink(context)),
-        ),
+        BlocProvider(create: (context) => getIt<MainTabBloc>()),
         BlocProvider(
           create: (context) =>
               getIt<AccountBloc>()..add(AccountEvent.getAccountDetailEvent()),

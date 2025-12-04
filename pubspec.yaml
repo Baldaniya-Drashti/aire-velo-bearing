@@ -33,7 +33,6 @@ dependencies:
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.8
   auto_route: 
   get_it: ^7.7.0
   injectable: ^2.4.2
@@ -45,18 +44,12 @@ dependencies:
   flutter_screenutil: ^5.9.3
   intl: ^0.20.2
   dartz: ^0.10.1
-  geolocator: ^14.0.0
-  geocoding: ^3.0.0
   url_launcher: ^6.3.1
   flutter_svg: ^2.2.1
   pull_to_refresh: ^2.0.0
-  image_picker: ^1.1.2
-  device_info_plus: ^11.3.3
   figma_squircle: ^0.6.3
-  permission_handler: ^12.0.0+1
   another_flushbar: ^1.12.30
   connectivity_plus: ^6.0.3
-  cached_network_image: ^3.2.1
   shared_preferences: ^2.5.3
   gap: ^3.0.1
   carousel_slider: ^5.1.1
@@ -74,7 +67,7 @@ dev_dependencies:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^5.0.0
+  
   build_runner: ^2.4.11
   freezed: ^2.5.2
   auto_route_generator: ^9.0.0
@@ -119,12 +112,6 @@ flutter:
           weight: 500
         - asset: assets/fonts/Inter/Inter_24pt-SemiBold.ttf
           weight: 600
-        - asset: assets/fonts/Inter/Inter_24pt-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/Inter/Inter_24pt-ExtraBold.ttf
-          weight: 800
-        - asset: assets/fonts/Inter/Inter_24pt-Black.ttf
-          weight: 900
     - family: Jost
       fonts:
         - asset: assets/fonts/Jost/Jost-Regular.ttf
@@ -133,12 +120,6 @@ flutter:
           weight: 500
         - asset: assets/fonts/Jost/Jost-SemiBold.ttf
           weight: 600
-        - asset: assets/fonts/Jost/Jost-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/Jost/Jost-ExtraBold.ttf
-          weight: 800
-        - asset: assets/fonts/Jost/Jost-Black.ttf
-          weight: 900
     
   #
   # For details regarding fonts from package dependencies,

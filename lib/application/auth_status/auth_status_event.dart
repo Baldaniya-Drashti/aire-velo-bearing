@@ -2,9 +2,10 @@ part of 'auth_status_bloc.dart';
 
 @freezed
 class AuthStatusEvent with _$AuthStatusEvent {
-  const factory AuthStatusEvent.started() = Started;
+  // const factory AuthStatusEvent.started() = Started;
 
   const factory AuthStatusEvent.authCheckRequested() = AuthCheckRequested;
 
   const factory AuthStatusEvent.signedOut() = SignedOut;
+  const factory AuthStatusEvent.deleteAccount() = DeleteAccount;
 }

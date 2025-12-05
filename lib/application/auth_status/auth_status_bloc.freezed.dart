@@ -18,45 +18,45 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AuthStatusEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() authCheckRequested,
     required TResult Function() signedOut,
+    required TResult Function() deleteAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? authCheckRequested,
     TResult? Function()? signedOut,
+    TResult? Function()? deleteAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? authCheckRequested,
     TResult Function()? signedOut,
+    TResult Function()? deleteAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Started value) started,
     required TResult Function(AuthCheckRequested value) authCheckRequested,
     required TResult Function(SignedOut value) signedOut,
+    required TResult Function(DeleteAccount value) deleteAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Started value)? started,
     TResult? Function(AuthCheckRequested value)? authCheckRequested,
     TResult? Function(SignedOut value)? signedOut,
+    TResult? Function(DeleteAccount value)? deleteAccount,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Started value)? started,
     TResult Function(AuthCheckRequested value)? authCheckRequested,
     TResult Function(SignedOut value)? signedOut,
+    TResult Function(DeleteAccount value)? deleteAccount,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -78,114 +78,6 @@ class _$AuthStatusEventCopyWithImpl<$Res, $Val extends AuthStatusEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-}
-
-/// @nodoc
-abstract class _$$StartedImplCopyWith<$Res> {
-  factory _$$StartedImplCopyWith(
-          _$StartedImpl value, $Res Function(_$StartedImpl) then) =
-      __$$StartedImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$StartedImplCopyWithImpl<$Res>
-    extends _$AuthStatusEventCopyWithImpl<$Res, _$StartedImpl>
-    implements _$$StartedImplCopyWith<$Res> {
-  __$$StartedImplCopyWithImpl(
-      _$StartedImpl _value, $Res Function(_$StartedImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$StartedImpl implements Started {
-  const _$StartedImpl();
-
-  @override
-  String toString() {
-    return 'AuthStatusEvent.started()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$StartedImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() authCheckRequested,
-    required TResult Function() signedOut,
-  }) {
-    return started();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? authCheckRequested,
-    TResult? Function()? signedOut,
-  }) {
-    return started?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? authCheckRequested,
-    TResult Function()? signedOut,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Started value) started,
-    required TResult Function(AuthCheckRequested value) authCheckRequested,
-    required TResult Function(SignedOut value) signedOut,
-  }) {
-    return started(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Started value)? started,
-    TResult? Function(AuthCheckRequested value)? authCheckRequested,
-    TResult? Function(SignedOut value)? signedOut,
-  }) {
-    return started?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Started value)? started,
-    TResult Function(AuthCheckRequested value)? authCheckRequested,
-    TResult Function(SignedOut value)? signedOut,
-    required TResult orElse(),
-  }) {
-    if (started != null) {
-      return started(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class Started implements AuthStatusEvent {
-  const factory Started() = _$StartedImpl;
 }
 
 /// @nodoc
@@ -226,9 +118,9 @@ class _$AuthCheckRequestedImpl implements AuthCheckRequested {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() authCheckRequested,
     required TResult Function() signedOut,
+    required TResult Function() deleteAccount,
   }) {
     return authCheckRequested();
   }
@@ -236,9 +128,9 @@ class _$AuthCheckRequestedImpl implements AuthCheckRequested {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? authCheckRequested,
     TResult? Function()? signedOut,
+    TResult? Function()? deleteAccount,
   }) {
     return authCheckRequested?.call();
   }
@@ -246,9 +138,9 @@ class _$AuthCheckRequestedImpl implements AuthCheckRequested {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? authCheckRequested,
     TResult Function()? signedOut,
+    TResult Function()? deleteAccount,
     required TResult orElse(),
   }) {
     if (authCheckRequested != null) {
@@ -260,9 +152,9 @@ class _$AuthCheckRequestedImpl implements AuthCheckRequested {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Started value) started,
     required TResult Function(AuthCheckRequested value) authCheckRequested,
     required TResult Function(SignedOut value) signedOut,
+    required TResult Function(DeleteAccount value) deleteAccount,
   }) {
     return authCheckRequested(this);
   }
@@ -270,9 +162,9 @@ class _$AuthCheckRequestedImpl implements AuthCheckRequested {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Started value)? started,
     TResult? Function(AuthCheckRequested value)? authCheckRequested,
     TResult? Function(SignedOut value)? signedOut,
+    TResult? Function(DeleteAccount value)? deleteAccount,
   }) {
     return authCheckRequested?.call(this);
   }
@@ -280,9 +172,9 @@ class _$AuthCheckRequestedImpl implements AuthCheckRequested {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Started value)? started,
     TResult Function(AuthCheckRequested value)? authCheckRequested,
     TResult Function(SignedOut value)? signedOut,
+    TResult Function(DeleteAccount value)? deleteAccount,
     required TResult orElse(),
   }) {
     if (authCheckRequested != null) {
@@ -334,9 +226,9 @@ class _$SignedOutImpl implements SignedOut {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() started,
     required TResult Function() authCheckRequested,
     required TResult Function() signedOut,
+    required TResult Function() deleteAccount,
   }) {
     return signedOut();
   }
@@ -344,9 +236,9 @@ class _$SignedOutImpl implements SignedOut {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
     TResult? Function()? authCheckRequested,
     TResult? Function()? signedOut,
+    TResult? Function()? deleteAccount,
   }) {
     return signedOut?.call();
   }
@@ -354,9 +246,9 @@ class _$SignedOutImpl implements SignedOut {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
     TResult Function()? authCheckRequested,
     TResult Function()? signedOut,
+    TResult Function()? deleteAccount,
     required TResult orElse(),
   }) {
     if (signedOut != null) {
@@ -368,9 +260,9 @@ class _$SignedOutImpl implements SignedOut {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(Started value) started,
     required TResult Function(AuthCheckRequested value) authCheckRequested,
     required TResult Function(SignedOut value) signedOut,
+    required TResult Function(DeleteAccount value) deleteAccount,
   }) {
     return signedOut(this);
   }
@@ -378,9 +270,9 @@ class _$SignedOutImpl implements SignedOut {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(Started value)? started,
     TResult? Function(AuthCheckRequested value)? authCheckRequested,
     TResult? Function(SignedOut value)? signedOut,
+    TResult? Function(DeleteAccount value)? deleteAccount,
   }) {
     return signedOut?.call(this);
   }
@@ -388,9 +280,9 @@ class _$SignedOutImpl implements SignedOut {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(Started value)? started,
     TResult Function(AuthCheckRequested value)? authCheckRequested,
     TResult Function(SignedOut value)? signedOut,
+    TResult Function(DeleteAccount value)? deleteAccount,
     required TResult orElse(),
   }) {
     if (signedOut != null) {
@@ -402,6 +294,114 @@ class _$SignedOutImpl implements SignedOut {
 
 abstract class SignedOut implements AuthStatusEvent {
   const factory SignedOut() = _$SignedOutImpl;
+}
+
+/// @nodoc
+abstract class _$$DeleteAccountImplCopyWith<$Res> {
+  factory _$$DeleteAccountImplCopyWith(
+          _$DeleteAccountImpl value, $Res Function(_$DeleteAccountImpl) then) =
+      __$$DeleteAccountImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$DeleteAccountImplCopyWithImpl<$Res>
+    extends _$AuthStatusEventCopyWithImpl<$Res, _$DeleteAccountImpl>
+    implements _$$DeleteAccountImplCopyWith<$Res> {
+  __$$DeleteAccountImplCopyWithImpl(
+      _$DeleteAccountImpl _value, $Res Function(_$DeleteAccountImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$DeleteAccountImpl implements DeleteAccount {
+  const _$DeleteAccountImpl();
+
+  @override
+  String toString() {
+    return 'AuthStatusEvent.deleteAccount()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$DeleteAccountImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() authCheckRequested,
+    required TResult Function() signedOut,
+    required TResult Function() deleteAccount,
+  }) {
+    return deleteAccount();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? authCheckRequested,
+    TResult? Function()? signedOut,
+    TResult? Function()? deleteAccount,
+  }) {
+    return deleteAccount?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? authCheckRequested,
+    TResult Function()? signedOut,
+    TResult Function()? deleteAccount,
+    required TResult orElse(),
+  }) {
+    if (deleteAccount != null) {
+      return deleteAccount();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AuthCheckRequested value) authCheckRequested,
+    required TResult Function(SignedOut value) signedOut,
+    required TResult Function(DeleteAccount value) deleteAccount,
+  }) {
+    return deleteAccount(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(AuthCheckRequested value)? authCheckRequested,
+    TResult? Function(SignedOut value)? signedOut,
+    TResult? Function(DeleteAccount value)? deleteAccount,
+  }) {
+    return deleteAccount?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AuthCheckRequested value)? authCheckRequested,
+    TResult Function(SignedOut value)? signedOut,
+    TResult Function(DeleteAccount value)? deleteAccount,
+    required TResult orElse(),
+  }) {
+    if (deleteAccount != null) {
+      return deleteAccount(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class DeleteAccount implements AuthStatusEvent {
+  const factory DeleteAccount() = _$DeleteAccountImpl;
 }
 
 /// @nodoc

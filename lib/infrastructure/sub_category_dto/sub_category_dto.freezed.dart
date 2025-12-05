@@ -24,6 +24,8 @@ mixin _$SubCategoryDTO {
   int? get parent_id => throw _privateConstructorUsedError;
   String? get name => throw _privateConstructorUsedError;
   String? get slug => throw _privateConstructorUsedError;
+  double? get min_price => throw _privateConstructorUsedError;
+  double? get max_price => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -37,7 +39,13 @@ abstract class $SubCategoryDTOCopyWith<$Res> {
           SubCategoryDTO value, $Res Function(SubCategoryDTO) then) =
       _$SubCategoryDTOCopyWithImpl<$Res, SubCategoryDTO>;
   @useResult
-  $Res call({int? id, int? parent_id, String? name, String? slug});
+  $Res call(
+      {int? id,
+      int? parent_id,
+      String? name,
+      String? slug,
+      double? min_price,
+      double? max_price});
 }
 
 /// @nodoc
@@ -57,6 +65,8 @@ class _$SubCategoryDTOCopyWithImpl<$Res, $Val extends SubCategoryDTO>
     Object? parent_id = freezed,
     Object? name = freezed,
     Object? slug = freezed,
+    Object? min_price = freezed,
+    Object? max_price = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -75,6 +85,14 @@ class _$SubCategoryDTOCopyWithImpl<$Res, $Val extends SubCategoryDTO>
           ? _value.slug
           : slug // ignore: cast_nullable_to_non_nullable
               as String?,
+      min_price: freezed == min_price
+          ? _value.min_price
+          : min_price // ignore: cast_nullable_to_non_nullable
+              as double?,
+      max_price: freezed == max_price
+          ? _value.max_price
+          : max_price // ignore: cast_nullable_to_non_nullable
+              as double?,
     ) as $Val);
   }
 }
@@ -87,7 +105,13 @@ abstract class _$$SubCategoryDTOImplCopyWith<$Res>
       __$$SubCategoryDTOImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? id, int? parent_id, String? name, String? slug});
+  $Res call(
+      {int? id,
+      int? parent_id,
+      String? name,
+      String? slug,
+      double? min_price,
+      double? max_price});
 }
 
 /// @nodoc
@@ -105,6 +129,8 @@ class __$$SubCategoryDTOImplCopyWithImpl<$Res>
     Object? parent_id = freezed,
     Object? name = freezed,
     Object? slug = freezed,
+    Object? min_price = freezed,
+    Object? max_price = freezed,
   }) {
     return _then(_$SubCategoryDTOImpl(
       id: freezed == id
@@ -123,6 +149,14 @@ class __$$SubCategoryDTOImplCopyWithImpl<$Res>
           ? _value.slug
           : slug // ignore: cast_nullable_to_non_nullable
               as String?,
+      min_price: freezed == min_price
+          ? _value.min_price
+          : min_price // ignore: cast_nullable_to_non_nullable
+              as double?,
+      max_price: freezed == max_price
+          ? _value.max_price
+          : max_price // ignore: cast_nullable_to_non_nullable
+              as double?,
     ));
   }
 }
@@ -130,7 +164,13 @@ class __$$SubCategoryDTOImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$SubCategoryDTOImpl implements _SubCategoryDTO {
-  const _$SubCategoryDTOImpl({this.id, this.parent_id, this.name, this.slug});
+  const _$SubCategoryDTOImpl(
+      {this.id,
+      this.parent_id,
+      this.name,
+      this.slug,
+      this.min_price,
+      this.max_price});
 
   factory _$SubCategoryDTOImpl.fromJson(Map<String, dynamic> json) =>
       _$$SubCategoryDTOImplFromJson(json);
@@ -143,10 +183,14 @@ class _$SubCategoryDTOImpl implements _SubCategoryDTO {
   final String? name;
   @override
   final String? slug;
+  @override
+  final double? min_price;
+  @override
+  final double? max_price;
 
   @override
   String toString() {
-    return 'SubCategoryDTO(id: $id, parent_id: $parent_id, name: $name, slug: $slug)';
+    return 'SubCategoryDTO(id: $id, parent_id: $parent_id, name: $name, slug: $slug, min_price: $min_price, max_price: $max_price)';
   }
 
   @override
@@ -158,12 +202,17 @@ class _$SubCategoryDTOImpl implements _SubCategoryDTO {
             (identical(other.parent_id, parent_id) ||
                 other.parent_id == parent_id) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.slug, slug) || other.slug == slug));
+            (identical(other.slug, slug) || other.slug == slug) &&
+            (identical(other.min_price, min_price) ||
+                other.min_price == min_price) &&
+            (identical(other.max_price, max_price) ||
+                other.max_price == max_price));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, parent_id, name, slug);
+  int get hashCode =>
+      Object.hash(runtimeType, id, parent_id, name, slug, min_price, max_price);
 
   @JsonKey(ignore: true)
   @override
@@ -185,7 +234,9 @@ abstract class _SubCategoryDTO implements SubCategoryDTO {
       {final int? id,
       final int? parent_id,
       final String? name,
-      final String? slug}) = _$SubCategoryDTOImpl;
+      final String? slug,
+      final double? min_price,
+      final double? max_price}) = _$SubCategoryDTOImpl;
 
   factory _SubCategoryDTO.fromJson(Map<String, dynamic> json) =
       _$SubCategoryDTOImpl.fromJson;
@@ -198,6 +249,10 @@ abstract class _SubCategoryDTO implements SubCategoryDTO {
   String? get name;
   @override
   String? get slug;
+  @override
+  double? get min_price;
+  @override
+  double? get max_price;
   @override
   @JsonKey(ignore: true)
   _$$SubCategoryDTOImplCopyWith<_$SubCategoryDTOImpl> get copyWith =>

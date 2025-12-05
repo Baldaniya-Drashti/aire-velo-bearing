@@ -18,18 +18,26 @@ import 'package:aire_velo_bearings/core/router/app_router.gr.dart' as autoroute;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage(name: 'MainTabView')
-class MainTabView extends StatelessWidget {
-  const MainTabView({super.key});
+class MainTabView extends StatefulWidget {
+  final bool isFromLogin;
+  const MainTabView({super.key, this.isFromLogin = false});
+
+  @override
+  State<MainTabView> createState() => _MainTabViewState();
+}
+
+class _MainTabViewState extends State<MainTabView> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<AccountBloc>().add(AccountEvent.getAccountDetailEvent());
+  }
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => getIt<MainTabBloc>()),
-        BlocProvider(
-          create: (context) =>
-              getIt<AccountBloc>()..add(AccountEvent.getAccountDetailEvent()),
-        ),
         BlocProvider(
           create: (context) =>
               getIt<HomeBloc>()..add(HomeEvent.getProductList(true)),
@@ -47,9 +55,7 @@ class MainTabView extends StatelessWidget {
             child: Scaffold(
               appBar: getAppbar(state, context),
               body: GestureDetector(
-                onTap: () {
-                  AppFocus.unfocus(context);
-                },
+                onTap: () => AppFocus.unfocus(context),
                 child: IndexedStack(
                   index: state.pageIndex,
                   children: List<Widget>.generate(

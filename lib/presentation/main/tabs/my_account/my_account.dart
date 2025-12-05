@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_const_constructors, use_build_context_synchronously
 
-import 'dart:developer';
-
 import 'package:aire_velo_bearings/application/account_bloc/account_bloc.dart';
 import 'package:aire_velo_bearings/core/constants/font_constants.dart';
 import 'package:aire_velo_bearings/core/constants/string_constant.dart';
@@ -20,10 +18,12 @@ import 'package:gap/gap.dart';
 
 @RoutePage(name: 'MyAccountView')
 class MyAccountView extends StatelessWidget {
-  const MyAccountView({super.key});
+  MyAccountView({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final bool isLoggedIn = context.watch<AccountBloc>().state.authenticated;
+
     return BlocListener<AuthStatusBloc, AuthStatusState>(
       listener: (context, state) {
         state.map(
@@ -41,36 +41,38 @@ class MyAccountView extends StatelessWidget {
           vertical: getSize(20),
         ),
         children: [
-          BaseText(
-            text: StringConstant.general,
-            textColor: AppColors.black,
-            fontFamily: FontConstant.jost,
-            fontSize: 20,
-            fontWeight: FontWeight.w600,
-          ),
-          Gap(getSize(10)),
-          customTile(
-            icon: Icons.person_outline,
-            title: StringConstant.editProfile,
-            onTap: () {
-              context.router.push(PageRouteInfo(EditProfile.name)).then((
-                value,
-              ) {
-                if (value == true) {
-                  context.read<AccountBloc>().add(
-                    AccountEvent.getAccountDetailEvent(),
-                  );
-                }
-              });
-            },
-          ),
-          customTile(
-            icon: Icons.lock_outline,
-            title: StringConstant.changePassword,
-            onTap: () {
-              context.router.push(PageRouteInfo(ChangePassword.name));
-            },
-          ),
+          if (isLoggedIn) ...[
+            BaseText(
+              text: StringConstant.general,
+              textColor: AppColors.black,
+              fontFamily: FontConstant.jost,
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+            ),
+            Gap(getSize(10)),
+            customTile(
+              icon: Icons.person_outline,
+              title: StringConstant.editProfile,
+              onTap: () {
+                context.router.push(PageRouteInfo(EditProfile.name)).then((
+                  value,
+                ) {
+                  if (value == true) {
+                    context.read<AccountBloc>().add(
+                      AccountEvent.getAccountDetailEvent(),
+                    );
+                  }
+                });
+              },
+            ),
+            customTile(
+              icon: Icons.lock_outline,
+              title: StringConstant.changePassword,
+              onTap: () {
+                context.router.push(PageRouteInfo(ChangePassword.name));
+              },
+            ),
+          ],
           Padding(
             padding: EdgeInsets.symmetric(vertical: getSize(10)),
             child: BaseText(
@@ -99,26 +101,58 @@ class MyAccountView extends StatelessWidget {
             icon: CupertinoIcons.chat_bubble,
             title: StringConstant.getInTouch,
           ),
-          customTile(
-            icon: Icons.logout_rounded,
-            title: StringConstant.logout,
-            isLogout: true,
-            onTap: () {
-              LogOutDialog().logoutDialog(
-                context,
-                onPressedAccept: () {
-                  context.router.maybePop().then(
-                    (value) => context.read<AuthStatusBloc>().add(
-                      AuthStatusEvent.signedOut(),
-                    ),
-                  );
-                },
-                onPressedReject: () {
-                  context.router.maybePop();
-                },
-              );
-            },
-          ),
+          if (isLoggedIn) ...[
+            customTile(
+              icon: Icons.logout_rounded,
+              title: StringConstant.logout,
+              isLogout: true,
+              onTap: () {
+                LogOutDialog().logoutDialog(
+                  context,
+                  onPressedAccept: () {
+                    context.router.maybePop().then(
+                      (value) => context.read<AuthStatusBloc>().add(
+                        AuthStatusEvent.signedOut(),
+                      ),
+                    );
+                  },
+                  onPressedReject: () {
+                    context.router.maybePop();
+                  },
+                );
+              },
+            ),
+            customTile(
+              icon: Icons.delete_forever,
+              title: StringConstant.deleteAccount,
+              isLogout: true,
+              onTap: () {
+                LogOutDialog().deleteDialog(
+                  context,
+                  onPressedAccept: () {
+                    context.router.maybePop().then(
+                      (value) => context.read<AuthStatusBloc>().add(
+                        AuthStatusEvent.deleteAccount(),
+                      ),
+                    );
+                  },
+                  onPressedReject: () {
+                    context.router.maybePop();
+                  },
+                );
+              },
+            ),
+          ],
+
+          if (!isLoggedIn)
+            customTile(
+              icon: Icons.login,
+              title: StringConstant.logIn,
+              isLogin: true,
+              onTap: () {
+                context.router.push(PageRouteInfo(Onboarding.name));
+              },
+            ),
         ],
       ),
     );
@@ -128,6 +162,7 @@ class MyAccountView extends StatelessWidget {
     required String title,
     required IconData icon,
     bool isLogout = false,
+    bool isLogin = false,
     VoidCallback? onTap,
   }) {
     return GestureDetector(
@@ -142,13 +177,21 @@ class MyAccountView extends StatelessWidget {
         child: ListTile(
           leading: Icon(
             icon,
-            color: (isLogout) ? AppColors.red : AppColors.black,
+            color: (isLogout)
+                ? AppColors.red
+                : (isLogin)
+                ? AppColors.primary
+                : AppColors.black,
             size: getSize(25),
           ),
           title: BaseText(
             text: title,
             fontWeight: FontWeight.w600,
-            textColor: (isLogout) ? AppColors.red : null,
+            textColor: (isLogout)
+                ? AppColors.red
+                : (isLogin)
+                ? AppColors.primary
+                : null,
           ),
           trailing: (isLogout)
               ? null

@@ -11,6 +11,8 @@ class SubCategoryDTO with _$SubCategoryDTO {
     int? parent_id,
     String? name,
     String? slug,
+    double? min_price,
+    double? max_price,
   }) = _SubCategoryDTO;
 
   factory SubCategoryDTO.fromJson(Map<String, dynamic> json) =>

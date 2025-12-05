@@ -46,6 +46,14 @@ class MainTabBloc extends Bloc<MainTabEvent, MainTabState> {
               break;
           }
         },
+
+        /* getAccountDetailEvent: (e) async {
+          print("this getAccountDetailEvent event is called ---> ");
+          final isLoggedIn = await authFacade.checkAuthenticated();
+
+          emit(state.copyWith(authenticated: isLoggedIn));
+          print("User authenticate Check---> ${state.authenticated}");
+        }, */
       );
     });
   }

@@ -5,6 +5,7 @@ class ApiConstants {
   static String register = 'register';
   static String login = 'login';
   static String logout = 'logout';
+  static String deleteAccount = 'account/delete';
   static String home = 'navigation';
   static String subCategoryList = 'navigation/sub';
   static String mainFilter = 'woo-filter';

@@ -172,6 +172,7 @@ abstract class GetAccountDetailEvent implements AccountEvent {
 mixin _$AccountState {
   bool get isSubmitting => throw _privateConstructorUsedError;
   bool get showError => throw _privateConstructorUsedError;
+  bool get authenticated => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AccountStateCopyWith<AccountState> get copyWith =>
@@ -184,7 +185,7 @@ abstract class $AccountStateCopyWith<$Res> {
           AccountState value, $Res Function(AccountState) then) =
       _$AccountStateCopyWithImpl<$Res, AccountState>;
   @useResult
-  $Res call({bool isSubmitting, bool showError});
+  $Res call({bool isSubmitting, bool showError, bool authenticated});
 }
 
 /// @nodoc
@@ -202,6 +203,7 @@ class _$AccountStateCopyWithImpl<$Res, $Val extends AccountState>
   $Res call({
     Object? isSubmitting = null,
     Object? showError = null,
+    Object? authenticated = null,
   }) {
     return _then(_value.copyWith(
       isSubmitting: null == isSubmitting
@@ -211,6 +213,10 @@ class _$AccountStateCopyWithImpl<$Res, $Val extends AccountState>
       showError: null == showError
           ? _value.showError
           : showError // ignore: cast_nullable_to_non_nullable
+              as bool,
+      authenticated: null == authenticated
+          ? _value.authenticated
+          : authenticated // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -224,7 +230,7 @@ abstract class _$$AccountStateImplCopyWith<$Res>
       __$$AccountStateImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isSubmitting, bool showError});
+  $Res call({bool isSubmitting, bool showError, bool authenticated});
 }
 
 /// @nodoc
@@ -240,6 +246,7 @@ class __$$AccountStateImplCopyWithImpl<$Res>
   $Res call({
     Object? isSubmitting = null,
     Object? showError = null,
+    Object? authenticated = null,
   }) {
     return _then(_$AccountStateImpl(
       isSubmitting: null == isSubmitting
@@ -250,6 +257,10 @@ class __$$AccountStateImplCopyWithImpl<$Res>
           ? _value.showError
           : showError // ignore: cast_nullable_to_non_nullable
               as bool,
+      authenticated: null == authenticated
+          ? _value.authenticated
+          : authenticated // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -257,16 +268,21 @@ class __$$AccountStateImplCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AccountStateImpl implements _AccountState {
-  _$AccountStateImpl({required this.isSubmitting, required this.showError});
+  _$AccountStateImpl(
+      {required this.isSubmitting,
+      required this.showError,
+      required this.authenticated});
 
   @override
   final bool isSubmitting;
   @override
   final bool showError;
+  @override
+  final bool authenticated;
 
   @override
   String toString() {
-    return 'AccountState(isSubmitting: $isSubmitting, showError: $showError)';
+    return 'AccountState(isSubmitting: $isSubmitting, showError: $showError, authenticated: $authenticated)';
   }
 
   @override
@@ -277,11 +293,14 @@ class _$AccountStateImpl implements _AccountState {
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
             (identical(other.showError, showError) ||
-                other.showError == showError));
+                other.showError == showError) &&
+            (identical(other.authenticated, authenticated) ||
+                other.authenticated == authenticated));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isSubmitting, showError);
+  int get hashCode =>
+      Object.hash(runtimeType, isSubmitting, showError, authenticated);
 
   @JsonKey(ignore: true)
   @override
@@ -293,12 +312,15 @@ class _$AccountStateImpl implements _AccountState {
 abstract class _AccountState implements AccountState {
   factory _AccountState(
       {required final bool isSubmitting,
-      required final bool showError}) = _$AccountStateImpl;
+      required final bool showError,
+      required final bool authenticated}) = _$AccountStateImpl;
 
   @override
   bool get isSubmitting;
   @override
   bool get showError;
+  @override
+  bool get authenticated;
   @override
   @JsonKey(ignore: true)
   _$$AccountStateImplCopyWith<_$AccountStateImpl> get copyWith =>

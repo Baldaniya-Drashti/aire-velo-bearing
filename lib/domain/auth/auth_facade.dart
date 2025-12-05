@@ -84,11 +84,12 @@ class AuthFacade implements IAuthFacade {
 
       final account = CurrentUserDTO.fromJson(response.data);
       // logger.d("RESPONSE OF LOGIN---> ${response.data}");
+
       await setRememberLogin(
         cred: RememberDTO(
           isRemember: isRemember ? 1 : 0,
-          email: email,
-          password: password,
+          email: (isRemember) ? email : null,
+          password: (isRemember) ? password : null,
         ),
       );
 
@@ -263,6 +264,24 @@ class AuthFacade implements IAuthFacade {
         return left(const AuthFailure.networkError());
       }
 
+      return left(const AuthFailure.serverError());
+    }
+  }
+
+  @override
+  Future<Either<AuthFailure, String>> deleteAccount() async {
+    try {
+      final Map<String, dynamic> mapData = {'confirm': 'DELETE'};
+      return apiService.postMethod(ApiConstants.deleteAccount, mapData).then((
+        value,
+      ) async {
+        clearLocalStorage();
+        return right(value.dioMessage ?? "");
+      });
+    } on DioException catch (err) {
+      if (err.response != null) {
+        return left(AuthFailure.showAPIResponseMessage(err.message ?? ''));
+      }
       return left(const AuthFailure.serverError());
     }
   }

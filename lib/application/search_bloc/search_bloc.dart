@@ -1,3 +1,4 @@
+import 'package:aire_velo_bearings/application/account_bloc/account_bloc.dart';
 import 'package:aire_velo_bearings/core/database/local_preference.dart';
 import 'package:aire_velo_bearings/core/router/app_router.dart';
 import 'package:aire_velo_bearings/domain/main/i_main_facade.dart';
@@ -10,6 +11,7 @@ import 'package:aire_velo_bearings/infrastructure/sub_category_dto/sub_category_
 import 'package:aire_velo_bearings/injection.dart';
 import 'package:aire_velo_bearings/presentation/common/utils/flushbar_creator.dart';
 import 'package:aire_velo_bearings/presentation/core/enum.dart';
+import 'package:aire_velo_bearings/presentation/core/widgets/dialogs/app_dialog.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -41,6 +43,12 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
               state.copyWith(
                 filters: FilterDTO(category: e.val?.slug ?? ''),
                 // selecetedCategory: e.val,
+                range: RangeValues(
+                  e.val?.min_price ?? 0.0,
+                  e.val?.max_price ?? 0.0,
+                ),
+                minPrice: e.val?.min_price ?? 0.0,
+                maxPrice: e.val?.max_price ?? 0.0,
               ),
             );
           }
@@ -242,12 +250,20 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           final category = state.filters?.category;
           emit(state.copyWith(filters: FilterDTO(category: category)));
         },
-
         toggleFavourite: (e) async {
-          await setFavoriteIds(e.id);
+          final bool isLoggedIn = currentContext
+              .read<AccountBloc>()
+              .state
+              .authenticated;
 
-          final ids = await getFavouriteIds();
-          emit(state.copyWith(favouriteIds: ids));
+          if (isLoggedIn) {
+            await setFavoriteIds(e.id);
+
+            final ids = await getFavouriteIds();
+            emit(state.copyWith(favouriteIds: ids));
+          } else {
+            AppDialog.showInfo(currentContext);
+          }
         },
         onShortCutSearch: (e) {
           FilterDTO initialFilter = state.filters ?? FilterDTO();
@@ -294,6 +310,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
           );
 
           Navigator.pop(currentContext);
+          add(SearchEvent.onSearch(isRefresh: true));
         },
       );
     });

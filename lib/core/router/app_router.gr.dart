@@ -9,9 +9,9 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:aire_velo_bearings/infrastructure/home_dto/home_dto.dart'
-    as _i19;
+    as _i20;
 import 'package:aire_velo_bearings/infrastructure/sub_category_dto/sub_category_dto.dart'
-    as _i18;
+    as _i19;
 import 'package:aire_velo_bearings/presentation/change_password/change_password.dart'
     as _i1;
 import 'package:aire_velo_bearings/presentation/edit_profile/edit_profile.dart'
@@ -40,6 +40,7 @@ import 'package:aire_velo_bearings/presentation/sign_up/sign_up.dart' as _i13;
 import 'package:aire_velo_bearings/presentation/splash/splash_page.dart'
     as _i14;
 import 'package:auto_route/auto_route.dart' as _i16;
+import 'package:flutter/cupertino.dart' as _i18;
 import 'package:flutter/material.dart' as _i17;
 
 /// generated route for
@@ -82,10 +83,13 @@ class EditProfile extends _i16.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i3.FavouritesView]
-class FavouritesView extends _i16.PageRouteInfo<void> {
-  const FavouritesView({List<_i16.PageRouteInfo>? children})
-      : super(
+class FavouritesView extends _i16.PageRouteInfo<FavouritesViewArgs> {
+  FavouritesView({
+    _i17.Key? key,
+    List<_i16.PageRouteInfo>? children,
+  }) : super(
           FavouritesView.name,
+          args: FavouritesViewArgs(key: key),
           initialChildren: children,
         );
 
@@ -94,9 +98,22 @@ class FavouritesView extends _i16.PageRouteInfo<void> {
   static _i16.PageInfo page = _i16.PageInfo(
     name,
     builder: (data) {
-      return const _i3.FavouritesView();
+      final args = data.argsAs<FavouritesViewArgs>(
+          orElse: () => const FavouritesViewArgs());
+      return _i3.FavouritesView(key: args.key);
     },
   );
+}
+
+class FavouritesViewArgs {
+  const FavouritesViewArgs({this.key});
+
+  final _i17.Key? key;
+
+  @override
+  String toString() {
+    return 'FavouritesViewArgs{key: $key}';
+  }
 }
 
 /// generated route for
@@ -139,10 +156,17 @@ class HomeView extends _i16.PageRouteInfo<void> {
 
 /// generated route for
 /// [_i6.MainTabView]
-class MainTabView extends _i16.PageRouteInfo<void> {
-  const MainTabView({List<_i16.PageRouteInfo>? children})
-      : super(
+class MainTabView extends _i16.PageRouteInfo<MainTabViewArgs> {
+  MainTabView({
+    _i17.Key? key,
+    bool isFromLogin = false,
+    List<_i16.PageRouteInfo>? children,
+  }) : super(
           MainTabView.name,
+          args: MainTabViewArgs(
+            key: key,
+            isFromLogin: isFromLogin,
+          ),
           initialChildren: children,
         );
 
@@ -151,17 +175,41 @@ class MainTabView extends _i16.PageRouteInfo<void> {
   static _i16.PageInfo page = _i16.PageInfo(
     name,
     builder: (data) {
-      return const _i6.MainTabView();
+      final args =
+          data.argsAs<MainTabViewArgs>(orElse: () => const MainTabViewArgs());
+      return _i6.MainTabView(
+        key: args.key,
+        isFromLogin: args.isFromLogin,
+      );
     },
   );
 }
 
+class MainTabViewArgs {
+  const MainTabViewArgs({
+    this.key,
+    this.isFromLogin = false,
+  });
+
+  final _i17.Key? key;
+
+  final bool isFromLogin;
+
+  @override
+  String toString() {
+    return 'MainTabViewArgs{key: $key, isFromLogin: $isFromLogin}';
+  }
+}
+
 /// generated route for
 /// [_i7.MyAccountView]
-class MyAccountView extends _i16.PageRouteInfo<void> {
-  const MyAccountView({List<_i16.PageRouteInfo>? children})
-      : super(
+class MyAccountView extends _i16.PageRouteInfo<MyAccountViewArgs> {
+  MyAccountView({
+    _i18.Key? key,
+    List<_i16.PageRouteInfo>? children,
+  }) : super(
           MyAccountView.name,
+          args: MyAccountViewArgs(key: key),
           initialChildren: children,
         );
 
@@ -170,9 +218,22 @@ class MyAccountView extends _i16.PageRouteInfo<void> {
   static _i16.PageInfo page = _i16.PageInfo(
     name,
     builder: (data) {
-      return const _i7.MyAccountView();
+      final args = data.argsAs<MyAccountViewArgs>(
+          orElse: () => const MyAccountViewArgs());
+      return _i7.MyAccountView(key: args.key);
     },
   );
+}
+
+class MyAccountViewArgs {
+  const MyAccountViewArgs({this.key});
+
+  final _i18.Key? key;
+
+  @override
+  String toString() {
+    return 'MyAccountViewArgs{key: $key}';
+  }
 }
 
 /// generated route for
@@ -264,7 +325,7 @@ class ProductDetailArgs {
 class SearchScreen extends _i16.PageRouteInfo<SearchScreenArgs> {
   SearchScreen({
     _i17.Key? key,
-    _i18.SubCategoryDTO? category,
+    _i19.SubCategoryDTO? category,
     List<_i16.PageRouteInfo>? children,
   }) : super(
           SearchScreen.name,
@@ -298,7 +359,7 @@ class SearchScreenArgs {
 
   final _i17.Key? key;
 
-  final _i18.SubCategoryDTO? category;
+  final _i19.SubCategoryDTO? category;
 
   @override
   String toString() {
@@ -368,7 +429,7 @@ class SplashPage extends _i16.PageRouteInfo<void> {
 class SubCategoryList extends _i16.PageRouteInfo<SubCategoryListArgs> {
   SubCategoryList({
     _i17.Key? key,
-    required _i19.HomeDTO category,
+    required _i20.HomeDTO category,
     List<_i16.PageRouteInfo>? children,
   }) : super(
           SubCategoryList.name,
@@ -401,7 +462,7 @@ class SubCategoryListArgs {
 
   final _i17.Key? key;
 
-  final _i19.HomeDTO category;
+  final _i20.HomeDTO category;
 
   @override
   String toString() {

@@ -1,6 +1,4 @@
-import 'package:aire_velo_bearings/domain/auth/auth_failure.dart';
 import 'package:aire_velo_bearings/domain/auth/i_auth_facade.dart';
-import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -17,19 +15,13 @@ class AccountBloc extends Bloc<AccountEvent, AccountState> {
     on<AccountEvent>((event, emit) async {
       await event.map(
         getAccountDetailEvent: (e) async {
-          Either<AuthFailure, String>? failureOrSuccess;
+          await _authFacade.getCurrentUser();
 
-          emit(state.copyWith(isSubmitting: true));
-          failureOrSuccess = await _authFacade.getCurrentUser();
+          print("this getAccountDetailEvent event is called ---> ");
+          final isLoggedIn = await _authFacade.checkAuthenticated();
 
-          failureOrSuccess.fold(
-            (l) {
-              emit(state.copyWith(isSubmitting: false));
-            },
-            (r) {
-              emit(state.copyWith(isSubmitting: false));
-            },
-          );
+          emit(state.copyWith(authenticated: isLoggedIn));
+          print("User authenticate Check---> ${state.authenticated}");
         },
       );
     });

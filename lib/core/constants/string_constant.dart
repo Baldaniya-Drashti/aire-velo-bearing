@@ -66,6 +66,9 @@ class StringConstant {
   static const String filterByCategory = 'Filter by Category';
   static const String filter = 'Filter';
   static const String getInTouch = 'Get in Touch';
+  static const String deleteAccountDesc =
+      'Are you sure want to delete the account?';
+  static const String delete = 'Delete';
 
   ///
   static const String theUKsLargestStockistOfHeadsetBearings =
@@ -91,6 +94,12 @@ class StringConstant {
   static const String noProductsFound = 'No Products Found';
   static const String inStock = 'In Stock';
   static const String outOfStock = 'Out of Stock';
+  static const String loginRequired = 'Login Required';
+  static const String deleteAccount = 'Delete Account';
+  static const String pleaseLoginToViewFavoritesProducts =
+      'Please Login to view Favorites Products!';
+  static const String pleaseLoginToAddProductsToYourWishlist =
+      'Please login to add products to your wishlist.';
 
   /// ------------- Validator ------------- ///
   static const String pleaseEnterEmail = 'Please enter email';

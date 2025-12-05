@@ -97,7 +97,12 @@ class SignUpBloc extends Bloc<SignUpEvent, SignUpState> {
               },
               (r) {
                 AppFocus.unfocus(currentContext);
-                currentContext.router.replace(PageRouteInfo(MainTabView.name));
+                currentContext.router.replaceAll([
+                  PageRouteInfo(
+                    MainTabView.name,
+                    args: MainTabViewArgs(isFromLogin: true),
+                  ),
+                ], updateExistingRoutes: false);
               },
             );
           } else {

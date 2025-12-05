@@ -34,4 +34,6 @@ abstract class IAuthFacade {
   Future<Either<AuthFailure, String>> forgotPasswordAPI({
     required String email,
   });
+
+  Future<Either<AuthFailure, String>> deleteAccount();
 }

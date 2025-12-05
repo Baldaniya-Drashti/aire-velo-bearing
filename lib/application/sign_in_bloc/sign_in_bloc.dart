@@ -77,16 +77,20 @@ class SignInBloc extends Bloc<SignInEvent, SignInState> {
                     orElse: () => "Server Error. Try again later.",
                   ),
                 ).show(currentContext);
+                emit(state.copyWith(isSubmitting: false, showError: true));
               },
               (r) {
                 AppFocus.unfocus(currentContext);
                 currentContext.router.replaceAll([
-                  PageRouteInfo(MainTabView.name),
-                ]);
+                  PageRouteInfo(
+                    MainTabView.name,
+                    args: MainTabViewArgs(isFromLogin: true),
+                  ),
+                ], updateExistingRoutes: false);
+                emit(state.copyWith(isSubmitting: false, showError: true));
               },
             );
           }
-          emit(state.copyWith(isSubmitting: false, showError: true));
         },
       );
     });

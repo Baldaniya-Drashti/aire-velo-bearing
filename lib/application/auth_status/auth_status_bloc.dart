@@ -15,11 +15,10 @@ class AuthStatusBloc extends Bloc<AuthStatusEvent, AuthStatusState> {
   AuthStatusBloc(this._authFacade) : super(const AuthStatusState.initial()) {
     on<AuthStatusEvent>((event, emit) async {
       await event.map(
-        started: (e) async {
-          await _authFacade.getCurrentUser();
-        },
+        // started: (e) async {},
         authCheckRequested: (e) async {
           final authenticated = await _authFacade.checkAuthenticated();
+
           emit(
             authenticated
                 ? const AuthStatusState.authenticated()
@@ -29,6 +28,15 @@ class AuthStatusBloc extends Bloc<AuthStatusEvent, AuthStatusState> {
         signedOut: (e) async {
           Either<AuthFailure, String> res;
           res = await _authFacade.logout();
+          res.fold((l) => null, (r) {
+            emit(AuthStatusState.initial());
+            emit(AuthStatusState.unAuthenticated(r));
+          });
+        },
+
+        deleteAccount: (e) async {
+          Either<AuthFailure, String> res;
+          res = await _authFacade.deleteAccount();
           res.fold((l) => null, (r) {
             emit(AuthStatusState.initial());
             emit(AuthStatusState.unAuthenticated(r));

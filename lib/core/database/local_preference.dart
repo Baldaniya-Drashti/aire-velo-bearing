@@ -38,6 +38,7 @@ Future<CurrentUserDTO> getUserData() async {
 
 Future<void> setRememberLogin({required RememberDTO cred}) async {
   SharedPreferences prefs = await SharedPreferences.getInstance();
+
   prefs.setString(StorageConstants.remeberLogin, jsonEncode(cred.toJson()));
 }
 

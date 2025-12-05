@@ -1,3 +1,4 @@
+import 'package:aire_velo_bearings/application/account_bloc/account_bloc.dart';
 import 'package:aire_velo_bearings/core/database/local_preference.dart';
 import 'package:aire_velo_bearings/core/router/app_router.dart';
 import 'package:aire_velo_bearings/domain/main/i_main_facade.dart';
@@ -5,6 +6,7 @@ import 'package:aire_velo_bearings/domain/main/main_failure.dart';
 import 'package:aire_velo_bearings/infrastructure/product_detail_dto/product_detail_dto.dart';
 import 'package:aire_velo_bearings/injection.dart';
 import 'package:aire_velo_bearings/presentation/common/utils/flushbar_creator.dart';
+import 'package:aire_velo_bearings/presentation/core/widgets/dialogs/app_dialog.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -61,8 +63,17 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailState> {
           emit(state.copyWith(currentImageIndex: e.index));
         },
         favoriteChanged: (e) async {
-          await setFavoriteIds(state.product?.id ?? 0);
-          emit(state.copyWith(isFavorite: (state.isFavorite == 0) ? 1 : 0));
+          final bool isLoggedIn = currentContext
+              .read<AccountBloc>()
+              .state
+              .authenticated;
+          print("IsLogged In favoriteChanged--> ${isLoggedIn}");
+          if (isLoggedIn) {
+            await setFavoriteIds(state.product?.id ?? 0);
+            emit(state.copyWith(isFavorite: (state.isFavorite == 0) ? 1 : 0));
+          } else {
+            AppDialog.showInfo(currentContext);
+          }
         },
       );
     });
